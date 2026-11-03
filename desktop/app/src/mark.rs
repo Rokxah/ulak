@@ -1,29 +1,28 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! The Ulak mark, the Waggle Dance (`assets/brand/icon.svg`): two loops,
-//! the phone and the PC, around a drop of nectar, tilted like a bee's waggle
-//! run, on an espresso tile with a warm glow. Drawn in code at any pixel
-//! size: the tray, window and toast icons at runtime, and the executable's
-//! icon at build time (`build.rs` includes this file), so every size is sharp
-//! without bitmap assets. At 32 px and below the strokes are heavier and the
-//! tile fills more of the square, as in the hand-tuned small sizes.
+//! The Ulak mark (`assets/brand/icon.svg`): a U whose two arms, the phone
+//! and the PC, meet at the bottom, with the message they carry as a spark
+//! between them, on a night-blue tile with a soft glow. Drawn in code at any
+//! pixel size: the tray, window and toast icons at runtime, and the
+//! executable's icon at build time (`build.rs` includes this file), so every
+//! size is sharp without bitmap assets. At 32 px and below the strokes are
+//! heavier and the tile fills more of the square.
 
-/// Espresso tile, its glow, the honey rim, and the two loops and the drop
-/// (docs/design/tokens.json, Honey palette).
-const TILE: [f32; 3] = rgb(0x2C, 0x16, 0x00);
-const GLOW: [f32; 3] = rgb(0x69, 0x3C, 0x00);
-const RIM: [f32; 3] = rgb(0xFF, 0xB9, 0x5F);
-const PHONE: [f32; 3] = rgb(0xFF, 0xF8, 0xF3);
-const PC: [f32; 3] = rgb(0xFF, 0xDD, 0xB8);
-const NECTAR: [f32; 3] = rgb(0xFF, 0xB9, 0x5F);
+/// Night-blue tile, its glow, the sky rim, the two arms and the spark.
+const TILE: [f32; 3] = rgb(0x10, 0x2A, 0x43);
+const GLOW: [f32; 3] = rgb(0x1E, 0x4E, 0x79);
+const RIM: [f32; 3] = rgb(0x5F, 0xB3, 0xF9);
+const PHONE: [f32; 3] = rgb(0xF5, 0xF9, 0xFF);
+const PC: [f32; 3] = rgb(0xCF, 0xE3, 0xFA);
+const SPARK: [f32; 3] = rgb(0xFF, 0xB5, 0x47);
 
-/// The loops in a 100×100 design grid, before the tilt: each is two cubic
-/// Béziers (start, control, control, end, control, control, end).
-const LEFT_LOOP: [(f32, f32); 7] =
-    [(41.5, 42.5), (26.0, 24.0), (13.5, 31.0), (13.5, 50.0), (13.5, 69.0), (26.0, 76.0), (41.5, 57.5)];
-const RIGHT_LOOP: [(f32, f32); 7] =
-    [(58.5, 42.5), (74.0, 24.0), (86.5, 31.0), (86.5, 50.0), (86.5, 69.0), (74.0, 76.0), (58.5, 57.5)];
-/// The tilt, degrees (counterclockwise on screen).
-const TILT: f32 = -25.0;
+/// The U in a 100×100 design grid: straight arms from `ARM_TOP` down to
+/// `BEND_Y`, then a half circle of radius `BEND_R` around (50, BEND_Y).
+const ARM_X: f32 = 32.0;
+const ARM_TOP: f32 = 24.0;
+const BEND_Y: f32 = 56.0;
+const BEND_R: f32 = 50.0 - ARM_X;
+/// The spark between the arms' tops.
+const SPARK_Y: f32 = 31.0;
 
 /// Supersampling grid per pixel (SS×SS samples) for smooth edges.
 const SS: usize = 4;
@@ -37,15 +36,15 @@ struct Geometry {
     inset: f32,
     corner: f32,
     stroke: f32,
-    drop: f32,
+    spark: f32,
 }
 
 impl Geometry {
     fn for_size(size: usize) -> Self {
         if size <= 32 {
-            Geometry { inset: 2.0, corner: 20.0, stroke: 11.4, drop: 8.8 }
+            Geometry { inset: 2.0, corner: 20.0, stroke: 13.0, spark: 8.0 }
         } else {
-            Geometry { inset: 4.0, corner: 22.0, stroke: 10.4, drop: 8.2 }
+            Geometry { inset: 4.0, corner: 22.0, stroke: 11.0, spark: 7.2 }
         }
     }
 }
@@ -54,9 +53,8 @@ impl Geometry {
 pub fn render(size: usize) -> Vec<u8> {
     let g = Geometry::for_size(size);
     let unit = 100.0 / size as f32;
-    let left = polyline(&LEFT_LOOP);
-    let right = polyline(&RIGHT_LOOP);
-    let (sin, cos) = (-TILT.to_radians()).sin_cos();
+    let left = arm(true);
+    let right = arm(false);
     // The rim is at least about a pixel wide, so the tile keeps an edge on dark taskbars.
     let rim = (1.5f32).max(unit * 0.6);
 
@@ -75,16 +73,13 @@ pub fn render(size: usize) -> Vec<u8> {
                         continue;
                     }
                     covered += 1;
-                    // Undo the tilt to test against the upright loops.
                     let (dx, dy) = (x - 50.0, y - 50.0);
-                    let (ux, uy) = (50.0 + dx * cos - dy * sin, 50.0 + dx * sin + dy * cos);
                     let half = g.stroke / 2.0;
-                    let paint = if (dx * dx + dy * dy).sqrt() <= g.drop {
-                        NECTAR
-                    } else if distance_to(&left, (ux, uy)) <= half {
-                        PHONE
-                    } else if distance_to(&right, (ux, uy)) <= half {
-                        PC
+                    let paint = if ((x - 50.0).powi(2) + (y - SPARK_Y).powi(2)).sqrt() <= g.spark {
+                        SPARK
+                    } else if distance_to(&left, (x, y)).min(distance_to(&right, (x, y))) <= half {
+                        // The arms meet at the bottom in a straight seam.
+                        if x < 50.0 { PHONE } else { PC }
                     } else if -edge <= rim {
                         mix(TILE, RIM, 0.34)
                     } else {
@@ -129,24 +124,17 @@ fn rounded_square_distance(x: f32, y: f32, inset: f32, r: f32) -> f32 {
     (qx * qx + qy * qy).sqrt() - r
 }
 
-/// A loop's two Béziers as points close enough together to measure against.
-fn polyline(loop_points: &[(f32, f32); 7]) -> Vec<(f32, f32)> {
+/// One arm of the U as points close enough together to measure against:
+/// the left (phone) or the right (PC), each down to the bottom of the bend.
+fn arm(left: bool) -> Vec<(f32, f32)> {
     const STEPS: usize = 32;
-    let mut points = Vec::with_capacity(STEPS * 2 + 1);
-    for segment in [&loop_points[0..4], &loop_points[3..7]] {
-        for step in 0..=STEPS {
-            if step == 0 && !points.is_empty() {
-                continue;
-            }
-            let t = step as f32 / STEPS as f32;
-            let u = 1.0 - t;
-            let (a, b, c, d) = (segment[0], segment[1], segment[2], segment[3]);
-            let w = [u * u * u, 3.0 * u * u * t, 3.0 * u * t * t, t * t * t];
-            points.push((
-                w[0] * a.0 + w[1] * b.0 + w[2] * c.0 + w[3] * d.0,
-                w[0] * a.1 + w[1] * b.1 + w[2] * c.1 + w[3] * d.1,
-            ));
-        }
+    let x = if left { ARM_X } else { 100.0 - ARM_X };
+    let mut points = vec![(x, ARM_TOP), (x, BEND_Y)];
+    for step in 1..=STEPS {
+        // A quarter circle from the arm's end to the bottom of the U.
+        let a = std::f32::consts::FRAC_PI_2 * step as f32 / STEPS as f32;
+        let sx = if left { -a.cos() } else { a.cos() };
+        points.push((50.0 + BEND_R * sx, BEND_Y + BEND_R * a.sin()));
     }
     points
 }
@@ -173,27 +161,28 @@ mod tests {
     }
 
     #[test]
-    fn corners_are_transparent_and_the_drop_sits_in_the_middle() {
-        let size = 64;
+    fn corners_are_transparent_and_the_spark_sits_between_the_arms() {
+        let size = 100;
         let img = render(size);
         assert_eq!(img.len(), size * size * 4);
         assert_eq!(pixel(&img, size, 0, 0)[3], 0, "rounded corner");
-        let middle = pixel(&img, size, 32, 32);
-        assert_eq!(middle, [0xFF, 0xB9, 0x5F, 255], "the nectar drop");
-        // Near the top edge, between the loops: the dark tile.
-        let tile = pixel(&img, size, 32, 8);
-        assert!(tile[0] < 0x80 && tile[3] == 255, "{tile:?}");
+        assert_eq!(pixel(&img, size, 50, 31), [0xFF, 0xB5, 0x47, 255], "the spark");
+        // Near the top edge, above the spark: the dark tile.
+        let tile = pixel(&img, size, 50, 8);
+        assert!(tile[2] < 0x80 && tile[3] == 255, "{tile:?}");
+        // Inside the U, below the spark: no ink.
+        let inside = pixel(&img, size, 50, 52);
+        assert!(inside[0] < 0x80, "{inside:?}");
     }
 
     #[test]
-    fn both_loops_are_drawn() {
-        let size = 128;
+    fn both_arms_and_the_bend_are_drawn() {
+        let size = 100;
         let img = render(size);
-        let light = |p: [u8; 4]| p[0] > 0xF0 && p[3] == 255;
-        // Somewhere left and right of the drop there's loop ink.
-        let left = (8..56).any(|x| light(pixel(&img, size, x, 64)) || light(pixel(&img, size, x, 70)));
-        let right = (72..120).any(|x| light(pixel(&img, size, x, 64)) || light(pixel(&img, size, x, 58)));
-        assert!(left && right);
+        let light = |p: [u8; 4]| p[0] > 0xC0 && p[1] > 0xD0 && p[3] == 255;
+        assert!(light(pixel(&img, size, 32, 40)), "phone arm");
+        assert!(light(pixel(&img, size, 68, 40)), "PC arm");
+        assert!(light(pixel(&img, size, 50, 74)), "the bottom of the U");
     }
 
     #[test]

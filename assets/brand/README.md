@@ -1,22 +1,23 @@
-# The NectarLink mark
+# The Ulak mark
 
-The Waggle Dance: two loops, the phone and the PC, around a drop of nectar,
-tilted like the run of a honeybee's waggle dance, which is how bees tell each
-other where to find nectar.
+A U whose two arms, the phone and the PC, meet at the bottom, with the
+message they carry as an amber spark between them. *Ulak* is Old Turkish for
+"messenger".
 
 | File | What it is |
 |---|---|
-| `icon.svg` | The full-color app icon: espresso tile, warm glow, honey rim |
-| `icon-flat.svg` | The same without the glow and highlights, for flat contexts |
+| `icon.svg` | The full-color app icon: night-blue tile, soft glow, sky rim |
+| `icon-flat.svg` | The same without the glow and rim, for flat contexts |
 | `icon-mono.svg` | The mark alone in white, for one-color uses (notifications, themed icons) |
-| `icon-512.png` | `icon.svg` at 512 × 512 |
+| `icon-512.png` | The app icon at 512 × 512, as `mark.rs` draws it |
 
 The apps draw the mark themselves from the same geometry:
 `desktop/app/src/mark.rs` (the Windows icon, tray and notifications at every
 size) and `android/app/src/main/res/drawable/ic_launcher_*.xml` and
 `ic_notification.xml`.
 
-Colors (Honey palette, `docs/design/tokens.json`): tile `#2C1600`, glow
-`#693C00`, phone loop `#FFF8F3`, PC loop `#FFDDB8`, nectar and rim `#FFB95F`.
+Colors: tile `#102A43`, glow `#1E4E79`, rim `#5FB3F9`, phone arm `#F5F9FF`,
+PC arm `#CFE3FA`, spark `#FFB547`.
 
-The name and the mark are covered by the [trademark policy](../../TRADEMARKS.md).
+Ulak is a fork of NectarLink and doesn't use its name or mark; see the
+[trademark policy](../../TRADEMARKS.md).

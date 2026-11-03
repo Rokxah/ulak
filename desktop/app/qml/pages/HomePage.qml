@@ -354,7 +354,7 @@ Item {
                             width: 22; height: 22
                             path: Icons.mark
                             stroke: 2.2
-                            color: Theme.dark ? "#FFB95F" : "#8A5100"
+                            color: Theme.dark ? "#5FB3F9" : "#1E4E79"
                         }
                     }
                     Column {
