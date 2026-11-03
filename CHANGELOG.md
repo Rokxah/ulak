@@ -4,15 +4,15 @@ All notable changes to Ulak. Versions follow
 [semantic versioning](https://semver.org); before 1.0, a minor version may
 change things that need a step from you, and its notes say so.
 
-## 0.2.1 (Ulak) - 2026-11-03
+## 0.2.2 (Ulak) - 2026-11-04
 
 The first release of **Ulak**, a fork of
 [NectarLink](https://github.com/thtbee/nectarlink) 0.1.4. Ulak installs next
 to NectarLink and doesn't update it or from it: it has its own app ID on the
 phone (`app.ulak`), its own data and install folders on the PC, and gets its
 updates from [Rokxah/ulak](https://github.com/Rokxah/ulak/releases). Pair the
-phone and the PC again in Ulak. (0.2.0 was tagged but never released:
-its Linux package didn't start without libEGL.)
+phone and the PC again in Ulak. (0.2.0 and 0.2.1 were tagged but never
+released: their Linux packages didn't start on a clean system.)
 
 ### New
 
