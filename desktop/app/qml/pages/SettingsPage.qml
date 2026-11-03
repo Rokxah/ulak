@@ -2222,8 +2222,7 @@ Item {
                                             { value: "show", label: qsTr("Show") },
                                             { value: "quiet", label: qsTr("No pop-ups") },
                                             { value: "hidden", label: qsTr("Hide") }
-                                        ].concat(appRow.modelData.pcApp || appRow.modelData.rule === "whenpcclosed"
-                                                 ? [{ value: "whenpcclosed", label: qsTr("Not when open on PC") }] : [])
+                                        ].concat([{ value: "whenpcclosed", label: qsTr("Not when open on PC") }])
                                         value: appRow.modelData.rule
                                         onPicked: (value) => NotificationList.setAppRule(appRow.modelData.app, value)
                                     }

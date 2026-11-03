@@ -360,7 +360,7 @@ fn show(device: DeviceId, n: &Notification) {
         maybe_auto_copy_otp(code);
     }
     let now = crate::state::unix_ms(std::time::SystemTime::now());
-    let (device_name, icon, rule, image, phone_dnd, muted) = core_host::host().hub.read(|s| {
+    let (device_name, icon, rule, image, phone_dnd, muted, pc_programs) = core_host::host().hub.read(|s| {
         let dnd = s.toggles.get(&device).is_some_and(|t| t.dnd);
         // A muted app, or a keyword in the text, takes the pop-up away.
         let muted = s.is_app_muted(&n.app, now) || s.keyword_rule_for(n).is_some();
@@ -371,13 +371,14 @@ fn show(device: DeviceId, n: &Notification) {
             s.notification_images.get(&(device, n.key.clone())).cloned(),
             dnd,
             muted,
+            s.pc_programs_for(&n.app),
         )
     });
     // The user chose no pop-ups (or nothing at all) for this app, or the phone
     // is in Do Not Disturb while DND quieting is turned on.
     let rule = match rule {
         _ if muted => AppRule::Quiet,
-        AppRule::WhenPcClosed if crate::pc_apps::desktop_app_running(&n.app) => AppRule::Quiet,
+        AppRule::WhenPcClosed if crate::pc_apps::any_running(&pc_programs) => AppRule::Quiet,
         AppRule::WhenPcClosed => AppRule::Show,
         rule => rule,
     };
@@ -545,7 +546,7 @@ pub fn set_app_rule(app: &str, rule: AppRule) {
     hub.update(|s| s.set_app_rule(app, rule));
     let quiet_now = match rule {
         AppRule::Show => false,
-        AppRule::WhenPcClosed => crate::pc_apps::desktop_app_running(app),
+        AppRule::WhenPcClosed => crate::pc_apps::any_running(&hub.read(|s| s.pc_programs_for(app))),
         AppRule::Quiet | AppRule::Hidden => true,
     };
     if !quiet_now {

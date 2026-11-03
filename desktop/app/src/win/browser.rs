@@ -113,7 +113,7 @@ pub fn windows() -> Vec<Window> {
 }
 
 /// As [`windows`], with minimized ones too: a minimized player still plays.
-fn windows_and_minimized() -> Vec<Window> {
+pub fn windows_and_minimized() -> Vec<Window> {
     listed(true)
 }
 

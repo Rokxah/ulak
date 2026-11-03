@@ -286,6 +286,10 @@ pub struct AppState {
     pub app_rules: BTreeMap<String, AppRule>,
     /// Apps whose pop-ups are muted until a time (Unix milliseconds).
     pub app_mutes: BTreeMap<String, i64>,
+    /// The PC programs (lowercase executable names) the user says show an
+    /// app's notifications, for [`AppRule::WhenPcClosed`]: e.g. WhatsApp in
+    /// a browser. Replaces the built-in list for that app.
+    pub app_pc_programs: BTreeMap<String, Vec<String>>,
     /// Words that quiet or hide notifications, checked in title and text.
     pub keyword_rules: Vec<KeywordRule>,
     /// Apps whose notification groups are currently expanded in the feed.
@@ -802,6 +806,33 @@ impl AppState {
             self.app_mutes.remove(app).is_some()
         };
         if changed { Changes::APPS | Changes::NOTIFICATIONS } else { Changes::NONE }
+    }
+
+    /// Sets the PC programs that show an app's notifications; none goes
+    /// back to the built-in list.
+    pub fn set_app_pc_programs(&mut self, app: &str, programs: Vec<String>) -> Changes {
+        let mut programs: Vec<String> =
+            programs.iter().map(|p| p.trim().to_lowercase()).filter(|p| !p.is_empty()).collect();
+        programs.sort();
+        programs.dedup();
+        let changed = if programs.is_empty() {
+            self.app_pc_programs.remove(app).is_some()
+        } else {
+            self.app_pc_programs.get(app) != Some(&programs) && {
+                self.app_pc_programs.insert(app.to_owned(), programs);
+                true
+            }
+        };
+        if changed { Changes::APPS | Changes::NOTIFICATIONS } else { Changes::NONE }
+    }
+
+    /// The PC programs that show an app's notifications: the user's, or the
+    /// built-in ones for well-known apps.
+    pub fn pc_programs_for(&self, app: &str) -> Vec<String> {
+        match self.app_pc_programs.get(app) {
+            Some(programs) => programs.clone(),
+            None => crate::pc_apps::desktop_programs(app).iter().map(|p| (*p).to_owned()).collect(),
+        }
     }
 
     /// Whether an app's pop-ups are muted at `now` (Unix milliseconds).

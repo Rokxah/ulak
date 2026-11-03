@@ -3563,6 +3563,18 @@ Neler gerekir
 <context>
     <name>HomePage</name>
     <message>
+        <source>Open on PC in: %1</source>
+        <translation>PC'de şurada açık: %1</translation>
+    </message>
+    <message>
+        <source>Pick the PC program that shows %1, for example the browser you use it in.</source>
+        <translation>%1 uygulamasını PC'de gösteren programı seçin, örneğin onu kullandığınız tarayıcı.</translation>
+    </message>
+    <message>
+        <source>Programs open now:</source>
+        <translation>Şu an açık programlar:</translation>
+    </message>
+    <message>
         <source>Muted until %1</source>
         <translation>%1 tarihine kadar sessiz</translation>
     </message>

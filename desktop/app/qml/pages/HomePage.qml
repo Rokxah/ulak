@@ -2620,6 +2620,28 @@ Item {
         property string rule: "show"
         property bool pcApp: false
         property real mutedUntil: 0
+        // The PC programs that count as this app being open on the PC.
+        property var pcPrograms: []
+        property bool pcProgramsCustom: false
+        property var openPrograms: []
+        function loadPrograms() {
+            let info = { programs: [], custom: false }
+            try { info = JSON.parse(NotificationList.appPcPrograms(appSheet.app)) } catch (e) {}
+            appSheet.pcPrograms = info.programs
+            appSheet.pcProgramsCustom = info.custom
+            try { appSheet.openPrograms = JSON.parse(NotificationList.openPrograms()) } catch (e) { appSheet.openPrograms = [] }
+        }
+        function toggleProgram(program) {
+            // Picking the first one replaces the built-in list.
+            let list = appSheet.pcProgramsCustom ? appSheet.pcPrograms.slice() : []
+            const i = list.indexOf(program)
+            if (i >= 0)
+                list.splice(i, 1)
+            else
+                list.push(program)
+            NotificationList.setAppPcPrograms(appSheet.app, JSON.stringify(list))
+            appSheet.loadPrograms()
+        }
         function mute(until) {
             NotificationList.muteApp(appSheet.app, until)
             appSheet.mutedUntil = NotificationList.appMutedUntil(appSheet.app)
@@ -2631,6 +2653,7 @@ Item {
             appSheet.rule = NotificationList.appRule(app)
             appSheet.pcApp = NotificationList.hasPcApp(app)
             appSheet.mutedUntil = NotificationList.appMutedUntil(app)
+            appSheet.loadPrograms()
             open()
         }
         Column {
@@ -2642,8 +2665,7 @@ Item {
                     { value: "show", label: qsTr("Show") },
                     { value: "quiet", label: qsTr("No pop-ups") },
                     { value: "hidden", label: qsTr("Hide") }
-                ].concat(appSheet.pcApp || appSheet.rule === "whenpcclosed"
-                         ? [{ value: "whenpcclosed", label: qsTr("Not when open on PC") }] : [])
+                ].concat([{ value: "whenpcclosed", label: qsTr("Not when open on PC") }])
                 value: appSheet.rule
                 onPicked: (value) => {
                     appSheet.rule = value
@@ -2664,6 +2686,42 @@ Item {
                         : Qt.platform.os === "linux"
                           ? qsTr("Shown in feed and as desktop pop-ups.")
                           : qsTr("Shown in feed and as Windows pop-ups.")
+            }
+            // Which PC programs count as the app being open on the PC
+            Column {
+                visible: appSheet.rule === "whenpcclosed"
+                width: parent.width
+                spacing: 8
+                Txt {
+                    width: parent.width
+                    role: "label"
+                    wrapMode: Text.WordWrap
+                    text: appSheet.pcPrograms.length > 0
+                          ? qsTr("Open on PC in: %1").arg(appSheet.pcPrograms.join(", "))
+                          : qsTr("Pick the PC program that shows %1, for example the browser you use it in.").arg(appSheet.appName)
+                }
+                Txt {
+                    width: parent.width
+                    role: "bodySmall"
+                    muted: true
+                    wrapMode: Text.WordWrap
+                    text: qsTr("Programs open now:")
+                }
+                Flow {
+                    width: parent.width
+                    spacing: 6
+                    Repeater {
+                        model: appSheet.openPrograms
+                        delegate: Button {
+                            required property var modelData
+                            readonly property bool chosen: appSheet.pcProgramsCustom && appSheet.pcPrograms.indexOf(modelData.program) >= 0
+                            variant: chosen ? "fill" : "tonal"
+                            size: "sm"
+                            text: modelData.program.replace(/\.exe$/, "")
+                            onClicked: appSheet.toggleProgram(modelData.program)
+                        }
+                    }
+                }
             }
             // Mute pop-ups for a while
             Column {

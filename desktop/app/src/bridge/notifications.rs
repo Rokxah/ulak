@@ -142,6 +142,18 @@ pub mod qobject {
         #[qinvokable]
         #[cxx_name = "hasPcApp"]
         fn has_pc_app(self: &NotificationList, app: &QString) -> bool;
+        /// The PC programs that show an app's notifications (JSON list of
+        /// lowercase executable names), and whether they're the user's.
+        #[qinvokable]
+        #[cxx_name = "appPcPrograms"]
+        fn app_pc_programs(self: &NotificationList, app: &QString) -> QString;
+        #[qinvokable]
+        #[cxx_name = "setAppPcPrograms"]
+        fn set_app_pc_programs(self: &NotificationList, app: &QString, json: &QString);
+        /// Programs with a window open on this PC now: JSON `[{"program", "title"}]`.
+        #[qinvokable]
+        #[cxx_name = "openPrograms"]
+        fn open_programs(self: &NotificationList) -> QString;
         /// Mutes an app's pop-ups until `until` (Unix milliseconds); 0 unmutes.
         #[qinvokable]
         #[cxx_name = "muteApp"]
@@ -328,7 +340,7 @@ fn apps_json(s: &AppState) -> String {
                     "name": name,
                     "icon": s.app_icons.get(app).map(|p| icons::file_url(p)).unwrap_or_default(),
                     "rule": rule_name(s.app_rule(app)),
-                    "pcApp": crate::pc_apps::has_desktop_app(app),
+                    "pcApp": !s.pc_programs_for(app).is_empty(),
                     "mutedUntil": s.app_mutes.get(app).copied().unwrap_or_default(),
                 })
             })
@@ -609,7 +621,39 @@ impl qobject::NotificationList {
     }
 
     pub fn has_pc_app(&self, app: &QString) -> bool {
-        crate::pc_apps::has_desktop_app(&String::from(app))
+        core_host::host().hub.read(|s| !s.pc_programs_for(&String::from(app)).is_empty())
+    }
+
+    pub fn app_pc_programs(&self, app: &QString) -> QString {
+        let app = String::from(app);
+        let (programs, custom) =
+            core_host::host().hub.read(|s| (s.pc_programs_for(&app), s.app_pc_programs.contains_key(&app)));
+        QString::from(&serde_json::json!({ "programs": programs, "custom": custom }).to_string())
+    }
+
+    pub fn set_app_pc_programs(&self, app: &QString, json: &QString) {
+        let programs: Vec<String> = serde_json::from_str(&String::from(json)).unwrap_or_default();
+        let app = String::from(app);
+        core_host::host().hub.update(|s| s.set_app_pc_programs(&app, programs));
+    }
+
+    pub fn open_programs(&self) -> QString {
+        let mut seen = std::collections::BTreeMap::new();
+        #[cfg(windows)]
+        let windows = crate::win::browser::windows_and_minimized();
+        #[cfg(not(windows))]
+        let windows = crate::win::browser::windows();
+        for w in windows {
+            if w.program.is_empty() || w.program.starts_with("nectarlink") {
+                continue;
+            }
+            seen.entry(w.program.clone()).or_insert(w.title.clone());
+        }
+        let list: Vec<serde_json::Value> = seen
+            .into_iter()
+            .map(|(program, title)| serde_json::json!({ "program": program, "title": title }))
+            .collect();
+        QString::from(&serde_json::Value::from(list).to_string())
     }
 
     pub fn mute_app(&self, app: &QString, until: f64) {

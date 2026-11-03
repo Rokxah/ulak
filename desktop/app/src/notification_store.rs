@@ -51,11 +51,20 @@ struct AppEntry {
     /// Pop-ups muted until then (Unix milliseconds), or 0.
     #[serde(rename = "mutedUntil")]
     muted_until: i64,
+    /// PC programs that show this app's notifications (the user's choice).
+    #[serde(rename = "pcPrograms", skip_serializing_if = "Vec::is_empty")]
+    pc_programs: Vec<String>,
 }
 
 impl Default for AppEntry {
     fn default() -> Self {
-        AppEntry { name: String::new(), rule: AppRule::Show, expanded: false, muted_until: 0 }
+        AppEntry {
+            name: String::new(),
+            rule: AppRule::Show,
+            expanded: false,
+            muted_until: 0,
+            pc_programs: Vec::new(),
+        }
     }
 }
 
@@ -94,6 +103,9 @@ pub fn load(dir: &Path, state: &mut AppState) {
         if entry.expanded {
             state.expanded_apps.insert(app.clone());
         }
+        if !entry.pc_programs.is_empty() {
+            state.app_pc_programs.insert(app.clone(), entry.pc_programs);
+        }
         if entry.muted_until > unix_ms(SystemTime::now()) {
             state.app_mutes.insert(app.clone(), entry.muted_until);
         }
@@ -121,6 +133,7 @@ fn snapshot(state: &AppState) -> (Rules, Vec<HistoryEntry>) {
     keys.extend(state.app_rules.keys());
     keys.extend(state.expanded_apps.iter());
     keys.extend(state.app_mutes.keys());
+    keys.extend(state.app_pc_programs.keys());
     let apps = keys
         .into_iter()
         .map(|app| {
@@ -131,6 +144,7 @@ fn snapshot(state: &AppState) -> (Rules, Vec<HistoryEntry>) {
                     rule: state.app_rule(app),
                     expanded: state.is_app_expanded(app),
                     muted_until: state.app_mutes.get(app).copied().unwrap_or_default(),
+                    pc_programs: state.app_pc_programs.get(app).cloned().unwrap_or_default(),
                 },
             )
         })
@@ -224,6 +238,7 @@ mod tests {
         state.set_app_rule("com.whatsapp", AppRule::WhenPcClosed);
         let later = unix_ms(SystemTime::now()) + 3_600_000;
         state.set_app_muted_until("com.muted", later);
+        state.set_app_pc_programs("com.mattermost.rn", vec![" Prowser.exe ".into()]);
         state.set_keyword_rules(vec![KeywordRule { word: " kampanya ".into(), hide: true }]);
         state.set_app_expanded("com.chat", true);
         let now = unix_ms(SystemTime::now());
@@ -248,6 +263,8 @@ mod tests {
         assert_eq!(loaded.app_rule("com.game"), AppRule::Hidden);
         assert_eq!(loaded.app_rule("com.whatsapp"), AppRule::WhenPcClosed);
         assert_eq!(loaded.app_mutes.get("com.muted"), Some(&later));
+        assert_eq!(loaded.pc_programs_for("com.mattermost.rn"), vec!["prowser.exe".to_owned()]);
+        assert!(loaded.pc_programs_for("com.whatsapp").contains(&"whatsapp.exe".to_owned()), "built-in");
         assert_eq!(loaded.keyword_rules, vec![KeywordRule { word: "kampanya".into(), hide: true }]);
         assert_eq!(loaded.app_rule("com.other"), AppRule::Show);
         assert!(loaded.is_app_expanded("com.chat"));

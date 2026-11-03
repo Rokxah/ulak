@@ -45,14 +45,9 @@ pub fn desktop_programs(app: &str) -> &'static [&'static str] {
     KNOWN.iter().find(|(package, _)| *package == app).map_or(&[], |(_, programs)| programs)
 }
 
-/// Whether `app` has a known desktop counterpart (shown as a hint in Settings).
-pub fn has_desktop_app(app: &str) -> bool {
-    !desktop_programs(app).is_empty()
-}
-
-/// Whether the desktop app for `app` is running on this PC right now.
-pub fn desktop_app_running(app: &str) -> bool {
-    let programs = desktop_programs(app);
+/// Whether any of `programs` (lowercase executable names) runs on this PC
+/// right now.
+pub fn any_running(programs: &[String]) -> bool {
     if programs.is_empty() {
         return false;
     }
@@ -62,7 +57,7 @@ pub fn desktop_app_running(app: &str) -> bool {
         *cache = Some((Instant::now(), running_programs()));
     }
     let running = &cache.as_ref().expect("filled above").1;
-    programs.iter().any(|p| running.contains(*p))
+    programs.iter().any(|p| running.contains(p.as_str()))
 }
 
 #[cfg(windows)]
@@ -91,10 +86,11 @@ mod tests {
 
     #[test]
     fn knows_common_chat_apps_and_not_others() {
-        assert!(has_desktop_app("com.whatsapp"));
+        assert!(!desktop_programs("com.whatsapp").is_empty());
         assert!(desktop_programs("org.telegram.messenger").contains(&"telegram.exe"));
-        assert!(!has_desktop_app("com.example.unknown"));
-        assert!(!desktop_app_running("com.example.unknown"));
+        assert!(desktop_programs("com.example.unknown").is_empty());
+        assert!(!any_running(&[]));
+        assert!(!any_running(&["no-such-program-here.exe".to_owned()]));
     }
 
     #[test]
