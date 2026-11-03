@@ -18,8 +18,13 @@ DockWindow {
     color: "transparent"
     edge: Preferences.dockEdge
     autoHide: Preferences.dockAutoHide
-    thickness: 60
-    expandedWidth: 400
+    // The strip is 56 wide, plus a gap to the screen edge.
+    thickness: 64
+    expandedWidth: 420
+    // As tall as the buttons; taller while the panel is open.
+    contentHeight: expanded
+        ? Math.max(buttons.implicitHeight + 24, Math.min(Math.round(Screen.height * 0.75), 760))
+        : buttons.implicitHeight + 24
     visible: true
 
     // What the panel shows: "" (closed), "notifications", "messages" or "calls".
@@ -81,7 +86,7 @@ DockWindow {
     }
     Timer {
         id: hideTimer
-        interval: 700
+        interval: 250
         onTriggered: if (!hover.hovered) dock.revealed = false
     }
 
@@ -99,32 +104,40 @@ DockWindow {
     Rectangle {
         visible: dock.tucked
         anchors.fill: parent
+        anchors.topMargin: 12
+        anchors.bottomMargin: 12
+        radius: width / 2
         color: Theme.primary
-        opacity: 0.55
+        opacity: 0.7
     }
 
     Rectangle {
+        id: pill
         visible: !dock.tucked
         anchors.fill: parent
+        anchors.margins: 4
+        anchors.leftMargin: dock.left ? 6 : 4
+        anchors.rightMargin: dock.left ? 4 : 6
+        radius: 18
         color: Theme.surfaceContainer
         border.color: Theme.outlineVariant
         border.width: 1
 
-        // The strip of buttons, at the screen edge.
+        // The buttons, in a column along the edge.
         Column {
-            id: strip
-            width: dock.thickness
+            id: buttons
+            width: 56
             anchors.top: parent.top
-            anchors.topMargin: 12
+            anchors.topMargin: 8
             x: dock.left ? 0 : parent.width - width
-            spacing: 6
+            spacing: 4
 
             DockButton {
                 iconPath: Icons.home
                 label: qsTr("Open Ulak")
                 onClicked: dock.pageRequested("home")
             }
-            Rectangle { width: 28; height: 1; color: Theme.outlineVariant; anchors.horizontalCenter: parent.horizontalCenter }
+            Separator {}
             DockButton {
                 iconPath: Icons.bell
                 label: qsTr("Notifications")
@@ -161,14 +174,7 @@ DockWindow {
                 label: qsTr("Files and clipboard (Shelf)")
                 onClicked: AppController.shelfOpen = !AppController.shelfOpen
             }
-        }
-
-        Column {
-            width: dock.thickness
-            anchors.bottom: parent.bottom
-            anchors.bottomMargin: 12
-            x: strip.x
-            spacing: 6
+            Separator {}
             DockButton {
                 iconPath: Icons.pin
                 label: dock.autoHide ? qsTr("Keep the dock open") : qsTr("Hide the dock until the pointer comes")
@@ -202,8 +208,8 @@ DockWindow {
             anchors.top: parent.top
             anchors.bottom: parent.bottom
             anchors.margins: 12
-            x: dock.left ? dock.thickness + 4 : 12
-            width: parent.width - dock.thickness - 16
+            x: dock.left ? buttons.width + 4 : 12
+            width: parent.width - buttons.width - 16
 
             Row {
                 id: panelHeader
@@ -455,6 +461,13 @@ DockWindow {
         Accessible.onPressAction: row.clicked()
     }
 
+    component Separator: Rectangle {
+        width: 28
+        height: 1
+        x: 14
+        color: Theme.outlineVariant
+    }
+
     component DockButton: Item {
         id: button
         property string iconPath
@@ -463,8 +476,8 @@ DockWindow {
         property bool selected: false
         signal clicked
 
-        width: dock.thickness
-        height: 44
+        width: 56
+        height: 42
 
         Rectangle {
             anchors.centerIn: parent

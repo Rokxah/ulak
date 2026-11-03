@@ -26,6 +26,9 @@ class DockWindow : public QQuickWindow
     Q_PROPERTY(bool revealed READ revealed WRITE setRevealed NOTIFY revealedChanged)
     // Width of the strip while hidden, in logical pixels.
     Q_PROPERTY(int peek READ peek CONSTANT)
+    // Height of the window, centered on the edge, in logical pixels; 0 or
+    // more than the screen has fills the edge.
+    Q_PROPERTY(int contentHeight READ contentHeight WRITE setContentHeight NOTIFY contentHeightChanged)
     // Whether another app is full screen on the dock's monitor (the dock
     // steps back behind it meanwhile).
     Q_PROPERTY(bool fullScreenApp READ fullScreenApp NOTIFY fullScreenAppChanged)
@@ -47,7 +50,9 @@ public:
     void setAutoHide(bool on);
     bool revealed() const { return m_revealed; }
     void setRevealed(bool on);
-    int peek() const { return 4; }
+    int peek() const { return 6; }
+    int contentHeight() const { return m_contentHeight; }
+    void setContentHeight(int height);
 
     // Places the window again (after a screen or work area change).
     Q_INVOKABLE void relayout();
@@ -60,6 +65,7 @@ signals:
     void fullScreenAppChanged();
     void autoHideChanged();
     void revealedChanged();
+    void contentHeightChanged();
 
 protected:
     bool event(QEvent *event) override;
@@ -78,4 +84,5 @@ private:
     bool m_registered = false;
     bool m_autoHide = false;
     bool m_revealed = false;
+    int m_contentHeight = 0;
 };

@@ -120,6 +120,16 @@ void DockWindow::setRevealed(bool on)
         relayout();
 }
 
+void DockWindow::setContentHeight(int height)
+{
+    height = std::max(0, height);
+    if (height == m_contentHeight)
+        return;
+    m_contentHeight = height;
+    emit contentHeightChanged();
+    relayout();
+}
+
 void DockWindow::registerBar()
 {
 #ifdef _WIN32
@@ -178,6 +188,13 @@ void DockWindow::relayout()
 
         RECT rc = abd.rc;
         const int wide = int(std::lround(shown * dpr));
+        // Centered on the edge, as tall as its content.
+        const int tall = int(std::lround(m_contentHeight * dpr));
+        if (tall > 0 && tall < rc.bottom - rc.top) {
+            const int top = rc.top + (rc.bottom - rc.top - tall) / 2;
+            rc.top = top;
+            rc.bottom = top + tall;
+        }
         if (leftEdge())
             rc.right = rc.left + wide;
         else
@@ -191,7 +208,8 @@ void DockWindow::relayout()
     // work area.
     const QRect area = s->availableGeometry();
     const int x = leftEdge() ? area.left() : area.right() + 1 - shown;
-    setGeometry(x, area.top(), shown, area.height());
+    const int tall = m_contentHeight > 0 ? std::min(m_contentHeight, area.height()) : area.height();
+    setGeometry(x, area.top() + (area.height() - tall) / 2, shown, tall);
 }
 
 bool DockWindow::event(QEvent *event)
