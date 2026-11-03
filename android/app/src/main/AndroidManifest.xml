@@ -136,7 +136,7 @@
         android:label="@string/app_name"
         android:localeConfig="@xml/locales_config"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Nectarlink">
+        android:theme="@style/Theme.Ulak">
 
         <activity
             android:name=".ui.MainActivity"
@@ -374,14 +374,14 @@
             android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboard|keyboardHidden"
             android:exported="false"
             android:launchMode="singleTop"
-            android:theme="@style/Theme.Nectarlink" />
+            android:theme="@style/Theme.Ulak" />
 
         <activity
             android:name=".camera.ContinuityCameraActivity"
             android:exported="false"
             android:showWhenLocked="true"
             android:turnScreenOn="true"
-            android:theme="@style/Theme.Nectarlink" />
+            android:theme="@style/Theme.Ulak" />
 
         <service
             android:name=".service.ConnectionService"
