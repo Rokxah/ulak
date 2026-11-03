@@ -20,6 +20,12 @@ class DockWindow : public QQuickWindow
     // Width while expanded, in logical pixels.
     Q_PROPERTY(int expandedWidth READ expandedWidth WRITE setExpandedWidth NOTIFY expandedWidthChanged)
     Q_PROPERTY(bool expanded READ expanded WRITE setExpanded NOTIFY expandedChanged)
+    // Hide in a thin strip at the edge until the pointer comes (`revealed`),
+    // without reserving space.
+    Q_PROPERTY(bool autoHide READ autoHide WRITE setAutoHide NOTIFY autoHideChanged)
+    Q_PROPERTY(bool revealed READ revealed WRITE setRevealed NOTIFY revealedChanged)
+    // Width of the strip while hidden, in logical pixels.
+    Q_PROPERTY(int peek READ peek CONSTANT)
     // Whether another app is full screen on the dock's monitor (the dock
     // steps back behind it meanwhile).
     Q_PROPERTY(bool fullScreenApp READ fullScreenApp NOTIFY fullScreenAppChanged)
@@ -37,6 +43,11 @@ public:
     bool expanded() const { return m_expanded; }
     void setExpanded(bool expanded);
     bool fullScreenApp() const { return m_fullScreenApp; }
+    bool autoHide() const { return m_autoHide; }
+    void setAutoHide(bool on);
+    bool revealed() const { return m_revealed; }
+    void setRevealed(bool on);
+    int peek() const { return 4; }
 
     // Places the window again (after a screen or work area change).
     Q_INVOKABLE void relayout();
@@ -47,6 +58,8 @@ signals:
     void expandedWidthChanged();
     void expandedChanged();
     void fullScreenAppChanged();
+    void autoHideChanged();
+    void revealedChanged();
 
 protected:
     bool event(QEvent *event) override;
@@ -63,4 +76,6 @@ private:
     bool m_expanded = false;
     bool m_fullScreenApp = false;
     bool m_registered = false;
+    bool m_autoHide = false;
+    bool m_revealed = false;
 };

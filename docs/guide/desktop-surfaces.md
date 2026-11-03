@@ -44,7 +44,10 @@ The `Shelf` is a lightweight edge panel on your PC that gives you instant drag-a
 Turn on **Dock** in PC **Settings › General** to keep Ulak in a bar at the left or right edge of your screen. Windows reserves that strip the way it reserves the taskbar, so maximized windows end where the dock begins.
 
 - **Bell** opens a panel with your phone's notifications, where you can read and dismiss them without opening the main window.
-- **Messages**, **Calls**, **Photos**, **Apps** and **Settings** open that page in the main window. **Shelf** slides out the `Shelf`.
+- **Messages** opens your conversations in the panel, with unread ones counted on the button; click one to continue it in the main window.
+- **Calls** opens recent calls, with missed calls counted on the button; the call button next to one calls back through the phone.
+- **Photos**, **Apps** and **Settings** open that page in the main window. **Shelf** slides out the `Shelf`.
+- **Auto-hide** (the pin button, or `Settings › General`): the dock waits in a thin strip at the edge and comes out when the pointer reaches it. While hidden it doesn't reserve space.
 - **Use as a window** turns the dock off and opens the normal window. The arrow button moves the dock to the other edge.
 - When another app goes full screen on that monitor, the dock steps behind it.
 

@@ -503,6 +503,9 @@ pub struct Settings {
     /// The screen edge the dock sits at: `"left"` or `"right"`.
     #[serde(default = "default_dock_edge")]
     pub dock_edge: String,
+    /// Hide the dock in a thin strip until the pointer reaches the edge.
+    #[serde(default)]
+    pub dock_auto_hide: bool,
     /// Configured "When X, Do Y" automation rules.
     #[serde(default, skip_serializing_if = "Vec::is_empty", alias = "automation_rules")]
     pub automation_rules: Vec<crate::automations::AutomationRule>,
@@ -605,6 +608,7 @@ impl Default for Settings {
             nectar_island_notifications: false,
             dock: false,
             dock_edge: default_dock_edge(),
+            dock_auto_hide: false,
             automation_rules: Vec::new(),
             stream_pc_audio_to_phone: false,
             share_pc_storage: false,
@@ -843,6 +847,7 @@ mod tests {
             nectar_island_notifications: false,
             dock: false,
             dock_edge: default_dock_edge(),
+            dock_auto_hide: false,
             automation_rules: Vec::new(),
             stream_pc_audio_to_phone: true,
             share_pc_storage: true,

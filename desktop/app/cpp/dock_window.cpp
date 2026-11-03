@@ -42,7 +42,8 @@ DockWindow::DockWindow(QWindow *parent)
     connect(this, &QWindow::screenChanged, this, [this](QScreen *) { relayout(); });
     connect(this, &QWindow::visibleChanged, this, [this](bool visible) {
         if (visible) {
-            registerBar();
+            if (!m_autoHide)
+                registerBar();
             relayout();
         } else {
             unregisterBar();
@@ -94,6 +95,31 @@ void DockWindow::setExpanded(bool expanded)
     relayout();
 }
 
+void DockWindow::setAutoHide(bool on)
+{
+    if (on == m_autoHide)
+        return;
+    m_autoHide = on;
+    emit autoHideChanged();
+    if (isVisible()) {
+        if (on)
+            unregisterBar();
+        else
+            registerBar();
+    }
+    relayout();
+}
+
+void DockWindow::setRevealed(bool on)
+{
+    if (on == m_revealed)
+        return;
+    m_revealed = on;
+    emit revealedChanged();
+    if (m_autoHide)
+        relayout();
+}
+
 void DockWindow::registerBar()
 {
 #ifdef _WIN32
@@ -123,7 +149,8 @@ void DockWindow::relayout()
     QScreen *s = screen();
     if (!s || !isVisible())
         return;
-    const int shown = m_expanded ? std::max(m_thickness, m_expandedWidth) : m_thickness;
+    const int open = m_expanded ? std::max(m_thickness, m_expandedWidth) : m_thickness;
+    const int shown = m_autoHide && !m_revealed && !m_expanded ? peek() : open;
 #ifdef _WIN32
     if (m_registered) {
         const qreal dpr = s->devicePixelRatio();
@@ -160,7 +187,8 @@ void DockWindow::relayout()
         return;
     }
 #endif
-    // Without app bars: cover the edge of the work area.
+    // Without an app bar (auto-hide, or not Windows): cover the edge of the
+    // work area.
     const QRect area = s->availableGeometry();
     const int x = leftEdge() ? area.left() : area.right() + 1 - shown;
     setGeometry(x, area.top(), shown, area.height());

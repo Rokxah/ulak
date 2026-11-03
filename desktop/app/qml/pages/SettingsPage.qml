@@ -1026,6 +1026,20 @@ Item {
                                     onPicked: (value) => Preferences.dockEdge = value
                                 }
                                 Toggle {
+                                    visible: Preferences.dock
+                                    anchors.verticalCenter: parent.verticalCenter
+                                    label: qsTr("Auto-hide")
+                                    checked: Preferences.dockAutoHide
+                                    onToggled: (on) => Preferences.dockAutoHide = on
+                                }
+                                Txt {
+                                    visible: Preferences.dock
+                                    anchors.verticalCenter: parent.verticalCenter
+                                    role: "bodySmall"
+                                    muted: true
+                                    text: qsTr("Auto-hide")
+                                }
+                                Toggle {
                                     anchors.verticalCenter: parent.verticalCenter
                                     label: qsTr("Dock")
                                     checked: Preferences.dock

@@ -4,8 +4,10 @@ import QtQuick.Window
 import app.nectarlink
 
 // The dock: a strip at the left or right screen edge (Preferences.dockEdge)
-// that windows don't cover. Its buttons open the phone's notifications in a
-// panel that slides out of the strip, or a page of the main window.
+// that windows don't cover. Its buttons open the phone's notifications,
+// conversations and recent calls in a panel that slides out of the strip,
+// or a page of the main window. With Preferences.dockAutoHide it waits in a
+// thin strip at the edge until the pointer comes.
 DockWindow {
     id: dock
 
@@ -15,20 +17,94 @@ DockWindow {
     title: qsTr("Ulak dock")
     color: "transparent"
     edge: Preferences.dockEdge
+    autoHide: Preferences.dockAutoHide
     thickness: 60
     expandedWidth: 400
     visible: true
 
-    // What the panel shows: "" (closed) or "notifications".
+    // What the panel shows: "" (closed), "notifications", "messages" or "calls".
     property string panel: ""
     expanded: panel.length > 0
     readonly property bool left: edge === "left"
+    // Hidden in the thin strip: only the strip is drawn.
+    readonly property bool tucked: autoHide && !revealed && !expanded
+
+    readonly property int deviceIndex: DeviceList.count > 0
+        ? Math.min(Math.max(0, AppController.currentDevice), DeviceList.count - 1) : 0
+    readonly property string deviceId: DeviceList.count > 0 ? DeviceList.deviceIdAt(deviceIndex) : ""
+
+    readonly property var threads: { try { return JSON.parse(Messages.threads) } catch (e) { return [] } }
+    readonly property var calls: { try { return JSON.parse(PhoneCall.callLog) } catch (e) { return [] } }
+    readonly property int unreadThreads: threads.filter(t => t.unread).length
+    readonly property int missedCalls: {
+        let n = 0
+        for (const c of calls) {
+            if (c.direction !== "missed")
+                break
+            n++
+        }
+        return n
+    }
 
     function togglePanel(name) {
         dock.panel = dock.panel === name ? "" : name
+        if (dock.panel === "messages" && dock.deviceId.length > 0)
+            Messages.open(dock.deviceId)
+        else if (dock.panel === "calls" && dock.deviceId.length > 0)
+            PhoneCall.open(dock.deviceId)
+    }
+
+    // Opens a conversation in the main window.
+    function openThread(id) {
+        dock.pageRequested("messages")
+        pendingThread.thread = id
+        pendingThread.restart()
+    }
+    Timer {
+        id: pendingThread
+        property string thread: ""
+        interval: 400
+        onTriggered: Messages.openThread(thread)
+    }
+
+    // Pointer at the edge: come out; gone for a moment: go back in.
+    HoverHandler {
+        id: hover
+        onHoveredChanged: {
+            if (hovered) {
+                hideTimer.stop()
+                dock.revealed = true
+            } else {
+                hideTimer.restart()
+            }
+        }
+    }
+    Timer {
+        id: hideTimer
+        interval: 700
+        onTriggered: if (!hover.hovered) dock.revealed = false
+    }
+
+    function shortTime(ms) {
+        if (!ms)
+            return ""
+        const d = new Date(ms)
+        const today = new Date()
+        return d.toDateString() === today.toDateString()
+            ? d.toLocaleTimeString(Qt.locale(), Locale.ShortFormat)
+            : d.toLocaleDateString(Qt.locale(), Locale.ShortFormat)
+    }
+
+    // The thin strip while tucked away.
+    Rectangle {
+        visible: dock.tucked
+        anchors.fill: parent
+        color: Theme.primary
+        opacity: 0.55
     }
 
     Rectangle {
+        visible: !dock.tucked
         anchors.fill: parent
         color: Theme.surfaceContainer
         border.color: Theme.outlineVariant
@@ -39,7 +115,6 @@ DockWindow {
             id: strip
             width: dock.thickness
             anchors.top: parent.top
-            anchors.bottom: parent.bottom
             anchors.topMargin: 12
             x: dock.left ? 0 : parent.width - width
             spacing: 6
@@ -60,12 +135,16 @@ DockWindow {
             DockButton {
                 iconPath: Icons.messages
                 label: qsTr("Messages")
-                onClicked: dock.pageRequested("messages")
+                badge: dock.unreadThreads
+                selected: dock.panel === "messages"
+                onClicked: dock.togglePanel("messages")
             }
             DockButton {
                 iconPath: Icons.call
                 label: qsTr("Calls")
-                onClicked: dock.pageRequested("calls")
+                badge: dock.missedCalls
+                selected: dock.panel === "calls"
+                onClicked: dock.togglePanel("calls")
             }
             DockButton {
                 iconPath: Icons.photo
@@ -90,6 +169,12 @@ DockWindow {
             anchors.bottomMargin: 12
             x: strip.x
             spacing: 6
+            DockButton {
+                iconPath: Icons.pin
+                label: dock.autoHide ? qsTr("Keep the dock open") : qsTr("Hide the dock until the pointer comes")
+                selected: !dock.autoHide
+                onClicked: Preferences.dockAutoHide = !Preferences.dockAutoHide
+            }
             DockButton {
                 iconPath: Icons.window
                 label: qsTr("Use as a window")
@@ -125,11 +210,20 @@ DockWindow {
                 width: parent.width
                 height: 36
                 Txt {
-                    width: parent.width - closePanel.width
+                    width: parent.width - openPage.width - closePanel.width
                     anchors.verticalCenter: parent.verticalCenter
                     role: "title"
-                    text: qsTr("Notifications")
+                    text: dock.panel === "messages" ? qsTr("Messages")
+                        : dock.panel === "calls" ? qsTr("Recent calls")
+                        : qsTr("Notifications")
                     elide: Text.ElideRight
+                }
+                IconButton {
+                    id: openPage
+                    visible: dock.panel !== "notifications"
+                    iconPath: Icons.openExternal
+                    label: qsTr("Open in the window")
+                    onClicked: dock.pageRequested(dock.panel)
                 }
                 IconButton {
                     id: closePanel
@@ -140,7 +234,10 @@ DockWindow {
             }
 
             Txt {
-                visible: NotificationList.count === 0
+                id: emptyText
+                readonly property int count: dock.panel === "messages" ? dock.threads.length
+                    : dock.panel === "calls" ? dock.calls.length : NotificationList.count
+                visible: count === 0
                 anchors.top: panelHeader.bottom
                 anchors.topMargin: 24
                 width: parent.width
@@ -148,11 +245,15 @@ DockWindow {
                 role: "body"
                 muted: true
                 wrapMode: Text.WordWrap
-                text: qsTr("No notifications from your phone.")
+                text: dock.deviceId.length === 0 ? qsTr("No phone paired yet.")
+                    : dock.panel === "messages" ? qsTr("No conversations yet.")
+                    : dock.panel === "calls" ? qsTr("No recent calls.")
+                    : qsTr("No notifications from your phone.")
             }
 
+            // Notifications
             ListView {
-                id: list
+                visible: dock.panel === "notifications"
                 anchors.top: panelHeader.bottom
                 anchors.topMargin: 8
                 anchors.bottom: parent.bottom
@@ -174,7 +275,6 @@ DockWindow {
                     color: Theme.surfaceContainerHigh
 
                     Image {
-                        id: appIcon
                         x: 10
                         y: 10
                         width: 24
@@ -212,7 +312,147 @@ DockWindow {
                     }
                 }
             }
+
+            // Conversations
+            ListView {
+                visible: dock.panel === "messages"
+                anchors.top: panelHeader.bottom
+                anchors.topMargin: 8
+                anchors.bottom: parent.bottom
+                width: parent.width
+                clip: true
+                spacing: 4
+                model: dock.panel === "messages" ? dock.threads : []
+                delegate: PanelRow {
+                    required property var modelData
+                    width: ListView.view.width
+                    photo: modelData.photo || ""
+                    initials: modelData.title || "?"
+                    heading: modelData.title || ""
+                    detail: (modelData.lastSender ? modelData.lastSender + ": " : "") + (modelData.snippet || "")
+                    caption: (modelData.appName && modelData.appName !== "SMS" ? modelData.appName + " · " : "") + dock.shortTime(modelData.date)
+                    bold: !!modelData.unread
+                    onClicked: dock.openThread(modelData.id)
+                }
+            }
+
+            // Recent calls
+            ListView {
+                visible: dock.panel === "calls"
+                anchors.top: panelHeader.bottom
+                anchors.topMargin: 8
+                anchors.bottom: parent.bottom
+                width: parent.width
+                clip: true
+                spacing: 4
+                model: dock.panel === "calls" ? dock.calls : []
+                delegate: PanelRow {
+                    id: callRow
+                    required property var modelData
+                    width: ListView.view.width
+                    photo: modelData.photo || ""
+                    initials: modelData.name || modelData.number || "?"
+                    heading: modelData.name || modelData.number || ""
+                    detail: modelData.direction === "missed" ? qsTr("Missed")
+                        : modelData.direction === "outgoing" ? qsTr("Outgoing")
+                        : modelData.direction === "rejected" ? qsTr("Declined")
+                        : qsTr("Incoming")
+                    caption: dock.shortTime(modelData.date)
+                    alert: modelData.direction === "missed"
+                    actionIcon: PhoneCall.canDial && modelData.number ? Icons.call : ""
+                    actionLabel: qsTr("Call %1").arg(heading)
+                    onActionClicked: PhoneCall.dial(callRow.modelData.number)
+                    onClicked: dock.pageRequested("calls")
+                }
+            }
         }
+    }
+
+    // A conversation or call in a panel.
+    component PanelRow: Rectangle {
+        id: row
+        property string photo
+        property string initials
+        property string heading
+        property string detail
+        property string caption
+        property bool bold: false
+        property bool alert: false
+        property string actionIcon: ""
+        property string actionLabel: ""
+        signal clicked
+        signal actionClicked
+
+        height: 56
+        radius: Theme.radiusMd
+        color: rowMouse.containsMouse ? Theme.surfaceContainerHighest : Theme.surfaceContainerHigh
+
+        MouseArea {
+            id: rowMouse
+            anchors.fill: parent
+            hoverEnabled: true
+            cursorShape: Qt.PointingHandCursor
+            onClicked: row.clicked()
+        }
+        Item {
+            id: avatar
+            x: 10
+            anchors.verticalCenter: parent.verticalCenter
+            width: 36
+            height: 36
+            Avatar {
+                anchors.fill: parent
+                visible: row.photo.length === 0
+                name: row.initials
+            }
+            RoundedImage {
+                anchors.fill: parent
+                visible: row.photo.length > 0
+                source: row.photo
+                radius: width / 2
+            }
+        }
+        Column {
+            anchors.left: avatar.right
+            anchors.leftMargin: 10
+            anchors.right: action.visible ? action.left : parent.right
+            anchors.rightMargin: 8
+            anchors.verticalCenter: parent.verticalCenter
+            spacing: 1
+            Row {
+                width: parent.width
+                Txt {
+                    width: parent.width - when.implicitWidth - 6
+                    role: "label"
+                    weight: row.bold ? 700 : 500
+                    color: row.alert ? Theme.error : Theme.surfaceContent
+                    text: row.heading
+                    elide: Text.ElideRight
+                }
+                Txt { id: when; leftPadding: 6; role: "caption"; muted: true; text: row.caption }
+            }
+            Txt {
+                width: parent.width
+                role: "bodySmall"
+                muted: !row.bold && !row.alert
+                color: row.alert ? Theme.error : (muted ? Theme.surfaceContentVariant : Theme.surfaceContent)
+                text: row.detail
+                elide: Text.ElideRight
+            }
+        }
+        IconButton {
+            id: action
+            visible: row.actionIcon.length > 0
+            anchors.right: parent.right
+            anchors.rightMargin: 6
+            anchors.verticalCenter: parent.verticalCenter
+            iconPath: row.actionIcon
+            label: row.actionLabel
+            onClicked: row.actionClicked()
+        }
+        Accessible.role: Accessible.Button
+        Accessible.name: row.heading + ", " + row.detail
+        Accessible.onPressAction: row.clicked()
     }
 
     component DockButton: Item {

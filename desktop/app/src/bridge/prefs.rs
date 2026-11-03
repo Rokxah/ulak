@@ -119,6 +119,8 @@ pub mod qobject {
         #[qproperty(bool, dock)]
         /// The dock's screen edge: "left" or "right".
         #[qproperty(QString, dock_edge)]
+        /// The dock hides at the edge until the pointer comes.
+        #[qproperty(bool, dock_auto_hide)]
         /// Stream PC system audio to the connected phone via WASAPI loopback.
         #[qproperty(bool, stream_pc_audio_to_phone)]
         /// Share PC user folders (Downloads, Documents, Desktop, Pictures) with phones.
@@ -345,6 +347,7 @@ pub struct PreferencesRust {
     nectar_island_notifications: bool,
     dock: bool,
     dock_edge: QString,
+    dock_auto_hide: bool,
     stream_pc_audio_to_phone: bool,
     share_pc_storage: bool,
     forward_pc_notifications_to_phone: bool,
@@ -439,6 +442,7 @@ impl cxx_qt::Initialize for qobject::Preferences {
         self.as_mut().set_nectar_island_notifications(settings.nectar_island_notifications);
         self.as_mut().set_dock(settings.dock);
         self.as_mut().set_dock_edge(QString::from(&settings.dock_edge));
+        self.as_mut().set_dock_auto_hide(settings.dock_auto_hide);
         self.as_mut().set_stream_pc_audio_to_phone(settings.stream_pc_audio_to_phone);
         self.as_mut().set_share_pc_storage(settings.share_pc_storage);
         self.as_mut().set_forward_pc_notifications_to_phone(settings.forward_pc_notifications_to_phone);
@@ -701,6 +705,7 @@ impl cxx_qt::Initialize for qobject::Preferences {
         self.as_mut().on_nectar_island_notifications_changed(|p| p.save()).release();
         self.as_mut().on_dock_changed(|p| p.save()).release();
         self.as_mut().on_dock_edge_changed(|p| p.save()).release();
+        self.as_mut().on_dock_auto_hide_changed(|p| p.save()).release();
         self.as_mut()
             .on_stream_pc_audio_to_phone_changed(|p| {
                 crate::settings::set_stream_pc_audio_to_phone(p.stream_pc_audio_to_phone);
@@ -1095,6 +1100,7 @@ impl qobject::Preferences {
             nectar_island_media: p.nectar_island_media,
             nectar_island_notifications: p.nectar_island_notifications,
             dock: p.dock,
+            dock_auto_hide: p.dock_auto_hide,
             dock_edge: match String::from(&p.dock_edge).as_str() {
                 "left" => "left".to_owned(),
                 _ => "right".to_owned(),

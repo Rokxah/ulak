@@ -4,6 +4,54 @@
 <context>
     <name>DockBar</name>
     <message>
+        <source>Keep the dock open</source>
+        <translation>Dock&apos;u açık tut</translation>
+    </message>
+    <message>
+        <source>Hide the dock until the pointer comes</source>
+        <translation>Fare gelene kadar dock&apos;u gizle</translation>
+    </message>
+    <message>
+        <source>Recent calls</source>
+        <translation>Son aramalar</translation>
+    </message>
+    <message>
+        <source>Open in the window</source>
+        <translation>Pencerede aç</translation>
+    </message>
+    <message>
+        <source>No phone paired yet.</source>
+        <translation>Henüz eşleşmiş telefon yok.</translation>
+    </message>
+    <message>
+        <source>No conversations yet.</source>
+        <translation>Henüz konuşma yok.</translation>
+    </message>
+    <message>
+        <source>No recent calls.</source>
+        <translation>Son arama yok.</translation>
+    </message>
+    <message>
+        <source>Missed</source>
+        <translation>Cevapsız</translation>
+    </message>
+    <message>
+        <source>Outgoing</source>
+        <translation>Giden</translation>
+    </message>
+    <message>
+        <source>Declined</source>
+        <translation>Reddedildi</translation>
+    </message>
+    <message>
+        <source>Incoming</source>
+        <translation>Gelen</translation>
+    </message>
+    <message>
+        <source>Call %1</source>
+        <translation>Ara: %1</translation>
+    </message>
+    <message>
         <source>Ulak dock</source>
         <translation>Ulak dock</translation>
     </message>
@@ -3515,6 +3563,30 @@ Neler gerekir
 <context>
     <name>HomePage</name>
     <message>
+        <source>Muted until %1</source>
+        <translation>%1 tarihine kadar sessiz</translation>
+    </message>
+    <message>
+        <source>Mute pop-ups</source>
+        <translation>Açılır pencereleri sustur</translation>
+    </message>
+    <message>
+        <source>1 hour</source>
+        <translation>1 saat</translation>
+    </message>
+    <message>
+        <source>8 hours</source>
+        <translation>8 saat</translation>
+    </message>
+    <message>
+        <source>Until tomorrow</source>
+        <translation>Yarına kadar</translation>
+    </message>
+    <message>
+        <source>Unmute</source>
+        <translation>Sesi aç</translation>
+    </message>
+    <message>
         <location filename="../qml/pages/HomePage.qml" line="94"/>
         <source>%1 B</source>
         <translation>%1 B</translation>
@@ -6542,6 +6614,26 @@ Neler gerekir
 </context>
 <context>
     <name>SettingsPage</name>
+    <message>
+        <source>Auto-hide</source>
+        <translation>Otomatik gizle</translation>
+    </message>
+    <message>
+        <source>Keyword rules</source>
+        <translation>Anahtar kelime kuralları</translation>
+    </message>
+    <message>
+        <source>Notifications with these words in them come without pop-ups, or not at all.</source>
+        <translation>Bu kelimeleri içeren bildirimler açılır pencere olmadan gelir ya da hiç gelmez.</translation>
+    </message>
+    <message>
+        <source>Keyword</source>
+        <translation>Anahtar kelime</translation>
+    </message>
+    <message>
+        <source>Hidden</source>
+        <translation>Gizli</translation>
+    </message>
     <message>
         <source>Dock</source>
         <translation>Dock</translation>
