@@ -202,6 +202,14 @@ pub enum AppRule {
     WhenPcClosed,
 }
 
+/// A word that quiets or hides the notifications that contain it.
+#[derive(Debug, Clone, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
+pub struct KeywordRule {
+    pub word: String,
+    /// Hidden entirely, or only without pop-ups.
+    pub hide: bool,
+}
+
 /// A notification that went away on the phone (or was dismissed here).
 #[derive(Debug, Clone, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
 #[serde(rename_all = "camelCase")]
@@ -276,6 +284,10 @@ pub struct AppState {
     /// for those that aren't shown normally.
     pub app_names: BTreeMap<String, String>,
     pub app_rules: BTreeMap<String, AppRule>,
+    /// Apps whose pop-ups are muted until a time (Unix milliseconds).
+    pub app_mutes: BTreeMap<String, i64>,
+    /// Words that quiet or hide notifications, checked in title and text.
+    pub keyword_rules: Vec<KeywordRule>,
     /// Apps whose notification groups are currently expanded in the feed.
     pub expanded_apps: BTreeSet<String>,
     /// Most recently dismissed notification(s) for in-feed undo.
@@ -782,6 +794,54 @@ impl AppState {
         if changed { Changes::APPS | Changes::NOTIFICATIONS | Changes::HISTORY } else { Changes::NONE }
     }
 
+    /// Mutes an app's pop-ups until `until` (Unix milliseconds); 0 unmutes.
+    pub fn set_app_muted_until(&mut self, app: &str, until: i64) -> Changes {
+        let changed = if until > 0 {
+            self.app_mutes.insert(app.to_owned(), until) != Some(until)
+        } else {
+            self.app_mutes.remove(app).is_some()
+        };
+        if changed { Changes::APPS | Changes::NOTIFICATIONS } else { Changes::NONE }
+    }
+
+    /// Whether an app's pop-ups are muted at `now` (Unix milliseconds).
+    pub fn is_app_muted(&self, app: &str, now: i64) -> bool {
+        self.app_mutes.get(app).is_some_and(|&until| until > now)
+    }
+
+    pub fn set_keyword_rules(&mut self, rules: Vec<KeywordRule>) -> Changes {
+        let rules: Vec<KeywordRule> = rules
+            .into_iter()
+            .map(|r| KeywordRule { word: r.word.trim().to_owned(), hide: r.hide })
+            .filter(|r| !r.word.is_empty())
+            .collect();
+        if rules == self.keyword_rules {
+            return Changes::NONE;
+        }
+        self.keyword_rules = rules;
+        Changes::APPS | Changes::NOTIFICATIONS | Changes::HISTORY
+    }
+
+    /// The first keyword rule whose word is in the notification's title or text.
+    pub fn keyword_rule_for(&self, n: &Notification) -> Option<&KeywordRule> {
+        if self.keyword_rules.is_empty() {
+            return None;
+        }
+        let haystack = [n.title.as_deref(), n.text.as_deref(), n.sub.as_deref()]
+            .into_iter()
+            .flatten()
+            .collect::<Vec<_>>()
+            .join("\n")
+            .to_lowercase();
+        self.keyword_rules.iter().find(|r| haystack.contains(&r.word.to_lowercase()))
+    }
+
+    /// Whether a notification is left out of the feed and history: its app
+    /// is hidden, or a hiding keyword is in it.
+    pub fn is_hidden(&self, n: &Notification) -> bool {
+        self.app_rule(&n.app) == AppRule::Hidden || self.keyword_rule_for(n).is_some_and(|r| r.hide)
+    }
+
     /// Whether an app's notification group is expanded in the PC feed.
     pub fn is_app_expanded(&self, app: &str) -> bool {
         self.expanded_apps.contains(app)
@@ -1259,6 +1319,36 @@ mod tests {
             live: None,
             conversation: None,
         }
+    }
+
+    #[test]
+    fn keywords_quiet_or_hide_and_mutes_run_out() {
+        let mut s = AppState::default();
+        let mut sale = note("a", 1);
+        sale.text = Some("Büyük KAMPANYA başladı".into());
+        let mut otp = note("b", 2);
+        otp.title = Some("Kodunuz".into());
+        assert!(s.keyword_rule_for(&sale).is_none());
+
+        let rules = vec![
+            KeywordRule { word: "  kampanya ".into(), hide: false },
+            KeywordRule { word: "".into(), hide: true },
+            KeywordRule { word: "kodunuz".into(), hide: true },
+        ];
+        assert!(s.set_keyword_rules(rules.clone()).intersects(Changes::NOTIFICATIONS));
+        assert_eq!(s.keyword_rules.len(), 2, "empty words are dropped, the rest trimmed");
+        assert_eq!(s.set_keyword_rules(rules), Changes::NONE);
+        assert!(s.keyword_rule_for(&sale).is_some_and(|r| !r.hide), "case-insensitive");
+        assert!(!s.is_hidden(&sale), "quiet only");
+        assert!(s.is_hidden(&otp));
+        assert!(!s.is_hidden(&note("c", 3)));
+
+        assert!(!s.is_app_muted("com.chat", 100));
+        s.set_app_muted_until("com.chat", 200);
+        assert!(s.is_app_muted("com.chat", 100));
+        assert!(!s.is_app_muted("com.chat", 200), "over at the time it was muted until");
+        s.set_app_muted_until("com.chat", 0);
+        assert!(s.app_mutes.is_empty());
     }
 
     #[test]

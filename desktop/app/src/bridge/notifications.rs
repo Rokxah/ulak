@@ -142,6 +142,21 @@ pub mod qobject {
         #[qinvokable]
         #[cxx_name = "hasPcApp"]
         fn has_pc_app(self: &NotificationList, app: &QString) -> bool;
+        /// Mutes an app's pop-ups until `until` (Unix milliseconds); 0 unmutes.
+        #[qinvokable]
+        #[cxx_name = "muteApp"]
+        fn mute_app(self: &NotificationList, app: &QString, until: f64);
+        /// Until when an app is muted (Unix milliseconds), or 0.
+        #[qinvokable]
+        #[cxx_name = "appMutedUntil"]
+        fn app_muted_until(self: &NotificationList, app: &QString) -> f64;
+        /// The keyword rules as JSON: `[{"word": "...", "hide": false}]`.
+        #[qinvokable]
+        #[cxx_name = "keywordRules"]
+        fn keyword_rules(self: &NotificationList) -> QString;
+        #[qinvokable]
+        #[cxx_name = "setKeywordRules"]
+        fn set_keyword_rules(self: &NotificationList, json: &QString);
         #[qinvokable]
         #[cxx_name = "setAppRule"]
         fn set_app_rule(self: &NotificationList, app: &QString, rule: &QString);
@@ -314,6 +329,7 @@ fn apps_json(s: &AppState) -> String {
                     "icon": s.app_icons.get(app).map(|p| icons::file_url(p)).unwrap_or_default(),
                     "rule": rule_name(s.app_rule(app)),
                     "pcApp": crate::pc_apps::has_desktop_app(app),
+                    "mutedUntil": s.app_mutes.get(app).copied().unwrap_or_default(),
                 })
             })
             .collect::<Vec<_>>(),
@@ -351,7 +367,7 @@ fn make_row(
 /// newest notification. Collapsed groups emit only their lead item (`group_index == 0`).
 fn build_rows(s: &AppState) -> Vec<Row> {
     let visible: Vec<&NotificationView> =
-        s.notifications.iter().filter(|view| s.app_rule(&view.notification.app) != AppRule::Hidden).collect();
+        s.notifications.iter().filter(|view| !s.is_hidden(&view.notification)).collect();
     let mut rows = Vec::with_capacity(visible.len());
     let mut seen_groups: std::collections::HashSet<(DeviceId, String)> = std::collections::HashSet::new();
 
@@ -545,11 +561,7 @@ impl qobject::NotificationList {
         let views: Vec<NotificationView> = core_host::host().hub.read(|s| {
             s.notifications
                 .iter()
-                .filter(|n| {
-                    n.device == dev_id
-                        && !n.notification.ongoing
-                        && s.app_rule(&n.notification.app) != AppRule::Hidden
-                })
+                .filter(|n| n.device == dev_id && !n.notification.ongoing && !s.is_hidden(&n.notification))
                 .cloned()
                 .collect()
         });
@@ -598,6 +610,35 @@ impl qobject::NotificationList {
 
     pub fn has_pc_app(&self, app: &QString) -> bool {
         crate::pc_apps::has_desktop_app(&String::from(app))
+    }
+
+    pub fn mute_app(&self, app: &QString, until: f64) {
+        crate::notifications::mute_app(&String::from(app), until as i64);
+    }
+
+    pub fn app_muted_until(&self, app: &QString) -> f64 {
+        let now = crate::state::unix_ms(std::time::SystemTime::now());
+        core_host::host().hub.read(|s| {
+            let app = String::from(app);
+            if s.is_app_muted(&app, now) {
+                s.app_mutes.get(&app).copied().unwrap_or_default() as f64
+            } else {
+                0.0
+            }
+        })
+    }
+
+    pub fn keyword_rules(&self) -> QString {
+        let rules = core_host::host().hub.read(|s| s.keyword_rules.clone());
+        QString::from(&serde_json::to_string(&rules).unwrap_or_else(|_| "[]".into()))
+    }
+
+    pub fn set_keyword_rules(&self, json: &QString) {
+        let Ok(rules) = serde_json::from_str::<Vec<crate::state::KeywordRule>>(&String::from(json)) else {
+            tracing::warn!("keyword rules aren't valid JSON");
+            return;
+        };
+        core_host::host().hub.update(|s| s.set_keyword_rules(rules));
     }
 
     pub fn set_app_rule(&self, app: &QString, rule: &QString) {

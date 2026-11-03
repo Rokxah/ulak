@@ -2052,6 +2052,119 @@ Item {
                                 onClicked: Qt.openUrlExternally("ms-settings:notifications")
                             }
                         }
+                        Divider { width: parent.width }
+                        // Words that quiet or hide notifications ("kampanya", "indirim"...)
+                        Column {
+                            id: keywordBlock
+                            width: parent.width
+                            spacing: 8
+                            property var rules: { try { return JSON.parse(NotificationList.keywordRules()) } catch (e) { return [] } }
+                            function save(list) {
+                                NotificationList.setKeywordRules(JSON.stringify(list))
+                                keywordBlock.rules = list
+                            }
+                            ListRow {
+                                width: parent.width
+                                iconPath: Icons.text
+                                title: qsTr("Keyword rules")
+                                description: qsTr("Notifications with these words in them come without pop-ups, or not at all.")
+                            }
+                            Row {
+                                x: 16
+                                spacing: 8
+                                Rectangle {
+                                    anchors.verticalCenter: parent.verticalCenter
+                                    width: 220
+                                    height: 32
+                                    radius: Theme.radiusSm
+                                    color: Theme.surfaceContainerHighest
+                                    border.width: keywordEdit.activeFocus ? 2 : 1
+                                    border.color: keywordEdit.activeFocus ? Theme.primary : Theme.outlineVariant
+                                    TextInput {
+                                        id: keywordEdit
+                                        anchors.fill: parent
+                                        anchors.leftMargin: 8
+                                        anchors.rightMargin: 8
+                                        verticalAlignment: TextInput.AlignVCenter
+                                        color: Theme.surfaceContent
+                                        selectionColor: Theme.primaryContainer
+                                        selectedTextColor: Theme.primaryContainerContent
+                                        font.pixelSize: 13
+                                        clip: true
+                                        Accessible.name: qsTr("Keyword")
+                                        onAccepted: addKeyword.clicked()
+                                    }
+                                }
+                                Segmented {
+                                    id: keywordAction
+                                    anchors.verticalCenter: parent.verticalCenter
+                                    options: [
+                                        { value: "quiet", label: qsTr("No pop-ups") },
+                                        { value: "hidden", label: qsTr("Hide") }
+                                    ]
+                                    value: "quiet"
+                                    onPicked: (value) => keywordAction.value = value
+                                }
+                                Button {
+                                    id: addKeyword
+                                    anchors.verticalCenter: parent.verticalCenter
+                                    variant: "tonal"
+                                    size: "sm"
+                                    text: qsTr("Add")
+                                    enabled: keywordEdit.text.trim().length > 0
+                                    onClicked: {
+                                        const word = keywordEdit.text.trim()
+                                        if (word.length === 0)
+                                            return
+                                        const list = keywordBlock.rules.filter(r => r.word.toLowerCase() !== word.toLowerCase())
+                                        list.push({ word: word, hide: keywordAction.value === "hidden" })
+                                        keywordBlock.save(list)
+                                        keywordEdit.text = ""
+                                    }
+                                }
+                            }
+                            Repeater {
+                                model: keywordBlock.rules
+                                delegate: Item {
+                                    id: keywordRow
+                                    required property var modelData
+                                    required property int index
+                                    x: 16
+                                    width: keywordBlock.width - 32
+                                    height: 36
+                                    Txt {
+                                        anchors.left: parent.left
+                                        anchors.right: keywordRowAction.left
+                                        anchors.rightMargin: 12
+                                        anchors.verticalCenter: parent.verticalCenter
+                                        role: "body"
+                                        text: "\u201C" + keywordRow.modelData.word + "\u201D"
+                                        elide: Text.ElideRight
+                                    }
+                                    Txt {
+                                        id: keywordRowAction
+                                        anchors.right: removeKeyword.left
+                                        anchors.rightMargin: 8
+                                        anchors.verticalCenter: parent.verticalCenter
+                                        role: "bodySmall"
+                                        muted: true
+                                        text: keywordRow.modelData.hide ? qsTr("Hidden") : qsTr("No pop-ups")
+                                    }
+                                    IconButton {
+                                        id: removeKeyword
+                                        anchors.right: parent.right
+                                        anchors.verticalCenter: parent.verticalCenter
+                                        iconPath: Icons.close
+                                        label: qsTr("Remove")
+                                        onClicked: {
+                                            const list = keywordBlock.rules.slice()
+                                            list.splice(keywordRow.index, 1)
+                                            keywordBlock.save(list)
+                                        }
+                                    }
+                                }
+                            }
+                        }
                         Repeater {
                             model: { try { return JSON.parse(NotificationList.apps) } catch (e) { return [] } }
                             delegate: Column {

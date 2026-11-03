@@ -359,19 +359,24 @@ fn show(device: DeviceId, n: &Notification) {
         otp_codes(|c| c.insert((device, n.key.clone()), code.clone()));
         maybe_auto_copy_otp(code);
     }
-    let (device_name, icon, rule, image, phone_dnd) = core_host::host().hub.read(|s| {
+    let now = crate::state::unix_ms(std::time::SystemTime::now());
+    let (device_name, icon, rule, image, phone_dnd, muted) = core_host::host().hub.read(|s| {
         let dnd = s.toggles.get(&device).is_some_and(|t| t.dnd);
+        // A muted app, or a keyword in the text, takes the pop-up away.
+        let muted = s.is_app_muted(&n.app, now) || s.keyword_rule_for(n).is_some();
         (
             s.name_of(&device),
             s.app_icons.get(&n.app).cloned(),
             s.app_rule(&n.app),
             s.notification_images.get(&(device, n.key.clone())).cloned(),
             dnd,
+            muted,
         )
     });
     // The user chose no pop-ups (or nothing at all) for this app, or the phone
     // is in Do Not Disturb while DND quieting is turned on.
     let rule = match rule {
+        _ if muted => AppRule::Quiet,
         AppRule::WhenPcClosed if crate::pc_apps::desktop_app_running(&n.app) => AppRule::Quiet,
         AppRule::WhenPcClosed => AppRule::Show,
         rule => rule,
@@ -546,7 +551,22 @@ pub fn set_app_rule(app: &str, rule: AppRule) {
     if !quiet_now {
         return;
     }
-    let shown: Vec<(DeviceId, String)> = hub.read(|s| {
+    remove_toasts_of(app);
+}
+
+/// Mutes an app's pop-ups until `until` (Unix milliseconds), and takes
+/// away the ones on screen; 0 unmutes.
+pub fn mute_app(app: &str, until: i64) {
+    let hub = &core_host::host().hub;
+    hub.update(|s| s.set_app_muted_until(app, until));
+    if until <= 0 {
+        return;
+    }
+    remove_toasts_of(app);
+}
+
+fn remove_toasts_of(app: &str) {
+    let shown: Vec<(DeviceId, String)> = core_host::host().hub.read(|s| {
         s.notifications
             .iter()
             .filter(|n| n.notification.app == app)

@@ -10,7 +10,7 @@ use cxx_qt_lib::{QByteArray, QHash, QHashPair_i32_QByteArray, QList, QModelIndex
 use super::{Edit, diff};
 use crate::{
     core_host, icons,
-    state::{AppRule, Changes, HistoryEntry},
+    state::{Changes, HistoryEntry},
 };
 
 #[cxx_qt::bridge]
@@ -145,7 +145,7 @@ impl qobject::NotificationHistory {
         let new: Vec<Row> = core_host::host().hub.read(|s| {
             s.history
                 .iter()
-                .filter(|h| s.app_rule(&h.notification.app) != AppRule::Hidden)
+                .filter(|h| !s.is_hidden(&h.notification))
                 .map(|h| Row {
                     device_name: s.name_of(&h.device).unwrap_or_default(),
                     icon_url: s

@@ -17,7 +17,7 @@ use serde::{Deserialize, Serialize};
 
 use crate::{
     core_host,
-    state::{AppRule, AppState, Changes, HistoryEntry, unix_ms},
+    state::{AppRule, AppState, Changes, HistoryEntry, KeywordRule, unix_ms},
 };
 
 const RULES_FILE: &str = "notification-rules.json";
@@ -32,11 +32,13 @@ struct Rules {
     history: bool,
     /// Per app (package name): its name, and its rule if not "show".
     apps: BTreeMap<String, AppEntry>,
+    /// Words that quiet or hide notifications.
+    keywords: Vec<KeywordRule>,
 }
 
 impl Default for Rules {
     fn default() -> Self {
-        Rules { history: true, apps: BTreeMap::new() }
+        Rules { history: true, apps: BTreeMap::new(), keywords: Vec::new() }
     }
 }
 
@@ -46,11 +48,14 @@ struct AppEntry {
     name: String,
     rule: AppRule,
     expanded: bool,
+    /// Pop-ups muted until then (Unix milliseconds), or 0.
+    #[serde(rename = "mutedUntil")]
+    muted_until: i64,
 }
 
 impl Default for AppEntry {
     fn default() -> Self {
-        AppEntry { name: String::new(), rule: AppRule::Show, expanded: false }
+        AppEntry { name: String::new(), rule: AppRule::Show, expanded: false, muted_until: 0 }
     }
 }
 
@@ -89,10 +94,14 @@ pub fn load(dir: &Path, state: &mut AppState) {
         if entry.expanded {
             state.expanded_apps.insert(app.clone());
         }
+        if entry.muted_until > unix_ms(SystemTime::now()) {
+            state.app_mutes.insert(app.clone(), entry.muted_until);
+        }
         if entry.rule != AppRule::Show {
             state.app_rules.insert(app, entry.rule);
         }
     }
+    state.keyword_rules = rules.keywords;
     if state.history_enabled {
         state.history = read(&dir.join(HISTORY_FILE));
         state.prune_history(unix_ms(SystemTime::now()));
@@ -111,6 +120,7 @@ fn snapshot(state: &AppState) -> (Rules, Vec<HistoryEntry>) {
     let mut keys: std::collections::BTreeSet<&String> = state.app_names.keys().collect();
     keys.extend(state.app_rules.keys());
     keys.extend(state.expanded_apps.iter());
+    keys.extend(state.app_mutes.keys());
     let apps = keys
         .into_iter()
         .map(|app| {
@@ -120,11 +130,15 @@ fn snapshot(state: &AppState) -> (Rules, Vec<HistoryEntry>) {
                     name: state.app_names.get(app).cloned().unwrap_or_default(),
                     rule: state.app_rule(app),
                     expanded: state.is_app_expanded(app),
+                    muted_until: state.app_mutes.get(app).copied().unwrap_or_default(),
                 },
             )
         })
         .collect();
-    (Rules { history: state.history_enabled, apps }, state.history.clone())
+    (
+        Rules { history: state.history_enabled, apps, keywords: state.keyword_rules.clone() },
+        state.history.clone(),
+    )
 }
 
 /// Saves after changes from now on, and lets history older than a day go
@@ -208,6 +222,9 @@ mod tests {
         state.set_app_rule("com.chat", AppRule::Quiet);
         state.set_app_rule("com.game", AppRule::Hidden);
         state.set_app_rule("com.whatsapp", AppRule::WhenPcClosed);
+        let later = unix_ms(SystemTime::now()) + 3_600_000;
+        state.set_app_muted_until("com.muted", later);
+        state.set_keyword_rules(vec![KeywordRule { word: " kampanya ".into(), hide: true }]);
         state.set_app_expanded("com.chat", true);
         let now = unix_ms(SystemTime::now());
         state.history.push(HistoryEntry {
@@ -230,6 +247,8 @@ mod tests {
         assert_eq!(loaded.app_rule("com.chat"), AppRule::Quiet);
         assert_eq!(loaded.app_rule("com.game"), AppRule::Hidden);
         assert_eq!(loaded.app_rule("com.whatsapp"), AppRule::WhenPcClosed);
+        assert_eq!(loaded.app_mutes.get("com.muted"), Some(&later));
+        assert_eq!(loaded.keyword_rules, vec![KeywordRule { word: "kampanya".into(), hide: true }]);
         assert_eq!(loaded.app_rule("com.other"), AppRule::Show);
         assert!(loaded.is_app_expanded("com.chat"));
         assert!(!loaded.is_app_expanded("com.other"));

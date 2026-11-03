@@ -2619,12 +2619,18 @@ Item {
         property string appName
         property string rule: "show"
         property bool pcApp: false
+        property real mutedUntil: 0
+        function mute(until) {
+            NotificationList.muteApp(appSheet.app, until)
+            appSheet.mutedUntil = NotificationList.appMutedUntil(appSheet.app)
+        }
         cardWidth: 420
         function openFor(app, name) {
             appSheet.app = app
             appSheet.appName = name
             appSheet.rule = NotificationList.appRule(app)
             appSheet.pcApp = NotificationList.hasPcApp(app)
+            appSheet.mutedUntil = NotificationList.appMutedUntil(app)
             open()
         }
         Column {
@@ -2658,6 +2664,51 @@ Item {
                         : Qt.platform.os === "linux"
                           ? qsTr("Shown in feed and as desktop pop-ups.")
                           : qsTr("Shown in feed and as Windows pop-ups.")
+            }
+            // Mute pop-ups for a while
+            Column {
+                width: parent.width
+                spacing: 8
+                Txt {
+                    width: parent.width
+                    role: "label"
+                    text: appSheet.mutedUntil > 0
+                          ? qsTr("Muted until %1").arg(new Date(appSheet.mutedUntil).toLocaleString(Qt.locale(), Locale.ShortFormat))
+                          : qsTr("Mute pop-ups")
+                }
+                Flow {
+                    width: parent.width
+                    spacing: 8
+                    Button {
+                        variant: "tonal"
+                        size: "sm"
+                        text: qsTr("1 hour")
+                        onClicked: appSheet.mute(Date.now() + 3600 * 1000)
+                    }
+                    Button {
+                        variant: "tonal"
+                        size: "sm"
+                        text: qsTr("8 hours")
+                        onClicked: appSheet.mute(Date.now() + 8 * 3600 * 1000)
+                    }
+                    Button {
+                        variant: "tonal"
+                        size: "sm"
+                        text: qsTr("Until tomorrow")
+                        onClicked: {
+                            const d = new Date()
+                            d.setHours(24, 0, 0, 0)
+                            appSheet.mute(d.getTime())
+                        }
+                    }
+                    Button {
+                        visible: appSheet.mutedUntil > 0
+                        variant: "text"
+                        size: "sm"
+                        text: qsTr("Unmute")
+                        onClicked: appSheet.mute(0)
+                    }
+                }
             }
             Row {
                 anchors.right: parent.right
