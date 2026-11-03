@@ -72,7 +72,7 @@ Version:        ${VERSION}
 Release:        1
 Summary:        Connect your Android phone and Linux PC over LAN
 License:        GPL-3.0-or-later
-URL:            https://github.com/thtbee/nectarlink
+URL:            https://github.com/Rokxah/ulak
 BuildArch:      ${RPM_ARCH}
 AutoReqProv:    no
 ${REQUIRES}

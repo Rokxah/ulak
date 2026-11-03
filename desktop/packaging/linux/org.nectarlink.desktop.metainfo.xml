@@ -5,8 +5,8 @@
   <summary>Connect your Android phone and Linux PC over LAN</summary>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0-or-later</project_license>
-  <developer id="io.github.thtbee">
-    <name>thtbee</name>
+  <developer id="io.github.rokxah">
+    <name>Rokxah</name>
   </developer>
   <description>
     <p>
@@ -21,8 +21,8 @@
     </ul>
   </description>
   <launchable type="desktop-id">nectarlink.desktop</launchable>
-  <url type="homepage">https://github.com/thtbee/nectarlink</url>
-  <url type="bugtracker">https://github.com/thtbee/nectarlink/issues</url>
+  <url type="homepage">https://github.com/Rokxah/ulak</url>
+  <url type="bugtracker">https://github.com/Rokxah/ulak/issues</url>
   <provides>
     <binary>nectarlink-desktop</binary>
     <mediatype>x-scheme-handler/nectarlink</mediatype>
