@@ -167,6 +167,29 @@ QTEOF
 
 bundle_private_qt_if_needed
 
+# Every system library the package's programs and bundled libraries load,
+# as Debian package names (libEGL, GLib, ...), so a clean system gets them
+# all; the list below stays as a floor for systems where this can't run.
+SHLIB_DEPENDS=""
+if command -v dpkg-shlibdeps >/dev/null 2>&1; then
+    SHLIB_DIR="${STAGE_DIR}/shlibdeps"
+    mkdir -p "${SHLIB_DIR}/debian"
+    : > "${SHLIB_DIR}/debian/control"
+    mapfile -t ELF_FILES < <(find "${PKG_ROOT}/usr" -type f -exec sh -c 'head -c 4 "$1" | grep -q "ELF"' sh {} \; -print)
+    # Libraries inside the package are found there, not looked up in dpkg.
+    LIB_DIRS=()
+    while read -r dir; do
+        LIB_DIRS+=("-l${dir}")
+    done < <(printf '%s\n' "${ELF_FILES[@]}" | xargs -r -n1 dirname | sort -u)
+    if SHLIBS="$(cd "${SHLIB_DIR}" && dpkg-shlibdeps -O --ignore-missing-info "${LIB_DIRS[@]}" "${ELF_FILES[@]}")"; then
+        SHLIBS="$(printf '%s\n' "${SHLIBS}" | sed -n 's/^shlibs:Depends=//p')"
+        [[ -n "${SHLIBS}" ]] && SHLIB_DEPENDS=", ${SHLIBS}"
+    else
+        echo "warning: dpkg-shlibdeps failed; using the fixed dependency list" >&2
+    fi
+    echo "Library dependencies: ${SHLIBS:-none}" >&2
+fi
+
 INSTALLED_SIZE="$(du -sk "${PKG_ROOT}/usr" | awk '{print $1}')"
 
 cat > "${PKG_ROOT}/DEBIAN/control" <<EOF
@@ -176,10 +199,10 @@ Section: net
 Priority: optional
 Architecture: ${DEB_ARCH}
 Installed-Size: ${INSTALLED_SIZE}
-Depends: libc6, libgcc-s1, libstdc++6, libgl1, libegl1, libx11-6, libxcb1, libxkbcommon0, libwayland-client0, libfontconfig1, libfreetype6, libdbus-1-3${QT_DEPENDS}
+Depends: libc6, libgcc-s1, libstdc++6, libgl1, libegl1, libx11-6, libxcb1, libxkbcommon0, libwayland-client0, libfontconfig1, libfreetype6, libdbus-1-3${QT_DEPENDS}${SHLIB_DEPENDS}
 Recommends: fuse3, curl | wget, ffmpeg, gstreamer1.0-tools, gstreamer1.0-pipewire, gstreamer1.0-plugins-base, libopenh264-8 | libopenh264-7 | libopenh264-6 | libavcodec62 | libavcodec61 | libavcodec60, pipewire-bin | pulseaudio-utils, pipewire, wl-clipboard, xclip, xdg-utils, avahi-daemon, bluez, v4l2loopback-dkms, policykit-1 | pkexec
-Maintainer: thtbee <https://github.com/thtbee/nectarlink>
-Homepage: https://github.com/thtbee/nectarlink
+Maintainer: Rokxah <https://github.com/Rokxah/ulak>
+Homepage: https://github.com/Rokxah/ulak
 Description: Connect your Android phone and Linux PC over LAN
  Ulak links your Android phone and Linux desktop over your local
  network with end-to-end encryption, clipboard sync, notification

@@ -7,6 +7,9 @@ name: Release
 on:
   push:
     tags: ["v*"]
+  # Run by hand to try the Linux packages on a branch, without a tag or a
+  # release: only the Linux job runs.
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -21,7 +24,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
-      - run: |
+      - if: github.event_name == 'push'
+        run: |
           version=$(grep -m1 '^version = ' Cargo.toml | cut -d'"' -f2)
           if [ "v$version" != "${{ github.ref_name }}" ]; then
             echo "::error::tag ${{ github.ref_name }} but Cargo.toml says $version"
@@ -31,6 +35,7 @@ jobs:
   windows:
     name: Windows installer (x64)
     needs: version
+    if: github.event_name == 'push'
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v7
@@ -66,6 +71,7 @@ jobs:
   windows-arm64:
     name: Windows installer (ARM64)
     needs: version
+    if: github.event_name == 'push'
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v7
@@ -222,6 +228,7 @@ jobs:
   android:
     name: Android app (signed)
     needs: version
+    if: github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -270,6 +277,7 @@ jobs:
   publish:
     name: Draft the release
     needs: [windows, windows-arm64, linux, android]
+    if: github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@v8
