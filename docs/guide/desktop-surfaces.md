@@ -39,6 +39,15 @@ The `Shelf` is a lightweight edge panel on your PC that gives you instant drag-a
 4. **Drop or Flick in to send**: Drag any file, folder, image, or text selection from your PC into the `Shelf` (or flick a file toward the `Shelf` screen edge) to send it straight to your phone, with a 3-second **Undo** option.
 5. Press **Escape** or click outside the `Shelf` to hide it. When hidden, the `Shelf` unloads its QML surface completely so it uses zero background GPU or memory overhead.
 
+### Dock
+
+Turn on **Dock** in PC **Settings › General** to keep NectarLink in a bar at the left or right edge of your screen. Windows reserves that strip the way it reserves the taskbar, so maximized windows end where the dock begins.
+
+- **Bell** opens a panel with your phone's notifications, where you can read and dismiss them without opening the main window.
+- **Messages**, **Calls**, **Photos**, **Apps** and **Settings** open that page in the main window. **Shelf** slides out the `Shelf`.
+- **Use as a window** turns the dock off and opens the normal window. The arrow button moves the dock to the other edge.
+- When another app goes full screen on that monitor, the dock steps behind it.
+
 ### 2. `Nectar Island`
 
 `Nectar Island` is an optional compact pill at the top center of your primary monitor that surfaces live phone activity without covering your workspace in notification popups:

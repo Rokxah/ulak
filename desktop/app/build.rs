@@ -17,6 +17,7 @@ mod mark;
 
 const QML: &[&str] = &[
     "qml/App.qml",
+    "qml/DockBar.qml",
     "qml/IslandWindow.qml",
     "qml/LaserOverlay.qml",
     "qml/MainWindow.qml",
@@ -377,6 +378,8 @@ fn main() {
         .include_dir("cpp")
         .cpp_files([
             "cpp/app_helpers.cpp",
+            "cpp/dock_window.h",
+            "cpp/dock_window.cpp",
             "cpp/native_window.h",
             "cpp/native_window.cpp",
             "cpp/video_view.h",
@@ -427,6 +430,8 @@ fn main() {
     }
     println!("cargo:rerun-if-changed=cpp/app_helpers.h");
     println!("cargo:rerun-if-changed=cpp/app_helpers.cpp");
+    println!("cargo:rerun-if-changed=cpp/dock_window.h");
+    println!("cargo:rerun-if-changed=cpp/dock_window.cpp");
     println!("cargo:rerun-if-changed=cpp/native_window.h");
     println!("cargo:rerun-if-changed=cpp/native_window.cpp");
     println!("cargo:rerun-if-changed=cpp/video_view.h");

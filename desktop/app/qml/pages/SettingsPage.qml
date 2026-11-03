@@ -1007,6 +1007,35 @@ Item {
 
                         Divider { width: parent.width }
 
+                        // Dock at a screen edge, or the usual window
+                        ListRow {
+                            width: parent.width
+                            iconPath: Icons.window
+                            title: qsTr("Dock")
+                            description: qsTr("A bar at the screen edge with notifications, messages, calls and files. Windows don't cover it.")
+                            Row {
+                                spacing: 12
+                                Segmented {
+                                    visible: Preferences.dock
+                                    anchors.verticalCenter: parent.verticalCenter
+                                    options: [
+                                        { value: "left", label: qsTr("Left") },
+                                        { value: "right", label: qsTr("Right") }
+                                    ]
+                                    value: Preferences.dockEdge
+                                    onPicked: (value) => Preferences.dockEdge = value
+                                }
+                                Toggle {
+                                    anchors.verticalCenter: parent.verticalCenter
+                                    label: qsTr("Dock")
+                                    checked: Preferences.dock
+                                    onToggled: (on) => Preferences.dock = on
+                                }
+                            }
+                        }
+
+                        Divider { width: parent.width }
+
                         // Row 2: Nectar Island | Battery alerts
                         Item {
                             id: islandBatteryPairRow
@@ -2066,7 +2095,8 @@ Item {
                                             { value: "show", label: qsTr("Show") },
                                             { value: "quiet", label: qsTr("No pop-ups") },
                                             { value: "hidden", label: qsTr("Hide") }
-                                        ]
+                                        ].concat(appRow.modelData.pcApp || appRow.modelData.rule === "whenpcclosed"
+                                                 ? [{ value: "whenpcclosed", label: qsTr("Not when open on PC") }] : [])
                                         value: appRow.modelData.rule
                                         onPicked: (value) => NotificationList.setAppRule(appRow.modelData.app, value)
                                     }

@@ -114,6 +114,10 @@ fn default_window_height() -> u32 {
     DEFAULT_WINDOW_HEIGHT
 }
 
+fn default_dock_edge() -> String {
+    "right".to_owned()
+}
+
 fn default_true() -> bool {
     true
 }
@@ -492,6 +496,13 @@ pub struct Settings {
     /// Trigger Nectar Island for phone notifications.
     #[serde(default, alias = "nectar_island_notifications")]
     pub nectar_island_notifications: bool,
+    /// Show the dock: a bar at a screen edge with notifications, messages,
+    /// calls and files, that windows don't cover.
+    #[serde(default)]
+    pub dock: bool,
+    /// The screen edge the dock sits at: `"left"` or `"right"`.
+    #[serde(default = "default_dock_edge")]
+    pub dock_edge: String,
     /// Configured "When X, Do Y" automation rules.
     #[serde(default, skip_serializing_if = "Vec::is_empty", alias = "automation_rules")]
     pub automation_rules: Vec<crate::automations::AutomationRule>,
@@ -592,6 +603,8 @@ impl Default for Settings {
             nectar_island_transfers: true,
             nectar_island_media: true,
             nectar_island_notifications: false,
+            dock: false,
+            dock_edge: default_dock_edge(),
             automation_rules: Vec::new(),
             stream_pc_audio_to_phone: false,
             share_pc_storage: false,
@@ -828,6 +841,8 @@ mod tests {
             nectar_island_transfers: true,
             nectar_island_media: true,
             nectar_island_notifications: false,
+            dock: false,
+            dock_edge: default_dock_edge(),
             automation_rules: Vec::new(),
             stream_pc_audio_to_phone: true,
             share_pc_storage: true,

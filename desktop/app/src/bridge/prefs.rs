@@ -115,6 +115,10 @@ pub mod qobject {
         #[qproperty(bool, nectar_island_media)]
         /// Trigger Nectar Island for phone notifications.
         #[qproperty(bool, nectar_island_notifications)]
+        /// The dock at a screen edge.
+        #[qproperty(bool, dock)]
+        /// The dock's screen edge: "left" or "right".
+        #[qproperty(QString, dock_edge)]
         /// Stream PC system audio to the connected phone via WASAPI loopback.
         #[qproperty(bool, stream_pc_audio_to_phone)]
         /// Share PC user folders (Downloads, Documents, Desktop, Pictures) with phones.
@@ -339,6 +343,8 @@ pub struct PreferencesRust {
     nectar_island_transfers: bool,
     nectar_island_media: bool,
     nectar_island_notifications: bool,
+    dock: bool,
+    dock_edge: QString,
     stream_pc_audio_to_phone: bool,
     share_pc_storage: bool,
     forward_pc_notifications_to_phone: bool,
@@ -431,6 +437,8 @@ impl cxx_qt::Initialize for qobject::Preferences {
         self.as_mut().set_nectar_island_transfers(settings.nectar_island_transfers);
         self.as_mut().set_nectar_island_media(settings.nectar_island_media);
         self.as_mut().set_nectar_island_notifications(settings.nectar_island_notifications);
+        self.as_mut().set_dock(settings.dock);
+        self.as_mut().set_dock_edge(QString::from(&settings.dock_edge));
         self.as_mut().set_stream_pc_audio_to_phone(settings.stream_pc_audio_to_phone);
         self.as_mut().set_share_pc_storage(settings.share_pc_storage);
         self.as_mut().set_forward_pc_notifications_to_phone(settings.forward_pc_notifications_to_phone);
@@ -691,6 +699,8 @@ impl cxx_qt::Initialize for qobject::Preferences {
         self.as_mut().on_nectar_island_transfers_changed(|p| p.save()).release();
         self.as_mut().on_nectar_island_media_changed(|p| p.save()).release();
         self.as_mut().on_nectar_island_notifications_changed(|p| p.save()).release();
+        self.as_mut().on_dock_changed(|p| p.save()).release();
+        self.as_mut().on_dock_edge_changed(|p| p.save()).release();
         self.as_mut()
             .on_stream_pc_audio_to_phone_changed(|p| {
                 crate::settings::set_stream_pc_audio_to_phone(p.stream_pc_audio_to_phone);
@@ -1084,6 +1094,11 @@ impl qobject::Preferences {
             nectar_island_transfers: p.nectar_island_transfers,
             nectar_island_media: p.nectar_island_media,
             nectar_island_notifications: p.nectar_island_notifications,
+            dock: p.dock,
+            dock_edge: match String::from(&p.dock_edge).as_str() {
+                "left" => "left".to_owned(),
+                _ => "right".to_owned(),
+            },
             automation_rules: crate::settings::automation_rules(),
             stream_pc_audio_to_phone: p.stream_pc_audio_to_phone,
             share_pc_storage: p.share_pc_storage,

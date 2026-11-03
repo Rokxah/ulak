@@ -2,6 +2,69 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="tr_TR" sourcelanguage="en_US">
 <context>
+    <name>DockBar</name>
+    <message>
+        <source>NectarLink dock</source>
+        <translation>NectarLink dock</translation>
+    </message>
+    <message>
+        <source>Open NectarLink</source>
+        <translation>NectarLink'i aç</translation>
+    </message>
+    <message>
+        <source>Notifications</source>
+        <translation>Bildirimler</translation>
+    </message>
+    <message>
+        <source>Messages</source>
+        <translation>Mesajlar</translation>
+    </message>
+    <message>
+        <source>Calls</source>
+        <translation>Aramalar</translation>
+    </message>
+    <message>
+        <source>Photos</source>
+        <translation>Fotoğraflar</translation>
+    </message>
+    <message>
+        <source>Apps</source>
+        <translation>Uygulamalar</translation>
+    </message>
+    <message>
+        <source>Files and clipboard (Shelf)</source>
+        <translation>Dosyalar ve pano (Shelf)</translation>
+    </message>
+    <message>
+        <source>Use as a window</source>
+        <translation>Pencere olarak kullan</translation>
+    </message>
+    <message>
+        <source>Move to the right edge</source>
+        <translation>Sağ kenara taşı</translation>
+    </message>
+    <message>
+        <source>Move to the left edge</source>
+        <translation>Sol kenara taşı</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation>Ayarlar</translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation>Kapat</translation>
+    </message>
+    <message>
+        <source>No notifications from your phone.</source>
+        <translation>Telefonunuzdan bildirim yok.</translation>
+    </message>
+    <message>
+        <source>Dismiss</source>
+        <translation>Kapat</translation>
+    </message>
+</context>
+<context>
     <name>App</name>
     <message>
         <location filename="rust_strings.h" line="7"/>
@@ -4185,6 +4248,14 @@ Neler gerekir
         <translation>Akışta açılır pencere olmadan gösterilir.</translation>
     </message>
     <message>
+        <source>Not when open on PC</source>
+        <translation>PC'de açıksa sessiz</translation>
+    </message>
+    <message>
+        <source>No pop-ups while %1 is open on this PC, so you don&apos;t get them twice.</source>
+        <translation>%1 bu PC'de açıkken açılır pencere gösterilmez, böylece bildirimler iki kez gelmez.</translation>
+    </message>
+    <message>
         <location filename="../qml/pages/HomePage.qml" line="2654"/>
         <source>Shown in feed and as desktop pop-ups.</source>
         <translation>Akışta ve masaüstü açılır penceresi olarak gösterilir.</translation>
@@ -6472,6 +6543,22 @@ Neler gerekir
 <context>
     <name>SettingsPage</name>
     <message>
+        <source>Dock</source>
+        <translation>Dock</translation>
+    </message>
+    <message>
+        <source>A bar at the screen edge with notifications, messages, calls and files. Windows don&apos;t cover it.</source>
+        <translation>Ekran kenarında bildirimler, mesajlar, aramalar ve dosyalar için bir çubuk. Pencereler üstünü kapatmaz.</translation>
+    </message>
+    <message>
+        <source>Left</source>
+        <translation>Sol</translation>
+    </message>
+    <message>
+        <source>Right</source>
+        <translation>Sağ</translation>
+    </message>
+    <message>
         <location filename="../qml/pages/SettingsPage.qml" line="19"/>
         <source>Appearance</source>
         <translation>Görünüm</translation>
@@ -7343,6 +7430,10 @@ Neler gerekir
         <location filename="../qml/pages/SettingsPage.qml" line="2067"/>
         <source>No pop-ups</source>
         <translation>Açılır pencere yok</translation>
+    </message>
+    <message>
+        <source>Not when open on PC</source>
+        <translation>PC'de açıksa sessiz</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="2068"/>

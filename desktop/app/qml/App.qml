@@ -16,6 +16,10 @@ QtObject {
         source: "qrc:/qt/qml/app/nectarlink/qml/MainWindow.qml"
         onLoaded: {
             item.closeRequested.connect(app.onMainClosed)
+            if (app.pendingPage.length > 0) {
+                item.page = app.pendingPage
+                app.pendingPage = ""
+            }
             item.restoreAndBringToFront()
         }
     }
@@ -43,6 +47,43 @@ QtObject {
                 app.islandWindow.destroy()
                 app.islandWindow = null
             }
+        }
+    }
+
+    // The dock at a screen edge (Preferences.dock).
+    property var dockWindow: null
+    readonly property Component dockWindowComponent: Component {
+        DockBar {}
+    }
+
+    function syncDockWindow() {
+        if (Preferences.dock) {
+            if (!app.dockWindow) {
+                const w = dockWindowComponent.createObject(app)
+                if (w) {
+                    w.pageRequested.connect(app.openPage)
+                    app.dockWindow = w
+                } else {
+                    console.warn("DockBar createObject failed:", dockWindowComponent.errorString())
+                }
+            }
+        } else if (app.dockWindow) {
+            app.dockWindow.destroy()
+            app.dockWindow = null
+        }
+    }
+
+    // The page the main window opens on when it's loaded next.
+    property string pendingPage: ""
+
+    // Shows the main window on `page` ("home", "messages", "calls"...).
+    function openPage(page) {
+        if (mainLoader.item) {
+            mainLoader.item.page = page
+            mainLoader.item.bringToFront()
+        } else {
+            app.pendingPage = page
+            app.showMain()
         }
     }
 
@@ -148,10 +189,12 @@ QtObject {
         Mirror.windowsChanged.connect(app.syncMirrorWindows)
         AppController.shelfOpenChanged.connect(app.syncShelfWindow)
         Preferences.nectarIslandChanged.connect(app.syncIslandWindow)
+        Preferences.dockChanged.connect(app.syncDockWindow)
         app.syncMirrorWindows()
         app.syncShelfWindow()
         app.syncIslandWindow()
-        if (!startMinimized)
+        app.syncDockWindow()
+        if (!startMinimized && !Preferences.dock)
             showMain()
         else
             trayTrimTimer.restart()
