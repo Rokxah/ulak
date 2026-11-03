@@ -6627,6 +6627,18 @@ Neler gerekir
 <context>
     <name>SettingsPage</name>
     <message>
+        <source>A compact bar floating at the screen edge, with notifications, messages, calls and files.</source>
+        <translation>Ekran kenarında yüzen kompakt bir çubuk: bildirimler, mesajlar, aramalar ve dosyalar.</translation>
+    </message>
+    <message>
+        <source>Dock opacity when idle</source>
+        <translation>Boştayken dock opaklığı</translation>
+    </message>
+    <message>
+        <source>After a few seconds unused, the dock fades to this; the pointer brings it back.</source>
+        <translation>Birkaç saniye kullanılmayınca dock bu opaklığa iner; fare gelince geri döner.</translation>
+    </message>
+    <message>
         <source>Auto-hide</source>
         <translation>Otomatik gizle</translation>
     </message>

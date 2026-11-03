@@ -1012,7 +1012,7 @@ Item {
                             width: parent.width
                             iconPath: Icons.window
                             title: qsTr("Dock")
-                            description: qsTr("A bar at the screen edge with notifications, messages, calls and files. Windows don't cover it.")
+                            description: qsTr("A compact bar floating at the screen edge, with notifications, messages, calls and files.")
                             Row {
                                 spacing: 12
                                 Segmented {
@@ -1045,6 +1045,24 @@ Item {
                                     checked: Preferences.dock
                                     onToggled: (on) => Preferences.dock = on
                                 }
+                            }
+                        }
+
+                        ListRow {
+                            visible: Preferences.dock
+                            width: parent.width
+                            iconPath: Icons.palette
+                            title: qsTr("Dock opacity when idle")
+                            description: qsTr("After a few seconds unused, the dock fades to this; the pointer brings it back.")
+                            ValueSlider {
+                                width: 200
+                                from: 10
+                                to: 100
+                                step: 5
+                                value: Preferences.dockIdleOpacity
+                                valueText: value + "%"
+                                label: qsTr("Dock opacity when idle")
+                                onMoved: (v) => Preferences.dockIdleOpacity = v
                             }
                         }
 

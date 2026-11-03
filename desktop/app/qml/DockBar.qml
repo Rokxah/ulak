@@ -21,11 +21,12 @@ DockWindow {
     // The strip is 56 wide, plus a gap to the screen edge.
     thickness: 64
     expandedWidth: 420
+    // Out of the way while something runs full screen.
     // As tall as the buttons; taller while the panel is open.
     contentHeight: expanded
         ? Math.max(buttons.implicitHeight + 24, Math.min(Math.round(Screen.height * 0.75), 760))
         : buttons.implicitHeight + 24
-    visible: true
+    visible: !fullScreenApp
 
     // What the panel shows: "" (closed), "notifications", "messages" or "calls".
     property string panel: ""
@@ -33,6 +34,9 @@ DockWindow {
     readonly property bool left: edge === "left"
     // Hidden in the thin strip: only the strip is drawn.
     readonly property bool tucked: autoHide && !revealed && !expanded
+    // Unused for a while: drawn at Preferences.dockIdleOpacity.
+    property bool idle: false
+    readonly property real restingOpacity: Math.max(0.1, Math.min(1, Preferences.dockIdleOpacity / 100))
 
     readonly property int deviceIndex: DeviceList.count > 0
         ? Math.min(Math.max(0, AppController.currentDevice), DeviceList.count - 1) : 0
@@ -78,9 +82,12 @@ DockWindow {
         onHoveredChanged: {
             if (hovered) {
                 hideTimer.stop()
+                idleTimer.stop()
+                dock.idle = false
                 dock.revealed = true
             } else {
                 hideTimer.restart()
+                idleTimer.restart()
             }
         }
     }
@@ -88,6 +95,17 @@ DockWindow {
         id: hideTimer
         interval: 250
         onTriggered: if (!hover.hovered) dock.revealed = false
+    }
+    Timer {
+        id: idleTimer
+        interval: 2500
+        running: true
+        onTriggered: if (!hover.hovered && !dock.expanded) dock.idle = true
+    }
+    onExpandedChanged: {
+        dock.idle = false
+        if (!expanded)
+            idleTimer.restart()
     }
 
     function shortTime(ms) {
@@ -100,21 +118,28 @@ DockWindow {
             : d.toLocaleDateString(Qt.locale(), Locale.ShortFormat)
     }
 
-    // The thin strip while tucked away.
+    // The thin strip while tucked away, at the screen edge.
     Rectangle {
         visible: dock.tucked
-        anchors.fill: parent
-        anchors.topMargin: 12
-        anchors.bottomMargin: 12
+        x: dock.left ? 1 : parent.width - width - 1
+        y: 12
+        width: dock.peek - 2
+        height: parent.height - 24
         radius: width / 2
         color: Theme.primary
-        opacity: 0.7
+        opacity: 0.75
     }
 
     Rectangle {
         id: pill
-        visible: !dock.tucked
         anchors.fill: parent
+        opacity: dock.tucked ? 0 : (dock.idle ? dock.restingOpacity : 1)
+        Behavior on opacity { NumberAnimation { duration: 180 } }
+        // Slides in from the edge.
+        transform: Translate {
+            x: dock.tucked ? (dock.left ? -dock.width : dock.width) : 0
+            Behavior on x { NumberAnimation { duration: 140; easing.type: Easing.OutCubic } }
+        }
         anchors.margins: 4
         anchors.leftMargin: dock.left ? 6 : 4
         anchors.rightMargin: dock.left ? 4 : 6

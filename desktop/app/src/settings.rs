@@ -114,6 +114,10 @@ fn default_window_height() -> u32 {
     DEFAULT_WINDOW_HEIGHT
 }
 
+fn default_dock_idle_opacity() -> i32 {
+    45
+}
+
 fn default_dock_edge() -> String {
     "right".to_owned()
 }
@@ -506,6 +510,9 @@ pub struct Settings {
     /// Hide the dock in a thin strip until the pointer reaches the edge.
     #[serde(default)]
     pub dock_auto_hide: bool,
+    /// How opaque the dock is after a while unused, in percent (100: always solid).
+    #[serde(default = "default_dock_idle_opacity")]
+    pub dock_idle_opacity: i32,
     /// Configured "When X, Do Y" automation rules.
     #[serde(default, skip_serializing_if = "Vec::is_empty", alias = "automation_rules")]
     pub automation_rules: Vec<crate::automations::AutomationRule>,
@@ -609,6 +616,7 @@ impl Default for Settings {
             dock: false,
             dock_edge: default_dock_edge(),
             dock_auto_hide: false,
+            dock_idle_opacity: default_dock_idle_opacity(),
             automation_rules: Vec::new(),
             stream_pc_audio_to_phone: false,
             share_pc_storage: false,
@@ -848,6 +856,7 @@ mod tests {
             dock: false,
             dock_edge: default_dock_edge(),
             dock_auto_hide: false,
+            dock_idle_opacity: default_dock_idle_opacity(),
             automation_rules: Vec::new(),
             stream_pc_audio_to_phone: true,
             share_pc_storage: true,
