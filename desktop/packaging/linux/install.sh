@@ -481,7 +481,7 @@ setup_firewall() {
 }
 
 finish() {
-    printf '\n%sNectarLink %s is ready.%s\n' "$BOLD" "$VERSION" "$RESET"
+    printf '\n%sUlak %s is ready.%s\n' "$BOLD" "$VERSION" "$RESET"
     echo "Open it from your app menu, or run nectarlink-desktop. Then install the"
     echo "Android app and pair: https://github.com/$REPO#get-started"
     echo "It updates itself from now on. If it was already open, quit and open it again."
@@ -545,7 +545,7 @@ uninstall() {
         *) say "No firewall is on." ;;
     esac
 
-    printf '\n%sNectarLink is removed.%s\n' "$BOLD" "$RESET"
+    printf '\n%sUlak is removed.%s\n' "$BOLD" "$RESET"
     echo "Your settings and paired devices are still in ${user_share}/Ulak;"
     echo "delete that folder to remove them too."
 }
@@ -560,12 +560,12 @@ main() {
     trap 'exit 130' INT TERM
 
     if [ "$UNINSTALL" -eq 1 ]; then
-        printf '%sNectarLink uninstaller%s\n' "$BOLD" "$RESET"
+        printf '%sUlak uninstaller%s\n' "$BOLD" "$RESET"
         uninstall
         return 0
     fi
 
-    printf '%sNectarLink installer%s\n' "$BOLD" "$RESET"
+    printf '%sUlak installer%s\n' "$BOLD" "$RESET"
     check_system
     find_release
     download

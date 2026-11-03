@@ -205,6 +205,8 @@ jobs:
               sh /dist/install.sh
               nectarlink-desktop --version
               sh /dist/install.sh --uninstall
+              hash -r
+              ! test -e /usr/bin/nectarlink-desktop
               ! command -v nectarlink-desktop'
           done
           # The tarball relies on the desktop's own OpenGL, X11/Wayland, fonts and
