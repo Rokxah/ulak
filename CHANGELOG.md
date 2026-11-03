@@ -1,10 +1,43 @@
 # Changelog
 
-All notable changes to NectarLink. Versions follow
+All notable changes to Ulak. Versions follow
 [semantic versioning](https://semver.org); before 1.0, a minor version may
 change things that need a step from you, and its notes say so.
 
-## Unreleased
+## 0.2.0 (Ulak) - 2026-11-03
+
+The first release of **Ulak**, a fork of
+[NectarLink](https://github.com/thtbee/nectarlink) 0.1.4. Ulak installs next
+to NectarLink and doesn't update it or from it: it has its own app ID on the
+phone (`app.ulak`), its own data and install folders on the PC, and gets its
+updates from [Rokxah/ulak](https://github.com/Rokxah/ulak/releases). Pair the
+phone and the PC again in Ulak.
+
+### New
+
+- **No double notifications.** A per-app rule, **Not when open on PC**, keeps
+  a phone app's notifications in the feed without pop-ups while the app is
+  open on the PC. Ulak knows the desktop versions of WhatsApp, Telegram,
+  Signal, Slack, Teams, Discord, Outlook and others; for anything else, or an
+  app used in a browser, pick the PC program in the app's sheet on Home.
+- **Mute an app for a while.** 1 hour, 8 hours or until tomorrow, from the
+  app's sheet on Home.
+- **Keyword rules.** Notifications with a word you choose in them come
+  without pop-ups, or not at all (Settings › Notifications).
+- **Dock.** A compact bar floating at the left or right screen edge, with the
+  phone's notifications, conversations and recent calls in a slide-out
+  panel, and shortcuts to photos, apps and the Shelf. It can hide at the edge
+  until the pointer comes, fades when unused (Settings › General), and steps
+  aside for full-screen apps. **Use as a window** goes back to the usual
+  window.
+- **A name and mark of its own.** Ulak (Old Turkish for "messenger") and its
+  U-shaped mark replace NectarLink's name and Waggle Dance, as the
+  [trademark policy](TRADEMARKS.md) asks of forks.
+
+Everything below **Unreleased** was in NectarLink's tree at the fork and
+comes with this release.
+
+## Unreleased (NectarLink, at the fork)
 
 ### New
 

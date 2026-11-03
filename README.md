@@ -35,9 +35,16 @@ Ulak installs next to NectarLink: it has its own app ID on the phone
 
 ## Download
 
-Releases will be published at
-[github.com/Rokxah/ulak/releases](https://github.com/Rokxah/ulak/releases).
-Until then, build it from source (see [Building from source](#building-from-source)).
+| | Download | Needs |
+|---|---|---|
+| **Windows (x64)** | [Installer (.exe)](https://github.com/Rokxah/ulak/releases/download/v0.2.0/Ulak-0.2.0-x64-setup.exe) | Windows 10 (2004+) or 11, 64-bit Intel or AMD |
+| **Windows (ARM64)** | [Installer (.exe)](https://github.com/Rokxah/ulak/releases/download/v0.2.0/Ulak-0.2.0-arm64-setup.exe) | Windows 11 on ARM |
+| **Android** | [App (.apk)](https://github.com/Rokxah/ulak/releases/download/v0.2.0/Ulak-0.2.0-android.apk) | Android 8.0 or newer |
+
+All releases: [github.com/Rokxah/ulak/releases](https://github.com/Rokxah/ulak/releases).
+The apps update themselves from there and check every download against its
+SHA-256 sums. The Windows installer isn't code-signed yet, so SmartScreen may
+warn the first time: choose **More info**, then **Run anyway**.
 
 ## Get started
 
