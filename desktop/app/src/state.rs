@@ -196,6 +196,10 @@ pub enum AppRule {
     Quiet,
     /// Not shown at all.
     Hidden,
+    /// Like [`AppRule::Show`], but no pop-ups while the app's own desktop
+    /// version runs on this PC, which shows them already (see `pc_apps`).
+    #[serde(rename = "whenpcclosed")]
+    WhenPcClosed,
 }
 
 /// A notification that went away on the phone (or was dismissed here).

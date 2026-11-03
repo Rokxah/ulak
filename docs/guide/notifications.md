@@ -78,6 +78,7 @@ All notification settings live in **Settings › Notifications** (and **Settings
   - **Show** (default): Shows a Windows popup toast and lists the alert in the NectarLink feed.
   - **No pop-ups**: Suppresses Windows popup toasts for that app while keeping its notifications visible inside the NectarLink feed.
   - **Hide**: Completely blocks notifications from that app on your PC.
+  - **Not when open on PC** (only for apps with a known desktop version, such as WhatsApp, Telegram, Signal, Slack, Teams, Discord or Outlook): Shows pop-ups only while that app's desktop version isn't running on the PC, so you don't get the same notification twice. The notification still appears in the NectarLink feed.
 - **Copy one-time codes** (`Settings › General`, default: **Off**): Automatically copies detected verification codes from incoming notifications and SMS messages to the PC clipboard.
 - **Notification history** (`Settings › Storage & Privacy`, default: **On**): Keeps dismissed phone notifications on the PC for 24 hours (up to 300 alerts). Includes a one-click **Clear** button.
 

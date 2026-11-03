@@ -36,6 +36,7 @@ mod notification_store;
 mod notifications;
 mod obs;
 mod palette;
+mod pc_apps;
 mod pc_audio_stream;
 mod pc_mirror;
 mod pc_notifications;

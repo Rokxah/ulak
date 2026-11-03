@@ -207,6 +207,7 @@ mod tests {
         state.app_names.insert("com.chat".into(), "Chat".into());
         state.set_app_rule("com.chat", AppRule::Quiet);
         state.set_app_rule("com.game", AppRule::Hidden);
+        state.set_app_rule("com.whatsapp", AppRule::WhenPcClosed);
         state.set_app_expanded("com.chat", true);
         let now = unix_ms(SystemTime::now());
         state.history.push(HistoryEntry {
@@ -228,6 +229,7 @@ mod tests {
         assert!(loaded.history_enabled);
         assert_eq!(loaded.app_rule("com.chat"), AppRule::Quiet);
         assert_eq!(loaded.app_rule("com.game"), AppRule::Hidden);
+        assert_eq!(loaded.app_rule("com.whatsapp"), AppRule::WhenPcClosed);
         assert_eq!(loaded.app_rule("com.other"), AppRule::Show);
         assert!(loaded.is_app_expanded("com.chat"));
         assert!(!loaded.is_app_expanded("com.other"));

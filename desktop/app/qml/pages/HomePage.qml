@@ -2618,11 +2618,13 @@ Item {
         property string app
         property string appName
         property string rule: "show"
+        property bool pcApp: false
         cardWidth: 420
         function openFor(app, name) {
             appSheet.app = app
             appSheet.appName = name
             appSheet.rule = NotificationList.appRule(app)
+            appSheet.pcApp = NotificationList.hasPcApp(app)
             open()
         }
         Column {
@@ -2634,7 +2636,8 @@ Item {
                     { value: "show", label: qsTr("Show") },
                     { value: "quiet", label: qsTr("No pop-ups") },
                     { value: "hidden", label: qsTr("Hide") }
-                ]
+                ].concat(appSheet.pcApp || appSheet.rule === "whenpcclosed"
+                         ? [{ value: "whenpcclosed", label: qsTr("Not when open on PC") }] : [])
                 value: appSheet.rule
                 onPicked: (value) => {
                     appSheet.rule = value
@@ -2648,6 +2651,8 @@ Item {
                 muted: true
                 text: appSheet.rule === "hidden"
                       ? qsTr("Hidden on this PC.")
+                      : appSheet.rule === "whenpcclosed"
+                        ? qsTr("No pop-ups while %1 is open on this PC, so you don't get them twice.").arg(appSheet.appName)
                       : appSheet.rule === "quiet"
                         ? qsTr("Shown in feed without pop-ups.")
                         : Qt.platform.os === "linux"

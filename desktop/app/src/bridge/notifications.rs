@@ -134,10 +134,14 @@ pub mod qobject {
         /// Sends a reply through its reply action.
         #[qinvokable]
         fn reply(self: &NotificationList, device: &QString, key: &QString, action: &QString, text: &QString);
-        /// "show", "quiet" (no pop-ups) or "hidden".
+        /// "show", "quiet" (no pop-ups), "hidden" or "whenpcclosed".
         #[qinvokable]
         #[cxx_name = "appRule"]
         fn app_rule(self: &NotificationList, app: &QString) -> QString;
+        /// Whether the app has a known desktop version on PCs (WhatsApp, Telegram...).
+        #[qinvokable]
+        #[cxx_name = "hasPcApp"]
+        fn has_pc_app(self: &NotificationList, app: &QString) -> bool;
         #[qinvokable]
         #[cxx_name = "setAppRule"]
         fn set_app_rule(self: &NotificationList, app: &QString, rule: &QString);
@@ -293,6 +297,7 @@ fn rule_name(rule: AppRule) -> &'static str {
         AppRule::Show => "show",
         AppRule::Quiet => "quiet",
         AppRule::Hidden => "hidden",
+        AppRule::WhenPcClosed => "whenpcclosed",
     }
 }
 
@@ -308,6 +313,7 @@ fn apps_json(s: &AppState) -> String {
                     "name": name,
                     "icon": s.app_icons.get(app).map(|p| icons::file_url(p)).unwrap_or_default(),
                     "rule": rule_name(s.app_rule(app)),
+                    "pcApp": crate::pc_apps::has_desktop_app(app),
                 })
             })
             .collect::<Vec<_>>(),
@@ -590,10 +596,15 @@ impl qobject::NotificationList {
         QString::from(rule_name(rule))
     }
 
+    pub fn has_pc_app(&self, app: &QString) -> bool {
+        crate::pc_apps::has_desktop_app(&String::from(app))
+    }
+
     pub fn set_app_rule(&self, app: &QString, rule: &QString) {
         let rule = match String::from(rule).as_str() {
             "quiet" => AppRule::Quiet,
             "hidden" => AppRule::Hidden,
+            "whenpcclosed" => AppRule::WhenPcClosed,
             _ => AppRule::Show,
         };
         crate::notifications::set_app_rule(&String::from(app), rule);

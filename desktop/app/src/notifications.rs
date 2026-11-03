@@ -371,6 +371,11 @@ fn show(device: DeviceId, n: &Notification) {
     });
     // The user chose no pop-ups (or nothing at all) for this app, or the phone
     // is in Do Not Disturb while DND quieting is turned on.
+    let rule = match rule {
+        AppRule::WhenPcClosed if crate::pc_apps::desktop_app_running(&n.app) => AppRule::Quiet,
+        AppRule::WhenPcClosed => AppRule::Show,
+        rule => rule,
+    };
     if rule != AppRule::Show || (SYNC_DND.load(Ordering::Relaxed) && phone_dnd) {
         return;
     }
@@ -533,7 +538,12 @@ pub fn on_toast(event: ToastEvent) {
 pub fn set_app_rule(app: &str, rule: AppRule) {
     let hub = &core_host::host().hub;
     hub.update(|s| s.set_app_rule(app, rule));
-    if rule == AppRule::Show {
+    let quiet_now = match rule {
+        AppRule::Show => false,
+        AppRule::WhenPcClosed => crate::pc_apps::desktop_app_running(app),
+        AppRule::Quiet | AppRule::Hidden => true,
+    };
+    if !quiet_now {
         return;
     }
     let shown: Vec<(DeviceId, String)> = hub.read(|s| {
