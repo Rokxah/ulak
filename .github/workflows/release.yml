@@ -254,7 +254,7 @@ jobs:
           apk=android/app/build/outputs/apk/release/app-release.apk
           "$ANDROID_HOME/build-tools/37.0.0/apksigner" verify --print-certs "$apk"
           mkdir -p out
-          cp "$apk" "out/Nectarlink-${GITHUB_REF_NAME#v}-android.apk"
+          cp "$apk" "out/Ulak-${GITHUB_REF_NAME#v}-android.apk"
       - name: Forget the key
         if: always()
         run: rm -f "$RUNNER_TEMP/release.jks"
@@ -285,7 +285,7 @@ jobs:
         run: |
           # The release's name, if Cargo.toml gives one ([workspace.metadata.release]).
           name=$(awk '/^\[workspace.metadata.release\]/{f=1;next} /^\[/{f=0} f && /^name = /{print $3}' source/Cargo.toml | tr -d '"')
-          title="NectarLink ${GITHUB_REF_NAME#v}${name:+ $name}"
+          title="Ulak ${GITHUB_REF_NAME#v}${name:+ $name}"
           cd files
           sha256sum *.exe *.deb *.rpm *.AppImage *.tar.gz *.apk install.sh > SHA256SUMS.txt
           cat SHA256SUMS.txt

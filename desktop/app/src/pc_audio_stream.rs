@@ -2,7 +2,7 @@
 //! Phone as Speaker / Headphones for PC Audio (§3.8 P2): captures Windows
 //! system audio via WASAPI loopback (`AUDCLNT_STREAMFLAGS_LOOPBACK`), converts
 //! 32-bit float stereo samples to 16-bit signed little-endian PCM, and streams
-//! them to connected phones over NectarLink's low-latency audio stream.
+//! them to connected phones over Ulak's low-latency audio stream.
 
 /// Where the PC's sound goes: only to the phone that asked for it, waiting
 /// while it's away (never to another phone, which may be someone else's), or

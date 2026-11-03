@@ -22,7 +22,7 @@ use windows::{
     Storage::Streams::{DataReader, DataWriter},
 };
 
-/// Bluetooth SIG test/internal company identifier used for NectarLink proximity frames.
+/// Bluetooth SIG test/internal company identifier used for Ulak proximity frames.
 pub const COMPANY_ID: u16 = 0xFFFF;
 
 /// 5-byte magic header (`"NCTR"` + protocol version `0x01`).
@@ -99,7 +99,7 @@ pub fn build_manufacturer_payload(device_id: &DeviceId) -> [u8; 13] {
     out
 }
 
-/// Starts advertising the NectarLink BLE proximity beacon for `device_id`.
+/// Starts advertising the Ulak BLE proximity beacon for `device_id`.
 ///
 /// The RSSI watcher (`try_start_watcher`) stays off: phones don't broadcast a
 /// beacon yet, so it would scan all the time and only ever hear other PCs.

@@ -4,7 +4,7 @@
 //! and signal subscriptions (`PropertiesChanged`, `Seeked`, `NameOwnerChanged`),
 //! artwork resolution/caching, and remote transport commands.
 //!
-//! NectarLink's own MPRIS session (`org.mpris.MediaPlayer2.nectarlink`) is
+//! Ulak's own MPRIS session (`org.mpris.MediaPlayer2.nectarlink`) is
 //! excluded so a phone never gets its own music echoed back.
 
 use std::collections::HashMap;

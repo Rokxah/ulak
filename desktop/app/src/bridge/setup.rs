@@ -99,7 +99,7 @@ pub struct SetupRust {
 }
 
 static MODE: OnceLock<Mode> = OnceLock::new();
-/// Where the app ended up, for Open NectarLink.
+/// Where the app ended up, for Open Ulak.
 static INSTALLED_DIR: Mutex<Option<PathBuf>> = Mutex::new(None);
 /// The folder the user picked, when not Program Files.
 static PLACEMENT: Mutex<Option<setup::Placement>> = Mutex::new(None);
@@ -288,7 +288,7 @@ impl qobject::Setup {
         if let Some(dir) = dir
             && let Err(e) = setup::open_app(&dir)
         {
-            tracing::warn!(error = %e, "can't open NectarLink");
+            tracing::warn!(error = %e, "can't open Ulak");
         }
     }
 

@@ -1,4 +1,4 @@
-# NectarLink Performance Budgets & Measurements
+# Ulak Performance Budgets & Measurements
 
 This document records the release performance budgets, root-cause regression audits, and measured BEFORE/AFTER results across the Windows Desktop app (`nectarlink-desktop`), the Rust core engine (`nectarlink-core`), and the Android companion app (`app.nectarlink.android`).
 
@@ -21,14 +21,14 @@ This document records the release performance budgets, root-cause regression aud
 | **4 GiB File Transfer + Pause/Resume + BLAKE3** | `< 180 s` in test | **`16.0 s`** transfer with two mid-stream pauses and `.part` offset resumes, then **`1.74 s`** full BLAKE3 verification (release build) | **PASS** |
 | **Android Cold Start (`MainActivity`)** | `< 1,000 ms` | **`479 ms to 750 ms`** (`TotalTime` via `am start -W`, down from `1,566 ms to 2,291 ms`) | **PASS** |
 | **Android Warm Start (`MainActivity`)** | `< 100 ms` | **`14 ms to 30 ms`** (`WaitTime` via `am start -W`, down from `81 ms to 91 ms`) | **PASS** |
-| **Android Memory (`dumpsys meminfo app.nectarlink`)** | `< 110 MB` PSS | **`75.66 MB to 86.48 MB` PSS (`228.0 MB to 236.8 MB` RSS)** (down from `115.9 MB to 123.5 MB` PSS) | **PASS** |
+| **Android Memory (`dumpsys meminfo app.ulak`)** | `< 110 MB` PSS | **`75.66 MB to 86.48 MB` PSS (`228.0 MB to 236.8 MB` RSS)** (down from `115.9 MB to 123.5 MB` PSS) | **PASS** |
 | **Android Idle Background Battery Impact (1 hr connected)** | `< 1.0% / hr` | **`0.18% / hr` est.** (`0.2% to 0.6%` idle CPU; event-driven callbacks; zero wake-lock leaks) | **PASS** |
 
 ---
 
 ## 2. Performance Pass: Before and After Measurements, and Root Causes Fixed
 
-### 2.1 Android (`app.nectarlink` on an Android emulator, physical phone not connected during this run)
+### 2.1 Android (`app.ulak` on an Android emulator, physical phone not connected during this run)
 
 | Metric | BEFORE (`ebe0012` post-redesign baseline) | AFTER (with all §1 & §2 fixes) | Improvement |
 | :--- | :--- | :--- | :--- |

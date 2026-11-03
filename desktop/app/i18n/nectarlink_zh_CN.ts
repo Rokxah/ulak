@@ -55,28 +55,28 @@
     </message>
     <message>
         <location filename="rust_strings.h" line="17"/>
-        <source>NectarLink · %1</source>
-        <translation>NectarLink · %1</translation>
+        <source>Ulak · %1</source>
+        <translation>Ulak · %1</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="18"/>
-        <source>NectarLink · %1 devices connected</source>
-        <translation>NectarLink · 已连接 %1 台设备</translation>
+        <source>Ulak · %1 devices connected</source>
+        <translation>Ulak · 已连接 %1 台设备</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="19"/>
-        <source>NectarLink · 1 device connected</source>
-        <translation>NectarLink · 已连接 1 台设备</translation>
+        <source>Ulak · 1 device connected</source>
+        <translation>Ulak · 已连接 1 台设备</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="20"/>
-        <source>NectarLink · no devices paired</source>
-        <translation>NectarLink · 未配对设备</translation>
+        <source>Ulak · no devices paired</source>
+        <translation>Ulak · 未配对设备</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="21"/>
-        <source>NectarLink · not connected</source>
-        <translation>NectarLink · 未连接</translation>
+        <source>Ulak · not connected</source>
+        <translation>Ulak · 未连接</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="22"/>
@@ -85,8 +85,8 @@
     </message>
     <message>
         <location filename="rust_strings.h" line="23"/>
-        <source>Open NectarLink</source>
-        <translation>打开 NectarLink</translation>
+        <source>Open Ulak</source>
+        <translation>打开 Ulak</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="24"/>
@@ -95,8 +95,8 @@
     </message>
     <message>
         <location filename="rust_strings.h" line="25"/>
-        <source>Quit NectarLink</source>
-        <translation>退出 NectarLink</translation>
+        <source>Quit Ulak</source>
+        <translation>退出 Ulak</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="26"/>
@@ -198,8 +198,8 @@
     </message>
     <message>
         <location filename="../qml/pages/AppsPage.qml" line="94"/>
-        <source>Set up Wireless debugging in NectarLink on the phone to open its apps here.</source>
-        <translation>在手机上的 NectarLink 中设置无线调试，即可在此打开其应用。</translation>
+        <source>Set up Wireless debugging in Ulak on the phone to open its apps here.</source>
+        <translation>在手机上的 Ulak 中设置无线调试，即可在此打开其应用。</translation>
     </message>
     <message>
         <location filename="../qml/pages/AppsPage.qml" line="147"/>
@@ -824,8 +824,8 @@
     </message>
     <message>
         <location filename="rust_strings.h" line="63"/>
-        <source>Update NectarLink on %1 to send it images.</source>
-        <translation>请更新 %1 上的 NectarLink 以向其发送图片。</translation>
+        <source>Update Ulak on %1 to send it images.</source>
+        <translation>请更新 %1 上的 Ulak 以向其发送图片。</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="64"/>
@@ -1082,8 +1082,8 @@
     </message>
     <message>
         <location filename="rust_strings.h" line="105"/>
-        <source>Opened Recordings folder. Start a voice note in NectarLink on %1 to send it here.</source>
-        <translation>已打开录音文件夹。在 %1 上的 NectarLink 中开始语音备忘，即可发送到这里。</translation>
+        <source>Opened Recordings folder. Start a voice note in Ulak on %1 to send it here.</source>
+        <translation>已打开录音文件夹。在 %1 上的 Ulak 中开始语音备忘，即可发送到这里。</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="106"/>
@@ -1242,8 +1242,8 @@
     </message>
     <message>
         <location filename="rust_strings.h" line="137"/>
-        <source>Stream %1&apos;s camera into the NectarLink virtual webcam</source>
-        <translation>将 %1 的摄像头画面传入 NectarLink 虚拟摄像头</translation>
+        <source>Stream %1&apos;s camera into the Ulak virtual webcam</source>
+        <translation>将 %1 的摄像头画面传入 Ulak 虚拟摄像头</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="138"/>
@@ -1903,13 +1903,13 @@
     <name>Doctor</name>
     <message>
         <location filename="rust_strings.h" line="187"/>
-        <source>%1 Open NectarLink on the phone and keep both on the same network. If the phone asks to run in the background, allow it.</source>
-        <translation>%1 在手机上打开 NectarLink，并让两台设备处于同一网络。如果手机询问是否允许在后台运行，请允许。</translation>
+        <source>%1 Open Ulak on the phone and keep both on the same network. If the phone asks to run in the background, allow it.</source>
+        <translation>%1 在手机上打开 Ulak，并让两台设备处于同一网络。如果手机询问是否允许在后台运行，请允许。</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="188"/>
-        <source>%1 announces itself at %2, which isn&apos;t in a private range such as 192.168.x.x. NectarLink connects on such a network once both apps are up to date. Until then, turn on Connect over mobile data on both, or connect with a USB cable.</source>
-        <translation>%1 在 %2 上广播自己，该地址不在 192.168.x.x 这样的私有范围内。两端的应用都更新到最新后，NectarLink 就能在这种网络上连接。在此之前，请在两端都打开“通过移动数据连接”，或用 USB 数据线连接。</translation>
+        <source>%1 announces itself at %2, which isn&apos;t in a private range such as 192.168.x.x. Ulak connects on such a network once both apps are up to date. Until then, turn on Connect over mobile data on both, or connect with a USB cable.</source>
+        <translation>%1 在 %2 上广播自己，该地址不在 192.168.x.x 这样的私有范围内。两端的应用都更新到最新后，Ulak 就能在这种网络上连接。在此之前，请在两端都打开“通过移动数据连接”，或用 USB 数据线连接。</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="189"/>
@@ -1963,8 +1963,8 @@
     </message>
     <message>
         <location filename="rust_strings.h" line="199"/>
-        <source>A firewall rule blocks incoming NectarLink connections. Allow it, and your phone can connect.</source>
-        <translation>一条防火墙规则阻止了传入的 NectarLink 连接。允许后，手机即可连接。</translation>
+        <source>A firewall rule blocks incoming Ulak connections. Allow it, and your phone can connect.</source>
+        <translation>一条防火墙规则阻止了传入的 Ulak 连接。允许后，手机即可连接。</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="200"/>
@@ -2033,48 +2033,48 @@
     </message>
     <message>
         <location filename="rust_strings.h" line="213"/>
-        <source>NectarLink can&apos;t show its icon in the top bar</source>
-        <translation>NectarLink 无法在顶栏中显示图标</translation>
+        <source>Ulak can&apos;t show its icon in the top bar</source>
+        <translation>Ulak 无法在顶栏中显示图标</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="214"/>
-        <source>NectarLink is in the top bar</source>
-        <translation>NectarLink 已显示在顶栏中</translation>
+        <source>Ulak is in the top bar</source>
+        <translation>Ulak 已显示在顶栏中</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="215"/>
-        <source>NectarLink isn&apos;t allowed through Windows Firewall</source>
-        <translation>Windows 防火墙未允许 NectarLink</translation>
+        <source>Ulak isn&apos;t allowed through Windows Firewall</source>
+        <translation>Windows 防火墙未允许 Ulak</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="216"/>
-        <source>NectarLink isn&apos;t allowed through the firewall</source>
-        <translation>防火墙未允许 NectarLink</translation>
+        <source>Ulak isn&apos;t allowed through the firewall</source>
+        <translation>防火墙未允许 Ulak</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="217"/>
-        <source>On Huawei / Honor: open Settings → Battery → App launch, turn off Manage automatically for NectarLink, and keep Auto-launch, Secondary launch, and Run in background on.</source>
-        <translation>华为 / 荣耀：打开 设置 → 电池 → 应用启动管理，为 NectarLink 关闭“自动管理”，并保持“允许自启动”“允许关联启动”和“允许后台活动”开启。</translation>
+        <source>On Huawei / Honor: open Settings → Battery → App launch, turn off Manage automatically for Ulak, and keep Auto-launch, Secondary launch, and Run in background on.</source>
+        <translation>华为 / 荣耀：打开 设置 → 电池 → 应用启动管理，为 Ulak 关闭“自动管理”，并保持“允许自启动”“允许关联启动”和“允许后台活动”开启。</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="218"/>
-        <source>On OnePlus / OxygenOS: open Settings → Apps → App management → NectarLink → Battery usage and turn on Allow background activity and Allow auto-launch.</source>
-        <translation>一加 / OxygenOS：打开 设置 → 应用 → 应用管理 → NectarLink → 耗电管理，开启“允许后台活动”和“允许自启动”。</translation>
+        <source>On OnePlus / OxygenOS: open Settings → Apps → App management → Ulak → Battery usage and turn on Allow background activity and Allow auto-launch.</source>
+        <translation>一加 / OxygenOS：打开 设置 → 应用 → 应用管理 → Ulak → 耗电管理，开启“允许后台活动”和“允许自启动”。</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="219"/>
-        <source>On Oppo / Realme: open Settings → Apps → App management → NectarLink → Battery usage and turn on Allow background activity and Allow auto-launch.</source>
-        <translation>OPPO / 真我：打开 设置 → 应用 → 应用管理 → NectarLink → 耗电管理，开启“允许后台活动”和“允许自启动”。</translation>
+        <source>On Oppo / Realme: open Settings → Apps → App management → Ulak → Battery usage and turn on Allow background activity and Allow auto-launch.</source>
+        <translation>OPPO / 真我：打开 设置 → 应用 → 应用管理 → Ulak → 耗电管理，开启“允许后台活动”和“允许自启动”。</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="220"/>
-        <source>On Pixel: open Settings → Apps → See all apps → NectarLink → App battery usage, tap Allow background usage, and choose Unrestricted.</source>
-        <translation>Pixel：打开 设置 → 应用 → 查看所有应用 → NectarLink → 应用的电池用量，点按“允许后台使用”，然后选择“无限制”。</translation>
+        <source>On Pixel: open Settings → Apps → See all apps → Ulak → App battery usage, tap Allow background usage, and choose Unrestricted.</source>
+        <translation>Pixel：打开 设置 → 应用 → 查看所有应用 → Ulak → 应用的电池用量，点按“允许后台使用”，然后选择“无限制”。</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="221"/>
-        <source>On Samsung: open Settings → Apps → NectarLink → Battery and choose Unrestricted, then in Device care → Battery → Background usage limits make sure NectarLink is never put to sleep.</source>
-        <translation>三星：打开 设置 → 应用程序 → NectarLink → 电池，选择“不受限制”，然后在 设备维护 → 电池 → 后台使用限制 中确保 NectarLink 不会被设为休眠。</translation>
+        <source>On Samsung: open Settings → Apps → Ulak → Battery and choose Unrestricted, then in Device care → Battery → Background usage limits make sure Ulak is never put to sleep.</source>
+        <translation>三星：打开 设置 → 应用程序 → Ulak → 电池，选择“不受限制”，然后在 设备维护 → 电池 → 后台使用限制 中确保 Ulak 不会被设为休眠。</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="222"/>
@@ -2083,13 +2083,13 @@
     </message>
     <message>
         <location filename="rust_strings.h" line="223"/>
-        <source>On Vivo / OriginOS / Funtouch: open Settings → Battery → Background power consumption management → NectarLink and choose Unrestricted, and allow Autostart.</source>
-        <translation>vivo / OriginOS / Funtouch：打开 设置 → 电池 → 后台耗电管理 → NectarLink，选择“允许后台高耗电”，并允许自启动。</translation>
+        <source>On Vivo / OriginOS / Funtouch: open Settings → Battery → Background power consumption management → Ulak and choose Unrestricted, and allow Autostart.</source>
+        <translation>vivo / OriginOS / Funtouch：打开 设置 → 电池 → 后台耗电管理 → Ulak，选择“允许后台高耗电”，并允许自启动。</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="224"/>
-        <source>On Xiaomi / HyperOS / MIUI: open Settings → Apps → Manage apps → NectarLink, turn on Autostart, and set Battery saver to No restrictions.</source>
-        <translation>小米 / HyperOS / MIUI：打开 设置 → 应用设置 → 应用管理 → NectarLink，开启“自启动”，并将省电策略设为“无限制”。</translation>
+        <source>On Xiaomi / HyperOS / MIUI: open Settings → Apps → Manage apps → Ulak, turn on Autostart, and set Battery saver to No restrictions.</source>
+        <translation>小米 / HyperOS / MIUI：打开 设置 → 应用设置 → 应用管理 → Ulak，开启“自启动”，并将省电策略设为“无限制”。</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="225"/>
@@ -2143,8 +2143,8 @@
     </message>
     <message>
         <location filename="rust_strings.h" line="235"/>
-        <source>The firewall blocks NectarLink</source>
-        <translation>防火墙阻止了 NectarLink</translation>
+        <source>The firewall blocks Ulak</source>
+        <translation>防火墙阻止了 Ulak</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="236"/>
@@ -2193,8 +2193,8 @@
     </message>
     <message>
         <location filename="rust_strings.h" line="245"/>
-        <source>Windows Firewall blocks NectarLink</source>
-        <translation>Windows 防火墙阻止了 NectarLink</translation>
+        <source>Windows Firewall blocks Ulak</source>
+        <translation>Windows 防火墙阻止了 Ulak</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="246"/>
@@ -2474,8 +2474,8 @@
     </message>
     <message>
         <location filename="../qml/pages/FeaturesGuidePage.qml" line="586"/>
-        <source>Every feature in NectarLink, what it needs, and where to find it.</source>
-        <translation>NectarLink 的每一项功能、所需条件，以及在哪里找到它。</translation>
+        <source>Every feature in Ulak, what it needs, and where to find it.</source>
+        <translation>Ulak 的每一项功能、所需条件，以及在哪里找到它。</translation>
     </message>
     <message>
         <location filename="../qml/pages/FeaturesGuidePage.qml" line="625"/>
@@ -2570,15 +2570,15 @@
     <name>Guide</name>
     <message>
         <location filename="rust_strings.h" line="265"/>
-        <source>1. Install NectarLink on your PC (Windows 11 or Linux) and your Android phone (Android 8.0 or newer).
+        <source>1. Install Ulak on your PC (Windows 11 or Linux) and your Android phone (Android 8.0 or newer).
 2. Connect both devices to the same Wi-Fi network, or plug your phone into your PC with a USB cable.
 3. Open the Pair step in the setup walkthrough, or click + (Pair a new device) at the bottom of the left rail.
-4. Scan the QR code from the NectarLink Android app, or select your phone from the nearby devices list and confirm that the 6-digit code matches on both screens.
+4. Scan the QR code from the Ulak Android app, or select your phone from the nearby devices list and confirm that the 6-digit code matches on both screens.
 5. Choose which features to share for that phone and grant only the Android permissions you want to use.</source>
-        <translation>1. 在电脑（Windows 11 或 Linux）和 Android 手机（Android 8.0 或更高版本）上安装 NectarLink。
+        <translation>1. 在电脑（Windows 11 或 Linux）和 Android 手机（Android 8.0 或更高版本）上安装 Ulak。
 2. 让两台设备连接到同一个 Wi‑Fi 网络，或用 USB 数据线将手机连接到电脑。
 3. 在设置向导中打开“配对”步骤，或点击左侧栏底部的 +（配对新设备）。
-4. 用 NectarLink 安卓应用扫描二维码，或在附近设备列表中选择你的手机，并确认两边屏幕上的 6 位验证码一致。
+4. 用 Ulak 安卓应用扫描二维码，或在附近设备列表中选择你的手机，并确认两边屏幕上的 6 位验证码一致。
 5. 选择要为这部手机共享的功能，只授予你想使用的 Android 权限。</translation>
     </message>
     <message>
@@ -2651,15 +2651,15 @@
         <source>If your phone and PC do not see each other:
 
 1. Open Connection Doctor from Settings › Connection &amp; About or the Command Palette.
-2. Check that your Wi-Fi network profile in Windows is set to Private rather than Public, or click Fix in Connection Doctor to allow NectarLink through Windows Firewall.
+2. Check that your Wi-Fi network profile in Windows is set to Private rather than Public, or click Fix in Connection Doctor to allow Ulak through Windows Firewall.
 3. Verify that both devices are on the same subnet and that guest Wi-Fi client isolation is turned off on your router.
-4. You can also connect over a USB cable with USB debugging enabled; NectarLink automatically sets up a local tunnel.</source>
+4. You can also connect over a USB cable with USB debugging enabled; Ulak automatically sets up a local tunnel.</source>
         <translation>如果手机和电脑找不到彼此：
 
 1. 从 设置 › 连接与关于 或命令面板打开连接诊断。
-2. 检查 Windows 中 Wi‑Fi 网络的配置文件是否设为“专用”而不是“公用”，或在连接诊断中点击“修复”，允许 NectarLink 通过 Windows 防火墙。
+2. 检查 Windows 中 Wi‑Fi 网络的配置文件是否设为“专用”而不是“公用”，或在连接诊断中点击“修复”，允许 Ulak 通过 Windows 防火墙。
 3. 确认两台设备在同一子网中，并且路由器已关闭访客 Wi‑Fi 的客户端隔离。
-4. 你也可以在开启 USB 调试后用 USB 数据线连接；NectarLink 会自动建立本地隧道。</translation>
+4. 你也可以在开启 USB 调试后用 USB 数据线连接；Ulak 会自动建立本地隧道。</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="280"/>
@@ -2702,7 +2702,7 @@ Sensitive capabilities such as Share PC folders, Remote input, and Reverse PC sc
     </message>
     <message>
         <location filename="rust_strings.h" line="285"/>
-        <source>Most NectarLink features work in Standard mode with regular Android permissions. Two optional modes unlock deeper system integration:
+        <source>Most Ulak features work in Standard mode with regular Android permissions. Two optional modes unlock deeper system integration:
 
 Elevated mode (Wireless debugging or root)
 - Captures the phone screen without showing the Android cast confirmation prompt every time.
@@ -2711,8 +2711,8 @@ Elevated mode (Wireless debugging or root)
 
 Assist mode (Android Accessibility Service)
 - Injects mouse clicks, scrolling, and touch gestures when you control your phone from your PC.
-- NectarLink never reads screen text or logs keystrokes through the Accessibility service.</source>
-        <translation>NectarLink 的大多数功能在标准模式下使用常规 Android 权限即可运行。两个可选模式可解锁更深的系统集成：
+- Ulak never reads screen text or logs keystrokes through the Accessibility service.</source>
+        <translation>Ulak 的大多数功能在标准模式下使用常规 Android 权限即可运行。两个可选模式可解锁更深的系统集成：
 
 提升模式（无线调试或 root）
 - 捕获手机屏幕时无需每次显示 Android 的投屏确认提示。
@@ -2721,16 +2721,16 @@ Assist mode (Android Accessibility Service)
 
 辅助模式（Android 无障碍服务）
 - 在你用电脑控制手机时注入鼠标点击、滚动和触摸手势。
-- NectarLink 绝不会通过无障碍服务读取屏幕文字或记录按键。</translation>
+- Ulak 绝不会通过无障碍服务读取屏幕文字或记录按键。</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="286"/>
-        <source>Nectar Island</source>
+        <source>Ulak Island</source>
         <translation>Nectar 岛</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="287"/>
-        <source>NectarLink links your Android phone and your PC directly on your local network or over a USB cable.
+        <source>Ulak links your Android phone and your PC directly on your local network or over a USB cable.
 
 How it works
 - Devices discover each other over local Wi-Fi (mDNS) or USB (ADB reverse tunnel) and connect over QUIC (TLS 1.3).
@@ -2741,7 +2741,7 @@ Capability tiers on Android
 - Standard mode: Works right after installation with standard Android permissions.
 - Elevated mode (optional): Uses Wireless debugging (set up once in the phone app) or root for phone apps in their own windows, mirroring without the screen capture prompt, and more phone controls.
 - Assist mode (optional): Uses the Android Accessibility service only when you enable Remote input so your PC mouse and keyboard can control the phone.</source>
-        <translation>NectarLink 通过本地网络或 USB 数据线直接连接你的 Android 手机和电脑。
+        <translation>Ulak 通过本地网络或 USB 数据线直接连接你的 Android 手机和电脑。
 
 工作原理
 - 设备通过本地 Wi‑Fi（mDNS）或 USB（ADB 反向隧道）互相发现，并通过 QUIC（TLS 1.3）连接。
@@ -2755,14 +2755,14 @@ Android 上的功能层级
     </message>
     <message>
         <location filename="rust_strings.h" line="288"/>
-        <source>NectarLink never asks for every permission up front. Each feature works independently:
+        <source>Ulak never asks for every permission up front. Each feature works independently:
 
 - Notification Access: Required only if you want phone notifications, inline replies, and notification-backed chat threads on your PC.
 - SMS and Contacts: Required only if you want to read and send SMS/MMS messages or look up contact names on your PC.
 - Phone and Call Log: Required only if you want incoming call alerts, call history, or dialing from your PC.
 - Media and Photos: Required only if you want the Photos gallery, Shelf latest photo, or folder sync.
 - Camera and Microphone: Required only while streaming your phone as a webcam, taking a Continuity Camera shot, or recording a voice note.</source>
-        <translation>NectarLink 从不一次性请求所有权限。每项功能都独立工作：
+        <translation>Ulak 从不一次性请求所有权限。每项功能都独立工作：
 
 - 通知使用权：仅当你想在电脑上看到手机通知、直接回复以及基于通知的聊天对话时才需要。
 - 短信和通讯录：仅当你想在电脑上读取和发送短信/彩信或查找联系人姓名时才需要。
@@ -2772,8 +2772,8 @@ Android 上的功能层级
     </message>
     <message>
         <location filename="rust_strings.h" line="289"/>
-        <source>NectarLink overview</source>
-        <translation>NectarLink 概览</translation>
+        <source>Ulak overview</source>
+        <translation>Ulak 概览</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="290"/>
@@ -2929,10 +2929,10 @@ What it needs
 Displays a compact pill at the top center of your primary monitor for incoming calls, live file transfer progress, media playback, and optional notification previews.
 
 Where to find it
-- Settings › General › Nectar Island.
+- Settings › General › Ulak Island.
 
 What it needs
-- Turn on Nectar Island in Settings › General and pick which events should appear.</source>
+- Turn on Ulak Island in Settings › General and pick which events should appear.</source>
         <translation>功能
 在主显示器顶部中央显示一个小巧的胶囊，用于来电、实时文件传输进度、媒体播放以及可选的通知预览。
 
@@ -2945,7 +2945,7 @@ What it needs
     <message>
         <location filename="rust_strings.h" line="311"/>
         <source>What it does
-Exposes an opt-in localhost HTTP/JSON and Server-Sent Events API on 127.0.0.1 (default port 53320) protected by a bearer token so scripts, CLI tools, and Stream Deck plugins can trigger NectarLink actions.
+Exposes an opt-in localhost HTTP/JSON and Server-Sent Events API on 127.0.0.1 (default port 53320) protected by a bearer token so scripts, CLI tools, and Stream Deck plugins can trigger Ulak actions.
 
 Where to find it
 - Settings › Connection &amp; About › Local automation API.
@@ -2953,7 +2953,7 @@ Where to find it
 What it needs
 - Turn on Local automation API in Settings › Connection &amp; About and read the bearer token from api-token.json.</source>
         <translation>功能
-在 127.0.0.1（默认端口 53320）上提供一个需手动开启的本地 HTTP/JSON 与服务器发送事件（SSE）API，由持有者令牌保护，供脚本、命令行工具和 Stream Deck 插件触发 NectarLink 的操作。
+在 127.0.0.1（默认端口 53320）上提供一个需手动开启的本地 HTTP/JSON 与服务器发送事件（SSE）API，由持有者令牌保护，供脚本、命令行工具和 Stream Deck 插件触发 Ulak 的操作。
 
 位置
 - 设置 › 连接与关于 › 本地自动化 API。
@@ -2971,7 +2971,7 @@ Where to find it
 - Command Palette › Type on phone with PC keyboard.
 
 What it needs
-- Assist mode (Accessibility service), the NectarLink input method, or Elevated mode on your phone.</source>
+- Assist mode (Accessibility service), the Ulak input method, or Elevated mode on your phone.</source>
         <translation>功能
 将电脑键盘的按键和粘贴的文本直接发送到手机，无需镜像手机屏幕。
 
@@ -2980,7 +2980,7 @@ What it needs
 - 命令面板 › 用电脑键盘在手机上输入。
 
 需要
-- 手机上的辅助模式（无障碍服务）、NectarLink 输入法或提升模式。</translation>
+- 手机上的辅助模式（无障碍服务）、Ulak 输入法或提升模式。</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="313"/>
@@ -3100,7 +3100,7 @@ Where to find it
 - Settings › General › Copy one-time codes.
 
 What it needs
-- Notification Access permission enabled for NectarLink on your Android phone.
+- Notification Access permission enabled for Ulak on your Android phone.
 - The per-device Notifications toggle enabled on your PC.</source>
         <translation>功能
 将手机通知同步到首页动态和 Windows 通知弹窗。你可以直接回复消息、点击操作按钮、清除单条或整组通知，并撤销最近一次清除。
@@ -3111,7 +3111,7 @@ What it needs
 - 设置 › 通用 › 复制一次性验证码。
 
 需要
-- 在 Android 手机上为 NectarLink 开启通知使用权。
+- 在 Android 手机上为 Ulak 开启通知使用权。
 - 在电脑上为该设备开启“通知”开关。</translation>
     </message>
     <message>
@@ -3120,7 +3120,7 @@ What it needs
 Opens a keyboard-first search bar over actions, contacts, message threads, mirrorable apps, phone quick toggles, clipboard history, and navigation pages.
 
 Where to find it
-- Global hotkey Ctrl+Alt+Space (or Ctrl+K inside the NectarLink window).
+- Global hotkey Ctrl+Alt+Space (or Ctrl+K inside the Ulak window).
 - Commands in the top bar.
 
 What it needs
@@ -3129,7 +3129,7 @@ What it needs
 打开一个以键盘为主的搜索栏，覆盖操作、联系人、消息对话、可镜像的应用、手机快捷开关、剪贴板历史和导航页面。
 
 位置
-- 全局快捷键 Ctrl+Alt+Space（在 NectarLink 窗口内也可用 Ctrl+K）。
+- 全局快捷键 Ctrl+Alt+Space（在 Ulak 窗口内也可用 Ctrl+K）。
 - 顶栏中的“命令”。
 
 需要
@@ -3222,7 +3222,7 @@ What it needs
     <message>
         <location filename="rust_strings.h" line="324"/>
         <source>What it does
-Sends files, folders, links, and text between your phone and PC at local network speed. If your phone is offline when you send, NectarLink places the item in the Waiting to send queue and delivers it automatically as soon as your phone reconnects.
+Sends files, folders, links, and text between your phone and PC at local network speed. If your phone is offline when you send, Ulak places the item in the Waiting to send queue and delivers it automatically as soon as your phone reconnects.
 
 Where to find it
 - Home › Send files button, drag-and-drop anywhere on the window, Waiting to send card, and Transfers list.
@@ -3231,7 +3231,7 @@ Where to find it
 What it needs
 - Paired phone and the per-device Files toggle enabled.</source>
         <translation>功能
-以本地网络的速度在手机和电脑之间发送文件、文件夹、链接和文本。如果发送时手机离线，NectarLink 会把它放入“等待发送”队列，并在手机重新连接后自动送达。
+以本地网络的速度在手机和电脑之间发送文件、文件夹、链接和文本。如果发送时手机离线，Ulak 会把它放入“等待发送”队列，并在手机重新连接后自动送达。
 
 位置
 - 首页 › “发送文件”按钮、在窗口任意位置拖放、“等待发送”卡片以及传输列表。
@@ -3270,7 +3270,7 @@ Where to find it
 
 What it needs
 - Automatic PC-to-phone clipboard send works whenever your phone is connected.
-- Background phone-to-PC clipboard sync on Android 10+ uses notifications, the NectarLink quick tile, or Elevated mode.</source>
+- Background phone-to-PC clipboard sync on Android 10+ uses notifications, the Ulak quick tile, or Elevated mode.</source>
         <translation>功能
 在电脑和手机之间共享复制的文本、富文本（HTML/RTF）、图片和少量复制的文件。在本地加密保存最多 50 条历史记录，支持置顶，并为链接、电话号码、地址和快递单号提供智能上下文标签。
 
@@ -3280,7 +3280,7 @@ What it needs
 
 需要
 - 只要手机已连接，电脑到手机的剪贴板就会自动发送。
-- 在 Android 10 及以上版本上，手机到电脑的后台剪贴板同步通过通知、NectarLink 快捷设置图块或提升模式实现。</translation>
+- 在 Android 10 及以上版本上，手机到电脑的后台剪贴板同步通过通知、Ulak 快捷设置图块或提升模式实现。</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="327"/>
@@ -3289,7 +3289,7 @@ Shows incoming and active phone calls on your PC with Answer, Decline, and Rejec
 
 Where to find it
 - Left navigation rail › Calls.
-- Incoming call banner on Home and Nectar Island.
+- Incoming call banner on Home and Ulak Island.
 
 What it needs
 - Phone, Call Log, and Contacts permissions on your Android phone.
@@ -3332,7 +3332,7 @@ What it needs
 Streams your PC&apos;s screen to your phone so you can view your desktop from across the room and use your phone as a trackpad or laser pointer.
 
 Where to find it
-- Started from the NectarLink app on your phone.
+- Started from the Ulak app on your phone.
 - Settings › Devices › Share PC screen to phone.
 
 What it needs
@@ -3341,7 +3341,7 @@ What it needs
 将电脑屏幕串流到手机，让你在房间另一头查看桌面，并把手机用作触控板或激光笔。
 
 位置
-- 从手机上的 NectarLink 应用开始。
+- 从手机上的 Ulak 应用开始。
 - 设置 › 设备 › 将电脑屏幕共享到手机。
 
 需要
@@ -3350,7 +3350,7 @@ What it needs
     <message>
         <location filename="rust_strings.h" line="330"/>
         <source>What it does
-Streams your phone camera into the NectarLink Virtual Camera on Windows so Zoom, Teams, Meet, Discord, and OBS can use your phone&apos;s rear or front camera at up to 4K.
+Streams your phone camera into the Ulak Virtual Camera on Windows so Zoom, Teams, Meet, Discord, and OBS can use your phone&apos;s rear or front camera at up to 4K.
 
 Where to find it
 - Home › Phone as webcam.
@@ -3360,7 +3360,7 @@ What it needs
 - Camera permission on your phone.
 - For other apps to see it: Virtual camera add-on in Settings › Camera &amp; Audio.</source>
         <translation>功能
-将手机摄像头的画面传入 Windows 上的 NectarLink 虚拟摄像头，让 Zoom、Teams、Meet、Discord 和 OBS 使用手机的后置或前置摄像头，最高可达 4K。
+将手机摄像头的画面传入 Windows 上的 Ulak 虚拟摄像头，让 Zoom、Teams、Meet、Discord 和 OBS 使用手机的后置或前置摄像头，最高可达 4K。
 
 位置
 - 首页 › 手机作为摄像头。
@@ -4410,7 +4410,7 @@ What it needs
     <name>IslandWindow</name>
     <message>
         <location filename="../qml/IslandWindow.qml" line="16"/>
-        <source>Nectar Island</source>
+        <source>Ulak Island</source>
         <translation>Nectar 岛</translation>
     </message>
     <message>
@@ -4447,12 +4447,12 @@ What it needs
     </message>
     <message>
         <location filename="../qml/IslandWindow.qml" line="238"/>
-        <source>Nectar Island · %1</source>
+        <source>Ulak Island · %1</source>
         <translation>Nectar 岛 · %1</translation>
     </message>
     <message>
         <location filename="../qml/IslandWindow.qml" line="239"/>
-        <source>Nectar Island · Ready</source>
+        <source>Ulak Island · Ready</source>
         <translation>Nectar 岛 · 就绪</translation>
     </message>
     <message>
@@ -4482,8 +4482,8 @@ What it needs
     </message>
     <message>
         <location filename="../qml/IslandWindow.qml" line="268"/>
-        <source>Click to view in NectarLink</source>
-        <translation>点击在 NectarLink 中查看</translation>
+        <source>Click to view in Ulak</source>
+        <translation>点击在 Ulak 中查看</translation>
     </message>
     <message>
         <location filename="../qml/IslandWindow.qml" line="271"/>
@@ -4560,8 +4560,8 @@ What it needs
     </message>
     <message>
         <location filename="rust_strings.h" line="348"/>
-        <source>Update NectarLink on %1.</source>
-        <translation>请更新 %1 上的 NectarLink。</translation>
+        <source>Update Ulak on %1.</source>
+        <translation>请更新 %1 上的 Ulak。</translation>
     </message>
 </context>
 <context>
@@ -4623,13 +4623,13 @@ What it needs
     </message>
     <message>
         <location filename="../qml/components/LockChip.qml" line="46"/>
-        <source>On your phone, open NectarLink › Settings › Control from your PC and turn on the Accessibility service.</source>
-        <translation>请在手机上打开 NectarLink › 设置 › 从电脑控制，并开启无障碍服务。</translation>
+        <source>On your phone, open Ulak › Settings › Control from your PC and turn on the Accessibility service.</source>
+        <translation>请在手机上打开 Ulak › 设置 › 从电脑控制，并开启无障碍服务。</translation>
     </message>
     <message>
         <location filename="../qml/components/LockChip.qml" line="48"/>
-        <source>Needs Elevated: set up Wireless debugging in NectarLink › Settings › Control from your PC, or connect the phone over USB with USB debugging allowed.</source>
-        <translation>需要高级权限：请在 NectarLink › 设置 › 从电脑控制 中设置无线调试，或通过 USB 连接手机并启用 USB 调试。</translation>
+        <source>Needs Elevated: set up Wireless debugging in Ulak › Settings › Control from your PC, or connect the phone over USB with USB debugging allowed.</source>
+        <translation>需要高级权限：请在 Ulak › 设置 › 从电脑控制 中设置无线调试，或通过 USB 连接手机并启用 USB 调试。</translation>
     </message>
     <message>
         <source>Needs Elevated: set up Wireless debugging or connect over USB.</source>
@@ -4637,33 +4637,33 @@ What it needs
     </message>
     <message>
         <location filename="../qml/components/LockChip.qml" line="50"/>
-        <source>On your phone, set NectarLink as the default SMS/Caller ID app when prompted.</source>
-        <translation>请在手机上按提示将 NectarLink 设为默认短信/来电显示应用。</translation>
+        <source>On your phone, set Ulak as the default SMS/Caller ID app when prompted.</source>
+        <translation>请在手机上按提示将 Ulak 设为默认短信/来电显示应用。</translation>
     </message>
     <message>
         <location filename="../qml/components/LockChip.qml" line="53"/>
-        <source>On your phone, open NectarLink and allow Notification access.</source>
-        <translation>请在手机上打开 NectarLink 并允许通知使用权。</translation>
+        <source>On your phone, open Ulak and allow Notification access.</source>
+        <translation>请在手机上打开 Ulak 并允许通知使用权。</translation>
     </message>
     <message>
         <location filename="../qml/components/LockChip.qml" line="55"/>
-        <source>On your phone, open NectarLink and allow Do Not Disturb access.</source>
-        <translation>请在手机上打开 NectarLink 并允许免打扰权限。</translation>
+        <source>On your phone, open Ulak and allow Do Not Disturb access.</source>
+        <translation>请在手机上打开 Ulak 并允许免打扰权限。</translation>
     </message>
     <message>
         <location filename="../qml/components/LockChip.qml" line="57"/>
-        <source>On your phone, open NectarLink and allow Modify system settings.</source>
-        <translation>请在手机上打开 NectarLink 并允许修改系统设置。</translation>
+        <source>On your phone, open Ulak and allow Modify system settings.</source>
+        <translation>请在手机上打开 Ulak 并允许修改系统设置。</translation>
     </message>
     <message>
         <location filename="../qml/components/LockChip.qml" line="58"/>
-        <source>Open NectarLink on your phone and grant this permission in Settings.</source>
-        <translation>请在手机上打开 NectarLink，并在设置中授予此权限。</translation>
+        <source>Open Ulak on your phone and grant this permission in Settings.</source>
+        <translation>请在手机上打开 Ulak，并在设置中授予此权限。</translation>
     </message>
     <message>
         <location filename="../qml/components/LockChip.qml" line="60"/>
-        <source>Open Settings › Camera &amp; Audio to set up the NectarLink virtual camera add-on.</source>
-        <translation>请打开设置 › 摄像头与音频，设置 NectarLink 虚拟摄像头附加组件。</translation>
+        <source>Open Settings › Camera &amp; Audio to set up the Ulak virtual camera add-on.</source>
+        <translation>请打开设置 › 摄像头与音频，设置 Ulak 虚拟摄像头附加组件。</translation>
     </message>
     <message>
         <location filename="../qml/components/LockChip.qml" line="62"/>
@@ -5232,13 +5232,13 @@ What it needs
     </message>
     <message>
         <location filename="rust_strings.h" line="360"/>
-        <source>Recording from %1, saved in Downloads/Nectarlink</source>
-        <translation>来自 %1 的录制，已保存到 Downloads/Nectarlink</translation>
+        <source>Recording from %1, saved in Downloads/Ulak</source>
+        <translation>来自 %1 的录制，已保存到 Downloads/Ulak</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="361"/>
-        <source>Recording from %1, saved in Downloads\Nectarlink</source>
-        <translation>来自 %1 的录制，已保存到 Downloads\Nectarlink</translation>
+        <source>Recording from %1, saved in Downloads\Ulak</source>
+        <translation>来自 %1 的录制，已保存到 Downloads\Ulak</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="362"/>
@@ -5247,13 +5247,13 @@ What it needs
     </message>
     <message>
         <location filename="rust_strings.h" line="363"/>
-        <source>Saved %1 to Downloads/Nectarlink.</source>
-        <translation>已将 %1 保存到 Downloads/Nectarlink。</translation>
+        <source>Saved %1 to Downloads/Ulak.</source>
+        <translation>已将 %1 保存到 Downloads/Ulak。</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="364"/>
-        <source>Saved %1 to Downloads\Nectarlink.</source>
-        <translation>已将 %1 保存到 Downloads\Nectarlink。</translation>
+        <source>Saved %1 to Downloads\Ulak.</source>
+        <translation>已将 %1 保存到 Downloads\Ulak。</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="365"/>
@@ -5262,13 +5262,13 @@ What it needs
     </message>
     <message>
         <location filename="rust_strings.h" line="366"/>
-        <source>Screenshot from %1, saved in Downloads/Nectarlink</source>
-        <translation>来自 %1 的截图，已保存到 Downloads/Nectarlink</translation>
+        <source>Screenshot from %1, saved in Downloads/Ulak</source>
+        <translation>来自 %1 的截图，已保存到 Downloads/Ulak</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="367"/>
-        <source>Screenshot from %1, saved in Downloads\Nectarlink</source>
-        <translation>来自 %1 的截图，已保存到 Downloads\Nectarlink</translation>
+        <source>Screenshot from %1, saved in Downloads\Ulak</source>
+        <translation>来自 %1 的截图，已保存到 Downloads\Ulak</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="368"/>
@@ -5282,8 +5282,8 @@ What it needs
     </message>
     <message>
         <location filename="rust_strings.h" line="370"/>
-        <source>Set up Wireless debugging in NectarLink on the phone to open its apps here.</source>
-        <translation>在手机上的 NectarLink 中设置无线调试，即可在这里打开其应用。</translation>
+        <source>Set up Wireless debugging in Ulak on the phone to open its apps here.</source>
+        <translation>在手机上的 Ulak 中设置无线调试，即可在这里打开其应用。</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="371"/>
@@ -5292,8 +5292,8 @@ What it needs
     </message>
     <message>
         <location filename="rust_strings.h" line="372"/>
-        <source>The app didn&apos;t open on the phone. Try again, or open NectarLink on the phone to check Wireless debugging.</source>
-        <translation>应用未在手机上打开。请重试，或在手机上打开 NectarLink 检查无线调试。</translation>
+        <source>The app didn&apos;t open on the phone. Try again, or open Ulak on the phone to check Wireless debugging.</source>
+        <translation>应用未在手机上打开。请重试，或在手机上打开 Ulak 检查无线调试。</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="373"/>
@@ -5317,8 +5317,8 @@ What it needs
     </message>
     <message>
         <location filename="rust_strings.h" line="377"/>
-        <source>This phone&apos;s app doesn&apos;t share its screen yet. Update NectarLink on the phone.</source>
-        <translation>此手机上的应用尚不能共享屏幕。请更新手机上的 NectarLink。</translation>
+        <source>This phone&apos;s app doesn&apos;t share its screen yet. Update Ulak on the phone.</source>
+        <translation>此手机上的应用尚不能共享屏幕。请更新手机上的 Ulak。</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="378"/>
@@ -5335,13 +5335,13 @@ What it needs
     </message>
     <message>
         <location filename="../qml/MirrorWindow.qml" line="25"/>
-        <source>%1 · NectarLink</source>
-        <translation>%1 · NectarLink</translation>
+        <source>%1 · Ulak</source>
+        <translation>%1 · Ulak</translation>
     </message>
     <message>
         <location filename="../qml/MirrorWindow.qml" line="25"/>
-        <source>Phone screen · NectarLink</source>
-        <translation>手机屏幕 · NectarLink</translation>
+        <source>Phone screen · Ulak</source>
+        <translation>手机屏幕 · Ulak</translation>
     </message>
     <message>
         <location filename="../qml/MirrorWindow.qml" line="359"/>
@@ -5406,8 +5406,8 @@ What it needs
     </message>
     <message>
         <location filename="../qml/MirrorWindow.qml" line="514"/>
-        <source>To control the phone, turn on Control from your PC in NectarLink&apos;s settings on the phone.</source>
-        <translation>要控制手机，请在手机上的 NectarLink 设置中开启“从电脑控制”。</translation>
+        <source>To control the phone, turn on Control from your PC in Ulak&apos;s settings on the phone.</source>
+        <translation>要控制手机，请在手机上的 Ulak 设置中开启“从电脑控制”。</translation>
     </message>
     <message>
         <location filename="../qml/MirrorWindow.qml" line="523"/>
@@ -5774,8 +5774,8 @@ What it needs
     </message>
     <message>
         <location filename="../qml/pages/PairingPanel.qml" line="114"/>
-        <source>Install NectarLink</source>
-        <translation>安装 NectarLink</translation>
+        <source>Install Ulak</source>
+        <translation>安装 Ulak</translation>
     </message>
     <message>
         <location filename="../qml/pages/PairingPanel.qml" line="114"/>
@@ -5802,8 +5802,8 @@ What it needs
     </message>
     <message>
         <location filename="../qml/pages/PairingPanel.qml" line="187"/>
-        <source>Open NectarLink on your phone</source>
-        <translation>在手机上打开 NectarLink</translation>
+        <source>Open Ulak on your phone</source>
+        <translation>在手机上打开 Ulak</translation>
     </message>
     <message>
         <location filename="../qml/pages/PairingPanel.qml" line="187"/>
@@ -5812,8 +5812,8 @@ What it needs
     </message>
     <message>
         <location filename="../qml/pages/PairingPanel.qml" line="235"/>
-        <source>On your phone, open NectarLink and choose “Pair nearby”. It shows up here.</source>
-        <translation>请在手机上打开 NectarLink 并选择“就近配对”，本机会显示该设备。</translation>
+        <source>On your phone, open Ulak and choose “Pair nearby”. It shows up here.</source>
+        <translation>请在手机上打开 Ulak 并选择“就近配对”，本机会显示该设备。</translation>
     </message>
     <message>
         <location filename="../qml/pages/PairingPanel.qml" line="265"/>
@@ -5923,16 +5923,16 @@ What it needs
     </message>
     <message>
         <location filename="rust_strings.h" line="395"/>
-        <source>Update NectarLink on %1 to use its microphone.</source>
-        <translation>请更新 %1 上的 NectarLink 以使用其麦克风。</translation>
+        <source>Update Ulak on %1 to use its microphone.</source>
+        <translation>请更新 %1 上的 Ulak 以使用其麦克风。</translation>
     </message>
 </context>
 <context>
     <name>PhoneSound</name>
     <message>
         <location filename="rust_strings.h" line="396"/>
-        <source>%1 couldn&apos;t ask to share its sound. Check that NectarLink can show notifications on the phone.</source>
-        <translation>%1 无法请求共享声音。请检查手机上的 NectarLink 是否可以显示通知。</translation>
+        <source>%1 couldn&apos;t ask to share its sound. Check that Ulak can show notifications on the phone.</source>
+        <translation>%1 无法请求共享声音。请检查手机上的 Ulak 是否可以显示通知。</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="397"/>
@@ -5946,8 +5946,8 @@ What it needs
     </message>
     <message>
         <location filename="rust_strings.h" line="399"/>
-        <source>Update NectarLink on %1 to play its sound here.</source>
-        <translation>请在 %1 上更新 NectarLink，以在此播放其声音。</translation>
+        <source>Update Ulak on %1 to play its sound here.</source>
+        <translation>请在 %1 上更新 Ulak，以在此播放其声音。</translation>
     </message>
 </context>
 <context>
@@ -5999,8 +5999,8 @@ What it needs
     </message>
     <message>
         <location filename="rust_strings.h" line="409"/>
-        <source>Update NectarLink on %1 to back up its photos.</source>
-        <translation>请在 %1 上更新 NectarLink 以备份其照片。</translation>
+        <source>Update Ulak on %1 to back up its photos.</source>
+        <translation>请在 %1 上更新 Ulak 以备份其照片。</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="410"/>
@@ -6012,8 +6012,8 @@ What it needs
     <name>Photos</name>
     <message>
         <location filename="rust_strings.h" line="411"/>
-        <source>%1 of %2 couldn&apos;t be moved to %3. They&apos;re in Downloads\Nectarlink.</source>
-        <translation>%2 项中有 %1 项无法移动到 %3。它们在 Downloads\Nectarlink 中。</translation>
+        <source>%1 of %2 couldn&apos;t be moved to %3. They&apos;re in Downloads\Ulak.</source>
+        <translation>%2 项中有 %1 项无法移动到 %3。它们在 Downloads\Ulak 中。</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="412"/>
@@ -6077,8 +6077,8 @@ What it needs
     </message>
     <message>
         <location filename="rust_strings.h" line="424"/>
-        <source>The photo couldn&apos;t be copied. It&apos;s in Downloads\Nectarlink.</source>
-        <translation>无法复制照片。它在 Downloads\Nectarlink 中。</translation>
+        <source>The photo couldn&apos;t be copied. It&apos;s in Downloads\Ulak.</source>
+        <translation>无法复制照片。它在 Downloads\Ulak 中。</translation>
     </message>
 </context>
 <context>
@@ -6387,8 +6387,8 @@ What it needs
     </message>
     <message>
         <location filename="rust_strings.h" line="430"/>
-        <source>Update NectarLink on %1 to play on it.</source>
-        <translation>请更新 %1 上的 NectarLink 以在其上播放。</translation>
+        <source>Update Ulak on %1 to play on it.</source>
+        <translation>请更新 %1 上的 Ulak 以在其上播放。</translation>
     </message>
 </context>
 <context>
@@ -6449,8 +6449,8 @@ What it needs
     </message>
     <message>
         <location filename="rust_strings.h" line="439"/>
-        <source>Send to %1 with NectarLink</source>
-        <translation>用 NectarLink 发送到 %1</translation>
+        <source>Send to %1 with Ulak</source>
+        <translation>用 Ulak 发送到 %1</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="440"/>
@@ -6923,8 +6923,8 @@ What it needs
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="923"/>
-        <source>NectarLink follows Windows unless you pick one.</source>
-        <translation>除非你另行选择，NectarLink 会跟随 Windows 的语言。</translation>
+        <source>Ulak follows Windows unless you pick one.</source>
+        <translation>除非你另行选择，Ulak 会跟随 Windows 的语言。</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="931"/>
@@ -6962,7 +6962,7 @@ What it needs
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="1026"/>
         <location filename="../qml/pages/SettingsPage.qml" line="1029"/>
-        <source>Nectar Island</source>
+        <source>Ulak Island</source>
         <translation>Nectar 岛</translation>
     </message>
     <message>
@@ -7869,8 +7869,8 @@ What it needs
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="3272"/>
-        <source>NectarLink %1</source>
-        <translation>NectarLink %1</translation>
+        <source>Ulak %1</source>
+        <translation>Ulak %1</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="3275"/>
@@ -7988,8 +7988,8 @@ What it needs
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="3569"/>
-        <source>Wi-Fi networks this PC has joined before. Your system keeps their passwords; NectarLink never sees them.</source>
-        <translation>此电脑以前连接过的 Wi-Fi 网络。密码由系统保存，NectarLink 不会看到。</translation>
+        <source>Wi-Fi networks this PC has joined before. Your system keeps their passwords; Ulak never sees them.</source>
+        <translation>此电脑以前连接过的 Wi-Fi 网络。密码由系统保存，Ulak 不会看到。</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="3570"/>
@@ -7998,8 +7998,8 @@ What it needs
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="3572"/>
-        <source>Wi-Fi networks this PC has joined before. Windows keeps their passwords; NectarLink never sees them.</source>
-        <translation>此电脑以前连接过的 Wi-Fi 网络。密码由 Windows 保存，NectarLink 不会看到。</translation>
+        <source>Wi-Fi networks this PC has joined before. Windows keeps their passwords; Ulak never sees them.</source>
+        <translation>此电脑以前连接过的 Wi-Fi 网络。密码由 Windows 保存，Ulak 不会看到。</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="3573"/>
@@ -8025,8 +8025,8 @@ What it needs
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="922"/>
-        <source>NectarLink follows the system unless you pick one.</source>
-        <translation>除非你另行选择，NectarLink 会跟随系统语言。</translation>
+        <source>Ulak follows the system unless you pick one.</source>
+        <translation>除非你另行选择，Ulak 会跟随系统语言。</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="2325"/>
@@ -8035,8 +8035,8 @@ What it needs
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="3455"/>
-        <source>The phone asks once to let this PC in. NectarLink there also needs All files access, or this folder under Selected folders only.</source>
-        <translation>手机会询问一次是否允许这台电脑访问。手机上的 NectarLink 还需要“所有文件访问权限”，或在“仅选定的文件夹”中加入此文件夹。</translation>
+        <source>The phone asks once to let this PC in. Ulak there also needs All files access, or this folder under Selected folders only.</source>
+        <translation>手机会询问一次是否允许这台电脑访问。手机上的 Ulak 还需要“所有文件访问权限”，或在“仅选定的文件夹”中加入此文件夹。</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="3681"/>
@@ -8111,8 +8111,8 @@ What it needs
     </message>
     <message>
         <location filename="rust_strings.h" line="447"/>
-        <source>Couldn&apos;t uninstall NectarLink: %1</source>
-        <translation>无法卸载 NectarLink：%1</translation>
+        <source>Couldn&apos;t uninstall Ulak: %1</source>
+        <translation>无法卸载 Ulak：%1</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="448"/>
@@ -8141,8 +8141,8 @@ What it needs
     </message>
     <message>
         <location filename="rust_strings.h" line="453"/>
-        <source>The uninstaller is missing. Reinstall NectarLink, then uninstall it.</source>
-        <translation>缺少卸载程序。请重新安装 NectarLink，然后再卸载。</translation>
+        <source>The uninstaller is missing. Reinstall Ulak, then uninstall it.</source>
+        <translation>缺少卸载程序。请重新安装 Ulak，然后再卸载。</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="454"/>
@@ -8169,18 +8169,18 @@ What it needs
     <name>SetupWindow</name>
     <message>
         <location filename="../qml/setup/SetupWindow.qml" line="51"/>
-        <source>Uninstall NectarLink</source>
-        <translation>卸载 NectarLink</translation>
+        <source>Uninstall Ulak</source>
+        <translation>卸载 Ulak</translation>
     </message>
     <message>
         <location filename="../qml/setup/SetupWindow.qml" line="51"/>
-        <source>NectarLink Setup</source>
-        <translation>NectarLink 安装程序</translation>
+        <source>Ulak Setup</source>
+        <translation>Ulak 安装程序</translation>
     </message>
     <message>
         <location filename="../qml/setup/SetupWindow.qml" line="67"/>
-        <source>Install NectarLink in</source>
-        <translation>将 NectarLink 安装到</translation>
+        <source>Install Ulak in</source>
+        <translation>将 Ulak 安装到</translation>
     </message>
     <message>
         <location filename="../qml/setup/SetupWindow.qml" line="120"/>
@@ -8192,13 +8192,13 @@ What it needs
     </message>
     <message>
         <location filename="../qml/setup/SetupWindow.qml" line="187"/>
-        <source>NectarLink</source>
-        <translation>NectarLink</translation>
+        <source>Ulak</source>
+        <translation>Ulak</translation>
     </message>
     <message>
         <location filename="../qml/setup/SetupWindow.qml" line="216"/>
-        <source>Couldn&apos;t uninstall NectarLink</source>
-        <translation>无法卸载 NectarLink</translation>
+        <source>Couldn&apos;t uninstall Ulak</source>
+        <translation>无法卸载 Ulak</translation>
     </message>
     <message>
         <location filename="../qml/setup/SetupWindow.qml" line="216"/>
@@ -8207,28 +8207,28 @@ What it needs
     </message>
     <message>
         <location filename="../qml/setup/SetupWindow.qml" line="218"/>
-        <source>Uninstalling NectarLink</source>
-        <translation>正在卸载 NectarLink</translation>
+        <source>Uninstalling Ulak</source>
+        <translation>正在卸载 Ulak</translation>
     </message>
     <message>
         <location filename="../qml/setup/SetupWindow.qml" line="219"/>
-        <source>Updating NectarLink</source>
-        <translation>正在更新 NectarLink</translation>
+        <source>Updating Ulak</source>
+        <translation>正在更新 Ulak</translation>
     </message>
     <message>
         <location filename="../qml/setup/SetupWindow.qml" line="220"/>
-        <source>Installing NectarLink</source>
-        <translation>正在安装 NectarLink</translation>
+        <source>Installing Ulak</source>
+        <translation>正在安装 Ulak</translation>
     </message>
     <message>
         <location filename="../qml/setup/SetupWindow.qml" line="221"/>
-        <source>Uninstall NectarLink?</source>
-        <translation>要卸载 NectarLink 吗？</translation>
+        <source>Uninstall Ulak?</source>
+        <translation>要卸载 Ulak 吗？</translation>
     </message>
     <message>
         <location filename="../qml/setup/SetupWindow.qml" line="236"/>
-        <source>Sorry to see you go. This uninstalls NectarLink and deletes its settings and pairings on this PC. Files you received stay in %1.</source>
-        <translation>很遗憾你要离开。这会卸载 NectarLink，并删除这台电脑上的设置和配对。你收到的文件仍保留在 %1。</translation>
+        <source>Sorry to see you go. This uninstalls Ulak and deletes its settings and pairings on this PC. Files you received stay in %1.</source>
+        <translation>很遗憾你要离开。这会卸载 Ulak，并删除这台电脑上的设置和配对。你收到的文件仍保留在 %1。</translation>
     </message>
     <message>
         <location filename="../qml/setup/SetupWindow.qml" line="238"/>
@@ -8277,8 +8277,8 @@ What it needs
     </message>
     <message>
         <location filename="../qml/setup/SetupWindow.qml" line="298"/>
-        <source>Keep NectarLink</source>
-        <translation>保留 NectarLink</translation>
+        <source>Keep Ulak</source>
+        <translation>保留 Ulak</translation>
     </message>
     <message>
         <location filename="../qml/setup/SetupWindow.qml" line="356"/>
@@ -8308,13 +8308,13 @@ What it needs
     </message>
     <message>
         <location filename="../qml/setup/SetupWindow.qml" line="469"/>
-        <source>NectarLink is uninstalled</source>
-        <translation>NectarLink 已卸载</translation>
+        <source>Ulak is uninstalled</source>
+        <translation>Ulak 已卸载</translation>
     </message>
     <message>
         <location filename="../qml/setup/SetupWindow.qml" line="469"/>
-        <source>NectarLink is ready</source>
-        <translation>NectarLink 已就绪</translation>
+        <source>Ulak is ready</source>
+        <translation>Ulak 已就绪</translation>
     </message>
     <message>
         <location filename="../qml/setup/SetupWindow.qml" line="481"/>
@@ -8338,13 +8338,13 @@ What it needs
     </message>
     <message>
         <location filename="../qml/setup/SetupWindow.qml" line="531"/>
-        <source>Open NectarLink</source>
-        <translation>打开 NectarLink</translation>
+        <source>Open Ulak</source>
+        <translation>打开 Ulak</translation>
     </message>
     <message>
         <location filename="../qml/setup/SetupWindow.qml" line="591"/>
-        <source>NectarLink goes into Program Files, or the folder you choose, for everyone on this PC. Setup also:</source>
-        <translation>NectarLink 将安装到 Program Files 或你选择的文件夹，供本机所有用户使用。安装程序还会：</translation>
+        <source>Ulak goes into Program Files, or the folder you choose, for everyone on this PC. Setup also:</source>
+        <translation>Ulak 将安装到 Program Files 或你选择的文件夹，供本机所有用户使用。安装程序还会：</translation>
     </message>
     <message>
         <location filename="../qml/setup/SetupWindow.qml" line="593"/>
@@ -8352,8 +8352,8 @@ What it needs
         <translation>在只有管理员能更改该文件夹时，添加一个无需管理员提示即可安装更新的任务</translation>
     </message>
     <message>
-        <source>NectarLink goes into Program Files for everyone on this PC. Setup also:</source>
-        <translation type="vanished">NectarLink 将安装到 Program Files，供本机所有用户使用。安装程序还会：</translation>
+        <source>Ulak goes into Program Files for everyone on this PC. Setup also:</source>
+        <translation type="vanished">Ulak 将安装到 Program Files，供本机所有用户使用。安装程序还会：</translation>
     </message>
     <message>
         <location filename="../qml/setup/SetupWindow.qml" line="592"/>
@@ -8393,8 +8393,8 @@ What it needs
     <name>ShelfWindow</name>
     <message>
         <location filename="../qml/ShelfWindow.qml" line="16"/>
-        <source>NectarLink Shelf</source>
-        <translation>NectarLink 收纳架</translation>
+        <source>Ulak Shelf</source>
+        <translation>Ulak 收纳架</translation>
     </message>
     <message>
         <location filename="../qml/ShelfWindow.qml" line="53"/>
@@ -8593,13 +8593,13 @@ What it needs
     </message>
     <message>
         <location filename="rust_strings.h" line="459"/>
-        <source>On the phone, allow All files access for NectarLink.</source>
-        <translation>请在手机上为 NectarLink 开启“所有文件访问权限”。</translation>
+        <source>On the phone, allow All files access for Ulak.</source>
+        <translation>请在手机上为 Ulak 开启“所有文件访问权限”。</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="460"/>
-        <source>On the phone, turn on Browse this phone&apos;s storage in File Explorer in NectarLink.</source>
-        <translation>请在手机的 NectarLink 中打开“在文件资源管理器中浏览此手机的存储”。</translation>
+        <source>On the phone, turn on Browse this phone&apos;s storage in File Explorer in Ulak.</source>
+        <translation>请在手机的 Ulak 中打开“在文件资源管理器中浏览此手机的存储”。</translation>
     </message>
 </context>
 <context>
@@ -9067,8 +9067,8 @@ What it needs
     <name>Transfers</name>
     <message>
         <location filename="rust_strings.h" line="490"/>
-        <source>Accept in NectarLink to save to Downloads\Nectarlink</source>
-        <translation>在 NectarLink 中接受即可保存到 Downloads\Nectarlink</translation>
+        <source>Accept in Ulak to save to Downloads\Ulak</source>
+        <translation>在 Ulak 中接受即可保存到 Downloads\Ulak</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="491"/>
@@ -9077,13 +9077,13 @@ What it needs
     </message>
     <message>
         <location filename="rust_strings.h" line="492"/>
-        <source>From %1, opened from Downloads\Nectarlink</source>
-        <translation>来自 %1，已从 Downloads\Nectarlink 打开</translation>
+        <source>From %1, opened from Downloads\Ulak</source>
+        <translation>来自 %1，已从 Downloads\Ulak 打开</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="493"/>
-        <source>From %1, saved in Downloads\Nectarlink</source>
-        <translation>来自 %1，已保存到 Downloads\Nectarlink</translation>
+        <source>From %1, saved in Downloads\Ulak</source>
+        <translation>来自 %1，已保存到 Downloads\Ulak</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="494"/>
@@ -9110,28 +9110,28 @@ What it needs
     </message>
     <message>
         <location filename="rust_strings.h" line="498"/>
-        <source>NectarLink %1 is available</source>
-        <translation>NectarLink %1 已发布</translation>
+        <source>Ulak %1 is available</source>
+        <translation>Ulak %1 已发布</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="499"/>
-        <source>NectarLink %1 is available.</source>
-        <translation>NectarLink %1 已发布。</translation>
+        <source>Ulak %1 is available.</source>
+        <translation>Ulak %1 已发布。</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="500"/>
-        <source>NectarLink is still on the version you had. Try again from Settings.</source>
-        <translation>NectarLink 仍是原来的版本。请在设置中重试。</translation>
+        <source>Ulak is still on the version you had. Try again from Settings.</source>
+        <translation>Ulak 仍是原来的版本。请在设置中重试。</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="501"/>
-        <source>NectarLink is up to date.</source>
-        <translation>NectarLink 已是最新版本。</translation>
+        <source>Ulak is up to date.</source>
+        <translation>Ulak 已是最新版本。</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="502"/>
-        <source>NectarLink is updated to %1</source>
-        <translation>NectarLink 已更新到 %1</translation>
+        <source>Ulak is updated to %1</source>
+        <translation>Ulak 已更新到 %1</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="503"/>
@@ -9160,8 +9160,8 @@ What it needs
     </message>
     <message>
         <location filename="rust_strings.h" line="508"/>
-        <source>The update is installed. Restart NectarLink to use it.</source>
-        <translation>更新已安装。请重新启动 NectarLink 以使用新版本。</translation>
+        <source>The update is installed. Restart Ulak to use it.</source>
+        <translation>更新已安装。请重新启动 Ulak 以使用新版本。</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="509"/>
@@ -9348,8 +9348,8 @@ What it needs
     </message>
     <message>
         <location filename="../qml/pages/WalkthroughPage.qml" line="1555"/>
-        <source>Keep NectarLink ready in the system tray when you sign in.</source>
-        <translation>登录后让 NectarLink 常驻系统托盘待命。</translation>
+        <source>Keep Ulak ready in the system tray when you sign in.</source>
+        <translation>登录后让 Ulak 常驻系统托盘待命。</translation>
     </message>
     <message>
         <location filename="../qml/pages/WalkthroughPage.qml" line="1613"/>
@@ -9394,13 +9394,13 @@ What it needs
     <name>WelcomePage</name>
     <message>
         <location filename="../qml/pages/WelcomePage.qml" line="36"/>
-        <source>Welcome to NectarLink</source>
-        <translation>欢迎使用 NectarLink</translation>
+        <source>Welcome to Ulak</source>
+        <translation>欢迎使用 Ulak</translation>
     </message>
     <message>
         <location filename="../qml/pages/WelcomePage.qml" line="46"/>
-        <source>NectarLink couldn&apos;t start.</source>
-        <translation>NectarLink 无法启动。</translation>
+        <source>Ulak couldn&apos;t start.</source>
+        <translation>Ulak 无法启动。</translation>
     </message>
     <message>
         <location filename="../qml/pages/WelcomePage.qml" line="47"/>

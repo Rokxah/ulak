@@ -1,10 +1,10 @@
 # Storage and Retention
 
-NectarLink persists all relational state in an embedded SQLite database (`nectarlink.db`) managed by `core/nectarlink-core/src/store.rs`, supplemented by a `KeyProtector`-encrypted clipboard vault (`core/nectarlink-core/src/clipboard_history.rs`) and bounded desktop notification state files (`desktop/app/src/notification_store.rs`).
+Ulak persists all relational state in an embedded SQLite database (`nectarlink.db`) managed by `core/nectarlink-core/src/store.rs`, supplemented by a `KeyProtector`-encrypted clipboard vault (`core/nectarlink-core/src/clipboard_history.rs`) and bounded desktop notification state files (`desktop/app/src/notification_store.rs`).
 
 ## Data Directory Layout
 
-- **Windows (`%LOCALAPPDATA%\Nectarlink`)** or custom `--data-dir`
+- **Windows (`%LOCALAPPDATA%\Ulak`)** or custom `--data-dir`
 - **Android (`context.filesDir`)**
 
 ```text
@@ -63,7 +63,7 @@ In addition to SQLite conversation threads, the desktop app maintains fast JSON-
 
 Implemented across `core/nectarlink-core/src/store.rs`, `core/nectarlink-core/src/node.rs`, and `core/nectarlink-core/src/transfer.rs`.
 
-Whenever a user sends files, folders, links, clipboard payloads, voice recordings, handoff documents, task alerts, or camera requests while the target device is offline (or when the connection drops mid-operation), NectarLink enqueues the action into `send_queue` and delivers it automatically when a session is established.
+Whenever a user sends files, folders, links, clipboard payloads, voice recordings, handoff documents, task alerts, or camera requests while the target device is offline (or when the connection drops mid-operation), Ulak enqueues the action into `send_queue` and delivers it automatically when a session is established.
 
 ### Queue Item Kinds and Default TTLs (`QueueKind`)
 

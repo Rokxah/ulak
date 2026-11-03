@@ -62,7 +62,7 @@ fn render_desktop_entry(exe: &Path) -> String {
     format!(
         "[Desktop Entry]\n\
          Type=Application\n\
-         Name=NectarLink\n\
+         Name=Ulak\n\
          Comment=Link your Android phone and PC\n\
          Exec={cmd}\n\
          Icon=nectarlink\n\
@@ -189,7 +189,7 @@ mod tests {
     #[test]
     fn launchers_run_the_appimage_not_its_mount() {
         let dir = tempfile::tempdir().unwrap();
-        let appimage = dir.path().join("Nectarlink-0.1.5-x86_64.AppImage");
+        let appimage = dir.path().join("Ulak-0.1.5-x86_64.AppImage");
         fs::write(&appimage, b"").unwrap();
         let mounted = Path::new("/tmp/.mount_NectarAbc123/usr/bin/nectarlink-desktop");
         assert_eq!(launcher_from(mounted, Some(appimage.clone())), appimage);

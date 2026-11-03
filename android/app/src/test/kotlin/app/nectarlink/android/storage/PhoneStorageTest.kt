@@ -39,7 +39,7 @@ class PhoneStorageTest {
             val root = File(temp, "shared").apply { mkdirs() }
             val outside = File(temp, "outside").apply { mkdirs() }
             val outsideSecret = File(outside, "secret.txt").apply { writeText("secret") }
-            val androidData = File(root, "Android/data/app.nectarlink").apply { mkdirs() }
+            val androidData = File(root, "Android/data/app.ulak").apply { mkdirs() }
             File(androidData, "private.db").writeText("private")
             val docs = File(root, "Documents").apply { mkdirs() }
             val note = File(docs, "note.txt").apply { writeText("hello") }
@@ -75,7 +75,7 @@ class PhoneStorageTest {
                 PhoneStorage.resolveExistingInRoot(
                     root,
                     blocked,
-                    "Android/data/app.nectarlink/private.db",
+                    "Android/data/app.ulak/private.db",
                     allowRoot = false,
                 )
                 fail("expected Denied for Android/data")
@@ -86,7 +86,7 @@ class PhoneStorageTest {
                 PhoneStorage.resolveTargetInRoot(
                     root,
                     blocked,
-                    "Android/data/app.nectarlink/new.db",
+                    "Android/data/app.ulak/new.db",
                 )
                 fail("expected Denied for target in Android/data")
             } catch (_: StorageFailure.Denied) {

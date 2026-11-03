@@ -174,7 +174,7 @@ fn names_match(candidate: &str, phone_name: &str) -> bool {
 
 /// Matches a BlueZ device candidate ONLY if:
 /// 1. It carries a valid `NCTR\x01` manufacturer payload (not our own prefix), OR
-/// 2. It advertises the NectarLink BLE service UUID (`f81d4fae-7dec-11d0-a765-00a0c91e6bf6`), OR
+/// 2. It advertises the Ulak BLE service UUID (`f81d4fae-7dec-11d0-a765-00a0c91e6bf6`), OR
 /// 3. Its `Name` or `Alias` matches a paired phone in `hub`.
 ///
 /// Arbitrary Bluetooth peripherals (headphones, mice, keyboards, etc.) never match.
@@ -591,7 +591,7 @@ mod tests {
         };
         assert_eq!(match_nectarlink_device(&by_name, &own_prefix, &paired), Some(phone_prefix));
 
-        // Device advertising the NectarLink BLE service UUID matches.
+        // Device advertising the Ulak BLE service UUID matches.
         let by_uuid = BluezDeviceCandidate {
             address: Some("AA:BB:CC:DD:EE:FF".into()),
             name: Some("Android".into()),

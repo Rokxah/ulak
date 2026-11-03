@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-//! NectarLink for Windows.
+//! Ulak for Windows.
 //!
 //! One process: Rust runs the core (`nectarlink-core`) and OS integration,
 //! Qt Quick draws the UI. Windows are created when opened and destroyed when
@@ -217,7 +217,7 @@ impl Platform for DesktopPlatform {
 /// Command-line options (also used by shortcuts and autostart).
 #[derive(Debug, Default)]
 struct Options {
-    /// Where to keep data (default: %LOCALAPPDATA%\Nectarlink).
+    /// Where to keep data (default: %LOCALAPPDATA%\Ulak).
     data_dir: Option<PathBuf>,
     /// Start in the tray without opening the window (autostart).
     minimized: bool,
@@ -378,7 +378,7 @@ fn parse_options_from<I: IntoIterator<Item = std::ffi::OsString>>(iter: I) -> Op
 }
 
 fn default_data_dir() -> PathBuf {
-    dirs::data_local_dir().unwrap_or_else(std::env::temp_dir).join("Nectarlink")
+    dirs::data_local_dir().unwrap_or_else(std::env::temp_dir).join("Ulak")
 }
 
 /// Network changes come in bursts; tell the core once things settle.
@@ -400,7 +400,7 @@ fn watch_network() {
     });
 }
 
-/// Phone notifications as Windows toasts, sent by "NectarLink" with the
+/// Phone notifications as Windows toasts, sent by "Ulak" with the
 /// app's icon (written as a PNG, which Windows needs as a file).
 fn start_toasts() {
     let icon = core_host::host().data_dir.join("cache").join("nectarlink.png");
@@ -449,7 +449,7 @@ fn run_setup_window(mode: setup::Mode) -> ExitCode {
     #[cfg(not(target_os = "linux"))]
     let mut app = QGuiApplication::new();
     if let Some(mut app) = app.as_mut() {
-        app.as_mut().set_application_name(&QString::from("NectarLink Setup"));
+        app.as_mut().set_application_name(&QString::from("Ulak Setup"));
         app.as_mut().set_application_version(&QString::from(env!("CARGO_PKG_VERSION")));
     }
     // Before any QML loads, so every string is right on the first pass.
@@ -669,7 +669,7 @@ fn main() -> ExitCode {
     #[cfg(not(target_os = "linux"))]
     let mut app = QGuiApplication::new();
     if let Some(mut app) = app.as_mut() {
-        app.as_mut().set_application_name(&QString::from("Nectarlink"));
+        app.as_mut().set_application_name(&QString::from("Ulak"));
         app.as_mut().set_application_version(&QString::from(env!("CARGO_PKG_VERSION")));
     }
     // Before any QML loads, so every string is right on the first pass.

@@ -5,7 +5,7 @@ import app.nectarlink
 
 // Photos: the phone's gallery on the PC. Albums on the left, a virtualized
 // GridView of thumbnails grouped by day on the right, multi-select, Save (to
-// a chosen folder or Downloads\Nectarlink), Copy to clipboard, Open in the
+// a chosen folder or Downloads\Ulak), Copy to clipboard, Open in the
 // Windows Photos app, and an in-app viewer with arrow-key navigation.
 Item {
     id: page

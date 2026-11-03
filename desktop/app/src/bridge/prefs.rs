@@ -79,7 +79,7 @@ pub mod qobject {
         #[qproperty(i32, battery_full_threshold)]
         /// Folder where voice recordings from phones are saved.
         #[qproperty(QString, recordings_folder)]
-        /// Whether `recordings_folder` is the default (`Documents\Nectarlink Recordings`).
+        /// Whether `recordings_folder` is the default (`Documents\Ulak Recordings`).
         #[qproperty(bool, recordings_folder_is_default)]
         /// "m4a", "mp3", "wav" or "flac".
         #[qproperty(QString, recordings_format)]
@@ -105,15 +105,15 @@ pub mod qobject {
         #[qproperty(bool, open_shared_files)]
         /// Send the clipboard to the phone when control moves to it.
         #[qproperty(bool, flow_follow_clipboard)]
-        /// Floating Nectar Island pill at the top center of the screen.
+        /// Floating Ulak Island pill at the top center of the screen.
         #[qproperty(bool, nectar_island)]
-        /// Trigger Nectar Island for phone calls.
+        /// Trigger Ulak Island for phone calls.
         #[qproperty(bool, nectar_island_calls)]
-        /// Trigger Nectar Island for file transfers.
+        /// Trigger Ulak Island for file transfers.
         #[qproperty(bool, nectar_island_transfers)]
-        /// Trigger Nectar Island for media playback.
+        /// Trigger Ulak Island for media playback.
         #[qproperty(bool, nectar_island_media)]
-        /// Trigger Nectar Island for phone notifications.
+        /// Trigger Ulak Island for phone notifications.
         #[qproperty(bool, nectar_island_notifications)]
         /// The dock at a screen edge.
         #[qproperty(bool, dock)]
@@ -192,7 +192,7 @@ pub mod qobject {
         /// Sets the folder where voice recordings are saved (from a `file:` URL or path).
         #[qinvokable]
         fn choose_recordings_folder(self: Pin<&mut Preferences>, url: &QString);
-        /// Resets the recordings folder to `Documents\Nectarlink Recordings`.
+        /// Resets the recordings folder to `Documents\Ulak Recordings`.
         #[qinvokable]
         fn reset_recordings_folder(self: Pin<&mut Preferences>);
         /// Adds a folder sync rule between a phone folder and a PC folder.

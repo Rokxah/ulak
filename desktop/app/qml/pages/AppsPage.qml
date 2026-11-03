@@ -91,7 +91,7 @@ Item {
                     ? qsTr("Opening apps in windows isn't supported on this phone.")
                     : String(page.feature.reason || "").startsWith("android:")
                         ? qsTr("Opening apps in windows needs Android %1 or newer on the phone.").arg(page.feature.reason.slice(8))
-                        : (page.feature.reason || qsTr("Set up Wireless debugging in NectarLink on the phone to open its apps here."))
+                        : (page.feature.reason || qsTr("Set up Wireless debugging in Ulak on the phone to open its apps here."))
         }
         LockChip {
             anchors.horizontalCenter: parent.horizontalCenter

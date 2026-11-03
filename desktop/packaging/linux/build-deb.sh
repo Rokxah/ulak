@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # SPDX-License-Identifier: GPL-3.0-or-later
-# Builds a Debian/Ubuntu .deb package for NectarLink Desktop:
+# Builds a Debian/Ubuntu .deb package for Ulak Desktop:
 #   dist/nectarlink_<version>_<arch>.deb
 
 set -euo pipefail
@@ -181,7 +181,7 @@ Recommends: fuse3, curl | wget, ffmpeg, gstreamer1.0-tools, gstreamer1.0-pipewir
 Maintainer: thtbee <https://github.com/thtbee/nectarlink>
 Homepage: https://github.com/thtbee/nectarlink
 Description: Connect your Android phone and Linux PC over LAN
- NectarLink links your Android phone and Linux desktop over your local
+ Ulak links your Android phone and Linux desktop over your local
  network with end-to-end encryption, clipboard sync, notification
  mirroring, file transfer, screen/camera/audio streaming, and SMS/calls.
 EOF

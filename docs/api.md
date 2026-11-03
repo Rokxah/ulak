@@ -1,6 +1,6 @@
-# NectarLink Local Authenticated Automation API (`docs/api.md`)
+# Ulak Local Authenticated Automation API (`docs/api.md`)
 
-NectarLink for Windows includes an opt-in, loopback-only HTTP/JSON API (`127.0.0.1:<port>`, default port `53320`) designed for local desktop automation tools:
+Ulak for Windows includes an opt-in, loopback-only HTTP/JSON API (`127.0.0.1:<port>`, default port `53320`) designed for local desktop automation tools:
 
 - **PowerToys Command Palette / PowerToys Run** (`tools/powertoys-extension`)
 - **AutoHotkey / Raycast for Windows / Flow Launcher**
@@ -10,9 +10,9 @@ NectarLink for Windows includes an opt-in, loopback-only HTTP/JSON API (`127.0.0
 
 ## 1. Enabling the API & Discovering the Token
 
-The Local API is **off by default**. Enable it in **Settings → Local automation API** (or set `"localApiEnabled": true` in `%LOCALAPPDATA%\Nectarlink\desktop-settings.json`).
+The Local API is **off by default**. Enable it in **Settings → Local automation API** (or set `"localApiEnabled": true` in `%LOCALAPPDATA%\Ulak\desktop-settings.json`).
 
-When enabled, NectarLink binds strictly to `127.0.0.1:<localApiPort>` (default `53320`) and writes `<data-dir>\api-token.json` (`%LOCALAPPDATA%\Nectarlink\api-token.json`):
+When enabled, Ulak binds strictly to `127.0.0.1:<localApiPort>` (default `53320`) and writes `<data-dir>\api-token.json` (`%LOCALAPPDATA%\Ulak\api-token.json`):
 
 ```json
 {
@@ -236,7 +236,7 @@ Returns recent cross-device timeline items. Accepts optional query parameters `?
       "timestamp": 1730000000,
       "title": "notes.txt",
       "detail": "File",
-      "target": "C:\\Users\\you\\Downloads\\Nectarlink\\notes.txt",
+      "target": "C:\\Users\\you\\Downloads\\Ulak\\notes.txt",
       "sizeBytes": 5
     }
   ]
@@ -254,7 +254,7 @@ separated by newlines) or the link.
 ### PowerShell
 
 ```powershell
-$cfg = Get-Content "$env:LOCALAPPDATA\Nectarlink\api-token.json" | ConvertFrom-Json
+$cfg = Get-Content "$env:LOCALAPPDATA\Ulak\api-token.json" | ConvertFrom-Json
 $headers = @{ Authorization = "Bearer $($cfg.token)" }
 
 # List paired devices
@@ -268,8 +268,8 @@ Invoke-RestMethod -Method Post -Uri "http://127.0.0.1:$($cfg.port)/v1/ring" `
 ### curl
 
 ```bash
-TOKEN=$(jq -r .token "$LOCALAPPDATA/Nectarlink/api-token.json")
-PORT=$(jq -r .port "$LOCALAPPDATA/Nectarlink/api-token.json")
+TOKEN=$(jq -r .token "$LOCALAPPDATA/Ulak/api-token.json")
+PORT=$(jq -r .port "$LOCALAPPDATA/Ulak/api-token.json")
 
 curl -s -H "Authorization: Bearer $TOKEN" "http://127.0.0.1:$PORT/v1/devices"
 curl -s -X POST -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" \

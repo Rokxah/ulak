@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # Builds an AppDir layout (including bundled Qt 6 runtime libraries, plugins,
 # and QML modules) and invokes appimagetool (if present in PATH) to produce
-# dist/Nectarlink-<version>-<arch>.AppImage.
+# dist/Ulak-<version>-<arch>.AppImage.
 
 set -euo pipefail
 
@@ -40,7 +40,7 @@ fi
 STAGE_DIR="$(mktemp -d -t nectarlink-appimage-XXXXXX)"
 trap 'rm -rf "${STAGE_DIR}"' EXIT
 
-APPDIR="${STAGE_DIR}/NectarLink.AppDir"
+APPDIR="${STAGE_DIR}/Ulak.AppDir"
 mkdir -p \
     "${APPDIR}/usr/bin" \
     "${APPDIR}/usr/lib" \
@@ -167,7 +167,7 @@ chmod 0755 "${APPDIR}/AppRun"
 
 OUT_DIR="${OUT_DIR:-${REPO_ROOT}/dist}"
 mkdir -p "${OUT_DIR}"
-OUT_APPIMAGE="${OUT_DIR}/Nectarlink-${VERSION}-${ARCH}.AppImage"
+OUT_APPIMAGE="${OUT_DIR}/Ulak-${VERSION}-${ARCH}.AppImage"
 
 if ! command -v appimagetool >/dev/null 2>&1; then
     echo "appimagetool not found in PATH; AppDir staged at ${APPDIR}" >&2

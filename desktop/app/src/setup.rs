@@ -1,19 +1,19 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 //! The installer's and the uninstaller's windows, and the work behind them.
 //!
-//! `Nectarlink-<version>-x64-setup.exe` (NSIS, `desktop/installer`) unpacks
+//! `Ulak-<version>-x64-setup.exe` (NSIS, `desktop/installer`) unpacks
 //! the app to a temporary folder and runs it there, renamed to
-//! `Nectarlink Setup.exe`, with `--setup --installer <setup.exe>`. That
+//! `Ulak Setup.exe`, with `--setup --installer <setup.exe>`. That
 //! window asks nothing; Install runs the same setup.exe again with
 //! administrator rights and `/S /PROGRESS=<file>`, which installs into
 //! Program Files and writes each step to the file, so the window can follow.
 //!
 //! Removing (Windows Settings > Apps) runs the installed app with `--remove`.
 //! A program can't delete its own folder, so it first copies itself to a
-//! temporary folder (as `Nectarlink Uninstall.exe`) and carries on from
+//! temporary folder (as `Ulak Uninstall.exe`) and carries on from
 //! there, then runs `uninstall.exe /S /PROGRESS=<file>` with administrator
-//! rights, and finally removes this user's NectarLink data. Files received
-//! from phones (`Downloads\Nectarlink`), voice recordings and synced folders
+//! rights, and finally removes this user's Ulak data. Files received
+//! from phones (`Downloads\Ulak`), voice recordings and synced folders
 //! belong to the user and are kept.
 //!
 //! The renamed copies matter: the installer closes running copies of
@@ -33,13 +33,13 @@ pub const INSTALLER_ARG: &str = "--installer";
 pub const INSTALLED_ARG: &str = "--installed";
 
 /// Where the Android app is downloaded (the done screen's QR code and link).
-pub const ANDROID_URL: &str = "https://github.com/thtbee/nectarlink/releases/latest";
+pub const ANDROID_URL: &str = "https://github.com/Rokxah/ulak/releases/latest";
 
 const APP_EXE: &str = if cfg!(windows) { "nectarlink-desktop.exe" } else { "nectarlink-desktop" };
 #[cfg(windows)]
-const UNINSTALL_KEY: &str = r"Software\Microsoft\Windows\CurrentVersion\Uninstall\Nectarlink";
+const UNINSTALL_KEY: &str = r"Software\Microsoft\Windows\CurrentVersion\Uninstall\Ulak";
 #[cfg(windows)]
-const SETUP_COPY_NAME: &str = "Nectarlink Uninstall.exe";
+const SETUP_COPY_NAME: &str = "Ulak Uninstall.exe";
 
 #[cfg(windows)]
 const CREATE_NO_WINDOW: u32 = 0x0800_0000;
@@ -192,7 +192,7 @@ impl Step {
     /// What the window says while this step runs.
     pub fn label(self) -> &'static str {
         match self {
-            Step::Closing => "Closing NectarLink",
+            Step::Closing => "Closing Ulak",
             Step::Files => "Copying files",
             #[cfg(not(target_os = "linux"))]
             Step::Firewall => "Allowing through Windows Firewall",
@@ -255,11 +255,11 @@ pub enum Outcome {
     Failed(String),
 }
 
-/// Whether the desktop has NectarLink's shortcut, which setup only adds when
+/// Whether the desktop has Ulak's shortcut, which setup only adds when
 /// asked to (#102).
 #[cfg(windows)]
 pub fn has_desktop_shortcut() -> bool {
-    crate::win::shortcut::public_desktop_dir().is_some_and(|dir| dir.join("NectarLink.lnk").is_file())
+    crate::win::shortcut::public_desktop_dir().is_some_and(|dir| dir.join("Ulak.lnk").is_file())
 }
 
 #[cfg(not(windows))]
@@ -329,7 +329,7 @@ pub fn install(
             &[
                 "-e",
                 "-c",
-                "dir=$(mktemp -d) && trap 'rm -rf \"$dir\"' EXIT && tar -C \"$dir\" -xzf \"$1\" && set -- \"$dir\"/Nectarlink-*/install.sh && [ -x \"$1\" ] && \"$1\"",
+                "dir=$(mktemp -d) && trap 'rm -rf \"$dir\"' EXIT && tar -C \"$dir\" -xzf \"$1\" && set -- \"$dir\"/Ulak-*/install.sh && [ -x \"$1\" ] && \"$1\"",
                 "sh",
                 &path_str,
             ],
@@ -369,7 +369,7 @@ pub fn remove(installed: &Path, mut on_event: impl FnMut(Event)) -> Outcome {
     if !uninstaller.is_file() {
         return Outcome::Failed(tr!(
             "Setup",
-            "The uninstaller is missing. Reinstall NectarLink, then uninstall it."
+            "The uninstaller is missing. Reinstall Ulak, then uninstall it."
         ));
     }
     let progress = progress_file("remove");
@@ -436,7 +436,7 @@ pub fn remove(installed: &Path, mut on_event: impl FnMut(Event)) -> Outcome {
         }
         Ok(126 | 127) => Outcome::Declined,
         Ok(code) => Outcome::Failed(tr!("Setup", "Uninstall stopped with code %1.", code)),
-        Err(e) => Outcome::Failed(tr!("Setup", "Couldn't uninstall NectarLink: %1", e)),
+        Err(e) => Outcome::Failed(tr!("Setup", "Couldn't uninstall Ulak: %1", e)),
     }
 }
 
@@ -456,20 +456,20 @@ pub fn remove_user_data() {
     if let Err(e) = std::fs::remove_dir_all(&data)
         && e.kind() != std::io::ErrorKind::NotFound
     {
-        tracing::warn!(error = %e, "can't remove all of NectarLink's data");
+        tracing::warn!(error = %e, "can't remove all of Ulak's data");
     }
 }
 
-/// `%LOCALAPPDATA%\Nectarlink`, the app's default data folder.
+/// `%LOCALAPPDATA%\Ulak`, the app's default data folder.
 #[cfg(windows)]
 fn user_data_dir() -> Option<PathBuf> {
     let local = std::env::var_os("LOCALAPPDATA").map(PathBuf::from)?;
-    local.is_absolute().then(|| local.join("Nectarlink"))
+    local.is_absolute().then(|| local.join("Ulak"))
 }
 
 #[cfg(not(windows))]
 fn user_data_dir() -> Option<PathBuf> {
-    dirs::data_local_dir().map(|d| d.join("Nectarlink"))
+    dirs::data_local_dir().map(|d| d.join("Ulak"))
 }
 
 /// Runs `program` elevated with `params` and follows `progress` until it
@@ -618,7 +618,7 @@ pub fn hand_over_removal(installed: &Path) -> Result<bool, String> {
     {
         return Ok(false);
     }
-    let copy = temp.join(format!("Nectarlink-uninstall-{}", std::process::id()));
+    let copy = temp.join(format!("Ulak-uninstall-{}", std::process::id()));
     copy_tree(installed, &copy).map_err(|e| format!("can't prepare removal: {e}"))?;
     let app = copy.join(APP_EXE);
     let renamed = copy.join(SETUP_COPY_NAME);
@@ -648,7 +648,7 @@ pub fn delete_own_copy_later() {
     let temp = std::env::temp_dir();
     // Only ever a folder this module made under %TEMP%.
     let ours = dir.starts_with(&temp)
-        && dir.file_name().and_then(|n| n.to_str()).is_some_and(|n| n.starts_with("Nectarlink-uninstall-"));
+        && dir.file_name().and_then(|n| n.to_str()).is_some_and(|n| n.starts_with("Ulak-uninstall-"));
     if !ours {
         return;
     }
@@ -665,7 +665,7 @@ pub fn delete_own_copy_later() {
     let Some(dir) = exe.parent() else { return };
     let temp = std::env::temp_dir();
     let ours = dir.starts_with(&temp)
-        && dir.file_name().and_then(|n| n.to_str()).is_some_and(|n| n.starts_with("Nectarlink-uninstall-"));
+        && dir.file_name().and_then(|n| n.to_str()).is_some_and(|n| n.starts_with("Ulak-uninstall-"));
     if !ours {
         return;
     }
@@ -733,10 +733,10 @@ mod tests {
     fn a_chosen_folder_goes_last_for_nsis() {
         let progress = Path::new("p.txt");
         assert_eq!(install_params(true, None, progress), "/S /DESKTOP=1 /PROGRESS=p.txt");
-        let placement = Placement { dir: PathBuf::from(r"D:\My Apps\Nectarlink"), admin_only: false };
+        let placement = Placement { dir: PathBuf::from(r"D:\My Apps\Ulak"), admin_only: false };
         assert_eq!(
             install_params(false, Some(&placement), progress),
-            r"/S /DESKTOP=0 /PROGRESS=p.txt /ADMINONLY=0 /D=D:\My Apps\Nectarlink"
+            r"/S /DESKTOP=0 /PROGRESS=p.txt /ADMINONLY=0 /D=D:\My Apps\Ulak"
         );
     }
 

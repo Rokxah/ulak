@@ -51,7 +51,7 @@ pub fn run(args: &[&str]) -> Result<()> {
     let crates = shipped_crates(&metadata)?;
 
     let mut text = String::new();
-    writeln!(text, "NectarLink for Windows: third-party notices")?;
+    writeln!(text, "Ulak for Windows: third-party notices")?;
     writeln!(text, "{}", "=".repeat(43))?;
     writeln!(
         text,
@@ -84,7 +84,7 @@ fn env_cargo() -> String {
 }
 
 /// The crates in the app's normal dependency graph, workspace crates left
-/// out (they're NectarLink's own).
+/// out (they're Ulak's own).
 fn shipped_crates(metadata: &Value) -> Result<Vec<Crate>> {
     let packages: BTreeMap<&str, &Value> = metadata["packages"]
         .as_array()

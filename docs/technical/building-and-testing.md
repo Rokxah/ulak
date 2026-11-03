@@ -1,6 +1,6 @@
 # Building and Testing
 
-This document covers the pinned toolchain versions, environment variables, build commands, and test suites required to build and verify NectarLink on Windows and Android.
+This document covers the pinned toolchain versions, environment variables, build commands, and test suites required to build and verify Ulak on Windows and Android.
 
 ## Pinned Toolchains
 
@@ -80,7 +80,7 @@ target\release\nectarlink-desktop.exe --register-vcam
 > read files under your user profile. Registering
 > `target\debug\nectarlink_vcam.dll` therefore succeeds, but starting the camera
 > fails with `0x80070005` (access denied). Test with the installed build, which
-> keeps the DLL in its install folder (under `C:\Program Files\Nectarlink` by
+> keeps the DLL in its install folder (under `C:\Program Files\Ulak` by
 > default); to test a local DLL, stop the `FrameServer` service
 > (`Stop-Service FrameServer`), copy it over the installed DLL, and run the
 > installed `nectarlink-desktop.exe --register-vcam` elevated.
@@ -128,13 +128,13 @@ powershell -ExecutionPolicy Bypass -File scripts\package.ps1
 # Full release build + staging + NSIS installer for Windows 11 ARM64:
 powershell -ExecutionPolicy Bypass -File scripts\package.ps1 -Arch arm64
 
-# Stage files into target\package\Nectarlink\ without running makensis:
+# Stage files into target\package\Ulak\ without running makensis:
 powershell -ExecutionPolicy Bypass -File scripts\package.ps1 -StageOnly
 ```
 
 Artifacts are written to `target/package/`:
-- `target/package/Nectarlink/` (staged portable directory)
-- `target/package/Nectarlink-<version>-x64-setup.exe` or `Nectarlink-<version>-arm64-setup.exe` (NSIS installer when `makensis.exe` is installed)
+- `target/package/Ulak/` (staged portable directory)
+- `target/package/Ulak-<version>-x64-setup.exe` or `Ulak-<version>-arm64-setup.exe` (NSIS installer when `makensis.exe` is installed)
 
 ## Running the Test Suites
 

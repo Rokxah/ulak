@@ -241,8 +241,8 @@ pub(crate) fn normalize_action_verb(verb: &str) -> Result<&'static str, String> 
 }
 
 /// Dispatches an Adaptive Card `Action.Execute` verb (`"send-clipboard"`, `"find-phone"`,
-/// `"take-photo"`, `"open-timeline"`, `"open-shelf"`, `"open"`) to the running NectarLink
-/// instance (or launches NectarLink with `--task <verb>` if not running).
+/// `"take-photo"`, `"open-timeline"`, `"open-shelf"`, `"open"`) to the running Ulak
+/// instance (or launches Ulak with `--task <verb>` if not running).
 pub fn handle_action_verb(verb: &str, data_dir: Option<&Path>) -> Result<(), String> {
     let action = normalize_action_verb(verb)?;
 

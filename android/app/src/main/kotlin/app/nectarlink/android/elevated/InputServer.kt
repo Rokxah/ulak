@@ -844,7 +844,7 @@ object InputServer {
             "cmd wifi start-softap",
             "cmd wifi stop-softap",
             // Pause for banking apps: seeing which app is in front.
-            "appops set app.nectarlink GET_USAGE_STATS allow",
+            "appops set app.ulak GET_USAGE_STATS allow",
             // Fast starts right after an install or update.
             COMPILE_APP_COMMAND,
             // Start without asking: the camera or microphone a chosen PC asked for.

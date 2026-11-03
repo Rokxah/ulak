@@ -1,13 +1,13 @@
-# NectarLink Security Review
+# Ulak Security Review
 
 **Review Date:** 2026-10-10  
-**Scope:** End-to-end audit of every network, local IPC, elevated privilege, shared-memory, and filesystem surface in NectarLink (`nectarlink-protocol`, `nectarlink-core`, `nectarlink-adb`, `nectarlink-desktop`, `nectarlink-vcam`, Android app, and `nectarlink-shell` helper).
+**Scope:** End-to-end audit of every network, local IPC, elevated privilege, shared-memory, and filesystem surface in Ulak (`nectarlink-protocol`, `nectarlink-core`, `nectarlink-adb`, `nectarlink-desktop`, `nectarlink-vcam`, Android app, and `nectarlink-shell` helper).
 
 ---
 
 ## Executive Summary
 
-NectarLink follows a strict **zero-trust, local-first security architecture**:
+Ulak follows a strict **zero-trust, local-first security architecture**:
 1. **Mutual Ed25519 + TLS 1.3 / QUIC Authentication:** Every peer has a persistent 256-bit Ed25519 identity key (`iroh::SecretKey`). Post-pairing sessions (`ALPN = "nectarlink/0"`) enforce mutual certificate verification and immediately drop any connection whose remote `EndpointId` is not present in the local SQLite `peers` table (`store.is_paired(&peer)`).
 2. **Out-of-Band / Mutual-Consent Pairing:** Pairing (`ALPN = "nectarlink/pair/0"`) requires either scanning a QR code containing a one-time 128-bit cryptographic token (`tok`) with a 5-minute TTL, or explicit user confirmation of a 6-digit Short Authentication String (SAS) derived via BLAKE3 from the TLS exporter key (`EXPORTER-nectarlink-pair-v0`) and both peers' Ed25519 public keys (`derive_sas` in `core/nectarlink-protocol/src/sas.rs`).
 3. **Strict Wire & Filesystem Boundaries:** Every incoming CBOR/JSON envelope is size-capped BEFORE allocation (`MAX_FRAME_LEN = 1 MiB`), validated via `.is_valid()` and `.sanitized()`, and gated by per-peer feature permissions (`PeerPermissions`). All incoming file and storage paths reject `..`, root prefixes, drive letters, and NUL bytes.
@@ -120,12 +120,12 @@ NectarLink follows a strict **zero-trust, local-first security architecture**:
 - `desktop/app/src/main.rs`
 
 ### Threat Model
-- **Cross-Session / Multi-User Local Spoofing:** On a multi-user Windows machine, another logged-in user attempts to signal NectarLink's Win32 event or write a malicious `Request` into the launch queue.
+- **Cross-Session / Multi-User Local Spoofing:** On a multi-user Windows machine, another logged-in user attempts to signal Ulak's Win32 event or write a malicious `Request` into the launch queue.
 - **Malformed / Oversized Launch Queue File:** Corrupted or adversarial JSON in `<data_dir>/launch/` attempts to crash the running tray process.
 
 ### Security Controls in Place
 1. **Per-Data-Dir Scoped Win32 Event & Mutex (`Local\` namespace):**
-   - Both the single-instance mutex (`Local\Nectarlink.SingleInstance.<fnv1a64>`) and the wake event (`Local\Nectarlink.Launch.<fnv1a64>`) are created in the Windows `Local\` session namespace (isolated to the current logon session) and keyed by the FNV-1a hash of the canonicalized `--data-dir` path.
+   - Both the single-instance mutex (`Local\Ulak.SingleInstance.<fnv1a64>`) and the wake event (`Local\Ulak.Launch.<fnv1a64>`) are created in the Windows `Local\` session namespace (isolated to the current logon session) and keyed by the FNV-1a hash of the canonicalized `--data-dir` path.
 2. **Filesystem ACL Isolation in `<data_dir>/launch`:**
    - Queue files (`<nanos>-<pid>.json`) live inside `<data_dir>/launch/`, which inherits the user profile's `%LOCALAPPDATA%` NTFS DACL (accessible only to `SYSTEM`, `Administrators`, and the owning user SID).
 3. **Resilient Drain & Deserialization (`launch::drain`):**
@@ -156,7 +156,7 @@ NectarLink follows a strict **zero-trust, local-first security architecture**:
          return appUid > 0 && appId == (appUid % PER_USER_RANGE)
      }
      ```
-   - `allowedUid` is resolved at startup from `pm.getApplicationInfo("app.nectarlink", 0).uid`. Any connection from any other app UID is immediately closed and rejected before reading a single byte.
+   - `allowedUid` is resolved at startup from `pm.getApplicationInfo("app.ulak", 0).uid`. Any connection from any other app UID is immediately closed and rejected before reading a single byte.
 2. **No Shell Evaluation on Socket Commands:**
    - Socket commands (`T`, `S`, `K`, `KD`, `KU`, `G`, `TEXT`, `BACK`, `HOME`, `RECENTS`, `LOCK`, `NOTIF`, `QS`, `SHOT`, `CLIPGET`, `CLIPWAIT`, `WIFI`, `BT`, `DND`, `PANEL`, `ROTATE`, `A`) are parsed as fixed verbs with typed numeric arguments (`toFloatOrNull()`, `toIntOrNull()`) and dispatched directly to Android Binder APIs (`IInputManager`, `IClipboard`, `IStatusBarService`, `ConnectivityManager`, `AudioRecord`, `/dev/uhid`). No command ever passes user strings to `Runtime.exec("sh -c ...")`.
 3. **Sensitive Clipboard & Notification Redaction:**
@@ -208,8 +208,8 @@ NectarLink follows a strict **zero-trust, local-first security architecture**:
 - `android/app/src/main/kotlin/app/nectarlink/android/storage/StorageHandler.kt`
 
 ### Threat Model
-- **Path Traversal Outside Shared Root (`/sdcard` on Android or Cloud Files Sync Root on PC):** A peer sends `storage.read`, `storage.write`, `storage.list`, `storage.mkdir`, or `storage.delete` with `"../../data/data/app.nectarlink/databases/nectarlink.db"` or symlinks pointing outside `/sdcard`.
-- **Cloud Files Hydration Abuse on Windows (`cfapi`):** A malicious filename or relative path in `StorageEntry` attempts to hydrate or overwrite files outside `%USERPROFILE%\Nectarlink (<Phone>)`.
+- **Path Traversal Outside Shared Root (`/sdcard` on Android or Cloud Files Sync Root on PC):** A peer sends `storage.read`, `storage.write`, `storage.list`, `storage.mkdir`, or `storage.delete` with `"../../data/data/app.ulak/databases/nectarlink.db"` or symlinks pointing outside `/sdcard`.
+- **Cloud Files Hydration Abuse on Windows (`cfapi`):** A malicious filename or relative path in `StorageEntry` attempts to hydrate or overwrite files outside `%USERPROFILE%\Ulak (<Phone>)`.
 
 ### Security Controls in Place
 1. **Protocol-Level Path Validation (`is_valid_storage_path` in `messages.rs`):**
@@ -222,7 +222,7 @@ NectarLink follows a strict **zero-trust, local-first security architecture**:
          return null
      }
      ```
-   - Because `canonicalFile` resolves all symlinks and `..` segments on the Android filesystem before checking the prefix, symlink escape from `/sdcard` into `/data/data/app.nectarlink` is impossible.
+   - Because `canonicalFile` resolves all symlinks and `..` segments on the Android filesystem before checking the prefix, symlink escape from `/sdcard` into `/data/data/app.ulak` is impossible.
 3. **Chunk Size & Offset Bounds (`MAX_STORAGE_CHUNK = 256 KiB`):**
    - `StorageReadRequest::is_valid()` and `StorageWriteChunk::is_valid()` cap every read/write chunk to `262,144` bytes (`256 KiB`), preventing memory exhaustion on either side.
 4. **Per-Device Permission Enforcement:**
@@ -268,7 +268,7 @@ NectarLink follows a strict **zero-trust, local-first security architecture**:
 3. **PC Audio Streaming to Phone (`desktop/app/src/pc_audio_stream.rs`):**
    - Off by default (`Settings::pc_audio_to_phone = false`). Audio loopback capture (`WASAPI`) can only be enabled locally from the PC's Settings UI (`Camera & Audio -> Stream PC audio to phone`) and only streams to connected phones that have the `media` toggle enabled.
 4. **PC Storage Provider (`desktop/app/src/pc_storage.rs`, `core/nectarlink-core/src/storage.rs`):**
-   - Gated by the `storage` toggle (`false` by default), plus `remote_files` (`false` by default) when connected over a non-LAN `ConnectionPath::Relay` path. Sandboxed to the user's non-sensitive `NectarLink Shared` folder via `FolderStorage` (which rejects `..`, absolute paths, and symlink escapes).
+   - Gated by the `storage` toggle (`false` by default), plus `remote_files` (`false` by default) when connected over a non-LAN `ConnectionPath::Relay` path. Sandboxed to the user's non-sensitive `Ulak Shared` folder via `FolderStorage` (which rejects `..`, absolute paths, and symlink escapes).
 5. **PC Notifications to Phone (`desktop/app/src/pc_notifications.rs`):**
    - Off by default (`Settings::forward_pc_notifications = false`). Only forwards when explicitly enabled by the PC user in Settings AND Windows `UserNotificationListener` access is granted AND the per-device `notifications` toggle is on.
 

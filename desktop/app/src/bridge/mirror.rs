@@ -101,7 +101,7 @@ pub mod qobject {
         #[qinvokable]
         #[cxx_name = "screenshotClipboard"]
         fn screenshot_clipboard(self: &Mirror, key: &QString);
-        /// Saves a screenshot of a mirror window to Downloads\Nectarlink.
+        /// Saves a screenshot of a mirror window to Downloads\Ulak.
         #[qinvokable]
         #[cxx_name = "screenshotFile"]
         fn screenshot_file(self: &Mirror, key: &QString);

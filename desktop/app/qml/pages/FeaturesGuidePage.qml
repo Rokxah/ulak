@@ -4,7 +4,7 @@ import QtQuick.Layouts
 import app.nectarlink
 
 // In-app Features Guide page: searchable and filterable reference to every
-// NectarLink feature, live capability status when a phone is connected,
+// Ulak feature, live capability status when a phone is connected,
 // "Show me" navigation, and "Learn more" reader sheet with handbook tabs.
 Item {
     id: guide
@@ -257,7 +257,7 @@ Item {
             area: "camera_audio",
             capKey: "webcam",
             toggleKey: "",
-            summary: "Use your phone camera as the NectarLink Virtual Camera in Zoom, Teams, Meet, and OBS.",
+            summary: "Use your phone camera as the Ulak Virtual Camera in Zoom, Teams, Meet, and OBS.",
             whereLabel: "Home › Phone as webcam",
             needsLabel: "Camera permission on phone and Virtual Camera registered on PC",
             targetId: "settings:camera_audio:webcam",
@@ -385,7 +385,7 @@ Item {
         },
         {
             id: "nectar_island",
-            name: "Nectar Island",
+            name: "Ulak Island",
             icon: Icons.island,
             area: "surfaces",
             capKey: "",
@@ -393,8 +393,8 @@ Item {
             pcLocal: true,
             prefKey: "nectarIsland",
             summary: "Compact floating pill at the top center of your monitor for calls, transfers, media, and alerts.",
-            whereLabel: "Settings › General › Nectar Island",
-            needsLabel: "Nectar Island enabled in Settings",
+            whereLabel: "Settings › General › Ulak Island",
+            needsLabel: "Ulak Island enabled in Settings",
             targetId: "settings:general:island",
             docKey: "nectar-island"
         },
@@ -583,7 +583,7 @@ Item {
 
             Txt {
                 Layout.fillWidth: true
-                text: qsTr("Every feature in NectarLink, what it needs, and where to find it.")
+                text: qsTr("Every feature in Ulak, what it needs, and where to find it.")
                 role: "body"
                 color: Theme.surfaceContentVariant
                 wrapMode: Text.WordWrap

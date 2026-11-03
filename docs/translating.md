@@ -1,6 +1,6 @@
-# Translating NectarLink
+# Translating Ulak
 
-NectarLink's Android and Windows apps can be translated into any language.
+Ulak's Android and Windows apps can be translated into any language.
 Simplified Chinese, German and Turkish are complete today.
 
 ## How to help
@@ -24,7 +24,7 @@ tools or Git needed.
 A few things that keep translations consistent:
 
 - Name each language in its own language in pickers ("Deutsch", "简体中文").
-- Keep the product name "NectarLink" as it is.
+- Keep the product name "Ulak" as it is.
 - Short UI labels stay short; the English text is already written to fit.
 - If a string's meaning isn't clear from its context, ask in the pull request
   or on [Discussions](https://github.com/thtbee/nectarlink/discussions).
@@ -73,7 +73,7 @@ the test above fails otherwise.
 ## Setting up Weblate (maintainers)
 
 [Hosted Weblate](https://hosted.weblate.org/) is free for open-source projects
-(the Libre plan). Create a project named NectarLink with the repository
+(the Libre plan). Create a project named Ulak with the repository
 `https://github.com/thtbee/nectarlink.git`, branch `main`, and have Weblate
 push to a fork and open pull requests rather than push to `main`. Then add
 two components:

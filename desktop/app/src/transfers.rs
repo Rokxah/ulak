@@ -271,7 +271,7 @@ pub fn on_event(event: &NodeEvent) {
             device: TOAST_GROUP.into(),
             key: format!("req:{}", t.id),
             title: format!("{device} wants to send {}", title(t)),
-            body: tr!("Transfers", "Accept in NectarLink to save to Downloads\\Nectarlink"),
+            body: tr!("Transfers", "Accept in Ulak to save to Downloads\\Ulak"),
             attribution: "LocalSend".into(),
             icon: None,
             image: None,
@@ -313,11 +313,11 @@ pub fn on_event(event: &NodeEvent) {
         key: first.to_string_lossy().into_owned(),
         title,
         body: if auto_open {
-            tr!("Transfers", "From %1, opened from Downloads\\Nectarlink", device)
+            tr!("Transfers", "From %1, opened from Downloads\\Ulak", device)
         } else {
-            tr!("Transfers", "From %1, saved in Downloads\\Nectarlink", device)
+            tr!("Transfers", "From %1, saved in Downloads\\Ulak", device)
         },
-        attribution: "NectarLink".into(),
+        attribution: "Ulak".into(),
         icon: None,
         image: None,
         actions: vec![(ACTION_OPEN.into(), "Open".into()), (ACTION_SHOW.into(), "Show in folder".into())],

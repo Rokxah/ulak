@@ -417,7 +417,7 @@ pub fn screenshot_clipboard(window: Window) {
     }
 }
 
-/// Saves the current mirror frame for `window` to `Downloads\Nectarlink` as a PNG file.
+/// Saves the current mirror frame for `window` to `Downloads\Ulak` as a PNG file.
 pub fn screenshot_file(window: Window) {
     let Some(bitmap) = latest_bitmap(&window) else {
         set_notice(window, "Wait for the screen to appear first");
@@ -436,7 +436,7 @@ pub fn screenshot_file(window: Window) {
     let base_name = local_timestamp_filename("Screenshot", "png");
     let dir = core_host::downloads_dir();
     if let Err(e) = std::fs::create_dir_all(&dir) {
-        let subdir = if cfg!(windows) { "Downloads\\Nectarlink" } else { "Downloads/Nectarlink" };
+        let subdir = if cfg!(windows) { "Downloads\\Ulak" } else { "Downloads/Ulak" };
         tracing::warn!(error = %e, "can't create {subdir}");
         set_notice(window, "Couldn't save screenshot");
         show_message(tr!("Mirror", "The screenshot couldn't be saved."));
@@ -466,16 +466,16 @@ pub fn screenshot_file(window: Window) {
     let device_name =
         core_host::host().hub.read(|s| s.name_of(&window.device)).unwrap_or_else(|| "your phone".into());
     let toast_body = if cfg!(windows) {
-        tr!("Mirror", "Screenshot from %1, saved in Downloads\\Nectarlink", device_name)
+        tr!("Mirror", "Screenshot from %1, saved in Downloads\\Ulak", device_name)
     } else {
-        tr!("Mirror", "Screenshot from %1, saved in Downloads/Nectarlink", device_name)
+        tr!("Mirror", "Screenshot from %1, saved in Downloads/Ulak", device_name)
     };
     toast::show(Toast {
         device: TOAST_GROUP.into(),
         key: path.to_string_lossy().into_owned(),
         title: file_name.clone(),
         body: toast_body,
-        attribution: "NectarLink".into(),
+        attribution: "Ulak".into(),
         icon: None,
         image: Some(path),
         actions: vec![(ACTION_OPEN.into(), "Open".into()), (ACTION_SHOW.into(), "Show in folder".into())],
@@ -486,9 +486,9 @@ pub fn screenshot_file(window: Window) {
     });
     set_notice(window, tr!("Mirror", "Saved %1", file_name));
     let saved_msg = if cfg!(windows) {
-        tr!("Mirror", "Saved %1 to Downloads\\Nectarlink.", file_name)
+        tr!("Mirror", "Saved %1 to Downloads\\Ulak.", file_name)
     } else {
-        tr!("Mirror", "Saved %1 to Downloads/Nectarlink.", file_name)
+        tr!("Mirror", "Saved %1 to Downloads/Ulak.", file_name)
     };
     show_message(saved_msg);
 }
@@ -530,7 +530,7 @@ pub fn toggle_recording(window: Window) {
     let base_name = local_timestamp_filename("Mirror", "mp4");
     let dir = core_host::downloads_dir();
     if let Err(e) = std::fs::create_dir_all(&dir) {
-        let subdir = if cfg!(windows) { "Downloads\\Nectarlink" } else { "Downloads/Nectarlink" };
+        let subdir = if cfg!(windows) { "Downloads\\Ulak" } else { "Downloads/Ulak" };
         tracing::warn!(error = %e, "can't create {subdir}");
         set_notice(window, "Couldn't start recording");
         show_message(tr!("Mirror", "Couldn't start recording."));
@@ -619,16 +619,16 @@ pub fn stop_recording(window: Window) {
                     .read(|s| s.name_of(&window.device))
                     .unwrap_or_else(|| "your phone".into());
                 let toast_body = if cfg!(windows) {
-                    tr!("Mirror", "Recording from %1, saved in Downloads\\Nectarlink", device_name)
+                    tr!("Mirror", "Recording from %1, saved in Downloads\\Ulak", device_name)
                 } else {
-                    tr!("Mirror", "Recording from %1, saved in Downloads/Nectarlink", device_name)
+                    tr!("Mirror", "Recording from %1, saved in Downloads/Ulak", device_name)
                 };
                 toast::show(Toast {
                     device: TOAST_GROUP.into(),
                     key: path.to_string_lossy().into_owned(),
                     title: file_name.clone(),
                     body: toast_body,
-                    attribution: "NectarLink".into(),
+                    attribution: "Ulak".into(),
                     icon: None,
                     image: None,
                     actions: vec![
@@ -642,9 +642,9 @@ pub fn stop_recording(window: Window) {
                 });
                 set_notice(window, tr!("Mirror", "Saved %1", file_name));
                 let saved_msg = if cfg!(windows) {
-                    tr!("Mirror", "Saved %1 to Downloads\\Nectarlink.", file_name)
+                    tr!("Mirror", "Saved %1 to Downloads\\Ulak.", file_name)
                 } else {
-                    tr!("Mirror", "Saved %1 to Downloads/Nectarlink.", file_name)
+                    tr!("Mirror", "Saved %1 to Downloads/Ulak.", file_name)
                 };
                 show_message(saved_msg);
             }
@@ -986,15 +986,11 @@ fn request(window: Window, mut options: MirrorStart) {
         if let Err(e) = node.mirror_start(window.device, options).await {
             let reason = match e {
                 Error::Denied => tr!("Mirror", "Mirroring is turned off for this phone."),
-                Error::Unsupported if app => tr!(
-                    "Mirror",
-                    "Set up Wireless debugging in NectarLink on the phone to open its apps here."
-                ),
+                Error::Unsupported if app => {
+                    tr!("Mirror", "Set up Wireless debugging in Ulak on the phone to open its apps here.")
+                }
                 Error::Unsupported => {
-                    tr!(
-                        "Mirror",
-                        "This phone's app doesn't share its screen yet. Update NectarLink on the phone."
-                    )
+                    tr!("Mirror", "This phone's app doesn't share its screen yet. Update Ulak on the phone.")
                 }
                 Error::Offline | Error::NotPaired => tr!("Mirror", "The phone isn't connected."),
                 e => describe(&e),
@@ -1015,7 +1011,7 @@ fn request(window: Window, mut options: MirrorStart) {
                     window,
                     Phase::Ended(Some(tr!(
                         "Mirror",
-                        "The app didn't open on the phone. Try again, or open NectarLink on the phone to check Wireless debugging."
+                        "The app didn't open on the phone. Try again, or open Ulak on the phone to check Wireless debugging."
                     ))),
                 );
             }
@@ -1200,7 +1196,7 @@ pub fn load_apps(device: DeviceId) {
             }
             Err(Error::Unsupported) => Apps::Failed(tr!(
                 "Mirror",
-                "Set up Wireless debugging in NectarLink on the phone to open its apps here."
+                "Set up Wireless debugging in Ulak on the phone to open its apps here."
             )),
             Err(e) => Apps::Failed(describe(&e)),
         };
@@ -1405,7 +1401,7 @@ pub fn drop_files(raw_urls: &[String]) {
 /// Requests remote input control from the phone for `key` and shows a guidance banner.
 pub fn request_control(key: &str) {
     let Some(window) = Window::parse(key) else { return };
-    set_notice(window, "On your phone, tap Allow / turn on Control from your PC in NectarLink");
+    set_notice(window, "On your phone, tap Allow / turn on Control from your PC in Ulak");
     input(
         window,
         nectarlink_core::MirrorInput::Touch { action: nectarlink_core::TouchAction::Up, x: 0.5, y: 0.5 },

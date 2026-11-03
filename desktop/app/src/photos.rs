@@ -4,7 +4,7 @@
 //!   to open, save, or copy it.
 //! - The Photos gallery page: albums, paged items newest-first, on-demand
 //!   batched thumbnails cached on disk, in-app viewer, Save (to a chosen
-//!   folder or `Downloads\Nectarlink`), Copy to clipboard, and Open in the
+//!   folder or `Downloads\Ulak`), Copy to clipboard, and Open in the
 //!   Windows Photos app or default video player.
 
 use crate::i18n::tr;
@@ -49,7 +49,7 @@ enum Intent {
     Copy { item_id: Option<String>, notify_ui: bool },
     /// Downloaded for the in-app viewer (moved into the gallery cache).
     View { device: DeviceId, item_id: String },
-    /// Saved from the gallery to `Downloads\Nectarlink` or a user-chosen folder.
+    /// Saved from the gallery to `Downloads\Ulak` or a user-chosen folder.
     GallerySave { ids: Vec<String>, folder: Option<PathBuf> },
 }
 
@@ -158,7 +158,7 @@ fn show(device: DeviceId, photo: &Photo) {
         key: format!("{device} {}", photo.id),
         title: if photo.screenshot { tr!("Photos", "New screenshot") } else { tr!("Photos", "New photo") },
         body: tr!("Photos", "From %1", name),
-        attribution: "NectarLink".into(),
+        attribution: "Ulak".into(),
         icon: None,
         image: preview,
         actions: vec![(ACTION_SAVE.into(), "Save".into()), (ACTION_COPY.into(), "Copy".into())],
@@ -371,7 +371,7 @@ fn deliver(transfer_id: &str, intent: Intent, saved: &[PathBuf]) {
                 }
                 None => {
                     final_paths.extend(saved.iter().cloned());
-                    r"Downloads\Nectarlink".to_owned()
+                    r"Downloads\Ulak".to_owned()
                 }
             };
             if let Some(node) = core_host::node() {
@@ -408,7 +408,7 @@ fn deliver(transfer_id: &str, intent: Intent, saved: &[PathBuf]) {
             match final_paths.as_slice() {
                 _ if not_moved > 0 => show_message(tr!(
                     "Photos",
-                    "%1 of %2 couldn't be moved to %3. They're in Downloads\\Nectarlink.",
+                    "%1 of %2 couldn't be moved to %3. They're in Downloads\\Ulak.",
                     not_moved,
                     final_paths.len(),
                     dest_label
@@ -484,7 +484,7 @@ fn copy_file_to_clipboard(path: &Path, remove_after: bool, notify_ui: bool) {
         Err(reason) => {
             tracing::warn!(reason, "can't copy a photo");
             if remove_after {
-                show_message(tr!("Photos", "The photo couldn't be copied. It's in Downloads\\Nectarlink."));
+                show_message(tr!("Photos", "The photo couldn't be copied. It's in Downloads\\Ulak."));
             } else {
                 show_message(tr!("Photos", "The photo couldn't be copied to the clipboard."));
             }
@@ -812,9 +812,9 @@ pub fn view() -> View {
                 .collect(),
         );
         #[cfg(windows)]
-        const DEFAULT_SAVE_FOLDER: &str = r"Downloads\Nectarlink";
+        const DEFAULT_SAVE_FOLDER: &str = r"Downloads\Ulak";
         #[cfg(not(windows))]
-        const DEFAULT_SAVE_FOLDER: &str = "Downloads/Nectarlink";
+        const DEFAULT_SAVE_FOLDER: &str = "Downloads/Ulak";
         let save_folder = s
             .save_folder
             .as_deref()
@@ -1330,14 +1330,14 @@ pub fn copy_item(id: String) {
 }
 
 /// Sets the preferred destination folder for saving gallery items (`None`
-/// resets to `Downloads\Nectarlink`).
+/// resets to `Downloads\Ulak`).
 pub fn set_save_folder(folder: Option<PathBuf>) {
     gallery_state(|s| s.save_folder = folder);
     gallery_changed();
 }
 
 /// Downloads and saves `ids` to `folder` (or the remembered `save_folder`, or
-/// default `Downloads\Nectarlink`).
+/// default `Downloads\Ulak`).
 pub fn save_items(ids: Vec<String>, folder: Option<PathBuf>) {
     let ids: Vec<String> = ids.into_iter().filter(|id| !id.is_empty()).collect();
     if ids.is_empty() {

@@ -4,12 +4,12 @@
 <context>
     <name>DockBar</name>
     <message>
-        <source>NectarLink dock</source>
-        <translation>NectarLink dock</translation>
+        <source>Ulak dock</source>
+        <translation>Ulak dock</translation>
     </message>
     <message>
-        <source>Open NectarLink</source>
-        <translation>NectarLink'i aç</translation>
+        <source>Open Ulak</source>
+        <translation>Ulak'i aç</translation>
     </message>
     <message>
         <source>Notifications</source>
@@ -118,28 +118,28 @@
     </message>
     <message>
         <location filename="rust_strings.h" line="17"/>
-        <source>NectarLink · %1</source>
-        <translation>NectarLink · %1</translation>
+        <source>Ulak · %1</source>
+        <translation>Ulak · %1</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="18"/>
-        <source>NectarLink · %1 devices connected</source>
-        <translation>NectarLink · %1 cihaz bağlı</translation>
+        <source>Ulak · %1 devices connected</source>
+        <translation>Ulak · %1 cihaz bağlı</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="19"/>
-        <source>NectarLink · 1 device connected</source>
-        <translation>NectarLink · 1 cihaz bağlı</translation>
+        <source>Ulak · 1 device connected</source>
+        <translation>Ulak · 1 cihaz bağlı</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="20"/>
-        <source>NectarLink · no devices paired</source>
-        <translation>NectarLink · eşleştirilmiş cihaz yok</translation>
+        <source>Ulak · no devices paired</source>
+        <translation>Ulak · eşleştirilmiş cihaz yok</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="21"/>
-        <source>NectarLink · not connected</source>
-        <translation>NectarLink · bağlı değil</translation>
+        <source>Ulak · not connected</source>
+        <translation>Ulak · bağlı değil</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="22"/>
@@ -148,8 +148,8 @@
     </message>
     <message>
         <location filename="rust_strings.h" line="23"/>
-        <source>Open NectarLink</source>
-        <translation>NectarLink&apos;i aç</translation>
+        <source>Open Ulak</source>
+        <translation>Ulak&apos;i aç</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="24"/>
@@ -158,8 +158,8 @@
     </message>
     <message>
         <location filename="rust_strings.h" line="25"/>
-        <source>Quit NectarLink</source>
-        <translation>NectarLink&apos;ten çık</translation>
+        <source>Quit Ulak</source>
+        <translation>Ulak&apos;ten çık</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="26"/>
@@ -261,8 +261,8 @@
     </message>
     <message>
         <location filename="../qml/pages/AppsPage.qml" line="94"/>
-        <source>Set up Wireless debugging in NectarLink on the phone to open its apps here.</source>
-        <translation>Uygulamalarını burada açmak için telefondaki NectarLink&apos;te Kablosuz hata ayıklamayı ayarlayın.</translation>
+        <source>Set up Wireless debugging in Ulak on the phone to open its apps here.</source>
+        <translation>Uygulamalarını burada açmak için telefondaki Ulak&apos;te Kablosuz hata ayıklamayı ayarlayın.</translation>
     </message>
     <message>
         <location filename="../qml/pages/AppsPage.qml" line="147"/>
@@ -887,8 +887,8 @@
     </message>
     <message>
         <location filename="rust_strings.h" line="63"/>
-        <source>Update NectarLink on %1 to send it images.</source>
-        <translation>Görüntü gönderebilmek için %1 cihazındaki NectarLink&apos;i güncelleyin.</translation>
+        <source>Update Ulak on %1 to send it images.</source>
+        <translation>Görüntü gönderebilmek için %1 cihazındaki Ulak&apos;i güncelleyin.</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="64"/>
@@ -1145,8 +1145,8 @@
     </message>
     <message>
         <location filename="rust_strings.h" line="105"/>
-        <source>Opened Recordings folder. Start a voice note in NectarLink on %1 to send it here.</source>
-        <translation>Kayıtlar klasörü açıldı. Buraya göndermek için %1 cihazındaki NectarLink&apos;te bir sesli not başlatın.</translation>
+        <source>Opened Recordings folder. Start a voice note in Ulak on %1 to send it here.</source>
+        <translation>Kayıtlar klasörü açıldı. Buraya göndermek için %1 cihazındaki Ulak&apos;te bir sesli not başlatın.</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="106"/>
@@ -1305,8 +1305,8 @@
     </message>
     <message>
         <location filename="rust_strings.h" line="137"/>
-        <source>Stream %1&apos;s camera into the NectarLink virtual webcam</source>
-        <translation>%1 kamerasını NectarLink sanal web kamerasına aktar</translation>
+        <source>Stream %1&apos;s camera into the Ulak virtual webcam</source>
+        <translation>%1 kamerasını Ulak sanal web kamerasına aktar</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="138"/>
@@ -1966,13 +1966,13 @@
     <name>Doctor</name>
     <message>
         <location filename="rust_strings.h" line="187"/>
-        <source>%1 Open NectarLink on the phone and keep both on the same network. If the phone asks to run in the background, allow it.</source>
-        <translation>%1 Telefonda NectarLink&apos;i açın ve ikisini de aynı ağda tutun. Telefon arka planda çalışmak için izin isterse izin verin.</translation>
+        <source>%1 Open Ulak on the phone and keep both on the same network. If the phone asks to run in the background, allow it.</source>
+        <translation>%1 Telefonda Ulak&apos;i açın ve ikisini de aynı ağda tutun. Telefon arka planda çalışmak için izin isterse izin verin.</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="188"/>
-        <source>%1 announces itself at %2, which isn&apos;t in a private range such as 192.168.x.x. NectarLink connects on such a network once both apps are up to date. Until then, turn on Connect over mobile data on both, or connect with a USB cable.</source>
-        <translation>%1 kendini %2 adresinde duyuruyor ve bu adres 192.168.x.x gibi özel bir aralıkta değil. İki uygulama da güncel olduğunda NectarLink böyle bir ağda bağlanır. O zamana kadar ikisinde de Mobil veri üzerinden bağlan seçeneğini açın veya USB kablosuyla bağlayın.</translation>
+        <source>%1 announces itself at %2, which isn&apos;t in a private range such as 192.168.x.x. Ulak connects on such a network once both apps are up to date. Until then, turn on Connect over mobile data on both, or connect with a USB cable.</source>
+        <translation>%1 kendini %2 adresinde duyuruyor ve bu adres 192.168.x.x gibi özel bir aralıkta değil. İki uygulama da güncel olduğunda Ulak böyle bir ağda bağlanır. O zamana kadar ikisinde de Mobil veri üzerinden bağlan seçeneğini açın veya USB kablosuyla bağlayın.</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="189"/>
@@ -2026,8 +2026,8 @@
     </message>
     <message>
         <location filename="rust_strings.h" line="199"/>
-        <source>A firewall rule blocks incoming NectarLink connections. Allow it, and your phone can connect.</source>
-        <translation>Bir güvenlik duvarı kuralı gelen NectarLink bağlantılarını engelliyor. İzin verirseniz telefonunuz bağlanabilir.</translation>
+        <source>A firewall rule blocks incoming Ulak connections. Allow it, and your phone can connect.</source>
+        <translation>Bir güvenlik duvarı kuralı gelen Ulak bağlantılarını engelliyor. İzin verirseniz telefonunuz bağlanabilir.</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="200"/>
@@ -2096,48 +2096,48 @@
     </message>
     <message>
         <location filename="rust_strings.h" line="213"/>
-        <source>NectarLink can&apos;t show its icon in the top bar</source>
-        <translation>NectarLink simgesini üst çubukta gösteremiyor</translation>
+        <source>Ulak can&apos;t show its icon in the top bar</source>
+        <translation>Ulak simgesini üst çubukta gösteremiyor</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="214"/>
-        <source>NectarLink is in the top bar</source>
-        <translation>NectarLink üst çubukta</translation>
+        <source>Ulak is in the top bar</source>
+        <translation>Ulak üst çubukta</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="215"/>
-        <source>NectarLink isn&apos;t allowed through Windows Firewall</source>
-        <translation>NectarLink&apos;e Windows Güvenlik Duvarı&apos;ndan izin verilmiyor</translation>
+        <source>Ulak isn&apos;t allowed through Windows Firewall</source>
+        <translation>Ulak&apos;e Windows Güvenlik Duvarı&apos;ndan izin verilmiyor</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="216"/>
-        <source>NectarLink isn&apos;t allowed through the firewall</source>
-        <translation>NectarLink&apos;e güvenlik duvarından izin verilmiyor</translation>
+        <source>Ulak isn&apos;t allowed through the firewall</source>
+        <translation>Ulak&apos;e güvenlik duvarından izin verilmiyor</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="217"/>
-        <source>On Huawei / Honor: open Settings → Battery → App launch, turn off Manage automatically for NectarLink, and keep Auto-launch, Secondary launch, and Run in background on.</source>
-        <translation>Huawei / Honor&apos;da: Ayarlar → Pil → Uygulama başlatma&apos;yı açın, NectarLink için Otomatik olarak yönet&apos;i kapatın ve Otomatik başlatma, İkincil başlatma ve Arka planda çalıştır seçeneklerini açık tutun.</translation>
+        <source>On Huawei / Honor: open Settings → Battery → App launch, turn off Manage automatically for Ulak, and keep Auto-launch, Secondary launch, and Run in background on.</source>
+        <translation>Huawei / Honor&apos;da: Ayarlar → Pil → Uygulama başlatma&apos;yı açın, Ulak için Otomatik olarak yönet&apos;i kapatın ve Otomatik başlatma, İkincil başlatma ve Arka planda çalıştır seçeneklerini açık tutun.</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="218"/>
-        <source>On OnePlus / OxygenOS: open Settings → Apps → App management → NectarLink → Battery usage and turn on Allow background activity and Allow auto-launch.</source>
-        <translation>OnePlus / OxygenOS&apos;ta: Ayarlar → Uygulamalar → Uygulama yönetimi → NectarLink → Pil kullanımı&apos;nı açın ve Arka plan etkinliğine izin ver ile Otomatik başlatmaya izin ver seçeneklerini açın.</translation>
+        <source>On OnePlus / OxygenOS: open Settings → Apps → App management → Ulak → Battery usage and turn on Allow background activity and Allow auto-launch.</source>
+        <translation>OnePlus / OxygenOS&apos;ta: Ayarlar → Uygulamalar → Uygulama yönetimi → Ulak → Pil kullanımı&apos;nı açın ve Arka plan etkinliğine izin ver ile Otomatik başlatmaya izin ver seçeneklerini açın.</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="219"/>
-        <source>On Oppo / Realme: open Settings → Apps → App management → NectarLink → Battery usage and turn on Allow background activity and Allow auto-launch.</source>
-        <translation>Oppo / Realme&apos;de: Ayarlar → Uygulamalar → Uygulama yönetimi → NectarLink → Pil kullanımı&apos;nı açın ve Arka plan etkinliğine izin ver ile Otomatik başlatmaya izin ver seçeneklerini açın.</translation>
+        <source>On Oppo / Realme: open Settings → Apps → App management → Ulak → Battery usage and turn on Allow background activity and Allow auto-launch.</source>
+        <translation>Oppo / Realme&apos;de: Ayarlar → Uygulamalar → Uygulama yönetimi → Ulak → Pil kullanımı&apos;nı açın ve Arka plan etkinliğine izin ver ile Otomatik başlatmaya izin ver seçeneklerini açın.</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="220"/>
-        <source>On Pixel: open Settings → Apps → See all apps → NectarLink → App battery usage, tap Allow background usage, and choose Unrestricted.</source>
-        <translation>Pixel&apos;de: Ayarlar → Uygulamalar → Tüm uygulamaları göster → NectarLink → Uygulama pil kullanımı&apos;nı açın, Arka planda kullanıma izin ver&apos;e dokunun ve Kısıtlanmamış&apos;ı seçin.</translation>
+        <source>On Pixel: open Settings → Apps → See all apps → Ulak → App battery usage, tap Allow background usage, and choose Unrestricted.</source>
+        <translation>Pixel&apos;de: Ayarlar → Uygulamalar → Tüm uygulamaları göster → Ulak → Uygulama pil kullanımı&apos;nı açın, Arka planda kullanıma izin ver&apos;e dokunun ve Kısıtlanmamış&apos;ı seçin.</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="221"/>
-        <source>On Samsung: open Settings → Apps → NectarLink → Battery and choose Unrestricted, then in Device care → Battery → Background usage limits make sure NectarLink is never put to sleep.</source>
-        <translation>Samsung&apos;da: Ayarlar → Uygulamalar → NectarLink → Pil&apos;i açıp Kısıtlanmamış&apos;ı seçin, ardından Cihaz bakımı → Pil → Arka plan kullanım sınırları bölümünde NectarLink&apos;in asla uyku moduna alınmadığından emin olun.</translation>
+        <source>On Samsung: open Settings → Apps → Ulak → Battery and choose Unrestricted, then in Device care → Battery → Background usage limits make sure Ulak is never put to sleep.</source>
+        <translation>Samsung&apos;da: Ayarlar → Uygulamalar → Ulak → Pil&apos;i açıp Kısıtlanmamış&apos;ı seçin, ardından Cihaz bakımı → Pil → Arka plan kullanım sınırları bölümünde Ulak&apos;in asla uyku moduna alınmadığından emin olun.</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="222"/>
@@ -2146,13 +2146,13 @@
     </message>
     <message>
         <location filename="rust_strings.h" line="223"/>
-        <source>On Vivo / OriginOS / Funtouch: open Settings → Battery → Background power consumption management → NectarLink and choose Unrestricted, and allow Autostart.</source>
-        <translation>Vivo / OriginOS / Funtouch&apos;ta: Ayarlar → Pil → Arka plan güç tüketimi yönetimi → NectarLink&apos;i açıp Kısıtlanmamış&apos;ı seçin ve Otomatik başlatmaya izin verin.</translation>
+        <source>On Vivo / OriginOS / Funtouch: open Settings → Battery → Background power consumption management → Ulak and choose Unrestricted, and allow Autostart.</source>
+        <translation>Vivo / OriginOS / Funtouch&apos;ta: Ayarlar → Pil → Arka plan güç tüketimi yönetimi → Ulak&apos;i açıp Kısıtlanmamış&apos;ı seçin ve Otomatik başlatmaya izin verin.</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="224"/>
-        <source>On Xiaomi / HyperOS / MIUI: open Settings → Apps → Manage apps → NectarLink, turn on Autostart, and set Battery saver to No restrictions.</source>
-        <translation>Xiaomi / HyperOS / MIUI&apos;de: Ayarlar → Uygulamalar → Uygulamaları yönet → NectarLink&apos;i açın, Otomatik başlatma&apos;yı açın ve Pil tasarrufu&apos;nu Kısıtlama yok olarak ayarlayın.</translation>
+        <source>On Xiaomi / HyperOS / MIUI: open Settings → Apps → Manage apps → Ulak, turn on Autostart, and set Battery saver to No restrictions.</source>
+        <translation>Xiaomi / HyperOS / MIUI&apos;de: Ayarlar → Uygulamalar → Uygulamaları yönet → Ulak&apos;i açın, Otomatik başlatma&apos;yı açın ve Pil tasarrufu&apos;nu Kısıtlama yok olarak ayarlayın.</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="225"/>
@@ -2206,8 +2206,8 @@
     </message>
     <message>
         <location filename="rust_strings.h" line="235"/>
-        <source>The firewall blocks NectarLink</source>
-        <translation>Güvenlik duvarı NectarLink&apos;i engelliyor</translation>
+        <source>The firewall blocks Ulak</source>
+        <translation>Güvenlik duvarı Ulak&apos;i engelliyor</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="236"/>
@@ -2256,8 +2256,8 @@
     </message>
     <message>
         <location filename="rust_strings.h" line="245"/>
-        <source>Windows Firewall blocks NectarLink</source>
-        <translation>Windows Güvenlik Duvarı NectarLink&apos;i engelliyor</translation>
+        <source>Windows Firewall blocks Ulak</source>
+        <translation>Windows Güvenlik Duvarı Ulak&apos;i engelliyor</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="246"/>
@@ -2537,8 +2537,8 @@
     </message>
     <message>
         <location filename="../qml/pages/FeaturesGuidePage.qml" line="586"/>
-        <source>Every feature in NectarLink, what it needs, and where to find it.</source>
-        <translation>NectarLink&apos;teki her özellik, neye ihtiyaç duyduğu ve nerede bulunacağı.</translation>
+        <source>Every feature in Ulak, what it needs, and where to find it.</source>
+        <translation>Ulak&apos;teki her özellik, neye ihtiyaç duyduğu ve nerede bulunacağı.</translation>
     </message>
     <message>
         <location filename="../qml/pages/FeaturesGuidePage.qml" line="625"/>
@@ -2633,15 +2633,15 @@
     <name>Guide</name>
     <message>
         <location filename="rust_strings.h" line="265"/>
-        <source>1. Install NectarLink on your PC (Windows 11 or Linux) and your Android phone (Android 8.0 or newer).
+        <source>1. Install Ulak on your PC (Windows 11 or Linux) and your Android phone (Android 8.0 or newer).
 2. Connect both devices to the same Wi-Fi network, or plug your phone into your PC with a USB cable.
 3. Open the Pair step in the setup walkthrough, or click + (Pair a new device) at the bottom of the left rail.
-4. Scan the QR code from the NectarLink Android app, or select your phone from the nearby devices list and confirm that the 6-digit code matches on both screens.
+4. Scan the QR code from the Ulak Android app, or select your phone from the nearby devices list and confirm that the 6-digit code matches on both screens.
 5. Choose which features to share for that phone and grant only the Android permissions you want to use.</source>
-        <translation>1. NectarLink&apos;i bilgisayarınıza (Windows 11 veya Linux) ve Android telefonunuza (Android 8.0 veya üzeri) kurun.
+        <translation>1. Ulak&apos;i bilgisayarınıza (Windows 11 veya Linux) ve Android telefonunuza (Android 8.0 veya üzeri) kurun.
 2. İki cihazı da aynı Wi-Fi ağına bağlayın veya telefonunuzu USB kablosuyla bilgisayarınıza takın.
 3. Kurulum rehberindeki Eşleştir adımını açın veya sol çubuğun altındaki + (Yeni cihaz eşleştir) düğmesine tıklayın.
-4. NectarLink Android uygulamasından QR kodunu tarayın veya yakındaki cihazlar listesinden telefonunuzu seçip 6 haneli kodun iki ekranda da aynı olduğunu onaylayın.
+4. Ulak Android uygulamasından QR kodunu tarayın veya yakındaki cihazlar listesinden telefonunuzu seçip 6 haneli kodun iki ekranda da aynı olduğunu onaylayın.
 5. O telefonla hangi özelliklerin paylaşılacağını seçin ve yalnızca kullanmak istediğiniz Android izinlerini verin.</translation>
     </message>
     <message>
@@ -2714,15 +2714,15 @@
         <source>If your phone and PC do not see each other:
 
 1. Open Connection Doctor from Settings › Connection &amp; About or the Command Palette.
-2. Check that your Wi-Fi network profile in Windows is set to Private rather than Public, or click Fix in Connection Doctor to allow NectarLink through Windows Firewall.
+2. Check that your Wi-Fi network profile in Windows is set to Private rather than Public, or click Fix in Connection Doctor to allow Ulak through Windows Firewall.
 3. Verify that both devices are on the same subnet and that guest Wi-Fi client isolation is turned off on your router.
-4. You can also connect over a USB cable with USB debugging enabled; NectarLink automatically sets up a local tunnel.</source>
+4. You can also connect over a USB cable with USB debugging enabled; Ulak automatically sets up a local tunnel.</source>
         <translation>Telefonunuz ve bilgisayarınız birbirini görmüyorsa:
 
 1. Bağlantı Doktoru&apos;nu Ayarlar › Bağlantı ve Hakkında bölümünden veya Komut Paleti&apos;nden açın.
-2. Windows&apos;taki Wi-Fi ağ profilinizin Ortak değil Özel olarak ayarlandığını kontrol edin veya NectarLink&apos;e Windows Güvenlik Duvarı&apos;ndan izin vermek için Bağlantı Doktoru&apos;nda Düzelt&apos;e tıklayın.
+2. Windows&apos;taki Wi-Fi ağ profilinizin Ortak değil Özel olarak ayarlandığını kontrol edin veya Ulak&apos;e Windows Güvenlik Duvarı&apos;ndan izin vermek için Bağlantı Doktoru&apos;nda Düzelt&apos;e tıklayın.
 3. İki cihazın da aynı alt ağda olduğunu ve yönlendiricinizde misafir Wi-Fi istemci yalıtımının kapalı olduğunu doğrulayın.
-4. USB hata ayıklama açıkken USB kablosuyla da bağlanabilirsiniz; NectarLink yerel bir tüneli otomatik olarak kurar.</translation>
+4. USB hata ayıklama açıkken USB kablosuyla da bağlanabilirsiniz; Ulak yerel bir tüneli otomatik olarak kurar.</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="280"/>
@@ -2765,7 +2765,7 @@ Bilgisayar klasörlerini paylaş, Uzaktan giriş ve Ters bilgisayar ekranı yans
     </message>
     <message>
         <location filename="rust_strings.h" line="285"/>
-        <source>Most NectarLink features work in Standard mode with regular Android permissions. Two optional modes unlock deeper system integration:
+        <source>Most Ulak features work in Standard mode with regular Android permissions. Two optional modes unlock deeper system integration:
 
 Elevated mode (Wireless debugging or root)
 - Captures the phone screen without showing the Android cast confirmation prompt every time.
@@ -2774,8 +2774,8 @@ Elevated mode (Wireless debugging or root)
 
 Assist mode (Android Accessibility Service)
 - Injects mouse clicks, scrolling, and touch gestures when you control your phone from your PC.
-- NectarLink never reads screen text or logs keystrokes through the Accessibility service.</source>
-        <translation>NectarLink özelliklerinin çoğu, normal Android izinleriyle Standart modda çalışır. İsteğe bağlı iki mod daha derin sistem entegrasyonu sağlar:
+- Ulak never reads screen text or logs keystrokes through the Accessibility service.</source>
+        <translation>Ulak özelliklerinin çoğu, normal Android izinleriyle Standart modda çalışır. İsteğe bağlı iki mod daha derin sistem entegrasyonu sağlar:
 
 Yükseltilmiş mod (Kablosuz hata ayıklama veya root)
 - Telefon ekranını, Android yayınlama onay istemini her seferinde göstermeden yakalar.
@@ -2784,16 +2784,16 @@ Yükseltilmiş mod (Kablosuz hata ayıklama veya root)
 
 Yardımcı mod (Android Erişilebilirlik Hizmeti)
 - Telefonunuzu bilgisayarınızdan kontrol ederken fare tıklamalarını, kaydırmayı ve dokunma hareketlerini iletir.
-- NectarLink, Erişilebilirlik hizmeti üzerinden asla ekran metnini okumaz veya tuş vuruşlarını kaydetmez.</translation>
+- Ulak, Erişilebilirlik hizmeti üzerinden asla ekran metnini okumaz veya tuş vuruşlarını kaydetmez.</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="286"/>
-        <source>Nectar Island</source>
-        <translation>Nectar Island</translation>
+        <source>Ulak Island</source>
+        <translation>Ulak Island</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="287"/>
-        <source>NectarLink links your Android phone and your PC directly on your local network or over a USB cable.
+        <source>Ulak links your Android phone and your PC directly on your local network or over a USB cable.
 
 How it works
 - Devices discover each other over local Wi-Fi (mDNS) or USB (ADB reverse tunnel) and connect over QUIC (TLS 1.3).
@@ -2804,7 +2804,7 @@ Capability tiers on Android
 - Standard mode: Works right after installation with standard Android permissions.
 - Elevated mode (optional): Uses Wireless debugging (set up once in the phone app) or root for phone apps in their own windows, mirroring without the screen capture prompt, and more phone controls.
 - Assist mode (optional): Uses the Android Accessibility service only when you enable Remote input so your PC mouse and keyboard can control the phone.</source>
-        <translation>NectarLink, Android telefonunuzu ve bilgisayarınızı yerel ağınız üzerinden veya USB kablosuyla doğrudan birbirine bağlar.
+        <translation>Ulak, Android telefonunuzu ve bilgisayarınızı yerel ağınız üzerinden veya USB kablosuyla doğrudan birbirine bağlar.
 
 Nasıl çalışır
 - Cihazlar birbirini yerel Wi-Fi (mDNS) veya USB (ADB ters tünel) üzerinden keşfeder ve QUIC (TLS 1.3) üzerinden bağlanır.
@@ -2818,14 +2818,14 @@ Android&apos;de yetenek seviyeleri
     </message>
     <message>
         <location filename="rust_strings.h" line="288"/>
-        <source>NectarLink never asks for every permission up front. Each feature works independently:
+        <source>Ulak never asks for every permission up front. Each feature works independently:
 
 - Notification Access: Required only if you want phone notifications, inline replies, and notification-backed chat threads on your PC.
 - SMS and Contacts: Required only if you want to read and send SMS/MMS messages or look up contact names on your PC.
 - Phone and Call Log: Required only if you want incoming call alerts, call history, or dialing from your PC.
 - Media and Photos: Required only if you want the Photos gallery, Shelf latest photo, or folder sync.
 - Camera and Microphone: Required only while streaming your phone as a webcam, taking a Continuity Camera shot, or recording a voice note.</source>
-        <translation>NectarLink hiçbir zaman tüm izinleri baştan istemez. Her özellik bağımsız çalışır:
+        <translation>Ulak hiçbir zaman tüm izinleri baştan istemez. Her özellik bağımsız çalışır:
 
 - Bildirim Erişimi: Yalnızca telefon bildirimlerini, satır içi yanıtları ve bildirim tabanlı sohbet konuşmalarını bilgisayarınızda görmek istiyorsanız gerekir.
 - SMS ve Kişiler: Yalnızca bilgisayarınızda SMS/MMS mesajlarını okumak ve göndermek veya kişi adlarını aramak istiyorsanız gerekir.
@@ -2835,8 +2835,8 @@ Android&apos;de yetenek seviyeleri
     </message>
     <message>
         <location filename="rust_strings.h" line="289"/>
-        <source>NectarLink overview</source>
-        <translation>NectarLink&apos;e genel bakış</translation>
+        <source>Ulak overview</source>
+        <translation>Ulak&apos;e genel bakış</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="290"/>
@@ -2992,23 +2992,23 @@ Neler gerekir
 Displays a compact pill at the top center of your primary monitor for incoming calls, live file transfer progress, media playback, and optional notification previews.
 
 Where to find it
-- Settings › General › Nectar Island.
+- Settings › General › Ulak Island.
 
 What it needs
-- Turn on Nectar Island in Settings › General and pick which events should appear.</source>
+- Turn on Ulak Island in Settings › General and pick which events should appear.</source>
         <translation>Ne yapar
 Gelen aramalar, canlı dosya aktarım ilerlemesi, medya oynatma ve isteğe bağlı bildirim önizlemeleri için birincil monitörünüzün üst ortasında küçük bir hap gösterir.
 
 Nerede bulunur
-- Ayarlar › Genel › Nectar Island.
+- Ayarlar › Genel › Ulak Island.
 
 Neler gerekir
-- Ayarlar › Genel bölümünde Nectar Island&apos;ı açın ve hangi olayların görüneceğini seçin.</translation>
+- Ayarlar › Genel bölümünde Ulak Island&apos;ı açın ve hangi olayların görüneceğini seçin.</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="311"/>
         <source>What it does
-Exposes an opt-in localhost HTTP/JSON and Server-Sent Events API on 127.0.0.1 (default port 53320) protected by a bearer token so scripts, CLI tools, and Stream Deck plugins can trigger NectarLink actions.
+Exposes an opt-in localhost HTTP/JSON and Server-Sent Events API on 127.0.0.1 (default port 53320) protected by a bearer token so scripts, CLI tools, and Stream Deck plugins can trigger Ulak actions.
 
 Where to find it
 - Settings › Connection &amp; About › Local automation API.
@@ -3016,7 +3016,7 @@ Where to find it
 What it needs
 - Turn on Local automation API in Settings › Connection &amp; About and read the bearer token from api-token.json.</source>
         <translation>Ne yapar
-Betiklerin, komut satırı araçlarının ve Stream Deck eklentilerinin NectarLink eylemlerini tetikleyebilmesi için 127.0.0.1 üzerinde (varsayılan bağlantı noktası 53320), bir bearer token ile korunan, isteğe bağlı bir localhost HTTP/JSON ve Server-Sent Events API&apos;si sunar.
+Betiklerin, komut satırı araçlarının ve Stream Deck eklentilerinin Ulak eylemlerini tetikleyebilmesi için 127.0.0.1 üzerinde (varsayılan bağlantı noktası 53320), bir bearer token ile korunan, isteğe bağlı bir localhost HTTP/JSON ve Server-Sent Events API&apos;si sunar.
 
 Nerede bulunur
 - Ayarlar › Bağlantı ve Hakkında › Yerel otomasyon API&apos;si.
@@ -3034,7 +3034,7 @@ Where to find it
 - Command Palette › Type on phone with PC keyboard.
 
 What it needs
-- Assist mode (Accessibility service), the NectarLink input method, or Elevated mode on your phone.</source>
+- Assist mode (Accessibility service), the Ulak input method, or Elevated mode on your phone.</source>
         <translation>Ne yapar
 Bilgisayar klavyenizdeki tuş vuruşlarını ve yapıştırılan metni, telefon ekranını yansıtmaya gerek kalmadan doğrudan telefonunuza iletir.
 
@@ -3043,7 +3043,7 @@ Nerede bulunur
 - Komut Paleti › Bilgisayar klavyesiyle telefona yaz.
 
 Neler gerekir
-- Telefonunuzda Yardımcı mod (Erişilebilirlik hizmeti), NectarLink giriş yöntemi veya Yükseltilmiş mod.</translation>
+- Telefonunuzda Yardımcı mod (Erişilebilirlik hizmeti), Ulak giriş yöntemi veya Yükseltilmiş mod.</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="313"/>
@@ -3163,7 +3163,7 @@ Where to find it
 - Settings › General › Copy one-time codes.
 
 What it needs
-- Notification Access permission enabled for NectarLink on your Android phone.
+- Notification Access permission enabled for Ulak on your Android phone.
 - The per-device Notifications toggle enabled on your PC.</source>
         <translation>Ne yapar
 Telefon bildirimlerinizi Ana Sayfa akışına ve Windows bildirim açılır pencerelerine yansıtır. Mesajlara satır içi yanıt verebilir, eylem düğmelerine tıklayabilir, bildirimleri tek tek veya grup olarak kapatabilir ve son kapatmayı geri alabilirsiniz.
@@ -3174,7 +3174,7 @@ Nerede bulunur
 - Ayarlar › Genel › Tek kullanımlık kodları kopyala.
 
 Neler gerekir
-- Android telefonunuzda NectarLink için Bildirim Erişimi izninin açık olması.
+- Android telefonunuzda Ulak için Bildirim Erişimi izninin açık olması.
 - Bilgisayarınızda cihaz başına Bildirimler anahtarının açık olması.</translation>
     </message>
     <message>
@@ -3183,7 +3183,7 @@ Neler gerekir
 Opens a keyboard-first search bar over actions, contacts, message threads, mirrorable apps, phone quick toggles, clipboard history, and navigation pages.
 
 Where to find it
-- Global hotkey Ctrl+Alt+Space (or Ctrl+K inside the NectarLink window).
+- Global hotkey Ctrl+Alt+Space (or Ctrl+K inside the Ulak window).
 - Commands in the top bar.
 
 What it needs
@@ -3192,7 +3192,7 @@ What it needs
 Eylemler, kişiler, mesaj konuşmaları, yansıtılabilir uygulamalar, telefon hızlı ayarları, pano geçmişi ve gezinme sayfaları üzerinde klavye odaklı bir arama çubuğu açar.
 
 Nerede bulunur
-- Genel kısayol tuşu Ctrl+Alt+Space (veya NectarLink penceresi içinde Ctrl+K).
+- Genel kısayol tuşu Ctrl+Alt+Space (veya Ulak penceresi içinde Ctrl+K).
 - Üst çubuktaki Komutlar.
 
 Neler gerekir
@@ -3285,7 +3285,7 @@ Neler gerekir
     <message>
         <location filename="rust_strings.h" line="324"/>
         <source>What it does
-Sends files, folders, links, and text between your phone and PC at local network speed. If your phone is offline when you send, NectarLink places the item in the Waiting to send queue and delivers it automatically as soon as your phone reconnects.
+Sends files, folders, links, and text between your phone and PC at local network speed. If your phone is offline when you send, Ulak places the item in the Waiting to send queue and delivers it automatically as soon as your phone reconnects.
 
 Where to find it
 - Home › Send files button, drag-and-drop anywhere on the window, Waiting to send card, and Transfers list.
@@ -3294,7 +3294,7 @@ Where to find it
 What it needs
 - Paired phone and the per-device Files toggle enabled.</source>
         <translation>Ne yapar
-Telefonunuz ve bilgisayarınız arasında dosyaları, klasörleri, bağlantıları ve metni yerel ağ hızında gönderir. Gönderdiğiniz sırada telefonunuz çevrimdışıysa NectarLink öğeyi Gönderilmeyi bekleyenler kuyruğuna alır ve telefonunuz yeniden bağlanır bağlanmaz otomatik olarak teslim eder.
+Telefonunuz ve bilgisayarınız arasında dosyaları, klasörleri, bağlantıları ve metni yerel ağ hızında gönderir. Gönderdiğiniz sırada telefonunuz çevrimdışıysa Ulak öğeyi Gönderilmeyi bekleyenler kuyruğuna alır ve telefonunuz yeniden bağlanır bağlanmaz otomatik olarak teslim eder.
 
 Nerede bulunur
 - Ana Sayfa › Dosya gönder düğmesi, pencerenin herhangi bir yerine sürükleyip bırakma, Gönderilmeyi bekleyenler kartı ve Aktarımlar listesi.
@@ -3333,7 +3333,7 @@ Where to find it
 
 What it needs
 - Automatic PC-to-phone clipboard send works whenever your phone is connected.
-- Background phone-to-PC clipboard sync on Android 10+ uses notifications, the NectarLink quick tile, or Elevated mode.</source>
+- Background phone-to-PC clipboard sync on Android 10+ uses notifications, the Ulak quick tile, or Elevated mode.</source>
         <translation>Ne yapar
 Kopyalanan metni, zengin HTML/RTF metnini, görüntüleri ve küçük kopyalanmış dosya gruplarını bilgisayarınız ve telefonunuz arasında paylaşır. Sabitleme ve bağlantılar, telefon numaraları, adresler ve kargo takip kodları için akıllı bağlam etiketleriyle en fazla 50 öğelik şifreli yerel bir geçmiş tutar.
 
@@ -3343,7 +3343,7 @@ Nerede bulunur
 
 Neler gerekir
 - Bilgisayardan telefona otomatik pano gönderimi, telefonunuz bağlı olduğu sürece çalışır.
-- Android 10+ sürümlerinde telefondan bilgisayara arka planda pano eşitleme; bildirimleri, NectarLink hızlı ayar kutucuğunu veya Yükseltilmiş modu kullanır.</translation>
+- Android 10+ sürümlerinde telefondan bilgisayara arka planda pano eşitleme; bildirimleri, Ulak hızlı ayar kutucuğunu veya Yükseltilmiş modu kullanır.</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="327"/>
@@ -3352,7 +3352,7 @@ Shows incoming and active phone calls on your PC with Answer, Decline, and Rejec
 
 Where to find it
 - Left navigation rail › Calls.
-- Incoming call banner on Home and Nectar Island.
+- Incoming call banner on Home and Ulak Island.
 
 What it needs
 - Phone, Call Log, and Contacts permissions on your Android phone.
@@ -3362,7 +3362,7 @@ Gelen ve devam eden telefon aramalarını Yanıtla, Reddet ve SMS ile reddet eyl
 
 Nerede bulunur
 - Sol gezinme çubuğu › Aramalar.
-- Ana Sayfa&apos;daki ve Nectar Island&apos;daki gelen arama bildirimi.
+- Ana Sayfa&apos;daki ve Ulak Island&apos;daki gelen arama bildirimi.
 
 Neler gerekir
 - Android telefonunuzda Telefon, Arama Kaydı ve Kişiler izinleri.
@@ -3395,7 +3395,7 @@ Neler gerekir
 Streams your PC&apos;s screen to your phone so you can view your desktop from across the room and use your phone as a trackpad or laser pointer.
 
 Where to find it
-- Started from the NectarLink app on your phone.
+- Started from the Ulak app on your phone.
 - Settings › Devices › Share PC screen to phone.
 
 What it needs
@@ -3404,7 +3404,7 @@ What it needs
 Bilgisayarınızın ekranını telefonunuza aktarır; böylece masaüstünüzü odanın diğer ucundan görebilir ve telefonunuzu dokunmatik yüzey veya lazer işaretçisi olarak kullanabilirsiniz.
 
 Nerede bulunur
-- Telefonunuzdaki NectarLink uygulamasından başlatılır.
+- Telefonunuzdaki Ulak uygulamasından başlatılır.
 - Ayarlar › Cihazlar › Bilgisayar ekranını telefonla paylaş.
 
 Neler gerekir
@@ -3413,7 +3413,7 @@ Neler gerekir
     <message>
         <location filename="rust_strings.h" line="330"/>
         <source>What it does
-Streams your phone camera into the NectarLink Virtual Camera on Windows so Zoom, Teams, Meet, Discord, and OBS can use your phone&apos;s rear or front camera at up to 4K.
+Streams your phone camera into the Ulak Virtual Camera on Windows so Zoom, Teams, Meet, Discord, and OBS can use your phone&apos;s rear or front camera at up to 4K.
 
 Where to find it
 - Home › Phone as webcam.
@@ -3423,7 +3423,7 @@ What it needs
 - Camera permission on your phone.
 - For other apps to see it: Virtual camera add-on in Settings › Camera &amp; Audio.</source>
         <translation>Ne yapar
-Zoom, Teams, Meet, Discord ve OBS&apos;nin telefonunuzun arka veya ön kamerasını 4K&apos;ya kadar kullanabilmesi için telefon kameranızı Windows&apos;taki NectarLink Sanal Kamerası&apos;na aktarır.
+Zoom, Teams, Meet, Discord ve OBS&apos;nin telefonunuzun arka veya ön kamerasını 4K&apos;ya kadar kullanabilmesi için telefon kameranızı Windows&apos;taki Ulak Sanal Kamerası&apos;na aktarır.
 
 Nerede bulunur
 - Ana Sayfa › Web kamerası olarak telefon.
@@ -4481,8 +4481,8 @@ Neler gerekir
     <name>IslandWindow</name>
     <message>
         <location filename="../qml/IslandWindow.qml" line="16"/>
-        <source>Nectar Island</source>
-        <translation>Nectar Island</translation>
+        <source>Ulak Island</source>
+        <translation>Ulak Island</translation>
     </message>
     <message>
         <location filename="../qml/IslandWindow.qml" line="223"/>
@@ -4518,13 +4518,13 @@ Neler gerekir
     </message>
     <message>
         <location filename="../qml/IslandWindow.qml" line="238"/>
-        <source>Nectar Island · %1</source>
-        <translation>Nectar Island · %1</translation>
+        <source>Ulak Island · %1</source>
+        <translation>Ulak Island · %1</translation>
     </message>
     <message>
         <location filename="../qml/IslandWindow.qml" line="239"/>
-        <source>Nectar Island · Ready</source>
-        <translation>Nectar Island · Hazır</translation>
+        <source>Ulak Island · Ready</source>
+        <translation>Ulak Island · Hazır</translation>
     </message>
     <message>
         <location filename="../qml/IslandWindow.qml" line="244"/>
@@ -4553,8 +4553,8 @@ Neler gerekir
     </message>
     <message>
         <location filename="../qml/IslandWindow.qml" line="268"/>
-        <source>Click to view in NectarLink</source>
-        <translation>NectarLink&apos;te görmek için tıklayın</translation>
+        <source>Click to view in Ulak</source>
+        <translation>Ulak&apos;te görmek için tıklayın</translation>
     </message>
     <message>
         <location filename="../qml/IslandWindow.qml" line="271"/>
@@ -4631,8 +4631,8 @@ Neler gerekir
     </message>
     <message>
         <location filename="rust_strings.h" line="348"/>
-        <source>Update NectarLink on %1.</source>
-        <translation>%1 cihazındaki NectarLink&apos;i güncelleyin.</translation>
+        <source>Update Ulak on %1.</source>
+        <translation>%1 cihazındaki Ulak&apos;i güncelleyin.</translation>
     </message>
 </context>
 <context>
@@ -4694,43 +4694,43 @@ Neler gerekir
     </message>
     <message>
         <location filename="../qml/components/LockChip.qml" line="46"/>
-        <source>On your phone, open NectarLink › Settings › Control from your PC and turn on the Accessibility service.</source>
-        <translation>Telefonunuzda NectarLink › Ayarlar › Bilgisayarınızdan kontrol&apos;ü açın ve Erişilebilirlik hizmetini açın.</translation>
+        <source>On your phone, open Ulak › Settings › Control from your PC and turn on the Accessibility service.</source>
+        <translation>Telefonunuzda Ulak › Ayarlar › Bilgisayarınızdan kontrol&apos;ü açın ve Erişilebilirlik hizmetini açın.</translation>
     </message>
     <message>
         <location filename="../qml/components/LockChip.qml" line="48"/>
-        <source>Needs Elevated: set up Wireless debugging in NectarLink › Settings › Control from your PC, or connect the phone over USB with USB debugging allowed.</source>
-        <translation>Yükseltilmiş mod gerekli: NectarLink › Ayarlar › Bilgisayarınızdan kontrol bölümünde Kablosuz hata ayıklamayı ayarlayın veya telefonu USB hata ayıklamaya izin verilmiş şekilde USB ile bağlayın.</translation>
+        <source>Needs Elevated: set up Wireless debugging in Ulak › Settings › Control from your PC, or connect the phone over USB with USB debugging allowed.</source>
+        <translation>Yükseltilmiş mod gerekli: Ulak › Ayarlar › Bilgisayarınızdan kontrol bölümünde Kablosuz hata ayıklamayı ayarlayın veya telefonu USB hata ayıklamaya izin verilmiş şekilde USB ile bağlayın.</translation>
     </message>
     <message>
         <location filename="../qml/components/LockChip.qml" line="50"/>
-        <source>On your phone, set NectarLink as the default SMS/Caller ID app when prompted.</source>
-        <translation>Telefonunuzda istendiğinde NectarLink&apos;i varsayılan SMS/Arayan Kimliği uygulaması olarak ayarlayın.</translation>
+        <source>On your phone, set Ulak as the default SMS/Caller ID app when prompted.</source>
+        <translation>Telefonunuzda istendiğinde Ulak&apos;i varsayılan SMS/Arayan Kimliği uygulaması olarak ayarlayın.</translation>
     </message>
     <message>
         <location filename="../qml/components/LockChip.qml" line="53"/>
-        <source>On your phone, open NectarLink and allow Notification access.</source>
-        <translation>Telefonunuzda NectarLink&apos;i açın ve Bildirim erişimine izin verin.</translation>
+        <source>On your phone, open Ulak and allow Notification access.</source>
+        <translation>Telefonunuzda Ulak&apos;i açın ve Bildirim erişimine izin verin.</translation>
     </message>
     <message>
         <location filename="../qml/components/LockChip.qml" line="55"/>
-        <source>On your phone, open NectarLink and allow Do Not Disturb access.</source>
-        <translation>Telefonunuzda NectarLink&apos;i açın ve Rahatsız Etmeyin erişimine izin verin.</translation>
+        <source>On your phone, open Ulak and allow Do Not Disturb access.</source>
+        <translation>Telefonunuzda Ulak&apos;i açın ve Rahatsız Etmeyin erişimine izin verin.</translation>
     </message>
     <message>
         <location filename="../qml/components/LockChip.qml" line="57"/>
-        <source>On your phone, open NectarLink and allow Modify system settings.</source>
-        <translation>Telefonunuzda NectarLink&apos;i açın ve Sistem ayarlarını değiştirme iznini verin.</translation>
+        <source>On your phone, open Ulak and allow Modify system settings.</source>
+        <translation>Telefonunuzda Ulak&apos;i açın ve Sistem ayarlarını değiştirme iznini verin.</translation>
     </message>
     <message>
         <location filename="../qml/components/LockChip.qml" line="58"/>
-        <source>Open NectarLink on your phone and grant this permission in Settings.</source>
-        <translation>Telefonunuzda NectarLink&apos;i açın ve bu izni Ayarlar&apos;dan verin.</translation>
+        <source>Open Ulak on your phone and grant this permission in Settings.</source>
+        <translation>Telefonunuzda Ulak&apos;i açın ve bu izni Ayarlar&apos;dan verin.</translation>
     </message>
     <message>
         <location filename="../qml/components/LockChip.qml" line="60"/>
-        <source>Open Settings › Camera &amp; Audio to set up the NectarLink virtual camera add-on.</source>
-        <translation>NectarLink sanal kamera eklentisini kurmak için Ayarlar › Kamera ve Ses&apos;i açın.</translation>
+        <source>Open Settings › Camera &amp; Audio to set up the Ulak virtual camera add-on.</source>
+        <translation>Ulak sanal kamera eklentisini kurmak için Ayarlar › Kamera ve Ses&apos;i açın.</translation>
     </message>
     <message>
         <location filename="../qml/components/LockChip.qml" line="62"/>
@@ -5299,13 +5299,13 @@ Neler gerekir
     </message>
     <message>
         <location filename="rust_strings.h" line="360"/>
-        <source>Recording from %1, saved in Downloads/Nectarlink</source>
-        <translation>%1 kaydı, İndirilenler/Nectarlink klasörüne kaydedildi</translation>
+        <source>Recording from %1, saved in Downloads/Ulak</source>
+        <translation>%1 kaydı, İndirilenler/Ulak klasörüne kaydedildi</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="361"/>
-        <source>Recording from %1, saved in Downloads\Nectarlink</source>
-        <translation>%1 kaydı, İndirilenler\Nectarlink klasörüne kaydedildi</translation>
+        <source>Recording from %1, saved in Downloads\Ulak</source>
+        <translation>%1 kaydı, İndirilenler\Ulak klasörüne kaydedildi</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="362"/>
@@ -5314,13 +5314,13 @@ Neler gerekir
     </message>
     <message>
         <location filename="rust_strings.h" line="363"/>
-        <source>Saved %1 to Downloads/Nectarlink.</source>
-        <translation>%1, İndirilenler/Nectarlink klasörüne kaydedildi.</translation>
+        <source>Saved %1 to Downloads/Ulak.</source>
+        <translation>%1, İndirilenler/Ulak klasörüne kaydedildi.</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="364"/>
-        <source>Saved %1 to Downloads\Nectarlink.</source>
-        <translation>%1, İndirilenler\Nectarlink klasörüne kaydedildi.</translation>
+        <source>Saved %1 to Downloads\Ulak.</source>
+        <translation>%1, İndirilenler\Ulak klasörüne kaydedildi.</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="365"/>
@@ -5329,13 +5329,13 @@ Neler gerekir
     </message>
     <message>
         <location filename="rust_strings.h" line="366"/>
-        <source>Screenshot from %1, saved in Downloads/Nectarlink</source>
-        <translation>%1 ekran görüntüsü, İndirilenler/Nectarlink klasörüne kaydedildi</translation>
+        <source>Screenshot from %1, saved in Downloads/Ulak</source>
+        <translation>%1 ekran görüntüsü, İndirilenler/Ulak klasörüne kaydedildi</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="367"/>
-        <source>Screenshot from %1, saved in Downloads\Nectarlink</source>
-        <translation>%1 ekran görüntüsü, İndirilenler\Nectarlink klasörüne kaydedildi</translation>
+        <source>Screenshot from %1, saved in Downloads\Ulak</source>
+        <translation>%1 ekran görüntüsü, İndirilenler\Ulak klasörüne kaydedildi</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="368"/>
@@ -5349,8 +5349,8 @@ Neler gerekir
     </message>
     <message>
         <location filename="rust_strings.h" line="370"/>
-        <source>Set up Wireless debugging in NectarLink on the phone to open its apps here.</source>
-        <translation>Uygulamalarını burada açmak için telefondaki NectarLink&apos;te Kablosuz hata ayıklamayı ayarlayın.</translation>
+        <source>Set up Wireless debugging in Ulak on the phone to open its apps here.</source>
+        <translation>Uygulamalarını burada açmak için telefondaki Ulak&apos;te Kablosuz hata ayıklamayı ayarlayın.</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="371"/>
@@ -5359,8 +5359,8 @@ Neler gerekir
     </message>
     <message>
         <location filename="rust_strings.h" line="372"/>
-        <source>The app didn&apos;t open on the phone. Try again, or open NectarLink on the phone to check Wireless debugging.</source>
-        <translation>Uygulama telefonda açılmadı. Tekrar deneyin veya Kablosuz hata ayıklamayı kontrol etmek için telefonda NectarLink&apos;i açın.</translation>
+        <source>The app didn&apos;t open on the phone. Try again, or open Ulak on the phone to check Wireless debugging.</source>
+        <translation>Uygulama telefonda açılmadı. Tekrar deneyin veya Kablosuz hata ayıklamayı kontrol etmek için telefonda Ulak&apos;i açın.</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="373"/>
@@ -5384,8 +5384,8 @@ Neler gerekir
     </message>
     <message>
         <location filename="rust_strings.h" line="377"/>
-        <source>This phone&apos;s app doesn&apos;t share its screen yet. Update NectarLink on the phone.</source>
-        <translation>Bu telefondaki uygulama henüz ekranını paylaşmıyor. Telefondaki NectarLink&apos;i güncelleyin.</translation>
+        <source>This phone&apos;s app doesn&apos;t share its screen yet. Update Ulak on the phone.</source>
+        <translation>Bu telefondaki uygulama henüz ekranını paylaşmıyor. Telefondaki Ulak&apos;i güncelleyin.</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="378"/>
@@ -5402,13 +5402,13 @@ Neler gerekir
     </message>
     <message>
         <location filename="../qml/MirrorWindow.qml" line="25"/>
-        <source>%1 · NectarLink</source>
-        <translation>%1 · NectarLink</translation>
+        <source>%1 · Ulak</source>
+        <translation>%1 · Ulak</translation>
     </message>
     <message>
         <location filename="../qml/MirrorWindow.qml" line="25"/>
-        <source>Phone screen · NectarLink</source>
-        <translation>Telefon ekranı · NectarLink</translation>
+        <source>Phone screen · Ulak</source>
+        <translation>Telefon ekranı · Ulak</translation>
     </message>
     <message>
         <location filename="../qml/MirrorWindow.qml" line="359"/>
@@ -5473,8 +5473,8 @@ Neler gerekir
     </message>
     <message>
         <location filename="../qml/MirrorWindow.qml" line="514"/>
-        <source>To control the phone, turn on Control from your PC in NectarLink&apos;s settings on the phone.</source>
-        <translation>Telefonu kontrol etmek için telefondaki NectarLink ayarlarında Bilgisayarınızdan kontrol&apos;ü açın.</translation>
+        <source>To control the phone, turn on Control from your PC in Ulak&apos;s settings on the phone.</source>
+        <translation>Telefonu kontrol etmek için telefondaki Ulak ayarlarında Bilgisayarınızdan kontrol&apos;ü açın.</translation>
     </message>
     <message>
         <location filename="../qml/MirrorWindow.qml" line="523"/>
@@ -5841,8 +5841,8 @@ Neler gerekir
     </message>
     <message>
         <location filename="../qml/pages/PairingPanel.qml" line="114"/>
-        <source>Install NectarLink</source>
-        <translation>NectarLink&apos;i kurun</translation>
+        <source>Install Ulak</source>
+        <translation>Ulak&apos;i kurun</translation>
     </message>
     <message>
         <location filename="../qml/pages/PairingPanel.qml" line="114"/>
@@ -5869,8 +5869,8 @@ Neler gerekir
     </message>
     <message>
         <location filename="../qml/pages/PairingPanel.qml" line="187"/>
-        <source>Open NectarLink on your phone</source>
-        <translation>Telefonunuzda NectarLink&apos;i açın</translation>
+        <source>Open Ulak on your phone</source>
+        <translation>Telefonunuzda Ulak&apos;i açın</translation>
     </message>
     <message>
         <location filename="../qml/pages/PairingPanel.qml" line="187"/>
@@ -5879,8 +5879,8 @@ Neler gerekir
     </message>
     <message>
         <location filename="../qml/pages/PairingPanel.qml" line="235"/>
-        <source>On your phone, open NectarLink and choose “Pair nearby”. It shows up here.</source>
-        <translation>Telefonunuzda NectarLink&apos;i açın ve “Yakındakiyle eşleştir”i seçin. Telefonunuz burada görünür.</translation>
+        <source>On your phone, open Ulak and choose “Pair nearby”. It shows up here.</source>
+        <translation>Telefonunuzda Ulak&apos;i açın ve “Yakındakiyle eşleştir”i seçin. Telefonunuz burada görünür.</translation>
     </message>
     <message>
         <location filename="../qml/pages/PairingPanel.qml" line="265"/>
@@ -5990,16 +5990,16 @@ Neler gerekir
     </message>
     <message>
         <location filename="rust_strings.h" line="395"/>
-        <source>Update NectarLink on %1 to use its microphone.</source>
-        <translation>Mikrofonunu kullanmak için %1 cihazındaki NectarLink&apos;i güncelleyin.</translation>
+        <source>Update Ulak on %1 to use its microphone.</source>
+        <translation>Mikrofonunu kullanmak için %1 cihazındaki Ulak&apos;i güncelleyin.</translation>
     </message>
 </context>
 <context>
     <name>PhoneSound</name>
     <message>
         <location filename="rust_strings.h" line="396"/>
-        <source>%1 couldn&apos;t ask to share its sound. Check that NectarLink can show notifications on the phone.</source>
-        <translation>%1 cihazı ses paylaşımı için izin isteyemedi. NectarLink&apos;in telefonda bildirim gösterebildiğini kontrol edin.</translation>
+        <source>%1 couldn&apos;t ask to share its sound. Check that Ulak can show notifications on the phone.</source>
+        <translation>%1 cihazı ses paylaşımı için izin isteyemedi. Ulak&apos;in telefonda bildirim gösterebildiğini kontrol edin.</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="397"/>
@@ -6013,8 +6013,8 @@ Neler gerekir
     </message>
     <message>
         <location filename="rust_strings.h" line="399"/>
-        <source>Update NectarLink on %1 to play its sound here.</source>
-        <translation>Sesini burada çalmak için %1 cihazındaki NectarLink&apos;i güncelleyin.</translation>
+        <source>Update Ulak on %1 to play its sound here.</source>
+        <translation>Sesini burada çalmak için %1 cihazındaki Ulak&apos;i güncelleyin.</translation>
     </message>
 </context>
 <context>
@@ -6066,8 +6066,8 @@ Neler gerekir
     </message>
     <message>
         <location filename="rust_strings.h" line="409"/>
-        <source>Update NectarLink on %1 to back up its photos.</source>
-        <translation>Fotoğraflarını yedeklemek için %1 cihazındaki NectarLink&apos;i güncelleyin.</translation>
+        <source>Update Ulak on %1 to back up its photos.</source>
+        <translation>Fotoğraflarını yedeklemek için %1 cihazındaki Ulak&apos;i güncelleyin.</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="410"/>
@@ -6079,8 +6079,8 @@ Neler gerekir
     <name>Photos</name>
     <message>
         <location filename="rust_strings.h" line="411"/>
-        <source>%1 of %2 couldn&apos;t be moved to %3. They&apos;re in Downloads\Nectarlink.</source>
-        <translation>%2 öğeden %1 tanesi %3 konumuna taşınamadı. Downloads\Nectarlink klasöründeler.</translation>
+        <source>%1 of %2 couldn&apos;t be moved to %3. They&apos;re in Downloads\Ulak.</source>
+        <translation>%2 öğeden %1 tanesi %3 konumuna taşınamadı. Downloads\Ulak klasöründeler.</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="412"/>
@@ -6144,8 +6144,8 @@ Neler gerekir
     </message>
     <message>
         <location filename="rust_strings.h" line="424"/>
-        <source>The photo couldn&apos;t be copied. It&apos;s in Downloads\Nectarlink.</source>
-        <translation>Fotoğraf kopyalanamadı. İndirilenler\Nectarlink klasöründe.</translation>
+        <source>The photo couldn&apos;t be copied. It&apos;s in Downloads\Ulak.</source>
+        <translation>Fotoğraf kopyalanamadı. İndirilenler\Ulak klasöründe.</translation>
     </message>
 </context>
 <context>
@@ -6454,8 +6454,8 @@ Neler gerekir
     </message>
     <message>
         <location filename="rust_strings.h" line="430"/>
-        <source>Update NectarLink on %1 to play on it.</source>
-        <translation>Telefonda oynatmak için %1 cihazındaki NectarLink&apos;i güncelleyin.</translation>
+        <source>Update Ulak on %1 to play on it.</source>
+        <translation>Telefonda oynatmak için %1 cihazındaki Ulak&apos;i güncelleyin.</translation>
     </message>
 </context>
 <context>
@@ -6516,8 +6516,8 @@ Neler gerekir
     </message>
     <message>
         <location filename="rust_strings.h" line="439"/>
-        <source>Send to %1 with NectarLink</source>
-        <translation>NectarLink ile %1 cihazına gönder</translation>
+        <source>Send to %1 with Ulak</source>
+        <translation>Ulak ile %1 cihazına gönder</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="440"/>
@@ -7006,13 +7006,13 @@ Neler gerekir
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="922"/>
-        <source>NectarLink follows the system unless you pick one.</source>
-        <translation>Siz bir dil seçmediğiniz sürece NectarLink sistem dilini kullanır.</translation>
+        <source>Ulak follows the system unless you pick one.</source>
+        <translation>Siz bir dil seçmediğiniz sürece Ulak sistem dilini kullanır.</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="923"/>
-        <source>NectarLink follows Windows unless you pick one.</source>
-        <translation>Siz bir dil seçmediğiniz sürece NectarLink Windows dilini kullanır.</translation>
+        <source>Ulak follows Windows unless you pick one.</source>
+        <translation>Siz bir dil seçmediğiniz sürece Ulak Windows dilini kullanır.</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="931"/>
@@ -7050,8 +7050,8 @@ Neler gerekir
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="1026"/>
         <location filename="../qml/pages/SettingsPage.qml" line="1029"/>
-        <source>Nectar Island</source>
-        <translation>Nectar Island</translation>
+        <source>Ulak Island</source>
+        <translation>Ulak Island</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="1027"/>
@@ -7961,8 +7961,8 @@ Neler gerekir
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="3272"/>
-        <source>NectarLink %1</source>
-        <translation>NectarLink %1</translation>
+        <source>Ulak %1</source>
+        <translation>Ulak %1</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="3275"/>
@@ -8080,8 +8080,8 @@ Neler gerekir
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="3569"/>
-        <source>Wi-Fi networks this PC has joined before. Your system keeps their passwords; NectarLink never sees them.</source>
-        <translation>Bu bilgisayarın daha önce katıldığı Wi-Fi ağları. Parolalarını sisteminiz saklar; NectarLink bunları asla görmez.</translation>
+        <source>Wi-Fi networks this PC has joined before. Your system keeps their passwords; Ulak never sees them.</source>
+        <translation>Bu bilgisayarın daha önce katıldığı Wi-Fi ağları. Parolalarını sisteminiz saklar; Ulak bunları asla görmez.</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="3570"/>
@@ -8090,8 +8090,8 @@ Neler gerekir
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="3572"/>
-        <source>Wi-Fi networks this PC has joined before. Windows keeps their passwords; NectarLink never sees them.</source>
-        <translation>Bu bilgisayarın daha önce katıldığı Wi-Fi ağları. Parolalarını Windows saklar; NectarLink bunları asla görmez.</translation>
+        <source>Wi-Fi networks this PC has joined before. Windows keeps their passwords; Ulak never sees them.</source>
+        <translation>Bu bilgisayarın daha önce katıldığı Wi-Fi ağları. Parolalarını Windows saklar; Ulak bunları asla görmez.</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="3573"/>
@@ -8140,8 +8140,8 @@ Neler gerekir
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="3455"/>
-        <source>The phone asks once to let this PC in. NectarLink there also needs All files access, or this folder under Selected folders only.</source>
-        <translation>Telefon, bu bilgisayara izin vermek için bir kez sorar. Oradaki NectarLink ayrıca Tüm dosyalara erişim iznine ya da bu klasörün Yalnızca seçili klasörler altında olmasına ihtiyaç duyar.</translation>
+        <source>The phone asks once to let this PC in. Ulak there also needs All files access, or this folder under Selected folders only.</source>
+        <translation>Telefon, bu bilgisayara izin vermek için bir kez sorar. Oradaki Ulak ayrıca Tüm dosyalara erişim iznine ya da bu klasörün Yalnızca seçili klasörler altında olmasına ihtiyaç duyar.</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="3758"/>
@@ -8198,8 +8198,8 @@ Neler gerekir
     </message>
     <message>
         <location filename="rust_strings.h" line="447"/>
-        <source>Couldn&apos;t uninstall NectarLink: %1</source>
-        <translation>NectarLink kaldırılamadı: %1</translation>
+        <source>Couldn&apos;t uninstall Ulak: %1</source>
+        <translation>Ulak kaldırılamadı: %1</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="448"/>
@@ -8228,8 +8228,8 @@ Neler gerekir
     </message>
     <message>
         <location filename="rust_strings.h" line="453"/>
-        <source>The uninstaller is missing. Reinstall NectarLink, then uninstall it.</source>
-        <translation>Kaldırma programı eksik. NectarLink&apos;i yeniden kurun, ardından kaldırın.</translation>
+        <source>The uninstaller is missing. Reinstall Ulak, then uninstall it.</source>
+        <translation>Kaldırma programı eksik. Ulak&apos;i yeniden kurun, ardından kaldırın.</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="454"/>
@@ -8256,18 +8256,18 @@ Neler gerekir
     <name>SetupWindow</name>
     <message>
         <location filename="../qml/setup/SetupWindow.qml" line="51"/>
-        <source>Uninstall NectarLink</source>
-        <translation>NectarLink&apos;i kaldır</translation>
+        <source>Uninstall Ulak</source>
+        <translation>Ulak&apos;i kaldır</translation>
     </message>
     <message>
         <location filename="../qml/setup/SetupWindow.qml" line="51"/>
-        <source>NectarLink Setup</source>
-        <translation>NectarLink Kurulumu</translation>
+        <source>Ulak Setup</source>
+        <translation>Ulak Kurulumu</translation>
     </message>
     <message>
         <location filename="../qml/setup/SetupWindow.qml" line="67"/>
-        <source>Install NectarLink in</source>
-        <translation>NectarLink&apos;in kurulacağı yer</translation>
+        <source>Install Ulak in</source>
+        <translation>Ulak&apos;in kurulacağı yer</translation>
     </message>
     <message>
         <location filename="../qml/setup/SetupWindow.qml" line="120"/>
@@ -8279,13 +8279,13 @@ Neler gerekir
     </message>
     <message>
         <location filename="../qml/setup/SetupWindow.qml" line="187"/>
-        <source>NectarLink</source>
-        <translation>NectarLink</translation>
+        <source>Ulak</source>
+        <translation>Ulak</translation>
     </message>
     <message>
         <location filename="../qml/setup/SetupWindow.qml" line="216"/>
-        <source>Couldn&apos;t uninstall NectarLink</source>
-        <translation>NectarLink kaldırılamadı</translation>
+        <source>Couldn&apos;t uninstall Ulak</source>
+        <translation>Ulak kaldırılamadı</translation>
     </message>
     <message>
         <location filename="../qml/setup/SetupWindow.qml" line="216"/>
@@ -8294,28 +8294,28 @@ Neler gerekir
     </message>
     <message>
         <location filename="../qml/setup/SetupWindow.qml" line="218"/>
-        <source>Uninstalling NectarLink</source>
-        <translation>NectarLink kaldırılıyor</translation>
+        <source>Uninstalling Ulak</source>
+        <translation>Ulak kaldırılıyor</translation>
     </message>
     <message>
         <location filename="../qml/setup/SetupWindow.qml" line="219"/>
-        <source>Updating NectarLink</source>
-        <translation>NectarLink güncelleniyor</translation>
+        <source>Updating Ulak</source>
+        <translation>Ulak güncelleniyor</translation>
     </message>
     <message>
         <location filename="../qml/setup/SetupWindow.qml" line="220"/>
-        <source>Installing NectarLink</source>
-        <translation>NectarLink kuruluyor</translation>
+        <source>Installing Ulak</source>
+        <translation>Ulak kuruluyor</translation>
     </message>
     <message>
         <location filename="../qml/setup/SetupWindow.qml" line="221"/>
-        <source>Uninstall NectarLink?</source>
-        <translation>NectarLink kaldırılsın mı?</translation>
+        <source>Uninstall Ulak?</source>
+        <translation>Ulak kaldırılsın mı?</translation>
     </message>
     <message>
         <location filename="../qml/setup/SetupWindow.qml" line="236"/>
-        <source>Sorry to see you go. This uninstalls NectarLink and deletes its settings and pairings on this PC. Files you received stay in %1.</source>
-        <translation>Gittiğinizi görmek üzücü. Bu işlem NectarLink&apos;i kaldırır ve bu bilgisayardaki ayarlarını ve eşleştirmelerini siler. Aldığınız dosyalar %1 konumunda kalır.</translation>
+        <source>Sorry to see you go. This uninstalls Ulak and deletes its settings and pairings on this PC. Files you received stay in %1.</source>
+        <translation>Gittiğinizi görmek üzücü. Bu işlem Ulak&apos;i kaldırır ve bu bilgisayardaki ayarlarını ve eşleştirmelerini siler. Aldığınız dosyalar %1 konumunda kalır.</translation>
     </message>
     <message>
         <location filename="../qml/setup/SetupWindow.qml" line="238"/>
@@ -8364,8 +8364,8 @@ Neler gerekir
     </message>
     <message>
         <location filename="../qml/setup/SetupWindow.qml" line="298"/>
-        <source>Keep NectarLink</source>
-        <translation>NectarLink&apos;i tut</translation>
+        <source>Keep Ulak</source>
+        <translation>Ulak&apos;i tut</translation>
     </message>
     <message>
         <location filename="../qml/setup/SetupWindow.qml" line="356"/>
@@ -8395,13 +8395,13 @@ Neler gerekir
     </message>
     <message>
         <location filename="../qml/setup/SetupWindow.qml" line="469"/>
-        <source>NectarLink is uninstalled</source>
-        <translation>NectarLink kaldırıldı</translation>
+        <source>Ulak is uninstalled</source>
+        <translation>Ulak kaldırıldı</translation>
     </message>
     <message>
         <location filename="../qml/setup/SetupWindow.qml" line="469"/>
-        <source>NectarLink is ready</source>
-        <translation>NectarLink hazır</translation>
+        <source>Ulak is ready</source>
+        <translation>Ulak hazır</translation>
     </message>
     <message>
         <location filename="../qml/setup/SetupWindow.qml" line="481"/>
@@ -8425,13 +8425,13 @@ Neler gerekir
     </message>
     <message>
         <location filename="../qml/setup/SetupWindow.qml" line="531"/>
-        <source>Open NectarLink</source>
-        <translation>NectarLink&apos;i aç</translation>
+        <source>Open Ulak</source>
+        <translation>Ulak&apos;i aç</translation>
     </message>
     <message>
         <location filename="../qml/setup/SetupWindow.qml" line="591"/>
-        <source>NectarLink goes into Program Files, or the folder you choose, for everyone on this PC. Setup also:</source>
-        <translation>NectarLink, bu bilgisayardaki herkes için Program Files klasörüne veya seçtiğiniz klasöre kurulur. Kurulum ayrıca:</translation>
+        <source>Ulak goes into Program Files, or the folder you choose, for everyone on this PC. Setup also:</source>
+        <translation>Ulak, bu bilgisayardaki herkes için Program Files klasörüne veya seçtiğiniz klasöre kurulur. Kurulum ayrıca:</translation>
     </message>
     <message>
         <location filename="../qml/setup/SetupWindow.qml" line="593"/>
@@ -8439,8 +8439,8 @@ Neler gerekir
         <translation>klasörü yalnızca yöneticiler değiştirebiliyorsa, güncellemeleri yönetici onayı istemeden kuran bir görev ekler</translation>
     </message>
     <message>
-        <source>NectarLink goes into Program Files for everyone on this PC. Setup also:</source>
-        <translation type="vanished">NectarLink, bu bilgisayardaki herkes için Program Files klasörüne kurulur. Kurulum ayrıca:</translation>
+        <source>Ulak goes into Program Files for everyone on this PC. Setup also:</source>
+        <translation type="vanished">Ulak, bu bilgisayardaki herkes için Program Files klasörüne kurulur. Kurulum ayrıca:</translation>
     </message>
     <message>
         <location filename="../qml/setup/SetupWindow.qml" line="592"/>
@@ -8480,8 +8480,8 @@ Neler gerekir
     <name>ShelfWindow</name>
     <message>
         <location filename="../qml/ShelfWindow.qml" line="16"/>
-        <source>NectarLink Shelf</source>
-        <translation>NectarLink Rafı</translation>
+        <source>Ulak Shelf</source>
+        <translation>Ulak Rafı</translation>
     </message>
     <message>
         <location filename="../qml/ShelfWindow.qml" line="53"/>
@@ -8676,13 +8676,13 @@ Neler gerekir
     </message>
     <message>
         <location filename="rust_strings.h" line="459"/>
-        <source>On the phone, allow All files access for NectarLink.</source>
-        <translation>Telefonda NectarLink için Tüm dosyalara erişim izni verin.</translation>
+        <source>On the phone, allow All files access for Ulak.</source>
+        <translation>Telefonda Ulak için Tüm dosyalara erişim izni verin.</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="460"/>
-        <source>On the phone, turn on Browse this phone&apos;s storage in File Explorer in NectarLink.</source>
-        <translation>Telefonda NectarLink&apos;te Bu telefonun depolama alanına Dosya Gezgini&apos;nden göz at seçeneğini açın.</translation>
+        <source>On the phone, turn on Browse this phone&apos;s storage in File Explorer in Ulak.</source>
+        <translation>Telefonda Ulak&apos;te Bu telefonun depolama alanına Dosya Gezgini&apos;nden göz at seçeneğini açın.</translation>
     </message>
 </context>
 <context>
@@ -9150,8 +9150,8 @@ Neler gerekir
     <name>Transfers</name>
     <message>
         <location filename="rust_strings.h" line="490"/>
-        <source>Accept in NectarLink to save to Downloads\Nectarlink</source>
-        <translation>İndirilenler\Nectarlink klasörüne kaydetmek için NectarLink&apos;te kabul edin</translation>
+        <source>Accept in Ulak to save to Downloads\Ulak</source>
+        <translation>İndirilenler\Ulak klasörüne kaydetmek için Ulak&apos;te kabul edin</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="491"/>
@@ -9160,13 +9160,13 @@ Neler gerekir
     </message>
     <message>
         <location filename="rust_strings.h" line="492"/>
-        <source>From %1, opened from Downloads\Nectarlink</source>
-        <translation>Kaynak: %1, İndirilenler\Nectarlink klasöründen açıldı</translation>
+        <source>From %1, opened from Downloads\Ulak</source>
+        <translation>Kaynak: %1, İndirilenler\Ulak klasöründen açıldı</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="493"/>
-        <source>From %1, saved in Downloads\Nectarlink</source>
-        <translation>Kaynak: %1, İndirilenler\Nectarlink klasörüne kaydedildi</translation>
+        <source>From %1, saved in Downloads\Ulak</source>
+        <translation>Kaynak: %1, İndirilenler\Ulak klasörüne kaydedildi</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="494"/>
@@ -9193,28 +9193,28 @@ Neler gerekir
     </message>
     <message>
         <location filename="rust_strings.h" line="498"/>
-        <source>NectarLink %1 is available</source>
-        <translation>NectarLink %1 kullanılabilir</translation>
+        <source>Ulak %1 is available</source>
+        <translation>Ulak %1 kullanılabilir</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="499"/>
-        <source>NectarLink %1 is available.</source>
-        <translation>NectarLink %1 kullanılabilir.</translation>
+        <source>Ulak %1 is available.</source>
+        <translation>Ulak %1 kullanılabilir.</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="500"/>
-        <source>NectarLink is still on the version you had. Try again from Settings.</source>
-        <translation>NectarLink hâlâ önceki sürümde. Ayarlar&apos;dan tekrar deneyin.</translation>
+        <source>Ulak is still on the version you had. Try again from Settings.</source>
+        <translation>Ulak hâlâ önceki sürümde. Ayarlar&apos;dan tekrar deneyin.</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="501"/>
-        <source>NectarLink is up to date.</source>
-        <translation>NectarLink güncel.</translation>
+        <source>Ulak is up to date.</source>
+        <translation>Ulak güncel.</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="502"/>
-        <source>NectarLink is updated to %1</source>
-        <translation>NectarLink %1 sürümüne güncellendi</translation>
+        <source>Ulak is updated to %1</source>
+        <translation>Ulak %1 sürümüne güncellendi</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="503"/>
@@ -9243,8 +9243,8 @@ Neler gerekir
     </message>
     <message>
         <location filename="rust_strings.h" line="508"/>
-        <source>The update is installed. Restart NectarLink to use it.</source>
-        <translation>Güncelleme kuruldu. Kullanmak için NectarLink&apos;i yeniden başlatın.</translation>
+        <source>The update is installed. Restart Ulak to use it.</source>
+        <translation>Güncelleme kuruldu. Kullanmak için Ulak&apos;i yeniden başlatın.</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="509"/>
@@ -9431,8 +9431,8 @@ Neler gerekir
     </message>
     <message>
         <location filename="../qml/pages/WalkthroughPage.qml" line="1555"/>
-        <source>Keep NectarLink ready in the system tray when you sign in.</source>
-        <translation>Oturum açtığınızda NectarLink&apos;i sistem tepsisinde hazır tutun.</translation>
+        <source>Keep Ulak ready in the system tray when you sign in.</source>
+        <translation>Oturum açtığınızda Ulak&apos;i sistem tepsisinde hazır tutun.</translation>
     </message>
     <message>
         <location filename="../qml/pages/WalkthroughPage.qml" line="1613"/>
@@ -9477,13 +9477,13 @@ Neler gerekir
     <name>WelcomePage</name>
     <message>
         <location filename="../qml/pages/WelcomePage.qml" line="36"/>
-        <source>Welcome to NectarLink</source>
-        <translation>NectarLink&apos;e hoş geldiniz</translation>
+        <source>Welcome to Ulak</source>
+        <translation>Ulak&apos;e hoş geldiniz</translation>
     </message>
     <message>
         <location filename="../qml/pages/WelcomePage.qml" line="46"/>
-        <source>NectarLink couldn&apos;t start.</source>
-        <translation>NectarLink başlatılamadı.</translation>
+        <source>Ulak couldn&apos;t start.</source>
+        <translation>Ulak başlatılamadı.</translation>
     </message>
     <message>
         <location filename="../qml/pages/WelcomePage.qml" line="47"/>

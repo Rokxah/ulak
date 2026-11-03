@@ -1,9 +1,9 @@
 # Desktop Surfaces and Automation
 
-Beyond the main window, NectarLink integrates into Windows 11 with fast, low-overhead desktop surfaces and automation tools: the slide-out **`Shelf`** edge panel, **`Nectar Island`** at the top of your screen, the searchable cross-device **`Timeline`**, the global **`Command Palette`** (`Ctrl+Alt+Space`), rich **`Handoff`** for links, maps, videos, and documents, **`notify-when`** process completion alerts, a trigger-action **Rules Engine**, a local authenticated **HTTP API**, a **PowerToys Command Palette** extension, and the `nectarlink` command-line client.
+Beyond the main window, Ulak integrates into Windows 11 with fast, low-overhead desktop surfaces and automation tools: the slide-out **`Shelf`** edge panel, **`Ulak Island`** at the top of your screen, the searchable cross-device **`Timeline`**, the global **`Command Palette`** (`Ctrl+Alt+Space`), rich **`Handoff`** for links, maps, videos, and documents, **`notify-when`** process completion alerts, a trigger-action **Rules Engine**, a local authenticated **HTTP API**, a **PowerToys Command Palette** extension, and the `nectarlink` command-line client.
 
 <p align="center">
-  <img src="images/command-palette.png" alt="Global Command Palette open over the NectarLink window on Windows 11" width="760">
+  <img src="images/command-palette.png" alt="Global Command Palette open over the Ulak window on Windows 11" width="760">
 </p>
 
 ## What You Need
@@ -11,7 +11,7 @@ Beyond the main window, NectarLink integrates into Windows 11 with fast, low-ove
 | Feature | Requirements |
 | :--- | :--- |
 | **`Shelf` edge panel (`Ctrl+Alt+S`)** | Windows 11 app running (window open or in the system tray). |
-| **`Nectar Island`** | Turn on **Nectar Island** in PC **Settings › General** (off by default). |
+| **`Ulak Island`** | Turn on **Ulak Island** in PC **Settings › General** (off by default). |
 | **`Timeline`** | Enabled by default on both Windows and Android (retains up to 5,000 items or 90 days by default). |
 | **`Command Palette` (`Ctrl+Alt+Space`)** | Windows 11 app running (window open or in the system tray). |
 | **Rich `Handoff` (links, maps, video timestamps, documents)** | `Standard` power level. **Files** toggle enabled in **Settings › Devices**. |
@@ -41,24 +41,24 @@ The `Shelf` is a lightweight edge panel on your PC that gives you instant drag-a
 
 ### Dock
 
-Turn on **Dock** in PC **Settings › General** to keep NectarLink in a bar at the left or right edge of your screen. Windows reserves that strip the way it reserves the taskbar, so maximized windows end where the dock begins.
+Turn on **Dock** in PC **Settings › General** to keep Ulak in a bar at the left or right edge of your screen. Windows reserves that strip the way it reserves the taskbar, so maximized windows end where the dock begins.
 
 - **Bell** opens a panel with your phone's notifications, where you can read and dismiss them without opening the main window.
 - **Messages**, **Calls**, **Photos**, **Apps** and **Settings** open that page in the main window. **Shelf** slides out the `Shelf`.
 - **Use as a window** turns the dock off and opens the normal window. The arrow button moves the dock to the other edge.
 - When another app goes full screen on that monitor, the dock steps behind it.
 
-### 2. `Nectar Island`
+### 2. `Ulak Island`
 
-`Nectar Island` is an optional compact pill at the top center of your primary monitor that surfaces live phone activity without covering your workspace in notification popups:
+`Ulak Island` is an optional compact pill at the top center of your primary monitor that surfaces live phone activity without covering your workspace in notification popups:
 
-1. Turn on **Nectar Island** in PC **Settings › General** (it is **off by default**).
+1. Turn on **Ulak Island** in PC **Settings › General** (it is **off by default**).
 2. In the **Island triggers** row right below it, choose which activities appear in the pill:
    - **Calls** (on by default): Incoming caller ID with Answer/Decline buttons and live call duration.
    - **Transfers** (on by default): Live file transfer progress bars and `Waiting to send` count.
    - **Media** (on by default): Now-playing track artwork, title, and transport controls.
    - **Alerts** (off by default): Phone notifications, one-time verification codes, active timers/Live Updates, and incoming voice recordings.
-3. Hover over or click `Nectar Island` to expand its interactive controls, or let it collapse back into a minimal pill when idle. `Nectar Island` automatically hides itself when you are running a full-screen game or video, or when Windows Do Not Disturb is active.
+3. Hover over or click `Ulak Island` to expand its interactive controls, or let it collapse back into a minimal pill when idle. `Ulak Island` automatically hides itself when you are running a full-screen game or video, or when Windows Do Not Disturb is active.
 
 ### 3. Cross-Device `Timeline`
 
@@ -81,7 +81,7 @@ The `Timeline` gives you one searchable local log of everything that has moved b
 
 ### 4. Global `Command Palette` (`Ctrl+Alt+Space`)
 
-Press **`Ctrl+Alt+Space`** from anywhere in Windows to open NectarLink's `Command Palette` over your current window:
+Press **`Ctrl+Alt+Space`** from anywhere in Windows to open Ulak's `Command Palette` over your current window:
 
 1. Start typing to fuzzy-search every action, paired device, recent file, or setting:
    - **Mirror phone screen**
@@ -102,8 +102,8 @@ Press **`Ctrl+Alt+Space`** from anywhere in Windows to open NectarLink's `Comman
 
 - **Web links**: Share any URL from your phone's browser to your PC via the Android share sheet (or send a URL from your PC via the `Command Palette` or `nectarlink send <url>`). The link opens immediately in the default browser on the receiving device.
 - **Maps and street addresses**: Share a Google Maps link or `geo:` location URI between devices to open that location directly in Maps.
-- **Video links with playback timestamp**: When you share a YouTube, Vimeo, or Twitch link (or run `nectarlink send <url> --at-seconds 142`), NectarLink attaches the current playback position so the receiving device offers a **Continue watching** action that resumes the video at the exact second you left off.
-- **Documents (`--open` / `Shift+Drop`)**: Hold **`Shift`** while dropping a document onto NectarLink (or run `nectarlink send report.pdf --open`) to transfer the file and open it automatically in the default viewer on the receiving device as soon as the transfer finishes.
+- **Video links with playback timestamp**: When you share a YouTube, Vimeo, or Twitch link (or run `nectarlink send <url> --at-seconds 142`), Ulak attaches the current playback position so the receiving device offers a **Continue watching** action that resumes the video at the exact second you left off.
+- **Documents (`--open` / `Shift+Drop`)**: Hold **`Shift`** while dropping a document onto Ulak (or run `nectarlink send report.pdf --open`) to transfer the file and open it automatically in the default viewer on the receiving device as soon as the transfer finishes.
 
 ### 6. Task Completion Alerts (`nectarlink notify-when`)
 
@@ -132,10 +132,10 @@ You can automate routine actions between your phone and PC without writing scrip
 
 ### 8. Local Authenticated HTTP API and PowerToys Extension
 
-For power users who use **PowerToys Command Palette**, **AutoHotkey**, **Raycast**, **Flow Launcher**, or custom PowerShell/Python scripts, NectarLink includes an opt-in local HTTP/JSON API:
+For power users who use **PowerToys Command Palette**, **AutoHotkey**, **Raycast**, **Flow Launcher**, or custom PowerShell/Python scripts, Ulak includes an opt-in local HTTP/JSON API:
 
 1. Open PC **Settings › Connection & About** and turn on **Local automation API** (default port `53320`).
-2. NectarLink binds strictly to loopback (`127.0.0.1:53320`, never exposed on LAN) and writes a random 256-bit Bearer token to `%LOCALAPPDATA%\Nectarlink\api-token.json`.
+2. Ulak binds strictly to loopback (`127.0.0.1:53320`, never exposed on LAN) and writes a random 256-bit Bearer token to `%LOCALAPPDATA%\Ulak\api-token.json`.
 3. Every request must include `Authorization: Bearer <token>`, and any request carrying a browser `Origin` header is rejected with `403 Forbidden` to prevent cross-site browser attacks.
 4. Available endpoints (see [`docs/api.md`](../api.md) for full request/response schemas and PowerShell/`curl` examples):
    - `GET /v1/devices`: List paired devices, connection status, and battery level.
@@ -146,11 +146,11 @@ For power users who use **PowerToys Command Palette**, **AutoHotkey**, **Raycast
    - `POST /v1/play-on-phone`: Play what this PC plays on the phone.
    - `POST /v1/camera`: Trigger Continuity Camera (`"photo"` or `"scan"`).
    - `GET /v1/timeline`: Query recent cross-device `Timeline` entries.
-5. A companion **PowerToys Command Palette** extension in `tools/powertoys-cmdpal/` connects to this API so you can invoke NectarLink actions directly from PowerToys.
+5. A companion **PowerToys Command Palette** extension in `tools/powertoys-cmdpal/` connects to this API so you can invoke Ulak actions directly from PowerToys.
 
 ## What the Options Do
 
-- **Nectar Island** and **Island triggers** (`Settings › General` on PC, default: **Off**): Enables the top-of-screen activity pill and selects which triggers (`Calls`, `Transfers`, `Media`, `Alerts`) expand it.
+- **Ulak Island** and **Island triggers** (`Settings › General` on PC, default: **Off**): Enables the top-of-screen activity pill and selects which triggers (`Calls`, `Transfers`, `Media`, `Alerts`) expand it.
 - **Command palette / File shelf / Take photo / Scan document shortcuts** (`Settings › Shortcuts & Rules` on PC): Customizes the global Windows hotkeys (`Ctrl+Alt+Space`, `Ctrl+Alt+S`, `Ctrl+Alt+C`, `Ctrl+Alt+D`), with a **Reset** button next to each.
 - **Trigger-action rules** (`Settings › Shortcuts & Rules` on PC): Manages "When X, Do Y" automation rules.
 - **Cross-device timeline** (`Settings › Storage & Privacy` on PC and `Settings › Features & Data › Data & storage` on Android, default: **90d**): Sets auto-purge retention (**30d**, **90d**, **1y**, or **All** up to 5,000 items) and provides a **Clear** button.
@@ -164,4 +164,4 @@ For power users who use **PowerToys Command Palette**, **AutoHotkey**, **Raycast
 ## Limits
 
 - **Global Hotkey Conflicts**: If another Windows application has already registered `Ctrl+Alt+Space`, `Ctrl+Alt+S`, `Ctrl+Alt+C`, or `Ctrl+Alt+D` as a system-wide hotkey, you can assign any non-conflicting `Ctrl`/`Alt`/`Shift`/`Win` key combination in **Settings › Shortcuts & Rules**.
-- **No Windows Widgets board widget yet**: NectarLink doesn't offer a widget in the Windows 11 `Win+W` Widgets board. The taskbar **Jump List** works on all installs, and on Android the **PC quick actions** home-screen widget works on all devices.
+- **No Windows Widgets board widget yet**: Ulak doesn't offer a widget in the Windows 11 `Win+W` Widgets board. The taskbar **Jump List** works on all installs, and on Android the **PC quick actions** home-screen widget works on all devices.

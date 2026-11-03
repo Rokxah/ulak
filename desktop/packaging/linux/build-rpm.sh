@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # SPDX-License-Identifier: GPL-3.0-or-later
-# Builds a Fedora/openSUSE .rpm package for NectarLink Desktop from the .deb
+# Builds a Fedora/openSUSE .rpm package for Ulak Desktop from the .deb
 # that build-deb.sh made, so both install exactly the same files:
 #   dist/nectarlink-<version>-1.<arch>.rpm
 # Needs rpmbuild (the `rpm` package on Debian and Ubuntu) and dpkg-deb.
@@ -90,7 +90,7 @@ Recommends:     fuse3
 %global _build_id_links none
 
 %description
-NectarLink links your Android phone and Linux desktop over your local
+Ulak links your Android phone and Linux desktop over your local
 network with end-to-end encryption: clipboard sync, notification
 mirroring, file transfer, screen, camera and audio streaming, and texts
 and calls.

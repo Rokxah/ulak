@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 //! `nectarlink-ptrun`: PowerToys Command Palette / PowerToys Run bridge for
-//! NectarLink's Local Authenticated API (`docs/api.md`).
+//! Ulak's Local Authenticated API (`docs/api.md`).
 //!
 //! Usage:
 //! - `nectarlink-ptrun [--data-dir <dir>] query "<search>"`
@@ -43,7 +43,7 @@ pub fn default_data_dir() -> PathBuf {
     env::var_os("LOCALAPPDATA")
         .map(PathBuf::from)
         .unwrap_or_else(env::temp_dir)
-        .join("Nectarlink")
+        .join("Ulak")
 }
 
 pub fn parse_args<I, S>(iter: I) -> Result<Command, String>
@@ -86,7 +86,7 @@ pub fn read_token_file(data_dir: &Path) -> Result<ApiTokenFile, String> {
     let path = data_dir.join("api-token.json");
     let raw = fs::read_to_string(&path).map_err(|e| {
         format!(
-            "can't read {} ({e}); enable the Local automation API in NectarLink Settings",
+            "can't read {} ({e}); enable the Local automation API in Ulak Settings",
             path.display()
         )
     })?;
@@ -135,7 +135,7 @@ pub fn build_query_items(search: &str, timeline_items: &[Value]) -> Vec<PaletteI
                 PaletteItem {
                     id: "send-url".into(),
                     title: format!("Open URL on phone: {q}"),
-                    subtitle: "Send link to your phone via NectarLink".into(),
+                    subtitle: "Send link to your phone via Ulak".into(),
                     action: "send-url".into(),
                     arg: q.to_owned(),
                 },
@@ -190,7 +190,7 @@ fn api_request(
 ) -> Result<Value, String> {
     let addr = SocketAddr::from(([127, 0, 0, 1], cfg.port));
     let mut stream = TcpStream::connect_timeout(&addr, Duration::from_secs(2))
-        .map_err(|e| format!("can't connect to NectarLink Local API at {addr}: {e}"))?;
+        .map_err(|e| format!("can't connect to Ulak Local API at {addr}: {e}"))?;
     let _ = stream.set_read_timeout(Some(Duration::from_secs(3)));
     let _ = stream.set_write_timeout(Some(Duration::from_secs(3)));
 
@@ -211,7 +211,7 @@ fn api_request(
     stream.read_to_string(&mut resp).map_err(|e| e.to_string())?;
     let (_, json_body) = resp
         .split_once("\r\n\r\n")
-        .ok_or_else(|| "malformed HTTP response from NectarLink Local API".to_owned())?;
+        .ok_or_else(|| "malformed HTTP response from Ulak Local API".to_owned())?;
     serde_json::from_str(json_body).map_err(|e| format!("invalid JSON from Local API: {e}"))
 }
 
@@ -269,7 +269,7 @@ fn main() -> ExitCode {
                     api_request(&cfg, "POST", "/v1/send", Some(&json!({ "paths": [path] })))
                 }
                 "notify" => {
-                    let title = arg.unwrap_or_else(|| "NectarLink".into());
+                    let title = arg.unwrap_or_else(|| "Ulak".into());
                     api_request(&cfg, "POST", "/v1/notify", Some(&json!({ "title": title })))
                 }
                 other => Err(format!("unknown action: {other}")),

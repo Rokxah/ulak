@@ -115,7 +115,7 @@ impl Response {
 fn open(url: &str, from: u64) -> Result<Response, String> {
     let rest = url.strip_prefix("https://").ok_or("only https")?;
     let (host, path) = rest.split_once('/').map_or((rest, "/".to_owned()), |(h, p)| (h, format!("/{p}")));
-    let agent = HSTRING::from(format!("Nectarlink/{} (Windows)", env!("CARGO_PKG_VERSION")));
+    let agent = HSTRING::from(format!("Ulak/{} (Windows)", env!("CARGO_PKG_VERSION")));
     // SAFETY: WinHTTP calls with valid strings; every handle is closed by
     // `Handle`.
     unsafe {
@@ -340,7 +340,7 @@ mod tests {
     #[test]
     #[ignore = "needs the internet"]
     fn resumes_a_download() {
-        let url = "https://github.com/thtbee/nectarlink/releases/download/v0.1.0/SHA256SUMS.txt";
+        let url = "https://github.com/Rokxah/ulak/releases/download/v0.1.0/SHA256SUMS.txt";
         let dir = tempfile::tempdir().unwrap();
         let whole = dir.path().join("whole");
         download(url, &whole, 1 << 20, |_, _| {}).unwrap();
@@ -358,8 +358,7 @@ mod release_download {
     #[test]
     #[ignore = "needs the internet"]
     fn downloads_a_release_installer() {
-        let url =
-            "https://github.com/thtbee/nectarlink/releases/download/v0.1.2/Nectarlink-0.1.2-x64-setup.exe";
+        let url = "https://github.com/Rokxah/ulak/releases/download/v0.1.2/Ulak-0.1.2-x64-setup.exe";
         let dir = tempfile::tempdir().unwrap();
         let file = dir.path().join("setup.exe.part");
         let started = std::time::Instant::now();

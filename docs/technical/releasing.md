@@ -1,6 +1,6 @@
 # Releasing
 
-How a version of NectarLink gets from `main` to people's devices, and how the
+How a version of Ulak gets from `main` to people's devices, and how the
 apps update themselves afterwards.
 
 ## What a release is
@@ -9,9 +9,9 @@ A GitHub release with four files:
 
 | File | Built by |
 |---|---|
-| `Nectarlink-<version>-x64-setup.exe` | The `windows` job: `scripts/package.ps1`, then `scripts/smoke-installer.ps1` installs and uninstalls it |
-| `Nectarlink-<version>-arm64-setup.exe` | The `windows-arm64` job: cross-compiled and packaged via `scripts/package.ps1 -Arch arm64` |
-| `Nectarlink-<version>-android.apk` | The `android` job: a release build for 64-bit and 32-bit ARM, signed with the release key and checked with `apksigner verify` |
+| `Ulak-<version>-x64-setup.exe` | The `windows` job: `scripts/package.ps1`, then `scripts/smoke-installer.ps1` installs and uninstalls it |
+| `Ulak-<version>-arm64-setup.exe` | The `windows-arm64` job: cross-compiled and packaged via `scripts/package.ps1 -Arch arm64` |
+| `Ulak-<version>-android.apk` | The `android` job: a release build for 64-bit and 32-bit ARM, signed with the release key and checked with `apksigner verify` |
 | `SHA256SUMS.txt` | The `publish` job, over all installers and APKs |
 
 Each app's updater needs its own file and `SHA256SUMS.txt`: it only
@@ -63,7 +63,7 @@ Signing. Either plugs in after `package.ps1` builds the installer, before
 - **Windows** (`desktop/app/src/updater.rs`): checks the latest release 30
   seconds after start and daily. With **Install updates automatically** on,
   it waits until nobody has used the PC for 10 minutes and nothing is in
-  progress, then starts the **Nectarlink Update** task that the installer
+  progress, then starts the **Ulak Update** task that the installer
   registers (`desktop/installer/nectarlink.nsi`). The task runs as SYSTEM,
   downloads and checks the installer itself, and runs it silently; a hidden
   relauncher reopens the app afterwards. The task logs to `update.log` in the
@@ -71,7 +71,7 @@ Signing. Either plugs in after `package.ps1` builds the installer, before
   [security model](security-model.md#automatic-updates-and-release-verification).
 - **Android** (`update/AppUpdater.kt`): checks daily from the connection
   service and when the app opens, and installs through `PackageInstaller`.
-  Android 12 and later skip the confirmation once NectarLink installed the
+  Android 12 and later skip the confirmation once Ulak installed the
   running version itself; the first update after a manual install asks once.
 
 ## Testing an update before publishing

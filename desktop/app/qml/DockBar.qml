@@ -12,7 +12,7 @@ DockWindow {
     // Opens a page of the main window ("home", "messages", "calls"...).
     signal pageRequested(string page)
 
-    title: qsTr("NectarLink dock")
+    title: qsTr("Ulak dock")
     color: "transparent"
     edge: Preferences.dockEdge
     thickness: 60
@@ -46,7 +46,7 @@ DockWindow {
 
             DockButton {
                 iconPath: Icons.home
-                label: qsTr("Open NectarLink")
+                label: qsTr("Open Ulak")
                 onClicked: dock.pageRequested("home")
             }
             Rectangle { width: 28; height: 1; color: Theme.outlineVariant; anchors.horizontalCenter: parent.horizontalCenter }

@@ -1,12 +1,12 @@
 ; SPDX-License-Identifier: GPL-3.0-or-later
 ;
-; The NectarLink installer for Windows (built by scripts/package.ps1).
+; The Ulak installer for Windows (built by scripts/package.ps1).
 ;
 ; Two ways to run it:
 ;
 ; - Opened by the user: no NSIS pages. It unpacks the app to a temporary
-;   folder and runs it there, as "Nectarlink Setup.exe" with --setup, which
-;   draws NectarLink's own setup window (desktop/app/src/setup.rs). That
+;   folder and runs it there, as "Ulak Setup.exe" with --setup, which
+;   draws Ulak's own setup window (desktop/app/src/setup.rs). That
 ;   window runs this installer again, elevated, as below.
 ; - With /S (that window, or the app's updater): installs into Program Files
 ;   for every user of the PC, without a window. /PROGRESS=<file> writes each
@@ -43,12 +43,12 @@ SetCompressor /SOLID zlib
 
 ; APP names the install folder, registry keys and the firewall rule; DISPLAY is
 ; the name people see.
-!define APP "Nectarlink"
-!define DISPLAY "NectarLink"
+!define APP "Ulak"
+!define DISPLAY "Ulak"
 !define EXE "nectarlink-desktop.exe"
-!define SETUP_EXE "Nectarlink Setup.exe"
+!define SETUP_EXE "Ulak Setup.exe"
 !define UNINSTALL_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP}"
-!define FIREWALL_RULE "Nectarlink"
+!define FIREWALL_RULE "Ulak"
 
 Name "${DISPLAY}"
 OutFile "${OUTFILE}"
@@ -65,12 +65,12 @@ ShowUninstDetails nevershow
 VIProductVersion "${VERSION}.0"
 VIAddVersionKey "ProductName" "${DISPLAY}"
 VIAddVersionKey "FileDescription" "${DISPLAY} Setup"
-VIAddVersionKey "CompanyName" "The NectarLink contributors"
+VIAddVersionKey "CompanyName" "The Ulak contributors"
 VIAddVersionKey "LegalCopyright" "GPL-3.0-or-later"
 VIAddVersionKey "FileVersion" "${VERSION}"
 VIAddVersionKey "ProductVersion" "${DISPLAY_VERSION}"
 
-; 1: show NectarLink's own setup window. 0: install now (/S).
+; 1: show Ulak's own setup window. 0: install now (/S).
 Var Interactive
 ; Where each step is written, for the setup window (/PROGRESS=<file>).
 Var ProgressFile
@@ -136,7 +136,7 @@ Function .onInit
     ${EndIf}
   ${Else}
     StrCpy $Interactive 1
-    ; No NSIS window: the window is NectarLink's own.
+    ; No NSIS window: the window is Ulak's own.
     SetSilent silent
   ${EndIf}
 FunctionEnd
@@ -296,7 +296,7 @@ Section "Install"
       ${If} $INSTDIR != $PreviousDir
         Call CreateLockedInstallDir
         ${If} ${Errors}
-          !insertmacro Progress "error Setup couldn't make that folder safe for NectarLink. Choose another folder."
+          !insertmacro Progress "error Setup couldn't make that folder safe for Ulak. Choose another folder."
           SetErrorLevel 2
           Quit
         ${EndIf}
@@ -329,7 +329,7 @@ Section "Install"
   ; Phones reach this PC over UDP (QUIC) and find it with mDNS.
   !insertmacro Progress "step firewall"
   nsExec::Exec 'netsh advfirewall firewall delete rule name="${FIREWALL_RULE}"'
-  nsExec::Exec 'netsh advfirewall firewall add rule name="${FIREWALL_RULE}" dir=in action=allow program="$INSTDIR\${EXE}" enable=yes profile=private,domain description="Lets paired phones connect to NectarLink."'
+  nsExec::Exec 'netsh advfirewall firewall add rule name="${FIREWALL_RULE}" dir=in action=allow program="$INSTDIR\${EXE}" enable=yes profile=private,domain description="Lets paired phones connect to Ulak."'
 
   ; Updates without an administrator prompt: a task that runs this app as
   ; SYSTEM to install a newer release (desktop/app/src/updater.rs). Only
@@ -340,7 +340,7 @@ Section "Install"
   !insertmacro Progress "step updates"
   ${If} $AdminOnly != 1
     ; Updates ask for permission in this folder (see the top of this file).
-    nsExec::Exec 'schtasks /Delete /TN "Nectarlink Update" /F'
+    nsExec::Exec 'schtasks /Delete /TN "Ulak Update" /F'
     Goto updates_done
   ${EndIf}
   InitPluginsDir
@@ -348,7 +348,7 @@ Section "Install"
   FileWriteUTF16LE /BOM $0 '<?xml version="1.0" encoding="UTF-16"?>$\r$\n'
   FileWriteUTF16LE $0 '<Task version="1.2" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task">$\r$\n'
   FileWriteUTF16LE $0 '  <RegistrationInfo>$\r$\n'
-  FileWriteUTF16LE $0 '    <Description>Installs new versions of NectarLink from its GitHub releases.</Description>$\r$\n'
+  FileWriteUTF16LE $0 '    <Description>Installs new versions of Ulak from its GitHub releases.</Description>$\r$\n'
   FileWriteUTF16LE $0 '    <SecurityDescriptor>D:(A;;FA;;;SY)(A;;FA;;;BA)(A;;GRGX;;;AU)</SecurityDescriptor>$\r$\n'
   FileWriteUTF16LE $0 '  </RegistrationInfo>$\r$\n'
   FileWriteUTF16LE $0 '  <Principals>$\r$\n'
@@ -367,7 +367,7 @@ Section "Install"
   FileWriteUTF16LE $0 '  </Actions>$\r$\n'
   FileWriteUTF16LE $0 '</Task>$\r$\n'
   FileClose $0
-  nsExec::Exec 'schtasks /Create /TN "Nectarlink Update" /XML "$PLUGINSDIR\update-task.xml" /F'
+  nsExec::Exec 'schtasks /Create /TN "Ulak Update" /XML "$PLUGINSDIR\update-task.xml" /F'
   updates_done:
 
   !insertmacro Progress "step shortcuts"
@@ -401,11 +401,11 @@ Section "Install"
   WriteRegDWORD HKLM "Software\${APP}" "AdminOnlyFolder" $AdminOnly
   WriteRegStr HKLM "${UNINSTALL_KEY}" "DisplayName" "${DISPLAY}"
   WriteRegStr HKLM "${UNINSTALL_KEY}" "DisplayVersion" "${DISPLAY_VERSION}"
-  WriteRegStr HKLM "${UNINSTALL_KEY}" "Publisher" "The NectarLink contributors"
+  WriteRegStr HKLM "${UNINSTALL_KEY}" "Publisher" "The Ulak contributors"
   WriteRegStr HKLM "${UNINSTALL_KEY}" "DisplayIcon" "$INSTDIR\${EXE}"
   WriteRegStr HKLM "${UNINSTALL_KEY}" "InstallLocation" "$INSTDIR"
   WriteRegStr HKLM "${UNINSTALL_KEY}" "URLInfoAbout" "https://github.com/thtbee/nectarlink"
-  ; Windows Settings > Apps opens NectarLink's own uninstall window.
+  ; Windows Settings > Apps opens Ulak's own uninstall window.
   WriteRegStr HKLM "${UNINSTALL_KEY}" "UninstallString" '"$INSTDIR\${EXE}" --remove'
   WriteRegStr HKLM "${UNINSTALL_KEY}" "QuietUninstallString" '"$INSTDIR\uninstall.exe" /S'
   WriteRegDWORD HKLM "${UNINSTALL_KEY}" "NoModify" 1
@@ -434,9 +434,9 @@ Section "Uninstall"
   ${EndIf}
 
   !insertmacro Progress "step cleanup"
-  nsExec::Exec 'powershell -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "try { Get-AppxPackage -Name \"Nectarlink.Desktop\" -ErrorAction SilentlyContinue | Remove-AppxPackage -ErrorAction SilentlyContinue } catch {}"'
+  nsExec::Exec 'powershell -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "try { Get-AppxPackage -Name \"Ulak.Desktop\" -ErrorAction SilentlyContinue | Remove-AppxPackage -ErrorAction SilentlyContinue } catch {}"'
   nsExec::Exec 'netsh advfirewall firewall delete rule name="${FIREWALL_RULE}"'
-  nsExec::Exec 'schtasks /Delete /TN "Nectarlink Update" /F'
+  nsExec::Exec 'schtasks /Delete /TN "Ulak Update" /F'
   Delete "$SMPROGRAMS\${DISPLAY}.lnk"
   Delete "$DESKTOP\${DISPLAY}.lnk"
   ; Only ever a folder of our own (a silent install can be pointed

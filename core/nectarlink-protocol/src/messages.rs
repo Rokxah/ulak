@@ -1683,7 +1683,7 @@ pub mod elevated {
     /// Offered by PCs that can start a USB-connected phone's helper.
     pub const USB: &str = "elevated.usb";
     /// The only package the PC runs anything for.
-    pub const PACKAGE: &str = "app.nectarlink";
+    pub const PACKAGE: &str = "app.ulak";
     /// The helper the PC starts, with `app_process`.
     pub const HELPER_CLASS: &str = "app.nectarlink.android.elevated.InputServer";
     /// Grants a request may carry, at most.
@@ -1733,7 +1733,7 @@ pub fn is_valid_app_apk(apk: &str) -> bool {
 }
 
 /// NectarLink's package. Debug builds of the PC app also accept its local
-/// test build (`app.nectarlink.dev`, the `applicationIdSuffix` of a
+/// test build (`app.ulak.dev`, the `applicationIdSuffix` of a
 /// side-by-side build); release builds accept no other package.
 pub fn is_own_package(p: &str) -> bool {
     p == elevated::PACKAGE || (cfg!(debug_assertions) && p.strip_prefix(elevated::PACKAGE) == Some(".dev"))
@@ -4424,15 +4424,15 @@ mod tests {
 
     #[test]
     fn elevated_usb_only_runs_the_apps_own_helper_and_grants() {
-        let apk = "/data/app/~~kG3x_Q==/app.nectarlink-Ab1-cD2==/base.apk";
+        let apk = "/data/app/~~kG3x_Q==/app.ulak-Ab1-cD2==/base.apk";
         let start = ElevatedUsbStart {
             apk: apk.into(),
             token: "0123456789abcdef0123456789abcdef0123456789abcdef".into(),
             grants: vec![
-                "pm grant app.nectarlink android.permission.WRITE_SECURE_SETTINGS".into(),
-                "appops set app.nectarlink RECEIVE_SENSITIVE_NOTIFICATIONS allow".into(),
-                "cmd notification allow_dnd app.nectarlink".into(),
-                "cmd notification allow_listener app.nectarlink/app.nectarlink.android.notifications.NotificationListener"
+                "pm grant app.ulak android.permission.WRITE_SECURE_SETTINGS".into(),
+                "appops set app.ulak RECEIVE_SENSITIVE_NOTIFICATIONS allow".into(),
+                "cmd notification allow_dnd app.ulak".into(),
+                "cmd notification allow_listener app.ulak/app.nectarlink.android.notifications.NotificationListener"
                     .into(),
             ],
         };
@@ -4440,17 +4440,17 @@ mod tests {
 
         for apk in [
             "/data/app/other.app-1/base.apk",
-            "/sdcard/app.nectarlink/base.apk",
-            "/data/app/app.nectarlink-1/../../evil/base.apk",
-            "/data/app/app.nectarlink-1/base.apk; reboot",
-            "/data/app/app.nectarlink-1/base.apk$(id)",
+            "/sdcard/app.ulak/base.apk",
+            "/data/app/app.ulak-1/../../evil/base.apk",
+            "/data/app/app.ulak-1/base.apk; reboot",
+            "/data/app/app.ulak-1/base.apk$(id)",
         ] {
             assert!(!ElevatedUsbStart { apk: apk.into(), ..start.clone() }.is_valid(), "{apk}");
         }
         for grant in [
             "pm grant com.other android.permission.WRITE_SECURE_SETTINGS",
-            "pm grant app.nectarlink android.permission.X; rm -rf /sdcard",
-            "pm grant app.nectarlink android.permission.X && reboot",
+            "pm grant app.ulak android.permission.X; rm -rf /sdcard",
+            "pm grant app.ulak android.permission.X && reboot",
             "appops set app.nectarlink.evil SYSTEM_ALERT_WINDOW allow",
             "cmd notification allow_listener com.other/x.Listener",
             "cmd notification allow_dnd com.other",
@@ -4466,10 +4466,10 @@ mod tests {
         assert!(!ElevatedUsbStart { grants: vec![start.grants[0].clone(); 9], ..start.clone() }.is_valid());
         // The side-by-side test build grants itself, in debug builds only.
         let dev = ElevatedUsbStart {
-            apk: "/data/app/~~kG3x_Q==/app.nectarlink.dev-Ab1-cD2==/base.apk".into(),
+            apk: "/data/app/~~kG3x_Q==/app.ulak.dev-Ab1-cD2==/base.apk".into(),
             grants: vec![
-                "pm grant app.nectarlink.dev android.permission.WRITE_SECURE_SETTINGS".into(),
-                "cmd notification allow_listener app.nectarlink.dev/app.nectarlink.android.notifications.NotificationListener".into(),
+                "pm grant app.ulak.dev android.permission.WRITE_SECURE_SETTINGS".into(),
+                "cmd notification allow_listener app.ulak.dev/app.nectarlink.android.notifications.NotificationListener".into(),
             ],
             ..start
         };

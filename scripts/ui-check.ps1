@@ -30,7 +30,7 @@ param(
 
 $ErrorActionPreference = 'Stop'
 $repo = Split-Path -Parent $PSScriptRoot
-if (-not $Exe) { $Exe = Join-Path $repo 'target\package\Nectarlink\nectarlink-desktop.exe' }
+if (-not $Exe) { $Exe = Join-Path $repo 'target\package\Ulak\nectarlink-desktop.exe' }
 if (-not (Test-Path $Exe)) { throw "$Exe not found; run scripts\package.ps1 -StageOnly first, or pass -Exe" }
 
 foreach ($pass in @('walkthrough', 'home')) {

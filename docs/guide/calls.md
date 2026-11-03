@@ -19,7 +19,7 @@ The **Calls** page on your PC lets you see incoming phone calls with caller ID, 
 
 ### Handling Incoming Calls on Your PC
 
-1. When your phone rings, NectarLink displays an incoming call banner on your PC (and expands `Nectar Island` if enabled) showing the caller's name, phone number, and contact photo.
+1. When your phone rings, Ulak displays an incoming call banner on your PC (and expands `Ulak Island` if enabled) showing the caller's name, phone number, and contact photo.
 2. If **Pause media during calls** is enabled in **Settings › Camera & Audio**, any music or video playing on your PC pauses automatically while the phone is ringing or in a call, and resumes when the call ends.
 3. From the incoming call banner on your PC, you can:
    - Click **Answer** to pick up the call on your phone.
@@ -50,26 +50,26 @@ The **Calls** page groups your phone's recent incoming, outgoing, and missed cal
 
 ## Why Call Voice Audio Stays on Your Phone
 
-When you answer or place a call from your PC, NectarLink controls the call on your phone while the voice audio itself remains on your phone's earpiece, speakerphone, or Bluetooth headset paired directly to your phone.
+When you answer or place a call from your PC, Ulak controls the call on your phone while the voice audio itself remains on your phone's earpiece, speakerphone, or Bluetooth headset paired directly to your phone.
 
 This is due to two operating system restrictions (documented in detail in [`docs/research/hfp.md`](../research/hfp.md)):
 
 1. **Android hardware voice routing**: On non-rooted Android devices, cellular call audio (`VOICE_CALL`, `VOICE_DOWNLINK`, `VOICE_UPLINK`) is routed by the modem DSP and blocked from software capture (`AudioPlaybackCapture` explicitly excludes voice communication, even at the `Elevated` shell level).
 2. **Windows 11 Bluetooth HFP restrictions**: Windows' `AudioPlaybackConnection` API only supports one-way A2DP media playback (not two-way Hands-Free Profile voice channels), and Microsoft's `PhoneLineTransportDevice` HFP broker on Windows 11 22H2 and newer rejects third-party applications with `E_ACCESSDENIED` unless they run with Microsoft's internal inbox system identity or a WHQL-signed kernel driver.
 
-For hands-free calling at your desk, click **Speaker** in NectarLink's call bar (with `Elevated`) or keep your wireless headphones paired to your phone via multipoint Bluetooth.
+For hands-free calling at your desk, click **Speaker** in Ulak's call bar (with `Elevated`) or keep your wireless headphones paired to your phone via multipoint Bluetooth.
 
 ## What the Options Do
 
 - **Calls toggle** (`Settings › Devices` on PC, **On** by default): Enables caller ID, call log sync, incoming call alerts, and call control for that phone.
 - **Contacts toggle** (`Settings › Devices` on PC, **On** by default): Syncs your phone's contacts so caller ID and the dialer show names and photos.
 - **Pause media during calls** (`Settings › Camera & Audio` on PC, **On** by default): Automatically pauses active Windows media playback when a call rings or connects on your phone, and resumes playback when the call finishes unless you manually changed playback in the meantime.
-- **Island triggers › Calls** (`Settings › General` on PC, **On** by default when `Nectar Island` is enabled): Shows incoming and active phone calls inside the top-of-screen `Nectar Island` pill.
+- **Island triggers › Calls** (`Settings › General` on PC, **On** by default when `Ulak Island` is enabled): Shows incoming and active phone calls inside the top-of-screen `Ulak Island` pill.
 
 ## Data and Privacy
 
 - **Where data travels**: Call state changes, caller ID metadata, recent call log entries, and contact records travel directly between your phone and PC over your end-to-end encrypted QUIC connection.
-- **Where data stays**: Recent call logs and contacts are read live from your phone and held in memory on the PC during your session. NectarLink never records call audio.
+- **Where data stays**: Recent call logs and contacts are read live from your phone and held in memory on the PC during your session. Ulak never records call audio.
 
 ## Limits
 

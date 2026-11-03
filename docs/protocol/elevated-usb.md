@@ -43,10 +43,10 @@ The PC runs nothing but the app's own helper and grants, and only words the
 shell reads as single words (letters, digits and `._/=~+-:`):
 
 - `apk`: a path under `/data/app/` ending in `/base.apk`, containing
-  `app.nectarlink`, without `..`, at most 512 bytes.
+  `app.ulak`, without `..`, at most 512 bytes.
 - `token`: 32 to 64 hexadecimal characters.
 - `grants`: at most 8, each one of:
-  - `pm grant app.nectarlink android.permission.<NAME>`
-  - `appops set app.nectarlink <OP> allow` (`OP` in capitals and `_`)
-  - `cmd notification allow_dnd app.nectarlink`
-  - `cmd notification allow_listener app.nectarlink/<component>`
+  - `pm grant app.ulak android.permission.<NAME>`
+  - `appops set app.ulak <OP> allow` (`OP` in capitals and `_`)
+  - `cmd notification allow_dnd app.ulak`
+  - `cmd notification allow_listener app.ulak/<component>`

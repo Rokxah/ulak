@@ -124,7 +124,7 @@ impl UinputDevice {
                 name: [0u8; 80],
                 ff_effects_max: 0,
             };
-            let dev_name = b"NectarLink Virtual Input";
+            let dev_name = b"Ulak Virtual Input";
             setup.name[..dev_name.len()].copy_from_slice(dev_name);
 
             if libc::ioctl(fd, UI_DEV_SETUP, &setup) < 0 || libc::ioctl(fd, UI_DEV_CREATE) < 0 {

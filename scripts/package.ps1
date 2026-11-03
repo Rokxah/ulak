@@ -7,7 +7,7 @@
   1. Builds the release app (unless -SkipBuild).
   2. Stages it with the Qt libraries, plugins, QML modules and translations it
      uses (windeployqt), the Microsoft C++ runtime, and the license notices.
-  3. Packs the folder into target\package\Nectarlink-<version>-x64-setup.exe
+  3. Packs the folder into target\package\Ulak-<version>-x64-setup.exe
      with NSIS (unless -StageOnly).
 
   Needs Qt (qmake on PATH, or QT_ROOT_DIR / -QtRoot) and, for the
@@ -78,7 +78,7 @@ if (-not (Test-Path $windeployqt)) {
 }
 if (-not (Test-Path $windeployqt)) { throw "windeployqt not found under $hostKit or $QtRoot; pass -QtRoot" }
 
-$arm64ToolDir = Join-Path $env:LOCALAPPDATA "Nectarlink\dev\qmake-arm64"
+$arm64ToolDir = Join-Path $env:LOCALAPPDATA "Ulak\dev\qmake-arm64"
 if ($isArm64) {
     & (Join-Path $PSScriptRoot "qmake-arm64.ps1") -QtRoot $qtBase -OutDir $arm64ToolDir | Out-Null
     $qtpaths = Join-Path $arm64ToolDir 'qtpaths.exe'
@@ -112,7 +112,7 @@ if (-not (Test-Path $vcamDll)) { throw "no release build at $vcamDll" }
 # ---- Stage ----
 Step "Stage"
 $package = Join-Path $root 'target\package'
-$stage = Join-Path $package 'Nectarlink'
+$stage = Join-Path $package 'Ulak'
 if (Test-Path $stage) {
     $stagedVcam = Join-Path $stage 'nectarlink_vcam.dll'
     if (Test-Path $stagedVcam) {
@@ -153,7 +153,7 @@ Invoke-Native "windeployqt" {
 }
 
 # Translations. windeployqt stages Qt's own .qm files (in translations/, so its
-# file dialogs and standard buttons follow the system language). NectarLink's
+# file dialogs and standard buttons follow the system language). Ulak's
 # are compiled from the .ts files the repository keeps; they land beside the
 # executable, which is where the app looks for them.
 # Only the languages Settings offers (i18n::LANGUAGES) ship: a catalogue still being
@@ -271,7 +271,7 @@ Step "Installer ($Arch)"
 $makensis = (Get-Command makensis -ErrorAction SilentlyContinue).Source
 if (-not $makensis) { $makensis = Join-Path ${env:ProgramFiles(x86)} 'NSIS\makensis.exe' }
 if (-not (Test-Path $makensis)) { throw "NSIS (makensis) not found" }
-$out = Join-Path $package "Nectarlink-$version-$Arch-setup.exe"
+$out = Join-Path $package "Ulak-$version-$Arch-setup.exe"
 Invoke-Native "makensis" {
     & $makensis /V2 "/DVERSION=$numeric" "/DDISPLAY_VERSION=$version" "/DARCH=$Arch" "/DSTAGE=$stage" `
         "/DICON=$($icon.FullName)" "/DOUTFILE=$out" (Join-Path $root 'desktop\installer\nectarlink.nsi')

@@ -3,7 +3,7 @@
 //! its microphone and plays it into an output device. Played into a virtual
 //! audio cable (VB-Audio's CABLE Input, Voicemeeter), the cable's other end
 //! is a microphone every app can pick; played to the speakers, it's for
-//! listening in. A virtual microphone of NectarLink's own needs an audio
+//! listening in. A virtual microphone of Ulak's own needs an audio
 //! driver and is a later, separate step (GitHub #7).
 
 use crate::i18n::tr;
@@ -134,11 +134,11 @@ const CABLES: &[&str] =
 #[cfg(target_os = "linux")]
 pub const VIRTUAL_MIC_ID: &str = "nectarlink:virtual_mic";
 #[cfg(target_os = "linux")]
-pub const VIRTUAL_MIC_NAME: &str = "NectarLink Phone Mic (Virtual Microphone, Stereo)";
+pub const VIRTUAL_MIC_NAME: &str = "Ulak Phone Mic (Virtual Microphone, Stereo)";
 #[cfg(target_os = "linux")]
 pub const VIRTUAL_MIC_MONO_ID: &str = "nectarlink:virtual_mic_mono";
 #[cfg(target_os = "linux")]
-pub const VIRTUAL_MIC_MONO_NAME: &str = "NectarLink Phone Mic (Virtual Microphone, Mono)";
+pub const VIRTUAL_MIC_MONO_NAME: &str = "Ulak Phone Mic (Virtual Microphone, Mono)";
 
 /// The output to play into: the one chosen, while it's there; else a
 /// virtual audio cable, if there is one; else `None` (the default output).
@@ -249,7 +249,7 @@ pub fn start(phone: DeviceId) {
                 set_phase(Phase::Off);
                 show_message(match e {
                     Error::Unsupported => {
-                        tr!("PhoneMic", "Update NectarLink on %1 to use its microphone.", name)
+                        tr!("PhoneMic", "Update Ulak on %1 to use its microphone.", name)
                     }
                     Error::Denied => tr!("PhoneMic", "The microphone is turned off for this PC on %1.", name),
                     other => describe(&other),
@@ -445,10 +445,10 @@ mod tests {
     #[test]
     fn virtual_microphone_is_recognized_as_preferred_cable() {
         let devices = [
-            device("nectarlink:virtual_mic", "NectarLink Phone Mic (Virtual Microphone)", false),
+            device("nectarlink:virtual_mic", "Ulak Phone Mic (Virtual Microphone)", false),
             device("spk", "Speakers", true),
         ];
-        assert!(is_cable("NectarLink Phone Mic (Virtual Microphone)"));
+        assert!(is_cable("Ulak Phone Mic (Virtual Microphone)"));
         assert_eq!(preferred(&devices, None).as_deref(), Some("nectarlink:virtual_mic"));
         assert_eq!(preferred(&devices, Some("spk")).as_deref(), Some("spk"));
     }

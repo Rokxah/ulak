@@ -403,7 +403,7 @@ fn open_voice_recordings(device: DeviceId) {
         core_host::host().hub.read(|s| s.name_of(&device)).unwrap_or_else(|| "your phone".into());
     show_message(tr!(
         "CommandPalette",
-        "Opened Recordings folder. Start a voice note in NectarLink on %1 to send it here.",
+        "Opened Recordings folder. Start a voice note in Ulak on %1 to send it here.",
         phone_name
     ));
 }
@@ -687,11 +687,7 @@ fn build_candidates() -> Vec<PaletteCandidate> {
             } else {
                 tr!("CommandPalette", "Use phone as webcam")
             },
-            subtitle: tr!(
-                "CommandPalette",
-                "Stream %1's camera into the NectarLink virtual webcam",
-                dev_name
-            ),
+            subtitle: tr!("CommandPalette", "Stream %1's camera into the Ulak virtual webcam", dev_name),
             category: "Actions".into(),
             icon: "video".into(),
             badge: dev_name.clone(),

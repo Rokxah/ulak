@@ -71,15 +71,15 @@ pub fn set_format(format: RecordingFormat) {
     cfg.updated_at = Some(SystemTime::now());
 }
 
-/// Default folder: `Documents\Nectarlink Recordings`.
+/// Default folder: `Documents\Ulak Recordings`.
 pub fn default_folder() -> PathBuf {
     dirs::document_dir()
         .unwrap_or_else(|| core_host::host().data_dir.join("recordings"))
-        .join("Nectarlink Recordings")
+        .join("Ulak Recordings")
 }
 
 /// The folder where recordings go right now (`configured` if set, otherwise
-/// `Documents\Nectarlink Recordings`).
+/// `Documents\Ulak Recordings`).
 pub fn effective_folder(configured: Option<&Path>) -> PathBuf {
     configured.filter(|p| !p.as_os_str().is_empty()).map(Path::to_path_buf).unwrap_or_else(default_folder)
 }
@@ -597,7 +597,7 @@ pub fn on_done(transfer: Transfer) {
             key: final_path.to_string_lossy().into_owned(),
             title: tr!("Recordings", "Recording from %1 saved", device),
             body,
-            attribution: "NectarLink".into(),
+            attribution: "Ulak".into(),
             icon: None,
             image: None,
             actions: vec![(ACTION_OPEN.into(), "Open".into()), (ACTION_SHOW.into(), "Show in folder".into())],

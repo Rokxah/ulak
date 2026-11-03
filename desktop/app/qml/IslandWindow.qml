@@ -13,7 +13,7 @@ import app.nectarlink
 Window {
     id: islandWin
 
-    title: qsTr("Nectar Island")
+    title: qsTr("Ulak Island")
     flags: Qt.Tool | Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint | Qt.WindowDoesNotAcceptFocus
     color: "transparent"
 
@@ -104,7 +104,7 @@ Window {
         for (let i = 0; i < count; i++) {
             const item = mediaRepeater.itemAt(i)
             if (!item) continue
-            // Only surface phone media in Nectar Island (never PC-local media, which is already on the PC)
+            // Only surface phone media in Ulak Island (never PC-local media, which is already on the PC)
             if (item.deviceId === "local") continue
             if (item.playing) {
                 if (!best || !best.playing) {
@@ -235,8 +235,8 @@ Window {
         if (mode === "waiting")
             return qsTr("%1 waiting").arg(TransferList.waitingCount)
         return DeviceList.count > 0
-            ? qsTr("Nectar Island · %1").arg(DeviceList.deviceNameAt(0))
-            : qsTr("Nectar Island · Ready")
+            ? qsTr("Ulak Island · %1").arg(DeviceList.deviceNameAt(0))
+            : qsTr("Ulak Island · Ready")
     }
 
     readonly property string secondaryLabel: {
@@ -265,7 +265,7 @@ Window {
                 : base
         }
         if (mode === "notification")
-            return qsTr("Click to view in NectarLink")
+            return qsTr("Click to view in Ulak")
         if (mode === "waiting") {
             return DeviceList.count > 0
                 ? qsTr("Will send when %1 is back").arg(DeviceList.deviceNameAt(0))

@@ -2,85 +2,48 @@
 
 <img src="assets/brand/icon.svg" alt="" width="96" height="96">
 
-# NectarLink
+# Ulak
 
-**Your Android phone and your PC, working as one.**
+**Telefonunuz ve PC'niz tek bir cihaz gibi. / Your Android phone and your PC, working as one.**
 
-Notifications, messages, calls, clipboard, files, photos, screen mirroring and
-phone apps in windows, between Android and Windows 10 (2004+) or 11. Free and open source.
-Local-first, end-to-end encrypted, no account and no cloud.
+*Ulak* is Old Turkish for "messenger". Notifications, messages, calls, clipboard,
+files, photos, screen mirroring and phone apps in windows, between Android and
+Windows 10 (2004+) or 11. Free and open source. Local-first, end-to-end
+encrypted, no account and no cloud.
 
-Hi, I'm Bee, and yes, a bee built an app called NectarLink. I build cool stuff
-in the open on [𝕏 @thtbee_](https://x.com/thtbee_), so come see what's next.
-Feedback, bugs or ideas? DM me directly.
-
-[![Latest release](https://img.shields.io/github/v/release/thtbee/nectarlink?label=download)](https://github.com/thtbee/nectarlink/releases/latest)
-[![CI](https://github.com/thtbee/nectarlink/actions/workflows/ci.yml/badge.svg)](https://github.com/thtbee/nectarlink/actions/workflows/ci.yml)
 [![Apps: GPL-3.0-or-later](https://img.shields.io/badge/apps-GPL--3.0--or--later-blue)](LICENSE)
 [![Core: MPL-2.0](https://img.shields.io/badge/core-MPL--2.0-blue)](LICENSE)
 
 </div>
 
-<p align="center">
-  <img src="docs/screenshots/desktop-glass-home.png" alt="NectarLink for Windows: Home with the phone's notifications and music playing, Glass theme" width="880">
-</p>
+## Based on NectarLink
 
-## Why NectarLink
+Ulak is a fork of [NectarLink](https://github.com/thtbee/nectarlink) by Bee
+([@thtbee_](https://x.com/thtbee_)). It isn't the official NectarLink and isn't
+endorsed by it; see [TRADEMARKS.md](TRADEMARKS.md). It keeps NectarLink's
+licenses and adds:
 
-NectarLink came out of my own frustration. I kept juggling Phone Link for
-notifications and messages, KDE Connect for the clipboard and LocalSend for
-files, and always wanted one app that did all of it. So I made one.
+- **No double notifications.** A per-app rule, **Not when open on PC**, mutes a
+  phone app's pop-ups while its desktop version (WhatsApp, Telegram, Signal,
+  Slack, Teams, Discord, Outlook...) runs on the PC.
+- **Dock.** Ulak can sit in a bar at the left or right screen edge that windows
+  don't cover, with the phone's notifications in a slide-out panel, or work as
+  a normal window.
 
-It covers what those three did for me, with one app on each side, plus a lot
-of new features I wanted that I think you'll enjoy having too.
+Ulak installs next to NectarLink: it has its own app ID on the phone
+(`app.ulak`), its own data folder and its own install folder on the PC.
 
 ## Download
 
-| | Download | Needs |
-|---|---|---|
-| **Windows (x64)** | [Installer (.exe)](https://github.com/thtbee/nectarlink/releases/download/v0.1.4/Nectarlink-0.1.4-x64-setup.exe) | Windows 10 (2004+) or 11, 64-bit Intel or AMD (Phone as webcam needs Windows 11) |
-| **Windows (ARM64)** | From the next release | Windows 11 on ARM (Snapdragon) |
-| **Linux (x86_64)** | From the next release: [one command](#on-linux), or a .deb, .rpm, AppImage or .tar.gz | Ubuntu 24.04 or newer, Debian 13, Fedora 40 or newer, 64-bit Intel or AMD |
-| **Android** | [App (.apk)](https://github.com/thtbee/nectarlink/releases/download/v0.1.4/Nectarlink-0.1.4-android.apk) | Android 8.0 or newer |
-
-The apps update themselves from GitHub Releases and check every download
-against its SHA-256 sums.
-
-### On Linux
-
-From the next release, one command installs NectarLink with everything it
-needs, and shows each step as it goes. Until that release is out, the
-command below gives a 404: 0.1.4 has no Linux packages.
-
-```bash
-curl -fsSL https://github.com/thtbee/nectarlink/releases/latest/download/install.sh | sh
-```
-
-It picks the package for your system (.deb with apt, .rpm with dnf or zypper,
-the tarball elsewhere), checks it against the release's SHA-256 sums and
-installs it with its dependencies. Then it sets up the phone as a webcam, the
-phone as a keyboard and mouse, and the firewall for your local network only.
-To remove it all again, end the same command with `sh -s -- --uninstall`
-instead of `sh`. See [Installing on Linux](docs/guide/getting-started.md#on-linux)
-for the details.
-
-> [!NOTE]
-> SmartScreen may warn about the Windows installer the first time, because it
-> isn't code-signed yet: choose **More info**, then **Run anyway**. On Android,
-> allow your browser or file manager to install apps when asked.
-
-> [!IMPORTANT]
-> In India and many other countries, Google Play Protect blocks the APK with
-> no **Install anyway** button. Pause **Scan apps with Play Protect** while you
-> install it (Play Store › your profile › Play Protect › Settings), then turn it
-> back on, or install it from a PC with `adb install`. See
-> [Play Protect blocks the APK](docs/guide/troubleshooting.md#google-play-protect-blocks-the-apk-without-an-install-anyway-button).
+Releases will be published at
+[github.com/Rokxah/ulak/releases](https://github.com/Rokxah/ulak/releases).
+Until then, build it from source (see [Building from source](#building-from-source)).
 
 ## Get started
 
-1. Install NectarLink on your PC and on your phone.
+1. Install Ulak on your PC and on your phone.
 2. On the PC, the setup walkthrough shows a QR code. Scan it with the phone
-   (from the NectarLink app or any camera app), or pick the PC from the phone's
+   (from the Ulak app or any camera app), or pick the PC from the phone's
    list of nearby devices and compare a 6-digit code. A USB cable works too.
 3. Allow what you want to share. Every feature has its own switch per device,
    and the sensitive ones are off until you turn them on.
@@ -286,7 +249,7 @@ cd android && ./gradlew assembleDebug                                     # Andr
 ```
 
 ```powershell
-./scripts/package.ps1    # Windows installer: target\package\Nectarlink-<version>-x64-setup.exe
+./scripts/package.ps1    # Windows installer: target\package\Ulak-<version>-x64-setup.exe
 ./scripts/check.ps1      # every check CI runs; add -Android and -Arm64 for the full set
 ```
 
@@ -314,7 +277,7 @@ for anything larger than a small fix, open an issue to agree on the approach.
 Contributions are accepted under the [Developer Certificate of Origin](DCO.txt),
 and everyone is expected to follow the [Code of Conduct](CODE_OF_CONDUCT.md).
 
-To translate NectarLink into your language, see
+To translate Ulak into your language, see
 [docs/translating.md](docs/translating.md).
 
 To report a security issue, follow [SECURITY.md](SECURITY.md). Please don't
@@ -327,5 +290,5 @@ open a public issue.
 - Core libraries: [MPL-2.0](LICENSES/MPL-2.0.txt)
 - Protocol specification and documentation: [CC BY 4.0](LICENSES/CC-BY-4.0.txt)
 
-See [LICENSE](LICENSE) for which license applies where. The NectarLink name and
+See [LICENSE](LICENSE) for which license applies where. The Ulak name and
 logo are covered by the [trademark policy](TRADEMARKS.md).

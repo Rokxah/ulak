@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 Version=1.5
-Name=NectarLink
+Name=Ulak
 GenericName=Phone Link
 Comment=Connect your Android phone and Linux PC over LAN
 Exec=nectarlink-desktop %U

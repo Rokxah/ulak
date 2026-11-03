@@ -387,9 +387,9 @@ async fn run(data_dir: PathBuf, platform: Arc<dyn Platform>) {
     }
 }
 
-/// Where files from phones go: `Downloads\Nectarlink`.
+/// Where files from phones go: `Downloads\Ulak`.
 pub fn downloads_dir() -> PathBuf {
-    dirs::download_dir().unwrap_or_else(|| host().data_dir.join("received")).join("Nectarlink")
+    dirs::download_dir().unwrap_or_else(|| host().data_dir.join("received")).join("Ulak")
 }
 
 /// How this PC presents itself to phones.

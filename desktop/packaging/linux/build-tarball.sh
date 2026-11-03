@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # SPDX-License-Identifier: GPL-3.0-or-later
-# Builds a portable Linux tarball for NectarLink Desktop:
-#   dist/Nectarlink-<version>-linux-<arch>.tar.gz
+# Builds a portable Linux tarball for Ulak Desktop:
+#   dist/Ulak-<version>-linux-<arch>.tar.gz
 # including install.sh and uninstall.sh helper scripts.
 
 set -euo pipefail
@@ -36,7 +36,7 @@ fi
 STAGE_DIR="$(mktemp -d -t nectarlink-tar-XXXXXX)"
 trap 'rm -rf "${STAGE_DIR}"' EXIT
 
-BUNDLE_NAME="Nectarlink-${VERSION}-linux-${ARCH}"
+BUNDLE_NAME="Ulak-${VERSION}-linux-${ARCH}"
 BUNDLE_DIR="${STAGE_DIR}/${BUNDLE_NAME}"
 mkdir -p "${BUNDLE_DIR}/share/applications" "${BUNDLE_DIR}/share/metainfo" "${BUNDLE_DIR}/share/icons" "${BUNDLE_DIR}/share/nectarlink"
 
@@ -200,7 +200,7 @@ install -m 0644 "${SELF_DIR}/share/metainfo/org.nectarlink.desktop.metainfo.xml"
 if command -v update-desktop-database >/dev/null 2>&1; then
     update-desktop-database -q "${APPS_DIR}" || true
 fi
-echo "Installed NectarLink to ${PREFIX} (${BIN_LINK})"
+echo "Installed Ulak to ${PREFIX} (${BIN_LINK})"
 EOF
 chmod 0755 "${BUNDLE_DIR}/install.sh"
 
@@ -224,7 +224,7 @@ else
     rm -f "${XDG_DATA_HOME:-$HOME/.local/share}/icons/hicolor/scalable/apps/nectarlink.svg"
     rm -f "${XDG_DATA_HOME:-$HOME/.local/share}/icons/hicolor/512x512/apps/nectarlink.png"
 fi
-echo "Uninstalled NectarLink."
+echo "Uninstalled Ulak."
 EOF
 chmod 0755 "${BUNDLE_DIR}/uninstall.sh"
 

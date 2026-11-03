@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
   <id>org.nectarlink.desktop</id>
-  <name>NectarLink</name>
+  <name>Ulak</name>
   <summary>Connect your Android phone and Linux PC over LAN</summary>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0-or-later</project_license>
@@ -10,7 +10,7 @@
   </developer>
   <description>
     <p>
-      NectarLink links your Android phone and Linux desktop over your local network with end-to-end encryption.
+      Ulak links your Android phone and Linux desktop over your local network with end-to-end encryption.
     </p>
     <ul>
       <li>Sync clipboard text and images bidirectionally</li>

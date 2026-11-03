@@ -53,7 +53,7 @@ const GIVE_UP_AFTER: Duration = Duration::from_secs(30 * 60);
 #[serde(default, rename_all = "camelCase")]
 pub struct DeviceBackup {
     pub enabled: bool,
-    /// Where files go; `None` means the default (Pictures\NectarLink\<phone>).
+    /// Where files go; `None` means the default (Pictures\Ulak\<phone>).
     pub folder: Option<PathBuf>,
     pub videos: bool,
     /// Items backed up, by the phone's ID, with their size.
@@ -236,7 +236,7 @@ pub fn default_folder(phone_name: &str) -> PathBuf {
     let pictures = dirs::picture_dir()
         .or_else(|| dirs::home_dir().map(|h| h.join("Pictures")))
         .unwrap_or_else(|| PathBuf::from("."));
-    pictures.join("NectarLink").join(folder_name(phone_name))
+    pictures.join("Ulak").join(folder_name(phone_name))
 }
 
 /// A phone's name as a folder name: nothing Windows refuses in one.
@@ -720,7 +720,7 @@ fn stopped(device: DeviceId, e: &Error) {
             Activity::Problem(tr!("PhotoBackup", "Photos are turned off for this PC on %1.", name))
         }
         Error::Unsupported => {
-            Activity::Problem(tr!("PhotoBackup", "Update NectarLink on %1 to back up its photos.", name))
+            Activity::Problem(tr!("PhotoBackup", "Update Ulak on %1 to back up its photos.", name))
         }
         Error::Io(io) if io.kind() == std::io::ErrorKind::StorageFull => {
             Activity::Problem(tr!("PhotoBackup", "The backup folder's drive is full."))

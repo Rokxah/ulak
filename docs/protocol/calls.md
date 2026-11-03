@@ -161,16 +161,16 @@ calls. `call.log` needs the call log permission. `call.dial` uses
 `CALL_PHONE` isn't granted. `call.sims` needs `CALL_PHONE` and
 `READ_PHONE_STATE`: it lists `TelecomManager.getCallCapablePhoneAccounts()`
 and calls with `EXTRA_PHONE_ACCOUNT_HANDLE`. `call.incall` needs Android 12 or later and
-the `MANAGE_ONGOING_CALLS` app-op, which lets Telecom bind NectarLink's
+the `MANAGE_ONGOING_CALLS` app-op, which lets Telecom bind Ulak's
 in-call service as a calling companion without it being the phone app.
-Apps can't grant that app-op to themselves; NectarLink's Elevated mode
+Apps can't grant that app-op to themselves; Ulak's Elevated mode
 (Wireless debugging) grants it through the shell when it starts.
 
 Not in this service:
 
 - **Recording calls.** Android doesn't let apps other than the phone's
   own record call audio (capturing the voice call stream needs a
-  privileged permission), so NectarLink doesn't offer it.
+  privileged permission), so Ulak doesn't offer it.
 - **Talking through the PC.** Carrying the call's audio to the PC's
   microphone and speakers is planned as a Bluetooth hands-free (HFP)
   link from the PC to the phone, as for a headset; it isn't part of this

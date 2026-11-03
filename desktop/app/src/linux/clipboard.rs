@@ -6,7 +6,7 @@
 //!
 //! Content that password managers mark as private (`x-kde-passwordManagerHint`
 //! set to `"secret"`, or `x-gnome-privacy-hint`) is never read for sending.
-//! Writes from NectarLink record their [`Fingerprint`] in [`LAST_REPORTED`]
+//! Writes from Ulak record their [`Fingerprint`] in [`LAST_REPORTED`]
 //! before updating the system clipboard so the watcher thread never echoes
 //! phone clipboard writes back to the phone.
 
@@ -18,7 +18,7 @@ use std::sync::{Mutex, OnceLock};
 use super::image::{self, Bitmap};
 
 /// Content fingerprint used to deduplicate clipboard updates and suppress
-/// echoing NectarLink's own writes back to connected phones.
+/// echoing Ulak's own writes back to connected phones.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Fingerprint {
     Text(u64),
@@ -35,7 +35,7 @@ static ON_COPY: OnceLock<OnCopy> = OnceLock::new();
 static LAST_REPORTED: Mutex<Option<Fingerprint>> = Mutex::new(None);
 
 /// Most recent rich-text payload (`(plain_text, html, rtf)`) written by
-/// NectarLink so rich formats survive round-trips through plain-text bridges.
+/// Ulak so rich formats survive round-trips through plain-text bridges.
 static LAST_WRITTEN_RICH: Mutex<Option<WrittenRich>> = Mutex::new(None);
 
 /// In-memory clipboard fallback for headless environments without a live
@@ -160,7 +160,7 @@ pub(crate) fn seed_initial_clipboard() {
 
 /// Starts watching the Linux clipboard on a background thread (`"clipboard"`).
 /// Newly copied text or images that are not marked private and were not
-/// written by NectarLink are passed to `on_copy`.
+/// written by Ulak are passed to `on_copy`.
 pub fn start<F>(on_copy: F)
 where
     F: Fn(Clip) + Send + Sync + 'static,
@@ -1072,22 +1072,22 @@ mod tests {
         assert!(has_copied_files_mime(gnome_targets));
 
         assert!(is_copied_file_uri_text(
-            "file:///home/jochen/Downloads/Nectarlink/PXL_20261016_130349832.MP.jpg\r\n"
+            "file:///home/jochen/Downloads/Ulak/PXL_20261016_130349832.MP.jpg\r\n"
         ));
         assert!(is_copied_file_uri_text(
-            "copy\nfile:///home/jochen/Downloads/Nectarlink/PXL_20261016_130349832.MP.jpg"
+            "copy\nfile:///home/jochen/Downloads/Ulak/PXL_20261016_130349832.MP.jpg"
         ));
         assert!(!is_copied_file_uri_text("Check out file:///tmp/a.txt and https://example.com"));
 
         // After write_files, read() must return Clip::Empty (so send_now falls through to
         // read_files() and the background watcher never echoes file:///... as text).
-        let paths = vec![PathBuf::from("/home/jochen/Downloads/Nectarlink/PXL_20261016_130349832.MP.jpg")];
+        let paths = vec![PathBuf::from("/home/jochen/Downloads/Ulak/PXL_20261016_130349832.MP.jpg")];
         assert!(write_files(&paths));
         assert_eq!(read(), Clip::Empty);
         let mut reported = Vec::new();
         assert!(!report_if_changed(
             Clip::Text {
-                text: "file:///home/jochen/Downloads/Nectarlink/PXL_20261016_130349832.MP.jpg".into(),
+                text: "file:///home/jochen/Downloads/Ulak/PXL_20261016_130349832.MP.jpg".into(),
                 html: None,
                 rtf: None,
             },

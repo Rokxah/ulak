@@ -368,7 +368,7 @@ pub struct Settings {
     /// reduced motion or battery saver whatever this says).
     #[serde(default = "default_true", alias = "comb_motion")]
     pub comb_motion: bool,
-    /// Closing the window keeps NectarLink running in the tray.
+    /// Closing the window keeps Ulak running in the tray.
     #[serde(default = "default_close_to_tray", alias = "close_to_tray")]
     pub close_to_tray: bool,
     /// Send what's copied on this PC to connected phones.
@@ -422,7 +422,7 @@ pub struct Settings {
     /// doesn't.
     #[serde(skip_serializing_if = "Option::is_none", alias = "start_with_windows")]
     pub start_with_windows: Option<bool>,
-    /// Where voice recordings from phones are saved (`None` = `Documents\Nectarlink Recordings`).
+    /// Where voice recordings from phones are saved (`None` = `Documents\Ulak Recordings`).
     #[serde(skip_serializing_if = "Option::is_none", alias = "recordings_folder")]
     pub recordings_folder: Option<PathBuf>,
     /// Output format for saved voice recordings (`m4a`, `mp3`, `wav`, or `flac`).
@@ -471,7 +471,7 @@ pub struct Settings {
     #[serde(default = "default_true", alias = "clipboard_auto_copy_received_files")]
     pub clipboard_auto_copy_received_files: bool,
     /// Open a single photo or document shared from the phone as soon as it
-    /// arrives. Off by default: it's saved in Downloads\Nectarlink either way.
+    /// arrives. Off by default: it's saved in Downloads\Ulak either way.
     #[serde(default, alias = "open_shared_files")]
     pub open_shared_files: bool,
     /// Send the PC's clipboard to the phone when control moves to it: the mouse
@@ -481,19 +481,19 @@ pub struct Settings {
     /// Configured one-way / two-way folder synchronization rules.
     #[serde(default, skip_serializing_if = "Vec::is_empty", alias = "folder_sync_rules")]
     pub folder_sync_rules: Vec<crate::folder_sync::FolderSyncRule>,
-    /// Show the optional top-of-screen Nectar Island status pill when phone activity is ongoing.
+    /// Show the optional top-of-screen Ulak Island status pill when phone activity is ongoing.
     #[serde(default, alias = "nectar_island")]
     pub nectar_island: bool,
-    /// Trigger Nectar Island for incoming and active phone calls.
+    /// Trigger Ulak Island for incoming and active phone calls.
     #[serde(default = "default_true", alias = "nectar_island_calls")]
     pub nectar_island_calls: bool,
-    /// Trigger Nectar Island for active file transfers.
+    /// Trigger Ulak Island for active file transfers.
     #[serde(default = "default_true", alias = "nectar_island_transfers")]
     pub nectar_island_transfers: bool,
-    /// Trigger Nectar Island for active media playback.
+    /// Trigger Ulak Island for active media playback.
     #[serde(default = "default_true", alias = "nectar_island_media")]
     pub nectar_island_media: bool,
-    /// Trigger Nectar Island for phone notifications.
+    /// Trigger Ulak Island for phone notifications.
     #[serde(default, alias = "nectar_island_notifications")]
     pub nectar_island_notifications: bool,
     /// Show the dock: a bar at a screen edge with notifications, messages,

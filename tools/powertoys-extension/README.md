@@ -1,6 +1,6 @@
-# NectarLink PowerToys Command Palette / PowerToys Run Extension (`nectarlink-ptrun`)
+# Ulak PowerToys Command Palette / PowerToys Run Extension (`nectarlink-ptrun`)
 
-`nectarlink-ptrun` is a standalone, zero-dependency Rust helper that connects Windows launcher tools (PowerToys Command Palette, PowerToys Run, Flow Launcher, Raycast for Windows) to NectarLink's [Local Authenticated API](../../docs/api.md).
+`nectarlink-ptrun` is a standalone, zero-dependency Rust helper that connects Windows launcher tools (PowerToys Command Palette, PowerToys Run, Flow Launcher, Raycast for Windows) to Ulak's [Local Authenticated API](../../docs/api.md).
 
 ## Building
 
@@ -10,8 +10,8 @@ cargo build --release --manifest-path tools/powertoys-extension/Cargo.toml
 
 ## Prerequisites
 
-1. Open **NectarLink → Settings → Local automation API** and turn on **Enable local automation API**.
-2. NectarLink writes `%LOCALAPPDATA%\Nectarlink\api-token.json` containing the loopback port (`53320`) and a 256-bit Bearer token.
+1. Open **Ulak → Settings → Local automation API** and turn on **Enable local automation API**.
+2. Ulak writes `%LOCALAPPDATA%\Ulak\api-token.json` containing the loopback port (`53320`) and a 256-bit Bearer token.
 
 ## Usage
 
