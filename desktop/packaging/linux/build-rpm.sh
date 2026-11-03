@@ -57,6 +57,9 @@ REQUIRES=""
 for lib in $(printf '%s\n' "${!NEEDED[@]}" | sort); do
     # The loader is required through libc itself.
     [[ "${lib}" == ld-linux* ]] && continue
+    # Qt comes inside the package; a Qt library it doesn't carry is only
+    # needed by a bundled plugin the app never loads (Qt Labs modules).
+    [[ "${lib}" == libQt6* ]] && continue
     REQUIRES+="Requires: ${lib}${LIB_SUFFIX}"$'\n'
 done
 if [[ -n "${GLIBC}" ]]; then
