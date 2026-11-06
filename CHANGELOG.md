@@ -4,6 +4,18 @@ All notable changes to Ulak. Versions follow
 [semantic versioning](https://semver.org); before 1.0, a minor version may
 change things that need a step from you, and its notes say so.
 
+## 0.2.3 - 2026-11-06
+
+### New
+
+- **Back up and restore.** Settings › Storage & Privacy › Backup writes your
+  settings, notification rules (muted apps, keyword rules, the PC programs
+  you picked) and the Deck to one file, and restores such a file: Ulak asks
+  first, then restarts to put it in place. Use it before reinstalling
+  Windows or on a new PC. The pairing identity and clipboard history aren't
+  in a backup (Windows seals them to your account), so pair the phone again
+  after a restore.
+
 ## 0.2.2 (Ulak) - 2026-11-04
 
 The first release of **Ulak**, a fork of
