@@ -27,3 +27,17 @@ pub fn running_programs() -> HashSet<String> {
     }
     names
 }
+
+/// Waits until process `pid` has ended, or `timeout` passes.
+pub fn wait_for_exit(pid: u32, timeout: std::time::Duration) {
+    use windows::Win32::{
+        Foundation::CloseHandle,
+        System::Threading::{OpenProcess, PROCESS_SYNCHRONIZE, WaitForSingleObject},
+    };
+    // SAFETY: a handle only waited on, then closed.
+    unsafe {
+        let Ok(process) = OpenProcess(PROCESS_SYNCHRONIZE, false, pid) else { return };
+        WaitForSingleObject(process, u32::try_from(timeout.as_millis()).unwrap_or(u32::MAX));
+        let _ = CloseHandle(process);
+    }
+}

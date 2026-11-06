@@ -353,6 +353,18 @@ pub mod qobject {
         #[qinvokable]
         fn trim_working_set(self: &AppController);
 
+        /// Writes the settings, notification rules and Deck to a backup file
+        /// (a file URL or path). Returns "" when done, or what went wrong.
+        #[qinvokable]
+        #[cxx_name = "exportBackup"]
+        fn export_backup(self: &AppController, file: &QString) -> QString;
+        /// Checks a backup file and restores it: the app restarts and puts
+        /// its files in place. Returns "" when the restart is under way, or
+        /// what went wrong (nothing changed then).
+        #[qinvokable]
+        #[cxx_name = "restoreBackup"]
+        fn restore_backup(self: &AppController, file: &QString) -> QString;
+
         /// Recomputes `data_retention_summary` from local stores and disk caches.
         #[qinvokable]
         fn refresh_data_retention(self: Pin<&mut AppController>);
@@ -1818,6 +1830,35 @@ impl qobject::AppController {
     pub fn home_summary(&self, device: &QString) -> QString {
         let Some(id) = super::parse_device(device) else { return QString::default() };
         QString::from(&home_summary_json(id))
+    }
+
+    pub fn export_backup(&self, file: &QString) -> QString {
+        let Some(path) = local_path(file) else { return QString::from("no file chosen") };
+        let path = if path.extension().is_none() { path.with_extension("json") } else { path };
+        match crate::backup::export(&core_host::host().data_dir, &path) {
+            Ok(_) => QString::default(),
+            Err(e) => QString::from(&e),
+        }
+    }
+
+    pub fn restore_backup(&self, file: &QString) -> QString {
+        let Some(path) = local_path(file) else { return QString::from("no file chosen") };
+        let data_dir = &core_host::host().data_dir;
+        if let Err(e) = crate::backup::stage_restore(data_dir, &path) {
+            return QString::from(&e);
+        }
+        // The same data folder as now, when it isn't the usual one.
+        let args = if *data_dir != crate::default_data_dir() {
+            vec!["--data-dir".to_owned(), data_dir.to_string_lossy().into_owned()]
+        } else {
+            Vec::new()
+        };
+        if let Err(e) = crate::backup::relaunch_after_exit(&args) {
+            tracing::warn!(error = %e, "can't restart by itself; the restore waits for the next start");
+            return QString::from("Restored. Quit and open Ulak again to finish.");
+        }
+        request_quit();
+        QString::default()
     }
 
     pub fn trim_working_set(&self) {
@@ -3354,6 +3395,23 @@ fn feature_state_map(state: Option<FeatureState>) -> QMap<QMapPair_QString_QVari
         }
     }
     map
+}
+
+/// A file URL (from a FileDialog) or a plain path, as a local path.
+fn local_path(file: &QString) -> Option<std::path::PathBuf> {
+    let raw = String::from(file);
+    let raw = raw.trim();
+    if raw.is_empty() {
+        return None;
+    }
+    if !raw.starts_with("file:") {
+        return Some(std::path::PathBuf::from(raw));
+    }
+    cxx_qt_lib::QUrl::from(&QString::from(raw))
+        .to_local_file()
+        .map(|p| String::from(&p))
+        .filter(|p| !p.is_empty())
+        .map(std::path::PathBuf::from)
 }
 
 #[cfg(test)]

@@ -6627,6 +6627,46 @@ Neler gerekir
 <context>
     <name>SettingsPage</name>
     <message>
+        <source>Back up Ulak settings</source>
+        <translation>Ulak ayarlarını yedekle</translation>
+    </message>
+    <message>
+        <source>Ulak backup (*.json)</source>
+        <translation>Ulak yedeği (*.json)</translation>
+    </message>
+    <message>
+        <source>Backed up.</source>
+        <translation>Yedeklendi.</translation>
+    </message>
+    <message>
+        <source>Restore Ulak settings</source>
+        <translation>Ulak ayarlarını geri yükle</translation>
+    </message>
+    <message>
+        <source>Backup</source>
+        <translation>Yedekleme</translation>
+    </message>
+    <message>
+        <source>Settings, notification rules and the Deck in one file, for a new PC or a reinstalled Windows. After a restore, pair the phone again.</source>
+        <translation>Ayarlar, bildirim kuralları ve Deck tek bir dosyada; yeni bir PC ya da yeniden kurulan Windows için. Geri yüklemeden sonra telefonu yeniden eşleştirin.</translation>
+    </message>
+    <message>
+        <source>Back up</source>
+        <translation>Yedekle</translation>
+    </message>
+    <message>
+        <source>Restore</source>
+        <translation>Geri yükle</translation>
+    </message>
+    <message>
+        <source>Replace the current settings with this backup? Ulak restarts to finish.</source>
+        <translation>Mevcut ayarlar bu yedekle değiştirilsin mi? Bitirmek için Ulak yeniden başlar.</translation>
+    </message>
+    <message>
+        <source>Restore and restart</source>
+        <translation>Geri yükle ve yeniden başlat</translation>
+    </message>
+    <message>
         <source>A compact bar floating at the screen edge, with notifications, messages, calls and files.</source>
         <translation>Ekran kenarında yüzen kompakt bir çubuk: bildirimler, mesajlar, aramalar ve dosyalar.</translation>
     </message>

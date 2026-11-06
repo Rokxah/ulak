@@ -9,6 +9,7 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
 mod automations;
+mod backup;
 mod battery;
 mod bridge;
 mod calls;
@@ -223,6 +224,9 @@ struct Options {
     minimized: bool,
     /// Started by the updater's relauncher, as the new version.
     updated: bool,
+    /// `--wait-pid <pid>`: started by the app itself to restart it (after a
+    /// restore); waits for that process to quit first.
+    wait_pid: Option<u32>,
     /// `--send-to <device> <files…>`: Explorer's "Send to" menu.
     send_to: Option<(String, Vec<PathBuf>)>,
     /// `--share <targets…>`: Windows Share sheet or CLI share invocation.
@@ -278,6 +282,10 @@ fn parse_options_from<I: IntoIterator<Item = std::ffi::OsString>>(iter: I) -> Op
             Some("--minimized") => {
                 in_share = false;
                 options.minimized = true;
+            }
+            Some("--wait-pid") => {
+                in_share = false;
+                options.wait_pid = args.next().and_then(|pid| pid.to_str()?.parse().ok());
             }
             Some("--quit") => {
                 in_share = false;
@@ -377,7 +385,7 @@ fn parse_options_from<I: IntoIterator<Item = std::ffi::OsString>>(iter: I) -> Op
     options
 }
 
-fn default_data_dir() -> PathBuf {
+pub(crate) fn default_data_dir() -> PathBuf {
     dirs::data_local_dir().unwrap_or_else(std::env::temp_dir).join("Ulak")
 }
 
@@ -547,6 +555,10 @@ fn main() -> ExitCode {
     } else {
         Request::Show
     };
+    // Restarting itself: the old process holds the single instance until it's gone.
+    if let Some(pid) = options.wait_pid {
+        backup::wait_for_exit(pid, std::time::Duration::from_secs(30));
+    }
     let instance = match single_instance::acquire(&data_dir) {
         // Nothing running to quit.
         Ok(Instance::Primary(_)) if request == Request::Quit => return ExitCode::SUCCESS,
@@ -573,6 +585,8 @@ fn main() -> ExitCode {
     #[cfg(target_os = "linux")]
     win::quit_on_signals(bridge::app::request_quit);
     win::jumplist::register(options.data_dir.as_deref());
+    // A restore staged before a restart goes in place before anything reads it.
+    backup::apply_pending(&data_dir);
     if let Err(e) = core_host::start(data_dir.clone(), Arc::new(DesktopPlatform)) {
         tracing::error!(error = %e, "can't start the core runtime");
         return ExitCode::FAILURE;

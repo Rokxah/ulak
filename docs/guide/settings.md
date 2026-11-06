@@ -163,6 +163,7 @@ Displays live item counts and disk usage for every local history store and cache
 
 | Setting | Retention / Default | What It Does |
 | :--- | :--- | :--- |
+| **Backup** | **Back up** / **Restore** buttons | **Back up** writes your settings, notification rules (muted apps, keyword rules, the PC programs you picked) and the Deck to one `.json` file you choose. **Restore** reads such a file, asks first and restarts Ulak to put it in place: use it before reinstalling Windows or on a new PC. The pairing identity and clipboard history aren't in a backup (Windows seals them to your account), so pair the phone again after a restore. |
 | **Clipboard history** | **On** (default) / up to 50 clips / 128 MB / kept 7 days | Toggles the Windows DPAPI encrypted local clipboard history (`clipboard_history.enc` and `clipboard_images/<id>.enc`) and provides a **Clear** button. |
 | **Notification history** | **On** (default) / up to 300 alerts / kept 24 hours | Toggles 24-hour retention of dismissed phone notifications (`notification-history.json`) and cached notification images on this PC, with a **Clear** button. |
 | **Cross-device timeline** | `30d`, `90d` (default), `1y`, `All` (max 5,000 items) | Sets how long `Timeline` activity entries are kept before auto-purging, with **Open** and **Clear** buttons. |

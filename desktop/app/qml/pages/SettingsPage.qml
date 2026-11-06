@@ -3036,6 +3036,111 @@ Item {
                 width: visible ? parent.width : 0
                 spacing: Theme.gutter
 
+                // Back up and restore the settings, notification rules and Deck
+                Card {
+                    id: backupCard
+                    width: parent.width
+                    property string status: ""
+                    property bool failed: false
+                    property string restoreFile: ""
+
+                    FileDialog {
+                        id: backupSaveDialog
+                        title: qsTr("Back up Ulak settings")
+                        fileMode: FileDialog.SaveFile
+                        nameFilters: [qsTr("Ulak backup (*.json)")]
+                        defaultSuffix: "json"
+                        currentFile: "file:///ulak-backup-" + new Date().toISOString().slice(0, 10) + ".json"
+                        onAccepted: {
+                            const error = AppController.exportBackup(selectedFile.toString())
+                            backupCard.failed = error.length > 0
+                            backupCard.status = error.length > 0 ? error : qsTr("Backed up.")
+                        }
+                    }
+                    FileDialog {
+                        id: backupOpenDialog
+                        title: qsTr("Restore Ulak settings")
+                        fileMode: FileDialog.OpenFile
+                        nameFilters: [qsTr("Ulak backup (*.json)")]
+                        onAccepted: {
+                            backupCard.status = ""
+                            backupCard.restoreFile = selectedFile.toString()
+                        }
+                    }
+
+                    Column {
+                        width: parent.width
+                        ListRow {
+                            width: parent.width
+                            iconPath: Icons.download
+                            title: qsTr("Backup")
+                            description: qsTr("Settings, notification rules and the Deck in one file, for a new PC or a reinstalled Windows. After a restore, pair the phone again.")
+                            Row {
+                                spacing: 8
+                                Button {
+                                    anchors.verticalCenter: parent.verticalCenter
+                                    variant: "tonal"
+                                    size: "sm"
+                                    text: qsTr("Back up")
+                                    onClicked: backupSaveDialog.open()
+                                }
+                                Button {
+                                    anchors.verticalCenter: parent.verticalCenter
+                                    variant: "text"
+                                    size: "sm"
+                                    text: qsTr("Restore")
+                                    onClicked: backupOpenDialog.open()
+                                }
+                            }
+                        }
+                        // Restoring replaces the current settings: ask first.
+                        Row {
+                            visible: backupCard.restoreFile.length > 0
+                            x: 16
+                            width: parent.width - 32
+                            height: visible ? 48 : 0
+                            spacing: 8
+                            Txt {
+                                width: parent.width - restoreGo.width - restoreCancel.width - 16
+                                anchors.verticalCenter: parent.verticalCenter
+                                role: "bodySmall"
+                                wrapMode: Text.WordWrap
+                                text: qsTr("Replace the current settings with this backup? Ulak restarts to finish.")
+                            }
+                            Button {
+                                id: restoreCancel
+                                anchors.verticalCenter: parent.verticalCenter
+                                variant: "text"
+                                size: "sm"
+                                text: qsTr("Cancel")
+                                onClicked: backupCard.restoreFile = ""
+                            }
+                            Button {
+                                id: restoreGo
+                                anchors.verticalCenter: parent.verticalCenter
+                                size: "sm"
+                                text: qsTr("Restore and restart")
+                                onClicked: {
+                                    const error = AppController.restoreBackup(backupCard.restoreFile)
+                                    backupCard.restoreFile = ""
+                                    backupCard.failed = error.length > 0
+                                    backupCard.status = error
+                                }
+                            }
+                        }
+                        Txt {
+                            visible: backupCard.status.length > 0
+                            x: 16
+                            width: parent.width - 32
+                            bottomPadding: 12
+                            role: "bodySmall"
+                            color: backupCard.failed ? Theme.error : Theme.surfaceContentVariant
+                            wrapMode: Text.WordWrap
+                            text: backupCard.status
+                        }
+                    }
+                }
+
                 Card {
                     width: parent.width
                     Column {
