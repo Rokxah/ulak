@@ -1,0 +1,26 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
+# Run by hand: regenerates the generated files (theme tokens, the Rust
+# strings Qt's translation tools read) and uploads them, for a machine that
+# can't build the xtask itself.
+name: Regenerate
+
+on:
+  workflow_dispatch:
+
+jobs:
+  regenerate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Install the pinned Rust toolchain
+        run: rustup show active-toolchain || rustup toolchain install
+      - run: |
+          cargo xtask tokens
+          cargo xtask strings
+          git status --short
+      - uses: actions/upload-artifact@v7
+        with:
+          name: generated
+          path: |
+            desktop/app/i18n/rust_strings.h
+            android/app/src/main/kotlin/app/nectarlink/android/ui/theme/Tokens.kt
